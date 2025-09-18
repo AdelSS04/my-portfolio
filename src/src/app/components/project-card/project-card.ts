@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 export interface Project {
@@ -20,18 +20,18 @@ export interface Project {
         <div class="absolute inset-0 bg-gradient-to-t from-[#1e1e1e] via-transparent to-transparent opacity-60"></div>
         <div class="absolute bottom-4 left-4">
           <span class="text-white/90 text-sm font-medium px-3 py-1 bg-white/10 backdrop-blur rounded-full">
-            {{project.category}}
+            {{project().category}}
           </span>
         </div>
       </div>
       <div class="p-6">
         <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-          {{project.title}}
+          {{project().title}}
         </h3>
-        <p class="text-gray-400 mb-4 line-clamp-2">{{project.description}}</p>
+        <p class="text-gray-400 mb-4 line-clamp-2">{{project().description}}</p>
         <div class="flex gap-2 mb-4 flex-wrap">
           <span
-            *ngFor="let tech of project.technologies"
+            *ngFor="let tech of project().technologies"
             class="px-3 py-1 bg-[#122433]/50 text-gray-300 rounded-full text-xs border border-white/5"
           >
             {{tech}}
@@ -39,8 +39,8 @@ export interface Project {
         </div>
         <div class="flex gap-4">
           <a
-            *ngIf="project.liveUrl"
-            [href]="project.liveUrl"
+            *ngIf="project().liveUrl"
+            [href]="project().liveUrl"
             target="_blank"
             rel="noopener noreferrer"
             class="flex items-center gap-1 text-blue-400 hover:text-blue-300 transition-colors"
@@ -51,8 +51,8 @@ export interface Project {
             Live Demo
           </a>
           <a
-            *ngIf="project.githubUrl"
-            [href]="project.githubUrl"
+            *ngIf="project().githubUrl"
+            [href]="project() .githubUrl"
             target="_blank"
             rel="noopener noreferrer"
             class="flex items-center gap-1 text-blue-400 hover:text-blue-300 transition-colors"
@@ -68,5 +68,5 @@ export interface Project {
   `
 })
 export class ProjectCardComponent {
-  @Input() project!: Project;
+  project = input.required<Project>();
 }

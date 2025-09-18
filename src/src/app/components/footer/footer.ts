@@ -1,17 +1,16 @@
-// footer.component.ts
-import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+import { Component, input, Input } from '@angular/core';
+import { computed } from '@angular/core';
 
 @Component({
   selector: 'app-footer',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   template: `
     <footer class="py-8 px-6 border-t border-white/5 bg-[#112230]/50 backdrop-blur-sm">
       <div class="container mx-auto">
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
           <div class="text-center md:text-left">
-            <p class="text-gray-500">© {{currentYear}} {{name}}. All rights reserved.</p>
+            <p class="text-gray-500">© {{currentYear()}} {{name()}}. All rights reserved.</p>
           </div>
           <div class="flex items-center gap-6">
             <a href="#home" class="text-gray-500 hover:text-white transition-colors">Home</a>
@@ -29,7 +28,8 @@ import { CommonModule } from '@angular/common';
     </footer>
   `
 })
+
 export class FooterComponent {
-  @Input() name: string = 'Your Name';
-  currentYear: number = new Date().getFullYear();
+  name = input("Your Name");
+  currentYear = computed(() => new Date().getFullYear());
 }

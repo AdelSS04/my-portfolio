@@ -1,5 +1,5 @@
 // hero.component.ts
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 @Component({
@@ -16,7 +16,7 @@ import { CommonModule } from '@angular/common';
               <div class="w-48 h-48 lg:w-64 lg:h-64 rounded-full border-2 border-white/10 shadow-2xl overflow-hidden bg-gradient-to-br from-[#122331] to-[#122433]">
                 <img
                   *ngIf="profileImage"
-                  [src]="profileImage"
+                  [src]="profileImage()"
                   alt="Profile"
                   class="w-full h-full object-cover"
                 >
@@ -34,11 +34,11 @@ import { CommonModule } from '@angular/common';
           <div class="lg:w-2/3 text-center lg:text-left">
             <h2 class="text-xl md:text-2xl text-gray-400 mb-2 font-light tracking-wide">Welcome, I'm</h2>
             <h1 class="text-4xl md:text-6xl font-bold text-white mb-4">
-              {{name}}
+              {{name()}}
             </h1>
             <div class="mb-6">
-              <p class="text-2xl md:text-3xl text-white font-semibold mb-2">{{title}}</p>
-              <p class="text-lg md:text-xl text-gray-400">{{subtitle}}</p>
+              <p class="text-2xl md:text-3xl text-white font-semibold mb-2">{{title()}}</p>
+              <p class="text-lg md:text-xl text-gray-400">{{subtitle()}}</p>
             </div>
 
             <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-8">
@@ -83,8 +83,8 @@ import { CommonModule } from '@angular/common';
   `
 })
 export class HeroComponent {
-  @Input() name: string = 'Your Name';
-  @Input() title: string = 'Senior Full Stack Developer';
-  @Input() subtitle: string = 'AZ-204 Certified | .NET & Angular Expert';
-  @Input() profileImage: string = '';
+  name = input.required<string>();
+  title = input.required<string>();
+  subtitle = input.required<string>();
+  profileImage = input<string>('');
 }

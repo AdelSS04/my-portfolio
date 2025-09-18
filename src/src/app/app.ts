@@ -8,6 +8,7 @@ import { FooterComponent } from './components/footer/footer';
 import { HeroComponent } from './components/hero/hero';
 import { SkillsComponent } from './components/skills/skills';
 import { ProjectsComponent } from './components/projects/projects';
+import { ExperienceComponent } from './components/experience/experience.component';
 
 @Component({
   selector: 'app-root',
@@ -18,6 +19,7 @@ import { ProjectsComponent } from './components/projects/projects';
     AboutComponent,
     SkillsComponent,
     ContactComponent,
+    ExperienceComponent,
     FooterComponent],
   templateUrl: './app.html',
   styles: [`
@@ -31,13 +33,13 @@ export class App {
   protected readonly title = signal('my-portfolio');
     userData = {
     name: 'Adel Lajil',
-    title: 'Senior Full Stack Developer',
-    subtitle: 'AZ-204 Certified | .NET & Angular Expert',
-    profileImage: 'assets/profile.jpg',
-    aboutText: `I'm a passionate Senior Full Stack Developer with expertise in .NET and Angular.
-                Azure AZ-204 certified with extensive experience in building scalable cloud applications.`,
-    additionalInfo: `Specializing in enterprise-level applications with a focus on clean architecture,
-                     microservices, and cloud-native solutions using Azure services.`
+    title: 'Cloud Full Stack Senior Developer',
+    subtitle: 'AZ-204 Certified | .NET & Angular Expert | Azure Cloud Architect',
+    profileImage: 'me.png',
+    aboutText: `I'm a passionate Cloud Full Stack Senior Developer with 4+ years of experience building scalable SaaS platforms and cloud-native solutions.
+                Currently at Evident Industrial, I specialize in Angular, .NET Core, and Azure cloud services, with expertise in microservices architecture, IoT integration, and DevOps automation.`,
+    additionalInfo: `From leading development teams to architecting enterprise-level applications, I focus on delivering high-performance, secure solutions.
+                     My experience spans across FinTech, IoT, and enterprise platforms, always committed to clean architecture and solving real-world challenges through innovative technology.`
   };
 
 }
