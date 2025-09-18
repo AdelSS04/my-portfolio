@@ -1,4 +1,5 @@
-const { app } = require('../dist/my-portfolio/server/server.mjs');
-
-// Export for Vercel
-module.exports = app;
+// Use dynamic import for ESM compatibility
+module.exports = async (req, res) => {
+  const { app } = await import('../dist/my-portfolio/server/server.mjs');
+  return app(req, res);
+};
