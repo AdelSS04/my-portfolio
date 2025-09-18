@@ -1,0 +1,12 @@
+{
+  "version": 2,
+  "dgSpecHash": "VmwCq5A80/I=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\adel.lajil\\OneDrive - EvidentScientific\\Documents\\GitHub\\my-portfolio\\src\\my-portfolio\\my-portfolio.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\adel.lajil\\.nuget\\packages\\microsoft.aspnetcore.openapi\\9.0.1\\microsoft.aspnetcore.openapi.9.0.1.nupkg.sha512",
+    "C:\\Users\\adel.lajil\\.nuget\\packages\\microsoft.openapi\\1.6.17\\microsoft.openapi.1.6.17.nupkg.sha512",
+    "C:\\Users\\adel.lajil\\.nuget\\packages\\microsoft.visualstudio.azure.containers.tools.targets\\1.21.0\\microsoft.visualstudio.azure.containers.tools.targets.1.21.0.nupkg.sha512"
+  ],
+  "logs": []
+}
