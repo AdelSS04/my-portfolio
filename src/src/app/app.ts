@@ -30,7 +30,7 @@ import { ProjectsComponent } from './components/projects/projects';
 export class App {
   protected readonly title = signal('my-portfolio');
     userData = {
-    name: 'Your Name',
+    name: 'Adel Lajil',
     title: 'Senior Full Stack Developer',
     subtitle: 'AZ-204 Certified | .NET & Angular Expert',
     profileImage: 'assets/profile.jpg', // Add your profile image path
