@@ -4,10 +4,11 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build-dev": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:my-portfolio": "node dist/my-portfolio/server/server.mjs"
+    "serve:ssr:my-portfolio": "node dist/my-portfolio/server/server.mjs",
+    "vercel-build": "ng build && node dist/my-portfolio/server/server.mjs"
   },
   "prettier": {
     "printWidth": 100,
