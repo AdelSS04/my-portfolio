@@ -16,13 +16,6 @@ COPY . .
 # Build the application for production
 RUN npm run build
 
-# Check if SSR build exists and run it, otherwise use regular build
-RUN if npm run | grep -q "build:ssr"; then \
-        echo "Building with SSR..." && npm run build:ssr || npm run build; \
-    else \
-        echo "SSR not available, using regular build" && npm run build; \
-    fi
-
 # Production stage
 FROM node:20-alpine AS production
 
@@ -43,6 +36,33 @@ RUN if [ -f package.json ]; then npm ci --only=production; fi
 RUN addgroup -g 1001 -S nodejs && \
     adduser -S angular -u 1001 -G nodejs
 
+# Create and set permissions for startup script before switching user
+COPY <<EOF /app/start.sh
+#!/bin/sh
+echo "Starting Angular application..."
+if [ -f "dist/server.js" ]; then
+    echo "Starting Node.js SSR server..."
+    node dist/server.js
+elif [ -f "dist/server/main.js" ]; then
+    echo "Starting Node.js SSR server (main.js)..."
+    node dist/server/main.js
+elif [ -f "dist/my-portfolio/server.js" ]; then
+    echo "Starting Node.js SSR server (project-specific)..."
+    node dist/my-portfolio/server.js
+elif [ -d "dist/my-portfolio" ]; then
+    echo "Starting static file server for my-portfolio..."
+    serve -s dist/my-portfolio -l 4000
+elif [ -d "dist" ]; then
+    echo "Starting static file server for dist..."
+    serve -s dist -l 4000
+else
+    echo "No build output found!"
+    exit 1
+fi
+EOF
+
+RUN chmod +x /app/start.sh
+
 # Change ownership of the app directory
 RUN chown -R angular:nodejs /app
 USER angular
@@ -50,34 +70,9 @@ USER angular
 # Expose port
 EXPOSE 4000
 
-# Health check script
-RUN echo '#!/bin/sh\nwget --no-verbose --tries=1 --spider http://localhost:4000/health 2>/dev/null || wget --no-verbose --tries=1 --spider http://localhost:4000/ || exit 1' > /tmp/healthcheck.sh && chmod +x /tmp/healthcheck.sh
-
 # Health check
-HEALTHCHECK --interval=30s --timeout=3s --start-period=10s --retries=3 \
-    CMD /tmp/healthcheck.sh
-
-# Create startup script
-RUN echo '#!/bin/sh\n\
-if [ -f "dist/server.js" ]; then\n\
-    echo "Starting Node.js SSR server..."\n\
-    node dist/server.js\n\
-elif [ -f "dist/server/main.js" ]; then\n\
-    echo "Starting Node.js SSR server (main.js)..."\n\
-    node dist/server/main.js\n\
-elif [ -f "dist/my-portfolio/server.js" ]; then\n\
-    echo "Starting Node.js SSR server (project-specific)..."\n\
-    node dist/my-portfolio/server.js\n\
-elif [ -d "dist/my-portfolio" ]; then\n\
-    echo "Starting static file server for my-portfolio..."\n\
-    serve -s dist/my-portfolio -l 4000\n\
-elif [ -d "dist" ]; then\n\
-    echo "Starting static file server for dist..."\n\
-    serve -s dist -l 4000\n\
-else\n\
-    echo "No build output found!"\n\
-    exit 1\n\
-fi' > /app/start.sh && chmod +x /app/start.sh
+HEALTHCHECK --interval=30s --timeout=10s --start-period=15s --retries=3 \
+    CMD wget --no-verbose --tries=1 --spider http://localhost:4000/ || exit 1
 
 # Start the application
 CMD ["./start.sh"]

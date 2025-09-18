@@ -9,12 +9,10 @@ services:
     container_name: dotnet-api
     ports:
       - "5000:5000"
-      - "5001:5001"  # HTTPS port
     environment:
       - ASPNETCORE_ENVIRONMENT=Production
-      - ASPNETCORE_URLS=http://+:5000;https://+:5001
+      - ASPNETCORE_URLS=http://+:5000
       - ASPNETCORE_HTTP_PORTS=5000
-      - ASPNETCORE_HTTPS_PORTS=5001
     volumes:
       - ./logs/backend:/app/logs
     networks:
