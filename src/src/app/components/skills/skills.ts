@@ -19,7 +19,7 @@ interface Skill {
         <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
           Leveraging modern technologies to build robust, scalable applications
         </p>
-    
+
         <div class="space-y-8">
           <!-- Frontend Skills -->
           <div>
@@ -40,7 +40,7 @@ interface Skill {
               }
             </div>
           </div>
-    
+
           <!-- Backend Skills -->
           <div>
             <h3 class="text-xl font-semibold text-white mb-4">Backend Development</h3>
@@ -60,7 +60,7 @@ interface Skill {
               }
             </div>
           </div>
-    
+
           <!-- Cloud & DevOps -->
           <div>
             <h3 class="text-xl font-semibold text-white mb-4">Cloud & DevOps</h3>
@@ -81,7 +81,7 @@ interface Skill {
             </div>
           </div>
         </div>
-    
+
         <!-- Certifications -->
         <div class="mt-12 text-center">
           <h3 class="text-xl font-semibold text-white mb-6">Certifications</h3>
@@ -109,7 +109,7 @@ export class SkillsComponent {
     { name: 'HTML/CSS', icon: '🎨', level: 'Expert' },
     { name: 'Tailwind CSS', icon: '💨', level: 'Advanced' },
     { name: 'Bootstrap', icon: '🅱️', level: 'Advanced' },
-    { name: 'React', icon: '⚛️', level: 'Intermediate' },
+    { name: 'Blazor', icon: '🟪', level: 'Intermediate' },
     { name: 'SASS/SCSS', icon: '🎨', level: 'Advanced' }
   ];
 
@@ -126,8 +126,22 @@ export class SkillsComponent {
 
   cloudSkills: Skill[] = [
     { name: 'Azure', icon: '☁️', level: 'Expert' },
+    { name: 'Azure Cosmos DB', icon: '🪐', level: 'Advanced' },
+    { name: 'Azure App Service', icon: '🖥️', level: 'Advanced' },
+    { name: 'Azure Function App', icon: '⚡', level: 'Advanced' },
+    { name: 'Azure Static Web App', icon: '🌐', level: 'Intermediate' },
+    { name: 'Azure SQL Server', icon: '🗄️', level: 'Advanced' },
+    { name: 'Azure AD B2C', icon: '🔑', level: 'Intermediate' },
+    { name: 'Azure DNS Management', icon: '🌍', level: 'Intermediate' },
+    { name: 'Azure Kubernetes Service', icon: '☸️', level: 'Intermediate' },
+    { name: 'Azure Container Registry', icon: '📦', level: 'Intermediate' },
+    { name: 'Azure IoT Hub', icon: '📡', level: 'Intermediate' },
+    { name: 'Azure DPS', icon: '🔗', level: 'Intermediate' },
     { name: 'Docker', icon: '🐳', level: 'Advanced' },
     { name: 'Kubernetes', icon: '☸️', level: 'Intermediate' },
+    { name: 'Helm', icon: '⎈', level: 'Intermediate' },
+    { name: 'ArgoCD', icon: '🚦', level: 'Intermediate' },
+    { name: 'GitLab', icon: '🦊', level: 'Advanced' },
     { name: 'CI/CD', icon: '🔄', level: 'Advanced' },
     { name: 'Git', icon: '🐙', level: 'Expert' },
     { name: 'Azure DevOps', icon: '🔧', level: 'Advanced' },

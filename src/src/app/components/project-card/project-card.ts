@@ -54,7 +54,7 @@ export interface Project {
           }
           @if (project().githubUrl) {
             <a
-              [href]="project() .githubUrl"
+              [href]="project().githubUrl"
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center gap-1 text-blue-400 hover:text-blue-300 transition-colors"
