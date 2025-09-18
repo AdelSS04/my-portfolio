@@ -36,7 +36,7 @@ import { Component, Input } from '@angular/core';
               </div>
               <div class="flex items-center justify-between py-3 border-b border-white/10">
                 <span class="text-gray-400">Projects Completed</span>
-                <span class="text-white font-semibold">50+</span>
+                <span class="text-white font-semibold">+8+</span>
               </div>
               <div class="flex items-center justify-between py-3 border-b border-white/10">
                 <span class="text-gray-400">Technologies</span>
