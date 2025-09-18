@@ -33,7 +33,7 @@ export class App {
     name: 'Adel Lajil',
     title: 'Senior Full Stack Developer',
     subtitle: 'AZ-204 Certified | .NET & Angular Expert',
-    profileImage: 'assets/profile.jpg', // Add your profile image path
+    profileImage: 'assets/profile.jpg',
     aboutText: `I'm a passionate Senior Full Stack Developer with expertise in .NET and Angular.
                 Azure AZ-204 certified with extensive experience in building scalable cloud applications.`,
     additionalInfo: `Specializing in enterprise-level applications with a focus on clean architecture,
