@@ -20,7 +20,7 @@ app.get('*', (req, res, next) => {
   commonEngine
     .render({
       bootstrap,
-      documentFilePath: join(DIST_FOLDER, APP_NAME, 'browser', 'index.html'),
+      documentFilePath: join(DIST_FOLDER, APP_NAME, 'browser', 'indexFile.html'),
       url: `${protocol}://${headers.host}${originalUrl}`,
       publicPath: join(DIST_FOLDER, APP_NAME, 'browser'),
       providers: [{ provide: APP_BASE_HREF, useValue: baseUrl }],
