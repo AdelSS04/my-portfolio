@@ -1,0 +1,19 @@
+{
+  "version": 2,
+  "builds": [
+    {
+      "src": "dist/my-portfolio/server/server.mjs",
+      "use": "@vercel/node"
+    },
+    {
+      "src": "dist/my-portfolio/browser/**",
+      "use": "@vercel/static"
+    }
+  ],
+  "routes": [
+    {
+      "src": "/(.*)",
+      "dest": "dist/my-portfolio/server/server.mjs"
+    }
+  ]
+}
