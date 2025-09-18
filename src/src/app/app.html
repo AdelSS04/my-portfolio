@@ -2,5 +2,18 @@
       <div class="fixed inset-0 bg-gradient-to-br from-[#112230] via-[#1e1e1e] to-[#122433] opacity-90"></div>
       <div class="relative z-10">
         <app-navbar></app-navbar>
+        <app-hero
+          [name]="userData.name"
+          [title]="userData.title"
+          [subtitle]="userData.subtitle"
+          [profileImage]="userData.profileImage"
+        ></app-hero>
+        <app-about
+          [aboutText]="userData.aboutText"
+          [additionalInfo]="userData.additionalInfo"
+        ></app-about>
+        <app-skills></app-skills>
+        <app-contact></app-contact>
+        <app-footer [name]="userData.name"></app-footer>
       </div>
     </div>

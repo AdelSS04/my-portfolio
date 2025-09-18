@@ -12,7 +12,11 @@
 
       <div class="hidden md:flex space-x-8">
         @for (link of navLinks; track link.href) {
-        <a [href]="link.href" class="text-gray-300 hover:text-white transition-colors duration-300">
+        <a
+          [href]="link.href"
+          [ngClass]="{ 'border-b-2 border-white': isActive(link.href) }"
+          class="text-gray-300 hover:text-white transition-colors duration-300"
+        >
           {{ link.label }}
         </a>
         }

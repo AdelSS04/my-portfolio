@@ -1,8 +1,9 @@
+import { CommonModule, NgClass } from '@angular/common';
 import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-navbar',
-  imports: [],
+  imports: [CommonModule],
   templateUrl: './navbar.html',
   styleUrl: './navbar.css'
 })
@@ -20,7 +21,9 @@ export class NavbarComponent {
   toggleMenu(): void {
     this.mobileMenuOpen = !this.mobileMenuOpen;
   }
-
+  isActive(href: string): boolean {
+    return false;;
+  }
   closeMobileMenu(): void {
     this.mobileMenuOpen = false;
   }
