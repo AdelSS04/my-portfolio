@@ -5,6 +5,9 @@
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build",
+    "build:ssr": "ng build && ng run my-portfolio:server",
+    "serve:ssr": "node dist/my-portfolio/server/server.mjs",
+    "prerender": "ng run my-portfolio:prerender",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
     "serve:ssr:my-portfolio": "node dist/my-portfolio/server/server.mjs"
