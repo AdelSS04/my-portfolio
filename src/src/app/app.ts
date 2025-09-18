@@ -1,7 +1,6 @@
 import { Component, signal } from '@angular/core';
-import { RouterOutlet } from '@angular/router';
 import { NavbarComponent } from './components/navbar/navbar';
-import { CommonModule } from '@angular/common';
+
 import { AboutComponent } from './components/about/about';
 import { ContactComponent } from './components/contact/contact';
 import { FooterComponent } from './components/footer/footer';
@@ -12,15 +11,7 @@ import { ExperienceComponent } from './components/experience/experience.componen
 
 @Component({
   selector: 'app-root',
-  imports: [CommonModule,
-    NavbarComponent,
-    ProjectsComponent,
-    HeroComponent,
-    AboutComponent,
-    SkillsComponent,
-    ContactComponent,
-    ExperienceComponent,
-    FooterComponent],
+  imports: [NavbarComponent, ProjectsComponent, HeroComponent, AboutComponent, SkillsComponent, ContactComponent, ExperienceComponent, FooterComponent],
   templateUrl: './app.html',
   styles: [`
     :host {

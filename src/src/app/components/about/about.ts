@@ -1,11 +1,11 @@
 // about.component.ts
 import { Component, Input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   template: `
     <section id="about" class="py-20 px-6">
       <div class="container mx-auto max-w-4xl">

@@ -1,6 +1,6 @@
 // skills.component.ts
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 interface Skill {
   name: string;
@@ -11,7 +11,7 @@ interface Skill {
 @Component({
   selector: 'app-skills',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   template: `
     <section id="skills" class="py-20 px-6">
       <div class="container mx-auto max-w-6xl">
@@ -19,66 +19,69 @@ interface Skill {
         <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
           Leveraging modern technologies to build robust, scalable applications
         </p>
-
+    
         <div class="space-y-8">
           <!-- Frontend Skills -->
           <div>
             <h3 class="text-xl font-semibold text-white mb-4">Frontend Development</h3>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              <div
-                *ngFor="let skill of frontendSkills"
-                class="bg-[#112231]/50 backdrop-blur-sm rounded-xl p-4 border border-white/5 hover:border-white/20 hover:bg-[#122331]/50 transition-all duration-300 group"
-              >
-                <div class="flex items-center gap-3">
-                  <div class="text-2xl group-hover:scale-110 transition-transform">{{skill.icon}}</div>
-                  <div>
-                    <p class="text-white font-medium">{{skill.name}}</p>
-                    <p class="text-xs text-gray-500">{{skill.level}}</p>
+              @for (skill of frontendSkills; track skill) {
+                <div
+                  class="bg-[#112231]/50 backdrop-blur-sm rounded-xl p-4 border border-white/5 hover:border-white/20 hover:bg-[#122331]/50 transition-all duration-300 group"
+                  >
+                  <div class="flex items-center gap-3">
+                    <div class="text-2xl group-hover:scale-110 transition-transform">{{skill.icon}}</div>
+                    <div>
+                      <p class="text-white font-medium">{{skill.name}}</p>
+                      <p class="text-xs text-gray-500">{{skill.level}}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              }
             </div>
           </div>
-
+    
           <!-- Backend Skills -->
           <div>
             <h3 class="text-xl font-semibold text-white mb-4">Backend Development</h3>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              <div
-                *ngFor="let skill of backendSkills"
-                class="bg-[#112231]/50 backdrop-blur-sm rounded-xl p-4 border border-white/5 hover:border-white/20 hover:bg-[#122331]/50 transition-all duration-300 group"
-              >
-                <div class="flex items-center gap-3">
-                  <div class="text-2xl group-hover:scale-110 transition-transform">{{skill.icon}}</div>
-                  <div>
-                    <p class="text-white font-medium">{{skill.name}}</p>
-                    <p class="text-xs text-gray-500">{{skill.level}}</p>
+              @for (skill of backendSkills; track skill) {
+                <div
+                  class="bg-[#112231]/50 backdrop-blur-sm rounded-xl p-4 border border-white/5 hover:border-white/20 hover:bg-[#122331]/50 transition-all duration-300 group"
+                  >
+                  <div class="flex items-center gap-3">
+                    <div class="text-2xl group-hover:scale-110 transition-transform">{{skill.icon}}</div>
+                    <div>
+                      <p class="text-white font-medium">{{skill.name}}</p>
+                      <p class="text-xs text-gray-500">{{skill.level}}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              }
             </div>
           </div>
-
+    
           <!-- Cloud & DevOps -->
           <div>
             <h3 class="text-xl font-semibold text-white mb-4">Cloud & DevOps</h3>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
-              <div
-                *ngFor="let skill of cloudSkills"
-                class="bg-[#112231]/50 backdrop-blur-sm rounded-xl p-4 border border-white/5 hover:border-white/20 hover:bg-[#122331]/50 transition-all duration-300 group"
-              >
-                <div class="flex items-center gap-3">
-                  <div class="text-2xl group-hover:scale-110 transition-transform">{{skill.icon}}</div>
-                  <div>
-                    <p class="text-white font-medium">{{skill.name}}</p>
-                    <p class="text-xs text-gray-500">{{skill.level}}</p>
+              @for (skill of cloudSkills; track skill) {
+                <div
+                  class="bg-[#112231]/50 backdrop-blur-sm rounded-xl p-4 border border-white/5 hover:border-white/20 hover:bg-[#122331]/50 transition-all duration-300 group"
+                  >
+                  <div class="flex items-center gap-3">
+                    <div class="text-2xl group-hover:scale-110 transition-transform">{{skill.icon}}</div>
+                    <div>
+                      <p class="text-white font-medium">{{skill.name}}</p>
+                      <p class="text-xs text-gray-500">{{skill.level}}</p>
+                    </div>
                   </div>
                 </div>
-              </div>
+              }
             </div>
           </div>
         </div>
-
+    
         <!-- Certifications -->
         <div class="mt-12 text-center">
           <h3 class="text-xl font-semibold text-white mb-6">Certifications</h3>
@@ -96,7 +99,7 @@ interface Skill {
         </div>
       </div>
     </section>
-  `
+    `
 })
 export class SkillsComponent {
   frontendSkills: Skill[] = [

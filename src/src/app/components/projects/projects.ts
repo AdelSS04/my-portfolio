@@ -1,11 +1,11 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 import { Project, ProjectCardComponent } from '../project-card/project-card';
 
 @Component({
   selector: 'app-projects',
   standalone: true,
-  imports: [CommonModule, ProjectCardComponent],
+  imports: [ProjectCardComponent],
   template: `
     <section id="projects" class="py-20 px-6">
       <div class="container mx-auto max-w-6xl">
@@ -14,14 +14,15 @@ import { Project, ProjectCardComponent } from '../project-card/project-card';
           Showcasing enterprise-level applications built with modern technologies and best practices
         </p>
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          <app-project-card
-            *ngFor="let project of projects"
-            [project]="project"
-          ></app-project-card>
+          @for (project of projects; track project) {
+            <app-project-card
+              [project]="project"
+            ></app-project-card>
+          }
         </div>
       </div>
     </section>
-  `
+    `
 })
 export class ProjectsComponent {
   projects: Project[] = [

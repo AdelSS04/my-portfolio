@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 interface Experience {
   company: string;
@@ -17,7 +17,7 @@ interface Experience {
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   template: `
     <section id="experience" class="py-20 px-6">
       <div class="container mx-auto max-w-5xl">
@@ -25,80 +25,88 @@ interface Experience {
         <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
           Building scalable solutions and leading teams in cloud-native development
         </p>
-
+    
         <div class="relative">
           <!-- Timeline line -->
           <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-[#122331] via-[#122433] to-transparent"></div>
-
+    
           <!-- Experience items -->
           <div class="space-y-12">
-            <div
-              *ngFor="let exp of experiences; let i = index"
-              [class]="i % 2 === 0 ? 'md:flex-row-reverse' : ''"
-              class="relative flex flex-col md:flex-row items-center"
-            >
-              <!-- Timeline dot -->
-              <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-gradient-to-br from-[#122331] to-[#122433] rounded-full border-2 border-[#1e1e1e] z-10">
-                <div *ngIf="exp.current" class="absolute -inset-1 bg-green-500 rounded-full animate-ping opacity-75"></div>
-                <div *ngIf="exp.current" class="absolute -inset-0.5 bg-green-500 rounded-full"></div>
-              </div>
-
-              <!-- Content card -->
-              <div [class]="i % 2 === 0 ? 'md:mr-auto md:ml-8' : 'md:ml-auto md:mr-8'"
-                   class="w-full md:w-[calc(50%-2rem)] ml-8 md:ml-0">
-                <div class="bg-[#112231]/50 backdrop-blur-sm rounded-xl p-6 border border-white/5 hover:border-white/20 transition-all duration-300 group">
-                  <!-- Header -->
-                  <div class="flex items-start justify-between mb-4">
-                    <div>
-                      <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
-                        {{exp.position}}
-                      </h3>
-                      <p class="text-gray-300 font-medium">{{exp.company}}</p>
-                      <div class="flex flex-wrap gap-2 mt-2 text-sm">
-                        <span class="text-gray-500">📍 {{exp.location}}</span>
-                        <span class="text-gray-500">• {{exp.type}}</span>
+            @for (exp of experiences; track exp; let i = $index) {
+              <div
+                [class]="i % 2 === 0 ? 'md:flex-row-reverse' : ''"
+                class="relative flex flex-col md:flex-row items-center"
+                >
+                <!-- Timeline dot -->
+                <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-gradient-to-br from-[#122331] to-[#122433] rounded-full border-2 border-[#1e1e1e] z-10">
+                  @if (exp.current) {
+                    <div class="absolute -inset-1 bg-green-500 rounded-full animate-ping opacity-75"></div>
+                  }
+                  @if (exp.current) {
+                    <div class="absolute -inset-0.5 bg-green-500 rounded-full"></div>
+                  }
+                </div>
+                <!-- Content card -->
+                <div [class]="i % 2 === 0 ? 'md:mr-auto md:ml-8' : 'md:ml-auto md:mr-8'"
+                  class="w-full md:w-[calc(50%-2rem)] ml-8 md:ml-0">
+                  <div class="bg-[#112231]/50 backdrop-blur-sm rounded-xl p-6 border border-white/5 hover:border-white/20 transition-all duration-300 group">
+                    <!-- Header -->
+                    <div class="flex items-start justify-between mb-4">
+                      <div>
+                        <h3 class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors">
+                          {{exp.position}}
+                        </h3>
+                        <p class="text-gray-300 font-medium">{{exp.company}}</p>
+                        <div class="flex flex-wrap gap-2 mt-2 text-sm">
+                          <span class="text-gray-500">📍 {{exp.location}}</span>
+                          <span class="text-gray-500">• {{exp.type}}</span>
+                        </div>
+                      </div>
+                      <div class="text-right">
+                        @if (exp.current) {
+                          <span class="inline-block px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full mb-2">
+                            Current
+                          </span>
+                        }
+                        <p class="text-gray-400 text-sm">{{exp.period}}</p>
+                        <p class="text-gray-500 text-xs">{{exp.duration}}</p>
                       </div>
                     </div>
-                    <div class="text-right">
-                      <span *ngIf="exp.current" class="inline-block px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full mb-2">
-                        Current
-                      </span>
-                      <p class="text-gray-400 text-sm">{{exp.period}}</p>
-                      <p class="text-gray-500 text-xs">{{exp.duration}}</p>
+                    <!-- Description -->
+                    <div class="mb-4">
+                      <ul class="space-y-2">
+                        @for (desc of exp.description; track desc) {
+                          <li class="text-gray-300 text-sm leading-relaxed flex items-start">
+                            <span class="text-blue-400 mr-2 mt-1">▸</span>
+                            <span>{{desc}}</span>
+                          </li>
+                        }
+                      </ul>
                     </div>
-                  </div>
-
-                  <!-- Description -->
-                  <div class="mb-4">
-                    <ul class="space-y-2">
-                      <li *ngFor="let desc of exp.description" class="text-gray-300 text-sm leading-relaxed flex items-start">
-                        <span class="text-blue-400 mr-2 mt-1">▸</span>
-                        <span>{{desc}}</span>
-                      </li>
-                    </ul>
-                  </div>
-
-                  <!-- Technologies -->
-                  <div class="flex flex-wrap gap-2">
-                    <span
-                      *ngFor="let tech of exp.technologies.slice(0, 6)"
-                      class="px-3 py-1 bg-[#122433]/30 text-gray-400 rounded-full text-xs border border-white/5"
-                    >
-                      {{tech}}
-                    </span>
-                    <span
-                      *ngIf="exp.technologies.length > 6"
-                      class="px-3 py-1 bg-[#122433]/30 text-gray-400 rounded-full text-xs border border-white/5"
-                    >
-                      +{{exp.technologies.length - 6}} more
-                    </span>
+                    <!-- Technologies -->
+                    <div class="flex flex-wrap gap-2">
+                      @for (tech of exp.technologies.slice(0, 6); track tech) {
+                        <span
+                          class="px-3 py-1 bg-[#122433]/30 text-gray-400 rounded-full text-xs border border-white/5"
+                          >
+                          {{tech}}
+                        </span>
+                      }
+                      @if (exp.technologies.length > 6) {
+                        <span
+                          class="px-3 py-1 bg-[#122433]/30 text-gray-400 rounded-full text-xs border border-white/5"
+                          >
+                          +{{exp.technologies.length - 6}} more
+                        </span>
+                      }
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            }
           </div>
         </div>
-
+    
         <!-- Summary Stats -->
         <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div class="text-center">
@@ -120,7 +128,7 @@ interface Experience {
         </div>
       </div>
     </section>
-  `
+    `
 })
 export class ExperienceComponent {
   experiences: Experience[] = [

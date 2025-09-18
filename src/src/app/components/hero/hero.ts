@@ -1,11 +1,11 @@
 // hero.component.ts
 import { Component, input } from '@angular/core';
-import { CommonModule } from '@angular/common';
+
 
 @Component({
   selector: 'app-hero',
   standalone: true,
-  imports: [CommonModule],
+  imports: [],
   template: `
     <section id="home" class="min-h-screen flex items-center justify-center px-6 pt-20">
       <div class="container mx-auto max-w-6xl">
@@ -14,17 +14,20 @@ import { CommonModule } from '@angular/common';
           <div class="lg:w-1/3">
             <div class="relative">
               <div class="w-48 h-48 lg:w-64 lg:h-64 rounded-full border-2 border-white/10 shadow-2xl overflow-hidden bg-gradient-to-br from-[#122331] to-[#122433]">
-                <img
-                  *ngIf="profileImage"
-                  [src]="profileImage()"
-                  alt="Profile"
-                  class="w-full h-full object-cover"
-                >
-                <div *ngIf="!profileImage" class="w-full h-full flex items-center justify-center">
-                  <svg class="w-24 h-24 lg:w-32 lg:h-32 text-white/30" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
-                  </svg>
-                </div>
+                @if (profileImage() ; as profileImage) {
+                  <img
+                    [src]="profileImage"
+                    alt="Profile"
+                    class="w-full h-full object-cover"
+                    >
+                }
+                @else {
+                  <div class="w-full h-full flex items-center justify-center">
+                    <svg class="w-24 h-24 lg:w-32 lg:h-32 text-white/30" fill="currentColor" viewBox="0 0 24 24">
+                      <path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/>
+                    </svg>
+                  </div>
+                }
               </div>
               <div class="absolute -top-4 -right-4 w-20 h-20 bg-white/5 rounded-full blur-xl"></div>
               <div class="absolute -bottom-4 -left-4 w-16 h-16 bg-blue-500/10 rounded-full blur-xl"></div>
@@ -45,20 +48,20 @@ import { CommonModule } from '@angular/common';
               <a
                 href="#projects"
                 class="px-8 py-3 bg-gradient-to-r from-[#122331] to-[#122433] text-white rounded-full hover:scale-105 transition-all duration-300 border border-white/10"
-              >
+                >
                 View My Work
               </a>
               <a
                 href="#contact"
                 class="px-8 py-3 border border-white/20 text-white rounded-full hover:bg-white/5 transition-all duration-300"
-              >
+                >
                 Contact Me
               </a>
               <a
                 href="/assets/resume.pdf"
                 download
                 class="px-8 py-3 bg-white/5 text-white rounded-full hover:bg-white/10 transition-all duration-300"
-              >
+                >
                 Download CV
               </a>
             </div>
@@ -80,7 +83,7 @@ import { CommonModule } from '@angular/common';
         </div>
       </div>
     </section>
-  `
+    `
 })
 export class HeroComponent {
   name = input.required<string>();
