@@ -7,11 +7,13 @@ import { ContactComponent } from './components/contact/contact';
 import { FooterComponent } from './components/footer/footer';
 import { HeroComponent } from './components/hero/hero';
 import { SkillsComponent } from './components/skills/skills';
+import { ProjectsComponent } from './components/projects/projects';
 
 @Component({
   selector: 'app-root',
   imports: [CommonModule,
     NavbarComponent,
+    ProjectsComponent,
     HeroComponent,
     AboutComponent,
     SkillsComponent,
