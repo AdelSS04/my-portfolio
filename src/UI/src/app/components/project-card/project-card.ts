@@ -1,3 +1,4 @@
+
 import { Component, input, Input } from '@angular/core';
 
 
@@ -8,6 +9,8 @@ export interface Project {
   technologies: string[];
   liveUrl?: string;
   githubUrl?: string;
+  featured?: boolean;
+  year?: string;
 }
 
 @Component({
@@ -15,33 +18,57 @@ export interface Project {
   standalone: true,
   imports: [],
   template: `
-    <div class="bg-[#112231]/50 backdrop-blur-sm rounded-xl overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-300 group hover:transform hover:scale-[1.02]">
+    <div class="bg-[#112231]/50 backdrop-blur-sm rounded-xl overflow-hidden border border-white/5 hover:border-white/20 transition-all duration-300 group hover:transform hover:scale-[1.02] relative">
+      <!-- Featured Badge -->
+      @if (project.featured) {
+        <div class="absolute top-4 right-4 z-10">
+          <span class="px-3 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs rounded-full font-medium">
+            ⭐ Featured
+          </span>
+        </div>
+      }
+
       <div class="h-48 relative overflow-hidden bg-gradient-to-br from-[#122331] to-[#122433]">
         <div class="absolute inset-0 bg-gradient-to-t from-[#1e1e1e] via-transparent to-transparent opacity-60"></div>
         <div class="absolute bottom-4 left-4">
           <span class="text-white/90 text-sm font-medium px-3 py-1 bg-white/10 backdrop-blur rounded-full">
-            {{project().category}}
+            {{project.category}}
           </span>
+          @if (project.year) {
+            <span class="ml-2 text-white/60 text-sm">
+              {{project.year}}
+            </span>
+          }
         </div>
       </div>
+
       <div class="p-6">
         <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
-          {{project().title}}
+          {{project.title}}
         </h3>
-        <p class="text-gray-400 mb-4 line-clamp-2">{{project().description}}</p>
+        <p class="text-gray-400 mb-4 line-clamp-2">{{project.description}}</p>
+
         <div class="flex gap-2 mb-4 flex-wrap">
-          @for (tech of project().technologies; track tech) {
+          @for (tech of project.technologies.slice(0, 4); track tech) {
             <span
-              class="px-3 py-1 bg-[#122433]/50 text-gray-300 rounded-full text-xs border border-white/5"
+              class="px-3 py-1 bg-[#122433]/30 text-gray-300 rounded-full text-xs border border-white/5"
               >
               {{tech}}
             </span>
           }
+          @if (project.technologies.length > 4) {
+            <span
+              class="px-3 py-1 bg-[#122433]/30 text-gray-400 rounded-full text-xs border border-white/5"
+              >
+              +{{project.technologies.length - 4}} more
+            </span>
+          }
         </div>
+
         <div class="flex gap-4">
-          @if (project().liveUrl) {
+          @if (project.liveUrl) {
             <a
-              [href]="project().liveUrl"
+              [href]="project.liveUrl"
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center gap-1 text-blue-400 hover:text-blue-300 transition-colors"
@@ -52,9 +79,9 @@ export interface Project {
               Live Demo
             </a>
           }
-          @if (project().githubUrl) {
+          @if (project.githubUrl) {
             <a
-              [href]="project().githubUrl"
+              [href]="project.githubUrl"
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center gap-1 text-blue-400 hover:text-blue-300 transition-colors"
@@ -71,5 +98,5 @@ export interface Project {
     `
 })
 export class ProjectCardComponent {
-  project = input.required<Project>();
+  @Input() project!: Project;
 }
