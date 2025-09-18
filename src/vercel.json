@@ -1,11 +1,13 @@
 {
   "version": 2,
-  "builds": [
-    { "src": "dist/my-portfolio/server/server.mjs", "use": "@vercel/node" },
-    { "src": "dist/my-portfolio/browser/**", "use": "@vercel/static" }
+  "public": true,
+  "name": "my-portfolio",
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/api" }
   ],
-  "routes": [
-    { "handle": "filesystem" },
-    { "src": "/.*", "dest": "dist/my-portfolio/server/server.mjs" }
-  ]
+  "functions": {
+    "api/index.js": {
+      "includeFiles": "dist/my-portfolio/**"
+    }
+  }
 }
