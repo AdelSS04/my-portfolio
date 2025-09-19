@@ -16,6 +16,10 @@ fi
 # Crée le dossier local si besoin
 mkdir -p "$CERT_PATH"
 
+
+# Stop nginx-proxy to free port 80
+sudo docker stop nginx-proxy
+
 # Génère ou renouvelle le certificat dans le dossier du projet
 sudo certbot certonly \
   --standalone \
@@ -28,7 +32,7 @@ sudo certbot certonly \
   --work-dir "$CERT_PATH"/work \
   --logs-dir "$CERT_PATH"/logs
 
-# Recharge nginx dans Docker
-sudo docker exec nginx-proxy nginx -s reload
+# Start nginx-proxy again
+sudo docker start nginx-proxy
 
 echo "Certificat généré/renouvelé pour $DOMAIN dans $CERT_PATH/config/live/$DOMAIN/"
