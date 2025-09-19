@@ -18,6 +18,8 @@ services:
     networks:
       - app-network
     restart: unless-stopped
+    mem_limit: 384m
+    cpus: 0.4
     healthcheck:
       test: ["CMD", "curl", "-f", "http://localhost:5000/health"]
       interval: 30s
@@ -44,6 +46,8 @@ services:
     depends_on:
       - backend-api
     restart: unless-stopped
+    mem_limit: 384m
+    cpus: 0.4
     healthcheck:
       test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:4000/health"]
       interval: 30s
@@ -65,6 +69,8 @@ services:
       - frontend-ui
       - backend-api
     restart: unless-stopped
+    mem_limit: 128m
+    cpus: 0.2
     networks:
       - app-network
 
