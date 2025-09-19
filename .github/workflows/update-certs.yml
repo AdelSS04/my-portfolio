@@ -1,0 +1,22 @@
+name: Manual Certbot Certs Update
+
+on:
+  workflow_dispatch:
+
+jobs:
+  update-certs:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Run certbot/renew script on VPS
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} '
+            cd ~/my-portfolio && sudo ./renew-certs.sh "${{ secrets.SSL_DOMAIN }}" "${{ secrets.SSL_EMAIL }}"
+          '
+      - name: Restart nginx-proxy in Docker Compose
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "cd ~/my-portfolio && sudo docker-compose -f docker-compose.prod.yml restart nginx"
