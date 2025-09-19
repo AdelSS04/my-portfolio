@@ -62,7 +62,7 @@ import { EducationComponent } from './components/education/education.component';
 })
 export class App {
   userData = {
-    name: 'Adel Lajili',
+    name: 'Adel Lajil',
     title: 'Cloud Full Stack Senior Developer',
     subtitle: 'AZ-204 Certified | .NET & Angular Expert | Azure Cloud Architect',
     profileImage: 'me.png', // Add your profile image path
