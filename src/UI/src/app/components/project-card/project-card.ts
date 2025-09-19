@@ -1,17 +1,8 @@
 
+
 import { Component, input, Input } from '@angular/core';
+import { Project } from '../projects/projects';
 
-
-export interface Project {
-  title: string;
-  description: string;
-  category: string;
-  technologies: string[];
-  liveUrl?: string;
-  githubUrl?: string;
-  featured?: boolean;
-  year?: string;
-}
 
 @Component({
   selector: 'app-project-card',
@@ -27,9 +18,32 @@ export interface Project {
           </span>
         </div>
       }
-
-      <div class="h-48 relative overflow-hidden bg-gradient-to-br from-[#122331] to-[#122433]">
+    
+      <!-- Thumbnail Image or Gradient -->
+      <div class="h-48 relative overflow-hidden bg-gradient-to-br from-[#122331] to-[#122433] group">
+        <!-- Project Thumbnail -->
+        @if (project.thumbnail) {
+          <img
+            [src]="project.thumbnail"
+            [alt]="project.title"
+            class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+            (error)="handleImageError($event)"
+            >
+        }
+    
+        <!-- Fallback gradient if no image -->
+        @if (!project.thumbnail) {
+          <div class="w-full h-full flex items-center justify-center">
+            <div class="text-6xl text-white/10 font-bold">
+              {{project.title.charAt(0)}}
+            </div>
+          </div>
+        }
+    
+        <!-- Overlay gradient -->
         <div class="absolute inset-0 bg-gradient-to-t from-[#1e1e1e] via-transparent to-transparent opacity-60"></div>
+    
+        <!-- Category badge -->
         <div class="absolute bottom-4 left-4">
           <span class="text-white/90 text-sm font-medium px-3 py-1 bg-white/10 backdrop-blur rounded-full">
             {{project.category}}
@@ -40,14 +54,21 @@ export interface Project {
             </span>
           }
         </div>
+    
+        <!-- View Project overlay on hover -->
+        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+          <div class="text-white text-lg font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+            View Project →
+          </div>
+        </div>
       </div>
-
+    
       <div class="p-6">
         <h3 class="text-xl font-bold text-white mb-2 group-hover:text-blue-400 transition-colors">
           {{project.title}}
         </h3>
         <p class="text-gray-400 mb-4 line-clamp-2">{{project.description}}</p>
-
+    
         <div class="flex gap-2 mb-4 flex-wrap">
           @for (tech of project.technologies.slice(0, 4); track tech) {
             <span
@@ -64,7 +85,7 @@ export interface Project {
             </span>
           }
         </div>
-
+    
         <div class="flex gap-4">
           @if (project.liveUrl) {
             <a
@@ -99,4 +120,7 @@ export interface Project {
 })
 export class ProjectCardComponent {
   @Input() project!: Project;
+  handleImageError(event: any): void {
+      event.target.style.display = 'none';
+    }
 }

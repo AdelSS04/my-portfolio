@@ -1,3 +1,4 @@
+// experience.component.ts
 import { Component } from '@angular/core';
 
 
@@ -12,6 +13,8 @@ interface Experience {
   description: string[];
   technologies: string[];
   logo?: string;
+  logoUrl?: string;
+  companyColor?: string;
 }
 
 @Component({
@@ -114,16 +117,16 @@ interface Experience {
             <div class="text-gray-500 text-sm">Years Experience</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl font-bold text-white mb-1">10+</div>
+            <div class="text-3xl font-bold text-white mb-1">11+</div>
             <div class="text-gray-500 text-sm">Projects Delivered</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl font-bold text-white mb-1">50K+</div>
-            <div class="text-gray-500 text-sm">Transactions/Month</div>
+            <div class="text-3xl font-bold text-white mb-1">100K+</div>
+            <div class="text-gray-500 text-sm">App Downloads</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl font-bold text-white mb-1">99.9%</div>
-            <div class="text-gray-500 text-sm">Deployment Success</div>
+            <div class="text-3xl font-bold text-white mb-1">50K+</div>
+            <div class="text-gray-500 text-sm">Monthly Transactions</div>
           </div>
         </div>
       </div>
@@ -140,6 +143,9 @@ export class ExperienceComponent {
       location: 'Québec, Canada',
       type: 'Hybrid',
       current: true,
+      logo: 'assets/images/companies/evident.png',
+      logoUrl: 'https://www.evidentscientific.com',
+      companyColor: '#0073e6',
       description: [
         'Building scalable SaaS platform with Angular and .NET, utilizing custom UI component library and microservices architecture with gRPC',
         'Implementing infrastructure automation using Terraform and GitLab CI/CD, with ArgoCD deployment on Azure',
@@ -156,6 +162,9 @@ export class ExperienceComponent {
       location: 'Québec, Canada',
       type: 'Hybrid',
       current: false,
+      logo: 'assets/images/companies/cofomo.png',
+      logoUrl: 'https://www.cofomo.com',
+      companyColor: '#ff6b35',
       description: [
         'Led architecture design for tax verification platform using .NET 7 and Angular 17',
         'Spearheaded UI component library development, improving code reusability across 3 internal platforms',
@@ -172,6 +181,9 @@ export class ExperienceComponent {
       location: 'Tunisia',
       type: 'Full-time',
       current: false,
+      logo: 'assets/images/companies/podyam.png',
+      logoUrl: 'https://www.podyam.com',
+      companyColor: '#6b46c1',
       description: [
         'Led development team with focus on task planning and architecture definition',
         'Managed team deliverables and ensured code quality standards',
@@ -188,6 +200,9 @@ export class ExperienceComponent {
       location: 'Tunisia',
       type: 'Freelance',
       current: false,
+      logo: 'assets/images/companies/snb.png',
+      logoUrl: 'https://www.snbapp.com',
+      companyColor: '#00d4aa',
       description: [
         'Built geo-location marketplace backend supporting 50K+ monthly transactions',
         'Integrated Google Maps API for real-time proximity alerts, increasing engagement by 45%',

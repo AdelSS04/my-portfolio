@@ -11,6 +11,8 @@ export interface Project {
   githubUrl?: string;
   featured?: boolean;
   year?: string;
+  thumbnail?: string;
+  images?: string[];
 }
 
 @Component({
@@ -91,40 +93,14 @@ export class ProjectsComponent {
   categories = ['Enterprise', 'Open Source', 'Marketplace', 'Education', 'Cloud/DevOps'];
 
   allProjects: Project[] = [
-    // Current Professional Projects
-    {
-      title: 'Industrial SaaS Platform',
-      description: 'Building scalable SaaS platform with microservices, gRPC communication, and custom UI components at Evident Industrial',
-      category: 'Enterprise',
-      technologies: ['.NET Core', 'Angular', 'gRPC', 'Azure AKS', 'Terraform', 'ArgoCD'],
-      featured: true,
-      year: '2024'
-    },
-    {
-      title: 'IoT Device Cloud Integration',
-      description: 'Enterprise IoT solution enabling device-cloud integration with certificate provisioning and Azure IoT Hub',
-      category: 'Cloud/DevOps',
-      technologies: ['Azure IoT Hub', 'Azure DPS', '.NET Core', 'Docker', 'Kubernetes'],
-      featured: true,
-      year: '2024'
-    },
-    {
-      title: 'Tax Verification Platform',
-      description: 'Government tax verification system with CQRS architecture and domain-driven design for Cofomo',
-      category: 'Enterprise',
-      technologies: ['.NET 7', 'Angular 17', 'Oracle SQL', 'Azure DevOps', 'CQRS', 'DDD'],
-      featured: true,
-      year: '2023'
-    },
-
-    // Personal/Freelance Projects
     {
       title: 'Podium360',
       description: 'Enterprise microservices platform with message queuing, distributed caching, and cloud infrastructure',
       category: 'Enterprise',
       technologies: ['.NET 5', 'Angular', 'CosmosDB', 'Redis', 'RabbitMQ', 'Docker'],
       liveUrl: 'https://www.podyam.com',
-      year: '2020'
+      year: '2020',
+      thumbnail: 'assets/images/podium.png'
     },
     {
       title: 'SnB: Sell & Buy App',
@@ -133,7 +109,8 @@ export class ProjectsComponent {
       technologies: ['.NET Core', 'MySQL', 'Docker', 'Firebase', 'Google Maps API'],
       liveUrl: 'https://www.snbapp.com',
       featured: true,
-      year: '2021'
+      year: '2021',
+      thumbnail: 'assets/images/Snb.png'
     },
     {
       title: 'Clean DDD Architecture',
@@ -142,24 +119,18 @@ export class ProjectsComponent {
       technologies: ['.NET Core', 'EF Core', 'Repository Pattern', 'DDD', 'CQRS'],
       githubUrl: 'https://github.com/AdelSS04/CleanDDDArchitecture',
       featured: true,
-      year: '2021'
+      year: '2021',
+      thumbnail: 'https://blob.jacobsdata.com/software-alchemy/entry7/clean-domain-driven-design-jacobs-510.png'
     },
     {
       title: 'Stock Management System',
       description: 'Full-featured inventory management system with real-time tracking and Azure cloud deployment',
-      category: 'Enterprise',
+      category: 'Education',
       technologies: ['Angular 10', 'ASP.NET Web API', 'MSSQL', 'Azure', 'DevExpress'],
       liveUrl: 'https://www.linkedin.com/posts/adellajil_dotnet-erp-sql-activity-6724679224088662016-Aou2',
       githubUrl: 'https://github.com/AdelSS04/StockManagement',
-      year: '2020'
-    },
-    {
-      title: 'UI Component Library',
-      description: 'Reusable Angular component library improving code reusability across 3 internal platforms at Cofomo',
-      category: 'Open Source',
-      technologies: ['Angular', 'TypeScript', 'SCSS', 'Storybook', 'NPM'],
-      featured: true,
-      year: '2023'
+      year: '2020',
+      thumbnail: 'assets/images/stock.PNG'
     },
     {
       title: 'School Management Desktop',
@@ -168,22 +139,28 @@ export class ProjectsComponent {
       technologies: ['C#.NET', 'Windows Forms', 'MS Access', 'Crystal Reports'],
       liveUrl: 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6589859010030129152',
       githubUrl: 'https://github.com/AdelSS04/SchoolManager',
-      year: '2019'
+      year: '2019',
+      thumbnail: 'assets/images/cs.PNG'
+    },
+    {
+      title: 'My Portfolio',
+      description: 'Fullstack personal portfolio with Angular SSR, .NET backend, Docker, CI/CD, and automated SSL renewal.',
+      category: 'Open Source',
+      technologies: ['Angular 20', 'Angular SSR', '.NET 9', 'Docker', 'GitHub Actions', 'nginx', "Let's Encrypt"],
+      liveUrl: 'https://portfolio.adellajil.com',
+      githubUrl: 'https://github.com/AdelSS04/my-portfolio',
+      featured: true,
+      year: '2025',
+      thumbnail: 'assets/images/my-portfolio.png'
     },
     {
       title: 'Reception Control Platform',
       description: 'Web-mobile platform for visitor management and access control with real-time notifications',
-      category: 'Enterprise',
+      category: 'Education',
       technologies: ['ASP.NET', 'Xamarin', 'WCF', 'SQL Server', 'IIS'],
       liveUrl: 'https://www.linkedin.com/posts/adellajil_pfa-csharp-wcf-activity-6562611044022263808-f3BP/',
-      year: '2019'
-    },
-    {
-      title: 'DevOps Automation Pipeline',
-      description: 'Complete CI/CD infrastructure with infrastructure as code and GitOps deployment strategies',
-      category: 'Cloud/DevOps',
-      technologies: ['Terraform', 'GitLab CI/CD', 'ArgoCD', 'Docker', 'Azure'],
-      year: '2024'
+      year: '2019',
+      thumbnail: 'assets/images/pfa.png'
     }
   ];
 

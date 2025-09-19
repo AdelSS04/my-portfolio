@@ -114,7 +114,8 @@ export class NavbarComponent implements OnInit {
     { label: 'Education', href: '#education' },
     { label: 'Skills', href: '#skills' },
     { label: 'Projects', href: '#projects' },
-    { label: 'Contact', href: '#contact' },
+    { label: 'Testimonials', href: '#testimonials' },
+    { label: 'Contact', href: '#contact' }
   ];
 
   ngOnInit() {
