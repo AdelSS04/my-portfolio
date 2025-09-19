@@ -57,9 +57,10 @@ jobs:
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Copy docker-compose files to VM
+      - name: Copy docker-compose files and scripts to VM
         run: |
-          scp -o StrictHostKeyChecking=no docker-compose.prod.yml nginx.conf ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/${{ secrets.VPS_USER }}/my-portfolio/
+          scp -o StrictHostKeyChecking=no docker-compose.prod.yml nginx.conf renew-certs.sh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/${{ secrets.VPS_USER }}/my-portfolio/
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} 'chmod +x /home/${{ secrets.VPS_USER }}/my-portfolio/renew-certs.sh'
 
       - name: Deploy on VM with Docker Compose
         run: |
