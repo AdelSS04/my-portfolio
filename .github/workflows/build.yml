@@ -20,7 +20,7 @@ jobs:
       - name: Deploy with Docker Compose
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
-          cd ~/app || git clone https://github.com/YOUR_USERNAME/YOUR_REPO.git ~/app
+          cd ~/app || git clone https://github.com/AdelSS04/my-portfolio.git ~/app
           cd ~/app
           git pull origin main
           docker compose down
