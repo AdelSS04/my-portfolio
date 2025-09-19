@@ -1,28 +1,28 @@
-name: Deploy to Oracle VPS
+# name: Deploy to Oracle VPS
 
-on:
-  push:
-    branches: [ "main" ]
+# on:
+#   push:
+#     branches: [ "main" ]
     
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+# jobs:
+#   deploy:
+#     runs-on: ubuntu-latest
 
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v3
+#     steps:
+#       - name: Checkout code
+#         uses: actions/checkout@v3
 
-      - name: Setup SSH
-        uses: webfactory/ssh-agent@v0.8.0
-        with:
-          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+#       - name: Setup SSH
+#         uses: webfactory/ssh-agent@v0.8.0
+#         with:
+#           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
 
-      - name: Deploy with Docker Compose
-        run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
-          cd ~/app || git clone https://github.com/AdelSS04/my-portfolio.git ~/app
-          cd ~/app
-          git pull origin main
-          docker compose down
-          docker compose up -d --build
-          EOF
+#       - name: Deploy with Docker Compose
+#         run: |
+#           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} << 'EOF'
+#           cd ~/app || git clone https://github.com/AdelSS04/my-portfolio.git ~/app
+#           cd ~/app
+#           git pull origin main
+#           docker compose down
+#           docker compose up -d --build
+#           EOF
