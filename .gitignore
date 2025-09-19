@@ -1,3 +1,33 @@
+# .NET build and VS files
+bin/
+obj/
+bin/**
+obj/**
+*.user
+*.suo
+*.userosscache
+*.sln.docstates
+.vs/
+.vs/**
+TestResults/
+*.ncrunch*
+*.vssscc
+*.vsp
+*.vspx
+*.vspscc
+*.cache
+*.dbmdl
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.VC.VC.opendb
+_ReSharper*/
+ReSharper*/
+*.resharper
+*.DotSettings.user
+/.idea/
+/.vscode/
 # Logs
 logs
 *.log
@@ -6,6 +36,11 @@ yarn-debug.log*
 yarn-error.log*
 lerna-debug.log*
 .pnpm-debug.log*
+.vs
+obj
+obj/**
+bin
+bin/**
 
 # Diagnostic reports (https://nodejs.org/api/report.html)
 report.[0-9]*.[0-9]*.[0-9]*.[0-9]*.json

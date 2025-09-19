@@ -32,7 +32,7 @@ services:
       dockerfile: Dockerfile
     container_name: angular-ssr
     ports:
-      - "4000:4000"
+      - "4200:4000"
     environment:
       - NODE_ENV=production
       - PORT=4000
