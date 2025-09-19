@@ -1,0 +1,22 @@
+name: Certbot SSL Manual Trigger
+
+on:
+  workflow_dispatch:
+
+jobs:
+  certbot-ssl:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up SSH
+        uses: webfactory/ssh-agent@v0.9.0
+        with:
+          ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
+
+      - name: Run Certbot on VPS
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} '
+            sudo certbot --nginx --non-interactive --agree-tos --email "${{ secrets.SSL_EMAIL }}" -d "${{ secrets.SSL_DOMAIN }}"
+          '
+      - name: Reload nginx on VPS
+        run: |
+          ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} "sudo systemctl reload nginx || sudo docker exec nginx-proxy nginx -s reload"
