@@ -77,16 +77,18 @@ jobs:
           tags: ghcr.io/${{ env.REPO_OWNER_LC }}/my-portfolio-frontend:latest
 
   deploy:
+    needs: [build-backend, build-frontend]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main' && (
-          needs.changes.outputs.backend == 'true' ||
-          needs.changes.outputs.frontend == 'true'
-        )
+    if: |
+      always() &&
+      github.ref == 'refs/heads/main' &&
+      (needs.build-backend.result == 'success' || needs.build-frontend.result == 'success') &&
+      (needs.build-backend.result != 'failure' && needs.build-frontend.result != 'failure')
     steps:
-      - name: Print what changed
+      - name: Print build results
         run: |
-          echo "Backend changed: ${{ needs.changes.outputs.backend }}"
-          echo "Frontend changed: ${{ needs.changes.outputs.frontend }}"
+          echo "Backend result: ${{ needs.build-backend.result }}"
+          echo "Frontend result: ${{ needs.build-frontend.result }}"
       - uses: actions/checkout@v4
       - uses: webfactory/ssh-agent@v0.9.0
         with:
@@ -95,7 +97,7 @@ jobs:
         run: |
           scp -o StrictHostKeyChecking=no docker-compose.prod.yml nginx.conf renew-certs.sh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/${{ secrets.VPS_USER }}/my-portfolio/
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} 'chmod +x /home/${{ secrets.VPS_USER }}/my-portfolio/renew-certs.sh'
-      - name: Deploy on VPS
+      - name: Deploy on VPS with Docker Compose
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} '
             cd /home/${{ secrets.VPS_USER }}/my-portfolio && \

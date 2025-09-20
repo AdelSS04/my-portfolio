@@ -57,7 +57,6 @@ interface Experience {
                 <div
                   class="bg-[#112231]/50 backdrop-blur-sm rounded-xl p-6 border border-white/5 hover:border-white/20 transition-all duration-300 group"
                 >
-                  <!-- Header -->
                   <div class="flex items-start justify-between mb-4">
                     <div>
                       <h3
