@@ -29,12 +29,10 @@ interface Experience {
         </p>
 
         <div class="relative">
-          <!-- Timeline line -->
           <div
             class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-[#122331] via-[#122433] to-transparent"
           ></div>
 
-          <!-- Experience items -->
           <div class="space-y-12">
             @for (exp of experiences; track exp; let i = $index) {
             <div
