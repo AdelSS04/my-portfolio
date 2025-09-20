@@ -58,7 +58,7 @@ services:
     volumes:
     - ./nginx.conf:/etc/nginx/nginx.conf:ro
     - ./ssl:/etc/nginx/ssl:ro
-    # - ./letsencrypt-certs/config:/etc/letsencrypt
+    - ./letsencrypt-certs/config:/etc/letsencrypt:ro
     depends_on:
       - frontend-ui
       - backend-api
