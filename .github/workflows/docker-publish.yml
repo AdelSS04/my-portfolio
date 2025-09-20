@@ -92,6 +92,10 @@ jobs:
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && (needs.build-backend.result == 'success' || needs.build-frontend.result == 'success')
     steps:
+      - name: Print needs context for debug
+        run: |
+          echo "build-backend result: ${{ needs.build-backend.result }}"
+          echo "build-frontend result: ${{ needs.build-frontend.result }}"
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Set up SSH

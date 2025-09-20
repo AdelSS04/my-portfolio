@@ -301,7 +301,6 @@ export class ExperienceComponent {
       endDate = new Date(Number(endYear), monthsMap[endMonth], 1);
     }
 
-    // Calculate difference in months
     let months =
       (endDate.getFullYear() - startDate.getFullYear()) * 12 +
       (endDate.getMonth() - startDate.getMonth());
