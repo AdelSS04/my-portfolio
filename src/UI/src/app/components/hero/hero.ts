@@ -57,13 +57,13 @@ import { Component, input } from '@angular/core';
                 >
                 Contact Me
               </a>
-              <a
+              <!-- <a
                 href="/assets/resume.pdf"
                 download
                 class="px-8 py-3 bg-white/5 text-white rounded-full hover:bg-white/10 transition-all duration-300"
                 >
                 Download CV
-              </a>
+              </a> -->
             </div>
 
             <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
