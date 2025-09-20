@@ -13,7 +13,7 @@ interface Experience {
   logo?: string;
   logoUrl?: string;
   companyColor?: string;
-  duration?: string; // will be calculated
+  duration?: string;
 }
 @Component({
   selector: 'app-experience',
