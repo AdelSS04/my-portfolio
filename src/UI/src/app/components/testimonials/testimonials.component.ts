@@ -159,7 +159,7 @@ interface Testimonial {
             <div class="text-gray-500 text-sm">Happy Clients</div>
           </div>
           <div class="text-center">
-            <div class="text-2xl font-bold text-white mb-1">4.9/5</div>
+            <div class="text-2xl font-bold text-white mb-1">5/5</div>
             <div class="text-gray-500 text-sm">Average Rating</div>
           </div>
           <div class="text-center">
@@ -167,7 +167,7 @@ interface Testimonial {
             <div class="text-gray-500 text-sm">Recommendation</div>
           </div>
           <div class="text-center">
-            <div class="text-2xl font-bold text-white mb-1">4+</div>
+            <div class="text-2xl font-bold text-white mb-1">5+</div>
             <div class="text-gray-500 text-sm">Years of Trust</div>
           </div>
         </div>

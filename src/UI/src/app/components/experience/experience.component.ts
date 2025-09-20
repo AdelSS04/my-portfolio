@@ -28,11 +28,11 @@ interface Experience {
         <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
           Building scalable solutions and leading teams in cloud-native development
         </p>
-    
+
         <div class="relative">
           <!-- Timeline line -->
           <div class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-[#122331] via-[#122433] to-transparent"></div>
-    
+
           <!-- Experience items -->
           <div class="space-y-12">
             @for (exp of experiences; track exp; let i = $index) {
@@ -109,11 +109,11 @@ interface Experience {
             }
           </div>
         </div>
-    
+
         <!-- Summary Stats -->
         <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div class="text-center">
-            <div class="text-3xl font-bold text-white mb-1">4+</div>
+            <div class="text-3xl font-bold text-white mb-1">5+</div>
             <div class="text-gray-500 text-sm">Years Experience</div>
           </div>
           <div class="text-center">

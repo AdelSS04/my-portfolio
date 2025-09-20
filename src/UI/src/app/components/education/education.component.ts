@@ -24,11 +24,11 @@ interface Education {
         <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
           Academic foundation in computer science and software engineering
         </p>
-    
+
         <div class="relative">
           <!-- Timeline line -->
           <div class="absolute left-8 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-[#122331] via-[#122433] to-transparent"></div>
-    
+
           <!-- Education items -->
           <div class="space-y-12">
             @for (edu of education; track edu; let i = $index) {
@@ -103,7 +103,7 @@ interface Education {
             }
           </div>
         </div>
-    
+
         <!-- Certifications & Courses -->
         <div class="mt-16">
           <h3 class="text-2xl font-bold text-white text-center mb-8">Certifications & Continuous Learning</h3>
@@ -144,32 +144,50 @@ interface Education {
 export class EducationComponent {
   education: Education[] = [
     {
-      school: 'Higher Institute of Technological Studies',
-      degree: 'Bachelor\'s Degree',
-      field: 'Computer Science & Software Engineering',
+      school: 'National Engineering School of Carthage (ENICarthage)',
+      degree: "Diplôme d'ingénieur",
+      field: 'Génie des systèmes industriels et logistique',
       period: '2017 - 2020',
-      location: 'Tunisia',
+      location: 'Carthage, Tunisia',
       description: [
-        'Specialized in full-stack development with focus on .NET technologies',
-        'Completed advanced coursework in software architecture and design patterns',
-        'Developed multiple real-world projects using C#, ASP.NET, and SQL Server',
-        'Graduated with honors and recognition for technical excellence'
+        "Cours : Aide à la décision/Analyse des données",
+        "Automatismes industriels/Bases de la qualité",
+        "Conception et fabrication mécanique/Economie de l'entreprise",
+        "Gestion de la production/Gestion des organisations",
+        "Innovation et créativité/Introduction à la gestion industrielle",
+        "Logistique d'entreprise/Machines thermiques",
+        "Maintenance industrielle/Maîtrise de l'énergie dans l'industrie",
+        "Management de projet/Management stratégique",
+        "Matériaux et procédés de fabrication/Modélisation et simulation des flux",
+        "Métrologie et Instrumentation/Ordonnancement des SPL"
       ],
-      achievements: ['Top 10% of Class', 'Best Final Year Project', 'Academic Excellence Award']
+      achievements: ['Best Final Year Project', 'Top 10% of Class'],
+      logo: '' // Add logo path if available
     },
     {
-      school: 'Technical High School',
-      degree: 'Technical Diploma',
-      field: 'Information Technology',
-      period: '2014 - 2017',
-      location: 'Tunisia',
+      school: 'Institut Supèrieur des Sciences Appliquées et de Technologie de Gabes - ISSAT Gabes',
+      degree: 'Plan d\'etude',
+      field: 'Cycle préparatoire Technologie',
+      period: '2015 - 2017',
+      location: 'Gabes, Tunisia',
       description: [
-        'Foundation in programming fundamentals and computer science',
-        'Learned core programming languages including C, C++, and Java',
-        'Studied database management, networking, and system administration',
-        'Participated in national programming competitions'
+        'Cycle préparatoire Technologie',
+        'Rang : 161'
       ],
-      achievements: ['Programming Club Leader', 'Regional Competition Winner']
+      achievements: ['Top 10% of Class'],
+      logo: ''
+    },
+    {
+      school: 'Lycée du Ben Geurdane',
+      degree: 'Baccalauréat',
+      field: 'Baccalauréat technologique',
+      period: '2011 - 2015',
+      location: 'Ben Guerdane, Tunisia',
+      description: [
+        'Baccalauréat technologique'
+      ],
+      achievements: ['Top 10% of Class'],
+      logo: ''
     }
   ];
 

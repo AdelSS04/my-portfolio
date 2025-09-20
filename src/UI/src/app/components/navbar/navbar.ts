@@ -1,5 +1,4 @@
-// navbar.component.ts
-import { Component, OnInit, HostListener } from '@angular/core';
+import { Component, OnInit, HostListener, signal } from '@angular/core';
 
 interface NavLink {
   label: string;
@@ -12,7 +11,7 @@ interface NavLink {
   imports: [],
   template: `
     <nav class="fixed top-0 w-full bg-[#112230]/95 backdrop-blur-md z-50 border-b border-white/5 transition-all duration-300"
-      [class.shadow-lg]="isScrolled">
+      [class.shadow-lg]="isScrolled()">
   <div class="container mx-auto px-6 py-4">
     <div class="flex justify-between items-center">
       <div class="flex items-center gap-3">
@@ -47,9 +46,9 @@ interface NavLink {
             (click)="toggleMenu()"
             >
             <svg class="w-6 h-6 transition-transform duration-300"
-              [class.rotate-90]="mobileMenuOpen"
+              [class.rotate-90]="mobileMenuOpen()"
               fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              @if (!mobileMenuOpen) {
+              @if (!mobileMenuOpen()) {
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -57,7 +56,7 @@ interface NavLink {
                   d="M4 6h16M4 12h16M4 18h16"
                 ></path>
               }
-              @if (mobileMenuOpen) {
+              @else {
                 <path
                   stroke-linecap="round"
                   stroke-linejoin="round"
@@ -71,7 +70,7 @@ interface NavLink {
 
         <!-- Mobile menu -->
         <div class="md:hidden overflow-hidden transition-all duration-300"
-          [style.max-height]="mobileMenuOpen ? '400px' : '0px'">
+          [style.max-height]="mobileMenuOpen() ? '400px' : '0px'">
           <div class="pt-4 pb-2 space-y-2">
             @for (link of navLinks; track link) {
               <a
@@ -103,9 +102,9 @@ interface NavLink {
   ],
 })
 export class NavbarComponent implements OnInit {
-  mobileMenuOpen = false;
+  mobileMenuOpen = signal(false);
   activeLink = '#home';
-  isScrolled = false;
+  isScrolled = signal(false);
 
   navLinks: NavLink[] = [
     { label: 'Home', href: '#home' },
@@ -127,7 +126,7 @@ export class NavbarComponent implements OnInit {
   @HostListener('window:scroll', [])
   onWindowScroll() {
     if (typeof window !== 'undefined') {
-      this.isScrolled = window.scrollY > 20;
+      this.isScrolled.set(window.scrollY > 20);
       this.checkActiveSection();
     }
   }
@@ -158,12 +157,12 @@ export class NavbarComponent implements OnInit {
   }
 
   toggleMenu(): void {
-    this.mobileMenuOpen = !this.mobileMenuOpen;
+    this.mobileMenuOpen.set(!this.mobileMenuOpen());
   }
 
   closeMobileMenu(): void {
     setTimeout(() => {
-      this.mobileMenuOpen = false;
+      this.mobileMenuOpen.set(false);
     }, 300);
   }
 }
