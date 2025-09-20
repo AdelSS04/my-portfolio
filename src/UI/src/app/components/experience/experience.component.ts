@@ -39,7 +39,6 @@ interface Experience {
               [class]="i % 2 === 0 ? 'md:flex-row-reverse' : ''"
               class="relative flex flex-col md:flex-row items-center"
             >
-              <!-- Timeline dot -->
               <div
                 class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-gradient-to-br from-[#122331] to-[#122433] rounded-full border-2 border-[#1e1e1e] z-10"
               >

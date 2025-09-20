@@ -18,10 +18,8 @@ jobs:
       backend: ${{ steps.filter.outputs.backend }}
       frontend: ${{ steps.filter.outputs.frontend }}
     steps:
-      - name: Checkout repository
-        uses: actions/checkout@v4
-      - name: Filter paths
-        uses: dorny/paths-filter@v3
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
         id: filter
         with:
           filters: |
@@ -45,7 +43,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set repository owner lowercase
+      - name: Set repo owner
         run: echo "REPO_OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
       - uses: docker/build-push-action@v5
         with:
@@ -69,7 +67,7 @@ jobs:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - name: Set repository owner lowercase
+      - name: Set repo owner
         run: echo "REPO_OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
       - uses: docker/build-push-action@v5
         with:
@@ -79,17 +77,17 @@ jobs:
           tags: ghcr.io/${{ env.REPO_OWNER_LC }}/my-portfolio-frontend:latest
 
   deploy:
-    needs: changes
+    needs: [build-backend, build-frontend]
     runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main' && (
-          needs.changes.outputs.backend == 'true' ||
-          needs.changes.outputs.frontend == 'true'
+          needs.build-backend.result == 'success' || needs.build-backend.result == 'skipped' ||
+          needs.build-frontend.result == 'success' || needs.build-frontend.result == 'skipped'
         )
     steps:
-      - name: Print what changed
+      - name: Print build results
         run: |
-          echo "Backend changed: ${{ needs.changes.outputs.backend }}"
-          echo "Frontend changed: ${{ needs.changes.outputs.frontend }}"
+          echo "Backend result: ${{ needs.build-backend.result }}"
+          echo "Frontend result: ${{ needs.build-frontend.result }}"
       - uses: actions/checkout@v4
       - uses: webfactory/ssh-agent@v0.9.0
         with:
