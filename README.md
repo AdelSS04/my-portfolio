@@ -95,4 +95,4 @@ my-portfolio/
 MIT
 
 ---
-**Author:** Adel Lajili
+**Author:** Adel Lajil
