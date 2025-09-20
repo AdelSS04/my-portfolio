@@ -270,9 +270,7 @@ export class ExperienceComponent {
     });
   }
 
-  // Helper to parse period and calculate duration string
   private calculateDuration(period: string, current: boolean): string {
-    // Example period: 'Jul 2024 - Present' or 'Sep 2022 - Jul 2024'
     const monthsMap: { [key: string]: number } = {
       Jan: 0,
       Feb: 1,
