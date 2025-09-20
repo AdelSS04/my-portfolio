@@ -2,32 +2,52 @@ name: Build and Push Docker Images
 
 on:
   workflow_dispatch:
+  push:
+    paths:
+      - 'src/BE/**'
+      - 'src/UI/**'
+  pull_request:
+    paths:
+      - 'src/BE/**'
+      - 'src/UI/**'
 
 jobs:
-  build-and-push:
+  changes:
+    runs-on: ubuntu-latest
+    outputs:
+      backend: ${{ steps.filter.outputs.backend }}
+      frontend: ${{ steps.filter.outputs.frontend }}
+    steps:
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            backend:
+              - 'src/BE/**'
+            frontend:
+              - 'src/UI/**'
+
+  build-backend:
+    needs: changes
+    if: needs.changes.outputs.backend == 'true'
     runs-on: ubuntu-latest
     permissions:
       contents: read
       packages: write
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Set up Docker Buildx
         uses: docker/setup-buildx-action@v3
-
       - name: Log in to GitHub Container Registry
         uses: docker/login-action@v3
         with:
           registry: ghcr.io
           username: ${{ github.actor }}
           password: ${{ secrets.GITHUB_TOKEN }}
-
       - name: Set repository owner lowercase
         id: repo_owner
         run: echo "REPO_OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
-
       - name: Build and push backend image
         uses: docker/build-push-action@v5
         with:
@@ -36,6 +56,27 @@ jobs:
           push: true
           tags: ghcr.io/${{ env.REPO_OWNER_LC }}/my-portfolio-backend:latest
 
+  build-frontend:
+    needs: changes
+    if: needs.changes.outputs.frontend == 'true'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      packages: write
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+      - name: Set up Docker Buildx
+        uses: docker/setup-buildx-action@v3
+      - name: Log in to GitHub Container Registry
+        uses: docker/login-action@v3
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+      - name: Set repository owner lowercase
+        id: repo_owner
+        run: echo "REPO_OWNER_LC=${GITHUB_REPOSITORY_OWNER,,}" >> $GITHUB_ENV
       - name: Build and push frontend image
         uses: docker/build-push-action@v5
         with:
@@ -45,23 +86,20 @@ jobs:
           tags: ghcr.io/${{ env.REPO_OWNER_LC }}/my-portfolio-frontend:latest
 
   deploy:
-    needs: build-and-push
+    needs: [build-backend, build-frontend]
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/main'
+    if: github.ref == 'refs/heads/main' && (needs.build-backend.result == 'success' || needs.build-frontend.result == 'success')
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
-
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-
       - name: Copy docker-compose files and scripts to VM
         run: |
           scp -o StrictHostKeyChecking=no docker-compose.prod.yml nginx.conf renew-certs.sh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/${{ secrets.VPS_USER }}/my-portfolio/
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} 'chmod +x /home/${{ secrets.VPS_USER }}/my-portfolio/renew-certs.sh'
-
       - name: Deploy on VM with Docker Compose
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} '
