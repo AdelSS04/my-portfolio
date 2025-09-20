@@ -92,8 +92,8 @@ jobs:
     runs-on: ubuntu-latest
     if: |
       github.ref == 'refs/heads/main' && (
-        needs.build-backend.result == 'success' ||
-        needs.build-frontend.result == 'success'
+        needs.build-backend.result == 'success' || needs.build-backend.result == 'skipped' ||
+        needs.build-frontend.result == 'success' || needs.build-frontend.result == 'skipped'
       )
     steps:
       - name: Print build results
