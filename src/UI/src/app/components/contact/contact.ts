@@ -137,7 +137,7 @@ interface SocialLink {
                   </svg>
                 </div>
                 <p class="text-gray-500 text-sm">Email</p>
-                <p class="text-white">ajiladel@gmail.com</p>
+                <p class="text-white">contact@adellajil.com</p>
               </div>
               <div>
                 <div
