@@ -50,7 +50,6 @@ interface Experience {
                 <div class="absolute -inset-0.5 bg-green-500 rounded-full"></div>
                 }
               </div>
-              <!-- Content card -->
               <div
                 [class]="i % 2 === 0 ? 'md:mr-auto md:ml-8' : 'md:ml-auto md:mr-8'"
                 class="w-full md:w-[calc(50%-2rem)] ml-8 md:ml-0"
