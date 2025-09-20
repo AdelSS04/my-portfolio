@@ -1,4 +1,3 @@
-// experience.component.ts
 import { Component } from '@angular/core';
 
 interface Experience {

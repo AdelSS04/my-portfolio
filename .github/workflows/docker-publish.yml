@@ -58,37 +58,6 @@ jobs:
           push: true
           tags: ghcr.io/${{ env.REPO_OWNER_LC }}/my-portfolio-backend:latest
 
-deploy:
-  needs: [build-backend, build-frontend]
-  runs-on: ubuntu-latest
-  if: |
-    github.ref == 'refs/heads/main' && (
-      needs.build-backend.result == 'success' ||
-      needs.build-frontend.result == 'success'
-    )
-  steps:
-    - name: Print needs context for debug
-      run: |
-        echo "build-backend result: ${{ needs.build-backend.result }}"
-        echo "build-frontend result: ${{ needs.build-frontend.result }}"
-    - name: Checkout repository
-      uses: actions/checkout@v4
-    - name: Set up SSH
-      uses: webfactory/ssh-agent@v0.9.0
-      with:
-        ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-    - name: Copy docker-compose files and scripts to VM
-      run: |
-        scp -o StrictHostKeyChecking=no docker-compose.prod.yml nginx.conf renew-certs.sh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/${{ secrets.VPS_USER }}/my-portfolio/
-        ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} 'chmod +x /home/${{ secrets.VPS_USER }}/my-portfolio/renew-certs.sh'
-    - name: Deploy on VM with Docker Compose
-      run: |
-        ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} '
-          cd /home/${{ secrets.VPS_USER }}/my-portfolio && \
-          docker-compose -f docker-compose.prod.yml pull && \
-          docker-compose -f docker-compose.prod.yml up -d --remove-orphans
-        '
-
   build-frontend:
     needs: changes
     if: needs.changes.outputs.frontend == 'true'
@@ -127,21 +96,21 @@ deploy:
         needs.build-frontend.result == 'success'
       )
     steps:
-      - name: Print needs context for debug
+      - name: Print build results
         run: |
-          echo "build-backend result: ${{ needs.build-backend.result }}"
-          echo "build-frontend result: ${{ needs.build-frontend.result }}"
+          echo "Backend build result: ${{ needs.build-backend.result }}"
+          echo "Frontend build result: ${{ needs.build-frontend.result }}"
       - name: Checkout repository
         uses: actions/checkout@v4
       - name: Set up SSH
         uses: webfactory/ssh-agent@v0.9.0
         with:
           ssh-private-key: ${{ secrets.SSH_PRIVATE_KEY }}
-      - name: Copy docker-compose files and scripts to VM
+      - name: Copy docker-compose files and scripts to VPS
         run: |
           scp -o StrictHostKeyChecking=no docker-compose.prod.yml nginx.conf renew-certs.sh ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }}:/home/${{ secrets.VPS_USER }}/my-portfolio/
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} 'chmod +x /home/${{ secrets.VPS_USER }}/my-portfolio/renew-certs.sh'
-      - name: Deploy on VM with Docker Compose
+      - name: Deploy on VPS with Docker Compose
         run: |
           ssh -o StrictHostKeyChecking=no ${{ secrets.VPS_USER }}@${{ secrets.VPS_HOST }} '
             cd /home/${{ secrets.VPS_USER }}/my-portfolio && \
