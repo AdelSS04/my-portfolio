@@ -26,7 +26,7 @@ export interface Project {
         <p class="text-gray-400 text-center mb-8 max-w-2xl mx-auto">
           From enterprise platforms to open-source contributions, showcasing diverse technical expertise
         </p>
-    
+
         <!-- Filter Buttons -->
         <div class="flex flex-wrap justify-center gap-3 mb-12">
           <button
@@ -52,7 +52,7 @@ export interface Project {
             </button>
           }
         </div>
-    
+
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
           @for (project of filteredProjects; track project) {
             <app-project-card
@@ -61,7 +61,7 @@ export interface Project {
             ></app-project-card>
           }
         </div>
-    
+
         <!-- Show More Button if needed -->
         @if (hasMoreProjects) {
           <div class="text-center mt-12">
@@ -161,6 +161,25 @@ export class ProjectsComponent {
       liveUrl: 'https://www.linkedin.com/posts/adellajil_pfa-csharp-wcf-activity-6562611044022263808-f3BP/',
       year: '2019',
       thumbnail: 'assets/images/pfa.png'
+    },
+    {
+      title: 'NLog Console Log',
+      description: 'Interactive NLog logging framework showcase with 11 hands-on demonstrations. Educational tool for learning modern .NET logging patterns & best practices.',
+      category: 'Open Source',
+      technologies: ['.NET', 'NLog', 'Console Applications', 'Logging Patterns'],
+      githubUrl: 'https://github.com/AdelSS04/NlogConsoleLog',
+      year: '2025',
+      thumbnail: 'assets/images/nlog.png'
+    },
+    {
+      title: 'Angular Reactive Forms Showcase',
+      description: 'Professional Angular 18 reactive forms showcase demonstrating enterprise-level patterns, custom validators, type-safe form groups, and advanced form management techniques with TypeScript.',
+      category: 'Open Source',
+      technologies: ['Angular 18', 'TypeScript', 'Reactive Forms', 'Custom Validators', 'Type Safety'],
+      githubUrl: 'https://github.com/AdelSS04/angular-reactive-forms-showcase',
+      featured: true,
+      year: '2025',
+      thumbnail: 'assets/images/angular-form.png'
     }
   ];
 
