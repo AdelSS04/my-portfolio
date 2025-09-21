@@ -177,6 +177,7 @@ export class ProjectsComponent {
       category: 'Open Source',
       technologies: ['Angular 18', 'TypeScript', 'Reactive Forms', 'Custom Validators', 'Type Safety'],
       githubUrl: 'https://github.com/AdelSS04/angular-reactive-forms-showcase',
+      liveUrl: 'https://demo-reactive.vercel.app/',
       featured: true,
       year: '2025',
       thumbnail: 'assets/images/angular-form.png'
