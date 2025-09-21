@@ -1,4 +1,3 @@
-// app.component.ts
 import { Component } from '@angular/core';
 
 import { ExperienceComponent } from './components/experience/experience.component';
