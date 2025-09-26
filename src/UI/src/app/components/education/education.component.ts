@@ -145,48 +145,52 @@ export class EducationComponent {
   education: Education[] = [
     {
       school: 'National Engineering School of Carthage (ENICarthage)',
-      degree: "Diplôme d'ingénieur",
-      field: 'Génie des systèmes industriels et logistique',
+      degree: 'Engineering Degree',
+      field: 'Industrial Systems and Logistics Engineering',
       period: '2017 - 2020',
       location: 'Carthage, Tunisia',
       description: [
-        "Cours : Aide à la décision/Analyse des données",
-        "Automatismes industriels/Bases de la qualité",
-        "Conception et fabrication mécanique/Economie de l'entreprise",
-        "Gestion de la production/Gestion des organisations",
-        "Innovation et créativité/Introduction à la gestion industrielle",
-        "Logistique d'entreprise/Machines thermiques",
-        "Maintenance industrielle/Maîtrise de l'énergie dans l'industrie",
-        "Management de projet/Management stratégique",
-        "Matériaux et procédés de fabrication/Modélisation et simulation des flux",
-        "Métrologie et Instrumentation/Ordonnancement des SPL"
+        'Decision Support & Data Analysis',
+        'Industrial Automation & Quality Fundamentals',
+        'Mechanical Design & Manufacturing / Business Economics',
+        'Production Management / Organizational Management',
+        'Innovation & Creativity / Introduction to Industrial Management',
+        'Enterprise Logistics / Thermal Machines',
+        'Industrial Maintenance / Energy Management in Industry',
+        'Project Management / Strategic Management',
+        'Materials & Manufacturing Processes / Flow Modeling & Simulation',
+        'Metrology & Instrumentation / Production Systems Scheduling'
       ],
       achievements: ['Best Final Year Project', 'Top 10% of Class'],
       logo: '' // Add logo path if available
     },
     {
-      school: 'Institut Supèrieur des Sciences Appliquées et de Technologie de Gabes - ISSAT Gabes',
-      degree: 'Plan d\'etude',
-      field: 'Cycle préparatoire Technologie',
+      school: 'Higher Institute of Applied Sciences and Technology of Gabes (ISSAT Gabes)',
+      degree: 'Preparatory Studies',
+      field: 'Technology Preparatory Cycle',
       period: '2015 - 2017',
       location: 'Gabes, Tunisia',
       description: [
-        'Cycle préparatoire Technologie',
-        'Rang : 161'
+        'Technology Preparatory Cycle - Foundation in Engineering Sciences',
+        'Ranking: 161 out of cohort',
+        'Strong foundation in Mathematics, Physics, and Computer Science',
+        'Preparation for competitive entrance to engineering schools'
       ],
-      achievements: ['Top 10% of Class'],
+      achievements: ['Qualified for Engineering School', 'Strong Academic Performance'],
       logo: ''
     },
     {
-      school: 'Lycée du Ben Geurdane',
-      degree: 'Baccalauréat',
-      field: 'Baccalauréat technologique',
+      school: 'Ben Guerdane High School',
+      degree: 'Baccalaureate',
+      field: 'Technical Baccalaureate',
       period: '2011 - 2015',
       location: 'Ben Guerdane, Tunisia',
       description: [
-        'Baccalauréat technologique'
+        'Technical Baccalaureate with focus on Science and Technology',
+        'Specialized in Mathematics, Physics, and Technical Sciences',
+        'Strong foundation in analytical and problem-solving skills'
       ],
-      achievements: ['Top 10% of Class'],
+      achievements: ['Top 10% of Class', 'Excellence in Technical Sciences'],
       logo: ''
     }
   ];
