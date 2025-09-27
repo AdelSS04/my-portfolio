@@ -47,119 +47,220 @@ interface Experience {
 
         <!-- Experience Timeline -->
         <div class="relative max-w-4xl mx-auto">
-          <!-- Timeline Line -->
-          <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--theme-primary)] via-[var(--theme-accent)] to-[var(--theme-primary)] opacity-30"></div>
+          <!-- Timeline Line - Hidden on Mobile -->
+          <div class="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--theme-primary)] via-[var(--theme-accent)] to-[var(--theme-primary)] opacity-30"></div>
 
-          <div class="space-y-12">
+          <div class="space-y-8 md:space-y-12">
             @for (exp of experiences; track exp; let i = $index) {
             <div
-              class="experience-card relative flex gap-8 group"
+              class="experience-card relative group"
               [style.animation-delay]="i * 150 + 'ms'"
               [class.is-current]="exp.current"
             >
-              <!-- Timeline Node -->
-              <div class="relative flex-shrink-0">
-                <div class="w-16 h-16 rounded-2xl overflow-hidden bg-white shadow-lg shadow-[var(--theme-primary)]/20 border-2 border-[var(--theme-border)]/20 group-hover:border-[var(--theme-primary)]/50 transition-all duration-500 group-hover:scale-110 flex items-center justify-center">
-                  <img
-                    [src]="exp.logoUrl"
-                    [alt]="exp.company + ' logo'"
-                    class="w-full h-full object-contain p-2"
-                    (error)="handleImageError($event)"
-                  />
-                  <div
-                    class="w-full h-full flex items-center justify-center text-white font-bold text-lg hidden"
-                    [style.background]="exp.companyColor || 'linear-gradient(135deg, var(--theme-primary), var(--theme-accent))'">
-                    {{ getCompanyInitials(exp.company) }}
-                  </div>
-                </div>
-
-                <!-- Timeline Connection -->
-                <div class="absolute top-8 -left-4 w-4 h-0.5 bg-[var(--theme-primary)]/30"></div>
-
-                @if (exp.current) {
-                <!-- Pulsing Ring for Current Position -->
-                <div class="absolute -inset-2 border-2 border-[var(--theme-primary)] rounded-2xl animate-pulse opacity-60"></div>
-                <div class="absolute -inset-4 border border-[var(--theme-primary)]/30 rounded-2xl animate-ping"></div>
-                }
-              </div>
-
-              <!-- Content Card -->
-              <div class="flex-1 bg-gradient-to-br from-[var(--theme-surface)] to-[var(--theme-surface)]/80 rounded-2xl border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/40 transition-all duration-500 overflow-hidden group-hover:shadow-xl group-hover:shadow-[var(--theme-primary)]/10 group-hover:-translate-y-1">
-
+              <!-- Mobile Layout (Stacked) -->
+              <div class="md:hidden bg-gradient-to-br from-[var(--theme-surface)] to-[var(--theme-surface)]/80 rounded-2xl border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/40 transition-all duration-500 overflow-hidden group-hover:shadow-xl group-hover:shadow-[var(--theme-primary)]/10 group-hover:-translate-y-1">
                 <!-- Animated Background -->
                 <div class="absolute inset-0 bg-gradient-to-br from-[var(--theme-primary)]/5 via-transparent to-[var(--theme-accent)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                 <div class="relative z-10 p-6">
-                  <!-- Header -->
-                  <div class="flex items-start justify-between mb-4">
+                  <!-- Mobile Header with Logo at Top -->
+                  <div class="flex items-start gap-4 mb-4">
+                    <div class="w-16 h-16 rounded-2xl overflow-hidden bg-white shadow-lg shadow-[var(--theme-primary)]/20 border-2 border-[var(--theme-border)]/20 group-hover:border-[var(--theme-primary)]/50 transition-all duration-500 group-hover:scale-110 flex items-center justify-center flex-shrink-0">
+                      <img
+                        [src]="exp.logoUrl"
+                        [alt]="exp.company + ' logo'"
+                        class="w-full h-full object-contain p-2"
+                        (error)="handleImageError($event)"
+                      />
+                      <div
+                        class="w-full h-full flex items-center justify-center text-white font-bold text-lg hidden"
+                        [style.background]="exp.companyColor || 'linear-gradient(135deg, var(--theme-primary), var(--theme-accent))'">
+                        {{ getCompanyInitials(exp.company) }}
+                      </div>
+                    </div>
+
                     <div class="flex-1">
-                      <div class="flex items-center gap-3 mb-2">
-                        <h3 class="text-xl font-bold text-[var(--theme-text)] group-hover:text-[var(--theme-primary)] transition-colors duration-300">
+                      <div class="flex items-center gap-2 mb-2">
+                        <h3 class="text-lg font-bold text-[var(--theme-text)] group-hover:text-[var(--theme-primary)] transition-colors duration-300">
                           {{ exp.position }}
                         </h3>
                         @if (exp.current) {
                         <span class="inline-flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] text-white text-xs font-bold rounded-full shadow-lg uppercase tracking-wider">
                           <div class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
-                          Current
+                          Now
                         </span>
                         }
                       </div>
-                      <p class="text-lg font-semibold text-[var(--theme-text-secondary)] mb-2">{{ exp.company }}</p>
-
-                      <!-- Meta Info -->
-                      <div class="flex flex-wrap gap-2 text-xs">
-                        <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
-                          <lucide-icon [img]="MapPin" class="w-3 h-3"></lucide-icon>
-                          {{ exp.location }}
-                        </span>
-                        <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
-                          <lucide-icon [img]="CheckCircle" class="w-3 h-3"></lucide-icon>
-                          {{ exp.type }}
-                        </span>
-                      </div>
-                    </div>
-
-                    <!-- Duration -->
-                    <div class="text-right bg-[var(--theme-background)]/30 rounded-xl p-3 backdrop-blur-sm">
-                      <p class="text-[var(--theme-text)] font-bold text-sm">{{ exp.period }}</p>
-                      <p class="text-[var(--theme-text-secondary)] text-xs">{{ exp.duration }}</p>
+                      <p class="text-base font-semibold text-[var(--theme-text-secondary)] mb-1">{{ exp.company }}</p>
+                      <p class="text-[var(--theme-primary)] font-medium text-sm mb-2">{{ exp.duration }}</p>
                     </div>
                   </div>
 
-                  <!-- Description -->
-                  <div class="space-y-4">
+                  <!-- Mobile Meta Info -->
+                  <div class="flex flex-wrap gap-2 text-xs mb-4">
+                    <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
+                      <lucide-icon [img]="MapPin" class="w-3 h-3"></lucide-icon>
+                      {{ exp.location }}
+                    </span>
+                    <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
+                      <lucide-icon [img]="CheckCircle" class="w-3 h-3"></lucide-icon>
+                      {{ exp.type }}
+                    </span>
+                    <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
+                      📅 {{ exp.period }}
+                    </span>
+                  </div>
+
+                  <!-- Mobile Description -->
+                  <div class="space-y-3">
                     <div>
                       <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
                         <div class="w-1.5 h-1.5 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full"></div>
                         Key Achievements
                       </h4>
-                      <div class="space-y-2">
-                        @for (desc of exp.description; track desc; let j = $index) {
+                      <div class="space-y-1.5">
+                        @for (desc of exp.description.slice(0, 3); track desc; let j = $index) {
                         <div class="flex items-start gap-2 group/item">
-                          <div class="w-1 h-1 rounded-full bg-[var(--theme-primary)] mt-2 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
+                          <div class="w-1 h-1 rounded-full bg-[var(--theme-primary)] mt-1.5 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
                           <p class="text-[var(--theme-text-secondary)] text-sm leading-relaxed group-hover/item:text-[var(--theme-text)] transition-colors">{{ desc }}</p>
+                        </div>
+                        }
+                        @if (exp.description.length > 3) {
+                        <div class="text-[var(--theme-text-secondary)] text-sm italic pl-3">
+                          + {{ exp.description.length - 3 }} more achievements
                         </div>
                         }
                       </div>
                     </div>
 
-                    <!-- Technologies -->
+                    <!-- Mobile Technologies -->
                     <div>
                       <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
                         <div class="w-1.5 h-1.5 bg-gradient-to-r from-[var(--theme-accent)] to-[var(--theme-primary)] rounded-full"></div>
                         Technologies
                       </h4>
                       <div class="flex flex-wrap gap-1.5">
-                        @for (tech of exp.technologies.slice(0, 15); track tech; let k = $index) {
+                        @for (tech of exp.technologies.slice(0, 8); track tech; let k = $index) {
                         <span class="px-2 py-1 bg-[var(--theme-background)]/50 text-[var(--theme-text-secondary)] rounded-md text-xs border border-[var(--theme-border)]/20 hover:border-[var(--theme-primary)]/40 hover:text-[var(--theme-primary)] transition-all duration-300 cursor-default">
                           {{ tech }}
                         </span>
                         }
-                        @if (exp.technologies.length > 15) {
+                        @if (exp.technologies.length > 8) {
                         <span class="px-2 py-1 bg-[var(--theme-primary)]/10 text-[var(--theme-primary)] rounded-md text-xs border border-[var(--theme-primary)]/30">
-                          +{{ exp.technologies.length - 15 }}
+                          +{{ exp.technologies.length - 8 }}
                         </span>
                         }
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Desktop Layout (Timeline) -->
+              <div class="hidden md:flex gap-8">
+                <!-- Timeline Node -->
+                <div class="relative flex-shrink-0">
+                  <div class="w-16 h-16 rounded-2xl overflow-hidden bg-white shadow-lg shadow-[var(--theme-primary)]/20 border-2 border-[var(--theme-border)]/20 group-hover:border-[var(--theme-primary)]/50 transition-all duration-500 group-hover:scale-110 flex items-center justify-center">
+                    <img
+                      [src]="exp.logoUrl"
+                      [alt]="exp.company + ' logo'"
+                      class="w-full h-full object-contain p-2"
+                      (error)="handleImageError($event)"
+                    />
+                    <div
+                      class="w-full h-full flex items-center justify-center text-white font-bold text-lg hidden"
+                      [style.background]="exp.companyColor || 'linear-gradient(135deg, var(--theme-primary), var(--theme-accent))'">
+                      {{ getCompanyInitials(exp.company) }}
+                    </div>
+                  </div>
+
+                  <!-- Timeline Connection -->
+                  <div class="absolute top-8 -left-4 w-4 h-0.5 bg-[var(--theme-primary)]/30"></div>
+
+                  @if (exp.current) {
+                  <!-- Pulsing Ring for Current Position -->
+                  <div class="absolute -inset-2 border-2 border-[var(--theme-primary)] rounded-2xl animate-pulse opacity-60"></div>
+                  <div class="absolute -inset-4 border border-[var(--theme-primary)]/30 rounded-2xl animate-ping"></div>
+                  }
+                </div>
+
+                <!-- Desktop Content Card -->
+                <div class="flex-1 bg-gradient-to-br from-[var(--theme-surface)] to-[var(--theme-surface)]/80 rounded-2xl border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/40 transition-all duration-500 overflow-hidden group-hover:shadow-xl group-hover:shadow-[var(--theme-primary)]/10 group-hover:-translate-y-1">
+                  <!-- Animated Background -->
+                  <div class="absolute inset-0 bg-gradient-to-br from-[var(--theme-primary)]/5 via-transparent to-[var(--theme-accent)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+
+                  <div class="relative z-10 p-6">
+                    <!-- Header -->
+                    <div class="flex items-start justify-between mb-4">
+                      <div class="flex-1">
+                        <div class="flex items-center gap-3 mb-2">
+                          <h3 class="text-xl font-bold text-[var(--theme-text)] group-hover:text-[var(--theme-primary)] transition-colors duration-300">
+                            {{ exp.position }}
+                          </h3>
+                          @if (exp.current) {
+                          <span class="inline-flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] text-white text-xs font-bold rounded-full shadow-lg uppercase tracking-wider">
+                            <div class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
+                            Current
+                          </span>
+                          }
+                        </div>
+                        <p class="text-lg font-semibold text-[var(--theme-text-secondary)] mb-2">{{ exp.company }}</p>
+
+                        <!-- Meta Info -->
+                        <div class="flex flex-wrap gap-2 text-xs">
+                          <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
+                            <lucide-icon [img]="MapPin" class="w-3 h-3"></lucide-icon>
+                            {{ exp.location }}
+                          </span>
+                          <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
+                            <lucide-icon [img]="CheckCircle" class="w-3 h-3"></lucide-icon>
+                            {{ exp.type }}
+                          </span>
+                        </div>
+                      </div>
+
+                      <!-- Duration -->
+                      <div class="text-right bg-[var(--theme-background)]/30 rounded-xl p-3 backdrop-blur-sm">
+                        <p class="text-[var(--theme-text)] font-bold text-sm">{{ exp.period }}</p>
+                        <p class="text-[var(--theme-text-secondary)] text-xs">{{ exp.duration }}</p>
+                      </div>
+                    </div>
+
+                    <!-- Description -->
+                    <div class="space-y-4">
+                      <div>
+                        <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
+                          <div class="w-1.5 h-1.5 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full"></div>
+                          Key Achievements
+                        </h4>
+                        <div class="space-y-2">
+                          @for (desc of exp.description; track desc; let j = $index) {
+                          <div class="flex items-start gap-2 group/item">
+                            <div class="w-1 h-1 rounded-full bg-[var(--theme-primary)] mt-2 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
+                            <p class="text-[var(--theme-text-secondary)] text-sm leading-relaxed group-hover/item:text-[var(--theme-text)] transition-colors">{{ desc }}</p>
+                          </div>
+                          }
+                        </div>
+                      </div>
+
+                      <!-- Technologies -->
+                      <div>
+                        <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
+                          <div class="w-1.5 h-1.5 bg-gradient-to-r from-[var(--theme-accent)] to-[var(--theme-primary)] rounded-full"></div>
+                          Technologies
+                        </h4>
+                        <div class="flex flex-wrap gap-1.5">
+                          @for (tech of exp.technologies.slice(0, 15); track tech; let k = $index) {
+                          <span class="px-2 py-1 bg-[var(--theme-background)]/50 text-[var(--theme-text-secondary)] rounded-md text-xs border border-[var(--theme-border)]/20 hover:border-[var(--theme-primary)]/40 hover:text-[var(--theme-primary)] transition-all duration-300 cursor-default">
+                            {{ tech }}
+                          </span>
+                          }
+                          @if (exp.technologies.length > 15) {
+                          <span class="px-2 py-1 bg-[var(--theme-primary)]/10 text-[var(--theme-primary)] rounded-md text-xs border border-[var(--theme-primary)]/30">
+                            +{{ exp.technologies.length - 15 }}
+                          </span>
+                          }
+                        </div>
                       </div>
                     </div>
                   </div>

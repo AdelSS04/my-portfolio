@@ -1,7 +1,7 @@
 import { Component, inject, signal } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ThemeService, Theme } from '../../services/theme.service';
-import { LucideAngularModule, ChevronDown, X, Check, Waves, Trees, Sun, Palette, Moon } from 'lucide-angular';
+import { LucideAngularModule, ChevronDown, X, Check, Waves, Trees, Sun, Palette, Moon, Coffee } from 'lucide-angular';
 
 @Component({
   selector: 'app-theme-switcher',
@@ -164,8 +164,9 @@ export class ThemeSwitcherComponent {
   readonly Sun = Sun;
   readonly Palette = Palette;
   readonly Moon = Moon;
+  readonly Coffee = Coffee;
 
-  themes: Theme[] = ['ocean', 'forest', 'sunset'];  toggleDropdown() {
+  themes: Theme[] = ['ocean', 'forest', 'sunset', 'warm'];  toggleDropdown() {
     this.isDropdownOpen.set(!this.isDropdownOpen());
   }
 
@@ -195,6 +196,8 @@ export class ThemeSwitcherComponent {
         return this.Trees;
       case 'sunset':
         return this.Sun;
+      case 'warm':
+        return this.Coffee;
       default:
         return this.Palette;
     }

@@ -1,6 +1,6 @@
 import { Injectable, signal, effect } from '@angular/core';
 
-export type Theme = 'ocean' | 'forest' | 'sunset';
+export type Theme = 'ocean' | 'forest' | 'sunset' | 'warm';
 export type Mode = 'light' | 'dark';
 
 export interface ThemeColors {
@@ -119,6 +119,36 @@ export class ThemeService {
         border: '#cbd5e1',
         gradient: 'linear-gradient(135deg, #ffffff 0%, #f8fafc 50%, #f1f5f9 100%)'
       }
+    },
+    warm: {
+      dark: {
+        primary: '#d2691e',
+        primaryLight: '#daa520',
+        primaryDark: '#a0522d',
+        secondary: '#8b4513',
+        accent: '#cd853f',
+        background: '#1e1e1e',
+        backgroundSecondary: '#2b1e1a',
+        surface: '#332519',
+        text: '#ffffff',
+        textSecondary: '#e5d5c8',
+        border: '#8b7355',
+        gradient: 'linear-gradient(135deg, #2b1e1a 0%, #1e1e1e 50%, #332519 100%)'
+      },
+      light: {
+        primary: '#d2691e',
+        primaryLight: '#daa520',
+        primaryDark: '#a0522d',
+        secondary: '#8b4513',
+        accent: '#cd853f',
+        background: '#faf7f0',
+        backgroundSecondary: '#f5f0e8',
+        surface: '#f0e6d6',
+        text: '#3e2723',
+        textSecondary: '#6d4c41',
+        border: '#d7ccc8',
+        gradient: 'linear-gradient(135deg, #faf7f0 0%, #f5f0e8 50%, #f0e6d6 100%)'
+      }
     }
   };
 
@@ -155,7 +185,7 @@ export class ThemeService {
   }
 
   private isValidTheme(theme: string): theme is Theme {
-    return ['ocean', 'forest', 'sunset'].includes(theme);
+    return ['ocean', 'forest', 'sunset', 'warm'].includes(theme);
   }
 
   private isValidMode(mode: string): mode is Mode {
@@ -239,6 +269,7 @@ export class ThemeService {
       case 'ocean': return 'Ocean Blue';
       case 'forest': return 'Forest Green';
       case 'sunset': return 'Sunset Orange';
+      case 'warm': return 'Warm Earth';
       default: return 'Ocean Blue';
     }
   }
@@ -248,6 +279,7 @@ export class ThemeService {
       case 'ocean': return '🌊';
       case 'forest': return '🌲';
       case 'sunset': return '🌅';
+      case 'warm': return '🍯';
       default: return '🌊';
     }
   }
@@ -257,6 +289,7 @@ export class ThemeService {
       case 'ocean': return 'waves';
       case 'forest': return 'trees';
       case 'sunset': return 'sun';
+      case 'warm': return 'coffee';
       default: return 'waves';
     }
   }
