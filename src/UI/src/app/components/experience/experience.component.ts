@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { LucideAngularModule, Briefcase, MapPin, CheckCircle } from 'lucide-angular';
 
 interface Experience {
   company: string;
@@ -17,7 +18,7 @@ interface Experience {
 @Component({
   selector: 'app-experience',
   standalone: true,
-  imports: [],
+  imports: [LucideAngularModule],
   template: `
     <section id="experience" class="py-20 px-4 relative min-h-screen overflow-hidden">
       <!-- Dynamic Background -->
@@ -33,9 +34,7 @@ interface Experience {
         <!-- Header Section -->
         <div class="text-center mb-16">
           <div class="inline-flex items-center gap-3 bg-[var(--theme-surface)]/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-[var(--theme-border)]/30">
-            <svg class="w-6 h-6 text-[var(--theme-primary)]" fill="currentColor" viewBox="0 0 20 20">
-              <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2h2zm4-3a1 1 0 00-1 1v1h2V5a1 1 0 00-1-1z" clip-rule="evenodd"/>
-            </svg>
+            <lucide-icon [img]="Briefcase" class="w-6 h-6 text-[var(--theme-primary)]"></lucide-icon>
             <span class="text-[var(--theme-primary)] font-semibold">Professional Journey</span>
           </div>
           <h2 class="text-4xl md:text-6xl font-bold text-[var(--theme-text)] mb-4 bg-gradient-to-r from-[var(--theme-text)] via-[var(--theme-primary)] to-[var(--theme-text)] bg-clip-text">
@@ -110,15 +109,11 @@ interface Experience {
                       <!-- Meta Info -->
                       <div class="flex flex-wrap gap-2 text-xs">
                         <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
-                          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
-                          </svg>
+                          <lucide-icon [img]="MapPin" class="w-3 h-3"></lucide-icon>
                           {{ exp.location }}
                         </span>
                         <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
-                          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
-                          </svg>
+                          <lucide-icon [img]="CheckCircle" class="w-3 h-3"></lucide-icon>
                           {{ exp.type }}
                         </span>
                       </div>
@@ -272,11 +267,16 @@ interface Experience {
   `]
 })
 export class ExperienceComponent {
+  // Import icon components for use in template
+  readonly Briefcase = Briefcase;
+  readonly MapPin = MapPin;
+  readonly CheckCircle = CheckCircle;
+
   experiences: Experience[] = [
     {
       company: 'Evident Scientific',
       position: 'Senior Full Stack Developer',
-      period: 'April 2023 - Present',
+      period: 'Jul 2024 - Present',
       location: 'Quebec, Canada',
       type: 'Full-time • Hybrid',
       current: true,
@@ -365,25 +365,33 @@ export class ExperienceComponent {
 
   private calculateDuration(period: string, current: boolean): string {
     const monthsMap: { [key: string]: number } = {
-      Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
+      January: 0, February: 1, March: 2, April: 3, May: 4, June: 5,
+      July: 6, August: 7, September: 8, October: 9, November: 10, December: 11,
+      Jan: 0, Feb: 1, Mar: 2, Apr: 3, Jun: 5,
       Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11
     };
 
     const now = new Date();
     const [startStr, endStr] = period.split(' - ').map((s) => s.trim());
     const [startMonth, startYear] = startStr.split(' ');
-    const startDate = new Date(Number(startYear), monthsMap[startMonth], 1);
+    const startDate = new Date(Number(startYear), monthsMap[startMonth] ?? 0, 1);
 
     let endDate: Date;
     if (endStr === 'Present' || current) {
       endDate = now;
     } else {
       const [endMonth, endYear] = endStr.split(' ');
-      endDate = new Date(Number(endYear), monthsMap[endMonth], 1);
+      endDate = new Date(Number(endYear), monthsMap[endMonth] ?? 0, 1);
     }
 
     let months = (endDate.getFullYear() - startDate.getFullYear()) * 12 +
                  (endDate.getMonth() - startDate.getMonth());
+
+    // Add 1 to include the current month if it's current position
+    if (current && endStr === 'Present') {
+      months += 1;
+    }
+
     if (months < 0) months = 0;
 
     const years = Math.floor(months / 12);

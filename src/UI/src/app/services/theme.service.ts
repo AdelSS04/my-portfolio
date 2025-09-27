@@ -251,4 +251,13 @@ export class ThemeService {
       default: return '🌊';
     }
   }
+
+  getThemeIcon(theme: Theme): string {
+    switch (theme) {
+      case 'ocean': return 'waves';
+      case 'forest': return 'trees';
+      case 'sunset': return 'sun';
+      default: return 'waves';
+    }
+  }
 }

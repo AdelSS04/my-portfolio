@@ -1,6 +1,7 @@
 import { Component, OnInit, HostListener, signal, inject } from '@angular/core';
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
 import { ThemeService } from '../../services/theme.service';
+import { LucideAngularModule, Menu, X } from 'lucide-angular';
 
 interface NavLink {
   label: string;
@@ -10,7 +11,7 @@ interface NavLink {
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [ThemeSwitcherComponent],
+  imports: [ThemeSwitcherComponent, LucideAngularModule],
   template: `
     <nav class="fixed top-0 w-full bg-[var(--theme-background-secondary)]/95 backdrop-blur-md z-50 border-b border-[var(--theme-border)]/20 transition-all duration-300"
       [class.shadow-lg]="isScrolled()">
@@ -53,26 +54,11 @@ interface NavLink {
         class="md:hidden text-[var(--theme-text)] p-2 rounded-lg hover:bg-[var(--theme-surface)]/20 transition-all duration-300 border border-[var(--theme-border)]/20"
         (click)="toggleMenu()"
         >
-        <svg class="w-6 h-6 transition-transform duration-300"
+        <lucide-icon 
+          [img]="mobileMenuOpen() ? X : Menu" 
+          class="w-6 h-6 transition-transform duration-300"
           [class.rotate-90]="mobileMenuOpen()"
-          fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          @if (!mobileMenuOpen()) {
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M4 6h16M4 12h16M4 18h16"
-            ></path>
-          }
-          @else {
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M6 18L18 6M6 6l12 12"
-            ></path>
-          }
-        </svg>
+        />
       </button>
     </div>
 
@@ -119,6 +105,10 @@ export class NavbarComponent implements OnInit {
   mobileMenuOpen = signal(false);
   activeLink = '#home';
   isScrolled = signal(false);
+
+  // Lucide icon components
+  readonly Menu = Menu;
+  readonly X = X;
 
   navLinks: NavLink[] = [
     { label: 'Home', href: '#home' },

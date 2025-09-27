@@ -1,11 +1,12 @@
 // about.component.ts
 import { Component, Input } from '@angular/core';
+import { LucideAngularModule, User, BarChart3, Target, Rocket, Lightbulb } from 'lucide-angular';
 
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [],
+  imports: [LucideAngularModule],
   template: `
     <section id="about" class="py-20 px-6">
       <div class="container mx-auto max-w-4xl">
@@ -15,7 +16,8 @@ import { Component, Input } from '@angular/core';
         <div class="grid md:grid-cols-2 gap-8">
           <div class="bg-[var(--theme-surface)]/80 backdrop-blur-sm rounded-2xl p-8 border border-[var(--theme-border)]/20">
             <h3 class="text-xl font-semibold text-[var(--theme-text)] mb-4 flex items-center gap-2">
-              <span class="text-2xl">👨‍💻</span> Professional Profile
+              <lucide-icon [img]="User" class="w-6 h-6 text-[var(--theme-primary)]" />
+              Professional Profile
             </h3>
             <p class="text-[var(--theme-text-secondary)] leading-relaxed mb-4">
               {{aboutText}}
@@ -27,7 +29,8 @@ import { Component, Input } from '@angular/core';
 
           <div class="bg-[var(--theme-surface)]/80 backdrop-blur-sm rounded-2xl p-8 border border-[var(--theme-border)]/20">
             <h3 class="text-xl font-semibold text-[var(--theme-text)] mb-4 flex items-center gap-2">
-              <span class="text-2xl">📊</span> Quick Facts
+              <lucide-icon [img]="BarChart3" class="w-6 h-6 text-[var(--theme-primary)]" />
+              Quick Facts
             </h3>
             <div class="space-y-4">
               <div class="flex items-center justify-between py-3 border-b border-[var(--theme-border)]/20">
@@ -57,21 +60,21 @@ import { Component, Input } from '@angular/core';
         <div class="mt-8 grid md:grid-cols-3 gap-6">
           <div class="bg-[var(--theme-surface)]/50 backdrop-blur-sm rounded-xl p-6 border border-[var(--theme-border)]/20 text-center">
             <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full flex items-center justify-center">
-              <span class="text-2xl">🎯</span>
+              <lucide-icon [img]="Target" class="w-8 h-8 text-white" />
             </div>
             <h4 class="text-[var(--theme-text)] font-semibold mb-2">Quality First</h4>
             <p class="text-[var(--theme-text-secondary)] text-sm">Writing clean, maintainable code that stands the test of time</p>
           </div>
           <div class="bg-[var(--theme-surface)]/50 backdrop-blur-sm rounded-xl p-6 border border-[var(--theme-border)]/20 text-center">
             <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full flex items-center justify-center">
-              <span class="text-2xl">🚀</span>
+              <lucide-icon [img]="Rocket" class="w-8 h-8 text-white" />
             </div>
             <h4 class="text-[var(--theme-text)] font-semibold mb-2">Performance</h4>
             <p class="text-[var(--theme-text-secondary)] text-sm">Optimizing for speed and scalability in every project</p>
           </div>
           <div class="bg-[var(--theme-surface)]/50 backdrop-blur-sm rounded-xl p-6 border border-[var(--theme-border)]/20 text-center">
             <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full flex items-center justify-center">
-              <span class="text-2xl">💡</span>
+              <lucide-icon [img]="Lightbulb" class="w-8 h-8 text-white" />
             </div>
             <h4 class="text-[var(--theme-text)] font-semibold mb-2">Innovation</h4>
             <p class="text-[var(--theme-text-secondary)] text-sm">Always learning and adopting new technologies</p>
@@ -82,6 +85,13 @@ import { Component, Input } from '@angular/core';
   `
 })
 export class AboutComponent {
+  // Lucide icon components
+  readonly User = User;
+  readonly BarChart3 = BarChart3;
+  readonly Target = Target;
+  readonly Rocket = Rocket;
+  readonly Lightbulb = Lightbulb;
+
   @Input() aboutText: string = `I'm a passionate Senior Full Stack Developer with expertise in .NET and Angular.
     Azure AZ-204 certified with extensive experience in building scalable cloud applications.`;
 

@@ -1,5 +1,6 @@
 // testimonials.component.ts
 import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { LucideAngularModule, Quote, Star, ChevronLeft, ChevronRight } from 'lucide-angular';
 
 
 interface Testimonial {
@@ -17,7 +18,7 @@ interface Testimonial {
 @Component({
   selector: 'app-testimonials',
   standalone: true,
-  imports: [],
+  imports: [LucideAngularModule],
   template: `
     <section id="testimonials" class="py-20 px-6 relative overflow-hidden">
       <!-- Background decoration -->
@@ -49,9 +50,7 @@ interface Testimonial {
                     <!-- Quote Icon -->
                     <div class="flex justify-center mb-6">
                       <div class="w-16 h-16 bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full flex items-center justify-center">
-                        <svg class="w-8 h-8 text-white/50" fill="currentColor" viewBox="0 0 24 24">
-                          <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
-                        </svg>
+                        <lucide-icon [img]="Quote" class="w-8 h-8 text-white/80" />
                       </div>
                     </div>
                     <!-- Testimonial Content -->
@@ -59,12 +58,13 @@ interface Testimonial {
                       <!-- Rating Stars -->
                       <div class="flex justify-center mb-6">
                         @for (star of [1,2,3,4,5]; track star) {
-                          <span
+                          <lucide-icon 
+                            [img]="Star"
                             [class.text-yellow-400]="star <= testimonial.rating"
                             [class.text-gray-600]="star > testimonial.rating"
-                            class="text-xl">
-                            ★
-                          </span>
+                            [class.fill-current]="star <= testimonial.rating"
+                            class="w-5 h-5">
+                          </lucide-icon>
                         }
                       </div>
                       <!-- Testimonial Text -->
@@ -121,9 +121,7 @@ interface Testimonial {
             class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-[var(--theme-surface)]/60 hover:bg-[var(--theme-surface)]/80 rounded-full flex items-center justify-center text-[var(--theme-text)] transition-all duration-300 backdrop-blur-sm border border-[var(--theme-border)]/30 hover:scale-110 active:scale-95 hover:border-[var(--theme-primary)]/50"
             [disabled]="isTransitioning"
             >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/>
-            </svg>
+            <lucide-icon [img]="ChevronLeft" class="w-6 h-6" />
           </button>
 
           <button
@@ -131,9 +129,7 @@ interface Testimonial {
             class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-[var(--theme-surface)]/60 hover:bg-[var(--theme-surface)]/80 rounded-full flex items-center justify-center text-[var(--theme-text)] transition-all duration-300 backdrop-blur-sm border border-[var(--theme-border)]/30 hover:scale-110 active:scale-95 hover:border-[var(--theme-primary)]/50"
             [disabled]="isTransitioning"
             >
-            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"/>
-            </svg>
+            <lucide-icon [img]="ChevronRight" class="w-6 h-6" />
           </button>
 
           <!-- Dots Navigation -->
@@ -212,6 +208,12 @@ export class TestimonialsComponent implements OnInit, OnDestroy {
   autoPlayInterval: any;
   touchStartX = 0;
   touchEndX = 0;
+
+  // Lucide icon components
+  readonly Quote = Quote;
+  readonly Star = Star;
+  readonly ChevronLeft = ChevronLeft;
+  readonly ChevronRight = ChevronRight;
 
   testimonials: Testimonial[] = [
     {
