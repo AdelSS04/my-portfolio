@@ -1,7 +1,5 @@
-// testimonials.component.ts
 import { Component, signal, effect } from '@angular/core';
 import { LucideAngularModule, Quote, Star, ChevronLeft, ChevronRight } from 'lucide-angular';
-
 
 interface Testimonial {
   id: number;
@@ -21,7 +19,7 @@ interface Testimonial {
   imports: [LucideAngularModule],
   template: `
     <section id="testimonials" class="py-20 px-6 relative overflow-hidden">
-      <!-- Background decoration -->
+      
       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--theme-background-secondary)]/20 to-transparent"></div>
 
       <div class="container mx-auto max-w-6xl relative z-10">
@@ -30,9 +28,9 @@ interface Testimonial {
           What colleagues and clients say about working with me
         </p>
 
-        <!-- Slider Container -->
+        
         <div class="relative">
-          <!-- Main Slider -->
+          
           <div class="overflow-hidden rounded-2xl"
             (touchstart)="onTouchStart($event)"
             (touchmove)="onTouchMove($event)"
@@ -42,20 +40,20 @@ interface Testimonial {
             <div class="flex transition-transform duration-500 ease-in-out"
               [style.transform]="'translateX(-' + (currentIndex() * 100) + '%)'">
 
-              <!-- Testimonial Cards -->
+              
               @for (testimonial of testimonials; track testimonial) {
                 <div
                   class="w-full flex-shrink-0 px-4">
                   <div class="bg-[var(--theme-surface)]/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-[var(--theme-border)]/20 hover:border-[var(--theme-border)]/30 transition-all duration-300">
-                    <!-- Quote Icon -->
+                    
                     <div class="flex justify-center mb-6">
                       <div class="w-16 h-16 bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full flex items-center justify-center">
                         <lucide-icon [img]="Quote" class="w-8 h-8 text-white/80" />
                       </div>
                     </div>
-                    <!-- Testimonial Content -->
+                    
                     <div class="max-w-3xl mx-auto text-center">
-                      <!-- Rating Stars -->
+                      
                       <div class="flex justify-center mb-6">
                         @for (star of [1,2,3,4,5]; track star) {
                           <lucide-icon
@@ -67,13 +65,13 @@ interface Testimonial {
                           </lucide-icon>
                         }
                       </div>
-                      <!-- Testimonial Text -->
+                      
                       <p class="text-[var(--theme-text-secondary)] text-lg md:text-xl leading-relaxed mb-8 italic">
                         "{{testimonial.text}}"
                       </p>
-                      <!-- Author Info -->
+                      
                       <div class="flex flex-col items-center">
-                        <!-- Author Image -->
+                        
                         <div class="w-20 h-20 rounded-full bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] flex items-center justify-center mb-4 border-2 border-[var(--theme-border)]/30">
                           @if (!testimonial.image) {
                             <span class="text-2xl text-white font-bold">
@@ -87,13 +85,13 @@ interface Testimonial {
                               class="w-full h-full rounded-full object-cover">
                           }
                         </div>
-                        <!-- Author Details -->
+                        
                         <div>
                           <h4 class="text-[var(--theme-text)] font-semibold text-lg">{{testimonial.name}}</h4>
                           <p class="text-[var(--theme-text-secondary)] text-sm">{{testimonial.position}}</p>
                           <p class="text-[var(--theme-text-secondary)]/70 text-sm">{{testimonial.company}}</p>
                           <p class="text-[var(--theme-text-secondary)]/50 text-xs mt-2">{{testimonial.date}}</p>
-                          <!-- LinkedIn Link -->
+                          
                           @if (testimonial.linkedIn) {
                             <a
                               [href]="testimonial.linkedIn"
@@ -115,7 +113,7 @@ interface Testimonial {
             </div>
           </div>
 
-          <!-- Navigation Arrows -->
+          
           <button
             (click)="prevSlide()"
             class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-[var(--theme-surface)]/60 hover:bg-[var(--theme-surface)]/80 rounded-full flex items-center justify-center text-[var(--theme-text)] transition-all duration-300 backdrop-blur-sm border border-[var(--theme-border)]/30 hover:scale-110 active:scale-95 hover:border-[var(--theme-primary)]/50"
@@ -132,7 +130,7 @@ interface Testimonial {
             <lucide-icon [img]="ChevronRight" class="w-6 h-6" />
           </button>
 
-          <!-- Dots Navigation -->
+          
           <div class="flex justify-center gap-2 mt-8">
             @for (testimonial of testimonials; track testimonial; let i = $index) {
               <button
@@ -148,7 +146,7 @@ interface Testimonial {
           </div>
         </div>
 
-        <!-- Additional Info -->
+        
         <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div class="text-center">
             <div class="text-2xl font-bold text-[var(--theme-text)] mb-1">{{testimonials.length}}+</div>
@@ -175,18 +173,15 @@ interface Testimonial {
       display: block;
     }
 
-    /* Smooth transitions */
     .transition-transform {
       transition-property: transform;
       transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
     }
 
-    /* Disable text selection on navigation elements */
     button {
       user-select: none;
     }
 
-    /* Custom scrollbar for testimonial text if needed */
     .testimonial-text {
       max-height: 200px;
       overflow-y: auto;
@@ -208,8 +203,6 @@ export class TestimonialsComponent {
   autoPlayInterval: any;
   touchStartX = 0;
   touchEndX = 0;
-
-  // Lucide icon components
   readonly Quote = Quote;
   readonly Star = Star;
   readonly ChevronLeft = ChevronLeft;
@@ -224,7 +217,7 @@ export class TestimonialsComponent {
       rating: 5,
       text: 'I have studied with Adel for two years. He\'s a very talented student. He\'s ambitious and diligent. Not only is he always willing to learn a new skill but also dedicated to mastering it. He is also compassionate and very helpful. He always gives of his time whenever in need.',
       date: 'May 2019',
-      linkedIn: 'https://www.linkedin.com/in/mariemgharsallah/'
+      linkedIn: 'https:
     },
     {
       id: 2,
@@ -234,22 +227,17 @@ export class TestimonialsComponent {
       rating: 5,
       text: 'I worked with Adel in several project, and I found him to be a hard worker, passionate and determined software engineer. I recommend him for any software engineering related position.',
       date: 'June 2024',
-      linkedIn: 'https://www.linkedin.com/in/arsslen-idadi/'
+      linkedIn: 'https:
     }
   ];
 
   constructor() {
-    // Effect to start auto-play
     effect(() => {
       this.startAutoPlay();
-
-      // Cleanup function
       return () => {
         this.stopAutoPlay();
       };
     }, { allowSignalWrites: true });
-
-    // Effect to handle keyboard events
     effect(() => {
       const handleKeyboard = (event: KeyboardEvent) => {
         const testimonialsSection = document.getElementById('testimonials');
@@ -280,7 +268,7 @@ export class TestimonialsComponent {
   startAutoPlay(): void {
     this.autoPlayInterval = setInterval(() => {
       this.nextSlide();
-    }, 5000); // Change slide every 5 seconds
+    }, 5000);
   }
 
   stopAutoPlay(): void {
@@ -318,8 +306,6 @@ export class TestimonialsComponent {
 
     this.isTransitioning.set(true);
     this.currentIndex.set(index);
-
-    // Reset auto-play when user manually navigates
     this.stopAutoPlay();
     this.startAutoPlay();
 
@@ -327,8 +313,6 @@ export class TestimonialsComponent {
       this.isTransitioning.set(false);
     }, 500);
   }
-
-  // Touch/Swipe support for mobile
   onTouchStart(event: TouchEvent): void {
     this.touchStartX = event.touches[0].clientX;
   }
@@ -343,14 +327,10 @@ export class TestimonialsComponent {
 
     if (Math.abs(diff) > swipeThreshold) {
       if (diff > 0) {
-        // Swiped left - go to next slide
         this.nextSlide();
       } else {
-        // Swiped right - go to previous slide
         this.prevSlide();
       }
-
-      // Reset auto-play after swipe
       this.stopAutoPlay();
       this.startAutoPlay();
     }

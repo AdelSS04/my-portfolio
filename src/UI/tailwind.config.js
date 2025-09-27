@@ -1,13 +1,10 @@
-// tailwind.config.js
-/** @type {import('tailwindcss').Config} */
 module.exports = {
   content: [
-    "./src/**/*.{html,ts}",
+    "./src*.{html,ts}",
   ],
   theme: {
     extend: {
       colors: {
-        // Theme-aware colors using CSS variables
         'theme': {
           primary: 'var(--theme-primary)',
           'primary-light': 'var(--theme-primary-light)',
@@ -21,14 +18,13 @@ module.exports = {
           'text-secondary': 'var(--theme-text-secondary)',
           border: 'var(--theme-border)',
         },
-        // Legacy dark colors for backward compatibility
         'dark': {
-          gray: '#1e1e1e',      // Dark Gray
-          navy: '#112230',      // Deep Navy
-          midnight: '#112331',  // Midnight Blue
-          slate: '#112231',     // Slate Blue
-          steel: '#122331',     // Steel Blue
-          charcoal: '#122433',  // Charcoal Blue
+          gray: '#1e1e1e',
+          navy: '#112230',
+          midnight: '#112331',
+          slate: '#112231',
+          steel: '#122331',
+          charcoal: '#122433',
         }
       },
       backgroundImage: {

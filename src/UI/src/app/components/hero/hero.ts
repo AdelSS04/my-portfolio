@@ -1,7 +1,5 @@
-// hero.component.ts
 import { Component, input } from '@angular/core';
 import { LucideAngularModule, User, GraduationCap } from 'lucide-angular';
-
 
 @Component({
   selector: 'app-hero',
@@ -51,18 +49,20 @@ import { LucideAngularModule, User, GraduationCap } from 'lucide-angular';
                 View My Work
               </a>
               <a
+                href="https://blog.adellajil.com/"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="px-8 py-3 bg-gradient-to-r from-[var(--theme-accent)] to-[var(--theme-primary)] text-white rounded-full hover:scale-105 transition-all duration-300 border border-[var(--theme-border)]/20 shadow-lg hover:shadow-xl theme-glow"
+                >
+                📝 My Blog
+              </a>
+              <a
                 href="#contact"
                 class="px-8 py-3 border border-[var(--theme-border)]/30 text-[var(--theme-text)] rounded-full hover:bg-[var(--theme-surface)]/20 transition-all duration-300"
                 >
                 Contact Me
               </a>
-              <!-- <a
-                href="/assets/resume.pdf"
-                download
-                class="px-8 py-3 bg-white/5 text-white rounded-full hover:bg-white/10 transition-all duration-300"
-                >
-                Download CV
-              </a> -->
+
             </div>
 
             <div class="flex flex-wrap gap-4 justify-center lg:justify-start">
@@ -87,7 +87,6 @@ export class HeroComponent {
   subtitle = input.required<string>();
   profileImage = input<string>('');
 
-  // Lucide icon components
   readonly User = User;
   readonly GraduationCap = GraduationCap;
 }

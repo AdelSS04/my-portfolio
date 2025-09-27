@@ -21,17 +21,17 @@ interface Experience {
   imports: [LucideAngularModule],
   template: `
     <section id="experience" class="py-20 px-4 relative min-h-screen overflow-hidden">
-      <!-- Dynamic Background -->
+      
       <div class="absolute inset-0 bg-gradient-to-br from-[var(--theme-background)]/90 via-[var(--theme-background-secondary)]/50 to-[var(--theme-background)]/90"></div>
 
-      <!-- Floating Elements -->
+      
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-[var(--theme-primary)]/5 rounded-full blur-3xl animate-pulse"></div>
         <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[var(--theme-accent)]/5 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
       </div>
 
       <div class="container mx-auto max-w-7xl relative z-10">
-        <!-- Header Section -->
+        
         <div class="text-center mb-16">
           <div class="inline-flex items-center gap-3 bg-[var(--theme-surface)]/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-[var(--theme-border)]/30">
             <lucide-icon [img]="Briefcase" class="w-6 h-6 text-[var(--theme-primary)]"></lucide-icon>
@@ -45,9 +45,9 @@ interface Experience {
           </p>
         </div>
 
-        <!-- Experience Timeline -->
+        
         <div class="relative max-w-4xl mx-auto">
-          <!-- Timeline Line - Hidden on Mobile -->
+          
           <div class="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--theme-primary)] via-[var(--theme-accent)] to-[var(--theme-primary)] opacity-30"></div>
 
           <div class="space-y-8 md:space-y-12">
@@ -57,13 +57,13 @@ interface Experience {
               [style.animation-delay]="i * 150 + 'ms'"
               [class.is-current]="exp.current"
             >
-              <!-- Mobile Layout (Stacked) -->
+              
               <div class="md:hidden bg-gradient-to-br from-[var(--theme-surface)] to-[var(--theme-surface)]/80 rounded-2xl border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/40 transition-all duration-500 overflow-hidden group-hover:shadow-xl group-hover:shadow-[var(--theme-primary)]/10 group-hover:-translate-y-1">
-                <!-- Animated Background -->
+                
                 <div class="absolute inset-0 bg-gradient-to-br from-[var(--theme-primary)]/5 via-transparent to-[var(--theme-accent)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                 <div class="relative z-10 p-6">
-                  <!-- Mobile Header with Logo at Top -->
+                  
                   <div class="flex items-start gap-4 mb-4">
                     <div class="w-16 h-16 rounded-2xl overflow-hidden bg-white shadow-lg shadow-[var(--theme-primary)]/20 border-2 border-[var(--theme-border)]/20 group-hover:border-[var(--theme-primary)]/50 transition-all duration-500 group-hover:scale-110 flex items-center justify-center flex-shrink-0">
                       <img
@@ -96,7 +96,7 @@ interface Experience {
                     </div>
                   </div>
 
-                  <!-- Mobile Meta Info -->
+                  
                   <div class="flex flex-wrap gap-2 text-xs mb-4">
                     <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
                       <lucide-icon [img]="MapPin" class="w-3 h-3"></lucide-icon>
@@ -111,7 +111,7 @@ interface Experience {
                     </span>
                   </div>
 
-                  <!-- Mobile Description -->
+                  
                   <div class="space-y-3">
                     <div>
                       <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
@@ -133,7 +133,7 @@ interface Experience {
                       </div>
                     </div>
 
-                    <!-- Mobile Technologies -->
+                    
                     <div>
                       <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
                         <div class="w-1.5 h-1.5 bg-gradient-to-r from-[var(--theme-accent)] to-[var(--theme-primary)] rounded-full"></div>
@@ -156,9 +156,9 @@ interface Experience {
                 </div>
               </div>
 
-              <!-- Desktop Layout (Timeline) -->
+              
               <div class="hidden md:flex gap-8">
-                <!-- Timeline Node -->
+                
                 <div class="relative flex-shrink-0">
                   <div class="w-16 h-16 rounded-2xl overflow-hidden bg-white shadow-lg shadow-[var(--theme-primary)]/20 border-2 border-[var(--theme-border)]/20 group-hover:border-[var(--theme-primary)]/50 transition-all duration-500 group-hover:scale-110 flex items-center justify-center">
                     <img
@@ -174,23 +174,23 @@ interface Experience {
                     </div>
                   </div>
 
-                  <!-- Timeline Connection -->
+                  
                   <div class="absolute top-8 -left-4 w-4 h-0.5 bg-[var(--theme-primary)]/30"></div>
 
                   @if (exp.current) {
-                  <!-- Pulsing Ring for Current Position -->
+                  
                   <div class="absolute -inset-2 border-2 border-[var(--theme-primary)] rounded-2xl animate-pulse opacity-60"></div>
                   <div class="absolute -inset-4 border border-[var(--theme-primary)]/30 rounded-2xl animate-ping"></div>
                   }
                 </div>
 
-                <!-- Desktop Content Card -->
+                
                 <div class="flex-1 bg-gradient-to-br from-[var(--theme-surface)] to-[var(--theme-surface)]/80 rounded-2xl border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/40 transition-all duration-500 overflow-hidden group-hover:shadow-xl group-hover:shadow-[var(--theme-primary)]/10 group-hover:-translate-y-1">
-                  <!-- Animated Background -->
+                  
                   <div class="absolute inset-0 bg-gradient-to-br from-[var(--theme-primary)]/5 via-transparent to-[var(--theme-accent)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                   <div class="relative z-10 p-6">
-                    <!-- Header -->
+                    
                     <div class="flex items-start justify-between mb-4">
                       <div class="flex-1">
                         <div class="flex items-center gap-3 mb-2">
@@ -206,7 +206,7 @@ interface Experience {
                         </div>
                         <p class="text-lg font-semibold text-[var(--theme-text-secondary)] mb-2">{{ exp.company }}</p>
 
-                        <!-- Meta Info -->
+                        
                         <div class="flex flex-wrap gap-2 text-xs">
                           <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
                             <lucide-icon [img]="MapPin" class="w-3 h-3"></lucide-icon>
@@ -219,14 +219,14 @@ interface Experience {
                         </div>
                       </div>
 
-                      <!-- Duration -->
+                      
                       <div class="text-right bg-[var(--theme-background)]/30 rounded-xl p-3 backdrop-blur-sm">
                         <p class="text-[var(--theme-text)] font-bold text-sm">{{ exp.period }}</p>
                         <p class="text-[var(--theme-text-secondary)] text-xs">{{ exp.duration }}</p>
                       </div>
                     </div>
 
-                    <!-- Description -->
+                    
                     <div class="space-y-4">
                       <div>
                         <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
@@ -243,7 +243,7 @@ interface Experience {
                         </div>
                       </div>
 
-                      <!-- Technologies -->
+                      
                       <div>
                         <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
                           <div class="w-1.5 h-1.5 bg-gradient-to-r from-[var(--theme-accent)] to-[var(--theme-primary)] rounded-full"></div>
@@ -271,7 +271,7 @@ interface Experience {
           </div>
         </div>
 
-        <!-- Career Stats -->
+        
         <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div class="text-center group">
             <div class="bg-[var(--theme-surface)]/30 backdrop-blur-sm rounded-2xl p-6 border border-[var(--theme-border)]/20 hover:border-[var(--theme-primary)]/50 transition-all duration-500 hover:transform hover:scale-105">
@@ -368,7 +368,6 @@ interface Experience {
   `]
 })
 export class ExperienceComponent {
-  // Import icon components for use in template
   readonly Briefcase = Briefcase;
   readonly MapPin = MapPin;
   readonly CheckCircle = CheckCircle;
@@ -487,8 +486,6 @@ export class ExperienceComponent {
 
     let months = (endDate.getFullYear() - startDate.getFullYear()) * 12 +
                  (endDate.getMonth() - startDate.getMonth());
-
-    // Add 1 to include the current month if it's current position
     if (current && endStr === 'Present') {
       months += 1;
     }
@@ -507,16 +504,10 @@ export class ExperienceComponent {
     return result;
   }
 
-  /**
-   * Handles image loading errors by showing company initials fallback
-   */
   handleImageError(event: Event): void {
     const img = event.target as HTMLImageElement;
     if (img && img.parentElement) {
-      // Hide the failed image
       img.style.display = 'none';
-
-      // Show the fallback div that's already in the template
       const fallback = img.nextElementSibling as HTMLDivElement;
       if (fallback) {
         fallback.classList.remove('hidden');
@@ -524,9 +515,6 @@ export class ExperienceComponent {
     }
   }
 
-  /**
-   * Get company initials for fallback display
-   */
   getCompanyInitials(company: string): string {
     return company
       .split(' ')

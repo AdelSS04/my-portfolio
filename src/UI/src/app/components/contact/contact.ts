@@ -158,8 +158,6 @@ interface SocialLink {
 export class ContactComponent {
   contactForm: FormGroup;
   isSubmitting = signal(false);
-
-  // Lucide icon components
   readonly Mail = Mail;
   readonly MapPin = MapPin;
   readonly Clock = Clock;
@@ -179,11 +177,11 @@ export class ContactComponent {
   socialLinks: SocialLink[] = [
     {
       name: 'GitHub',
-      url: 'https://github.com/AdelSS04'
+      url: 'https:
     },
     {
       name: 'LinkedIn',
-      url: 'https://www.linkedin.com/in/adellajil/'
+      url: 'https:
     },
   ];
 
@@ -199,7 +197,7 @@ export class ContactComponent {
     if (this.contactForm.valid) {
       this.isSubmitting.set(true);
       const formData = this.contactForm.value;
-      this.http.post('https://formspree.io/f/mrbangek', formData).subscribe({
+      this.http.post('https:
         next: () => alert('Message sent!'),
         error: () => alert('Error sending message'),
         complete: () => {this.contactForm.reset(); this.isSubmitting.set(false);},

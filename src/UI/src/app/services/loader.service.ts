@@ -16,8 +16,6 @@ export class LoaderService {
     { id: 'components', name: 'Initializing components', completed: false },
     { id: 'ready', name: 'Portfolio ready!', completed: false }
   ]);
-
-  // Computed signals
   completedSteps = computed(() => this.loadingSteps().filter(step => step.completed));
   currentStep = computed(() => this.loadingSteps().find(step => !step.completed) || null);
   progress = computed(() => {

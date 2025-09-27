@@ -8,7 +8,6 @@ import { LucideAngularModule, ChevronDown, X, Check, Waves, Trees, Sun, Palette,
   imports: [LucideAngularModule],
   template: `
     <div class="relative">
-      <!-- Theme Switcher Button -->
       <button
         (click)="toggleDropdown()"
         class="flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 hover:bg-[var(--theme-surface)]/20 border border-[var(--theme-border)]/20"
@@ -22,7 +21,6 @@ import { LucideAngularModule, ChevronDown, X, Check, Waves, Trees, Sun, Palette,
         />
       </button>
 
-      <!-- Dropdown Menu -->
       <div
         class="fixed inset-x-4 top-1/2 -translate-y-1/2 sm:absolute sm:inset-x-auto sm:top-full sm:right-0 sm:left-auto sm:translate-y-0 mt-0 sm:mt-2 w-auto sm:w-80 lg:w-96 max-w-none sm:max-w-[90vw] bg-[var(--theme-surface)] border border-[var(--theme-border)]/20 rounded-xl shadow-2xl backdrop-blur-md transition-all duration-300 z-[100]"
         [class.opacity-0]="!isDropdownOpen()"
@@ -30,7 +28,6 @@ import { LucideAngularModule, ChevronDown, X, Check, Waves, Trees, Sun, Palette,
         [class.scale-95]="!isDropdownOpen()"
       >
         <div class="p-4 sm:p-5 lg:p-6">
-          <!-- Header -->
           <div class="flex items-center justify-between mb-4 sm:mb-5">
             <h3 class="text-sm sm:text-base lg:text-lg font-semibold text-[var(--theme-text)]">Customize Theme</h3>
             <button
@@ -41,7 +38,6 @@ import { LucideAngularModule, ChevronDown, X, Check, Waves, Trees, Sun, Palette,
             </button>
           </div>
 
-          <!-- Theme Selection -->
           <div class="mb-4 sm:mb-5">
             <label class="block text-xs font-medium text-[var(--theme-text-secondary)] mb-2 sm:mb-3 uppercase tracking-wide">
               Color Palette
@@ -83,7 +79,6 @@ import { LucideAngularModule, ChevronDown, X, Check, Waves, Trees, Sun, Palette,
             </div>
           </div>
 
-          <!-- Mode Toggle -->
           <div class="border-t border-[var(--theme-border)]/20 pt-4 sm:pt-5">
             <label class="block text-xs font-medium text-[var(--theme-text-secondary)] mb-2 sm:mb-3 uppercase tracking-wide">
               Appearance
@@ -114,7 +109,6 @@ import { LucideAngularModule, ChevronDown, X, Check, Waves, Trees, Sun, Palette,
             </div>
           </div>
 
-          <!-- Quick Actions -->
           <div class="mt-4 pt-4 border-t border-[var(--theme-border)]/20">
             <div class="flex gap-2 sm:gap-3">
               <button
@@ -135,7 +129,6 @@ import { LucideAngularModule, ChevronDown, X, Check, Waves, Trees, Sun, Palette,
       </div>
     </div>
 
-    <!-- Backdrop -->
     @if (isDropdownOpen()) {
       <div
         class="fixed inset-0 bg-black/20 backdrop-blur-sm z-[90]"
@@ -154,7 +147,6 @@ export class ThemeSwitcherComponent {
   themeService = inject(ThemeService);
   isDropdownOpen = signal(false);
 
-  // Lucide icon components
   readonly ChevronDown = ChevronDown;
   readonly X = X;
   readonly Check = Check;

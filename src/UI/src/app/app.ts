@@ -31,28 +31,28 @@ import { LoaderService } from './services/loader.service';
     TestimonialsComponent
   ],
   template: `
-    <!-- Loading Screen -->
+    
     @if (themeService.isLoading() || !loaderService.isComplete()) {
       <div class="fixed inset-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 flex items-center justify-center z-[9999]">
         <div class="text-center max-w-md mx-auto px-6">
-          <!-- Animated Logo -->
+          
           <div class="w-24 h-24 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-blue-500 via-cyan-500 to-blue-600 flex items-center justify-center shadow-2xl shadow-blue-500/25 animate-pulse">
             <img src="/logo_adel.png" alt="Logo" class="w-14 h-14 object-contain" />
           </div>
 
-          <!-- Loading Spinner and Text -->
+          
           <div class="flex items-center justify-center gap-3 mb-6">
             <lucide-icon [img]="Loader2" class="w-6 h-6 text-blue-400 animate-spin" />
             <span class="text-white text-xl font-semibold">Loading Portfolio</span>
           </div>
 
-          <!-- Progress Bar -->
+          
           <div class="w-full h-2 bg-slate-700 rounded-full overflow-hidden mx-auto mb-4">
             <div class="h-full bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full transition-all duration-500 ease-out"
                  [style.width.%]="loaderService.progress()"></div>
           </div>
 
-          <!-- Progress Text -->
+          
           <div class="text-center space-y-2">
             <p class="text-slate-300 text-sm font-medium">{{ loaderService.progress() }}% Complete</p>
             @if (loaderService.currentStep()) {
@@ -62,7 +62,7 @@ import { LoaderService } from './services/loader.service';
             }
           </div>
 
-          <!-- Loading Steps -->
+          
           <div class="mt-6 space-y-2">
             @for (step of loaderService.loadingSteps(); track step.id) {
               <div class="flex items-center gap-3 text-sm">
@@ -82,17 +82,17 @@ import { LoaderService } from './services/loader.service';
       </div>
     }
 
-    <!-- Main Portfolio Content -->
+    
     @if (!themeService.isLoading() && loaderService.isComplete()) {
       <div class="min-h-screen transition-all duration-500"
            [style.background]="themeService.getCurrentColors().background">
 
-        <!-- Background Gradient -->
+        
         <div class="fixed inset-0 opacity-90 transition-all duration-500"
              [style.background]="themeService.getCurrentColors().gradient">
         </div>
 
-        <!-- Portfolio Components with fade-in animation -->
+        
         <div class="relative z-10 animate-fade-in">
           <app-navbar></app-navbar>
           <app-hero
@@ -147,12 +147,9 @@ import { LoaderService } from './services/loader.service';
 export class App {
   themeService = inject(ThemeService);
   loaderService = inject(LoaderService);
-
-  // Lucide icons
   readonly Loader2 = Loader2;
 
   constructor() {
-    // Effect to initialize app when theme is ready
     effect(() => {
       if (!this.themeService.isLoading()) {
         this.initializeApp();
@@ -161,7 +158,6 @@ export class App {
   }
 
   private async initializeApp(): Promise<void> {
-    // Start the loader simulation once theme is ready
     await this.loaderService.simulateLoading();
   }
 

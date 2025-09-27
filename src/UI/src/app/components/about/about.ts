@@ -1,7 +1,5 @@
-// about.component.ts
 import { Component, input } from '@angular/core';
 import { LucideAngularModule, User, BarChart3, Target, Rocket, Lightbulb } from 'lucide-angular';
-
 
 @Component({
   selector: 'app-about',
@@ -85,7 +83,6 @@ import { LucideAngularModule, User, BarChart3, Target, Rocket, Lightbulb } from 
   `
 })
 export class AboutComponent {
-  // Lucide icon components
   readonly User = User;
   readonly BarChart3 = BarChart3;
   readonly Target = Target;

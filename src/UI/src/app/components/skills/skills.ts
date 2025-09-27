@@ -1,4 +1,3 @@
-// skills.component.ts
 import { Component } from '@angular/core';
 import { LucideAngularModule,
   Code, Globe, Database, Server, Cloud,
@@ -6,7 +5,6 @@ import { LucideAngularModule,
   Zap, Monitor, Cpu, Package, FileCode,
   Palette, Wrench, Boxes, Award
 } from 'lucide-angular';
-
 
 interface Skill {
   name: string;
@@ -27,7 +25,7 @@ interface Skill {
         </p>
 
         <div class="space-y-8">
-          <!-- Frontend Skills -->
+          
           <div>
             <h3 class="text-xl font-semibold text-[var(--theme-text)] mb-4">Frontend Development</h3>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -49,7 +47,7 @@ interface Skill {
             </div>
           </div>
 
-          <!-- Backend Skills -->
+          
           <div>
             <h3 class="text-xl font-semibold text-[var(--theme-text)] mb-4">Backend Development</h3>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -71,7 +69,7 @@ interface Skill {
             </div>
           </div>
 
-          <!-- Cloud & DevOps -->
+          
           <div>
             <h3 class="text-xl font-semibold text-[var(--theme-text)] mb-4">Cloud & DevOps</h3>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
@@ -94,7 +92,7 @@ interface Skill {
           </div>
         </div>
 
-        <!-- Certifications -->
+        
         <div class="mt-12 text-center">
           <h3 class="text-xl font-semibold text-[var(--theme-text)] mb-6">Certifications</h3>
           <div class="flex flex-wrap gap-4 justify-center">
@@ -117,7 +115,6 @@ interface Skill {
     `
 })
 export class SkillsComponent {
-  // Import icon components for use in template
   readonly Code = Code;
   readonly Globe = Globe;
   readonly Database = Database;
@@ -184,9 +181,6 @@ export class SkillsComponent {
     { name: 'Terraform', icon: 'wrench', level: 'Intermediate' }
   ];
 
-  /**
-   * Get Lucide icon component for skills
-   */
   getSkillIcon(iconName: string): any {
     const iconMap: { [key: string]: any } = {
       'angular': this.Code,

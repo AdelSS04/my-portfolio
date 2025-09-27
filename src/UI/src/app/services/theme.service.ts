@@ -25,19 +25,14 @@ export class ThemeService {
   private readonly THEME_KEY = 'portfolio-theme';
   private readonly MODE_KEY = 'portfolio-mode';
 
-  // Signal-based state
   currentTheme = signal<Theme>('ocean');
   currentMode = signal<Mode>('dark');
   isInitialized = signal<boolean>(false);
   isLoading = signal<boolean>(true);
-
-  // Computed signals
   currentColors = computed(() => this.getThemeColors(this.currentTheme(), this.currentMode()));
   themeDisplayName = computed(() => this.getThemeDisplayName(this.currentTheme()));
   themeIcon = computed(() => this.getThemeIcon(this.currentTheme()));
   themeEmoji = computed(() => this.getThemeEmoji(this.currentTheme()));
-
-  // Theme definitions
   private themes: Record<Theme, Record<Mode, ThemeColors>> = {
     ocean: {
       dark: {
@@ -162,7 +157,6 @@ export class ThemeService {
   };
 
   constructor() {
-    // Effect to initialize theme and apply changes
     effect(() => {
       this.applyTheme();
     });
@@ -172,11 +166,8 @@ export class ThemeService {
 
   private async initializeTheme(): Promise<void> {
     this.isLoading.set(true);
-
-    // Only access localStorage if we're in the browser
     if (this.isBrowser()) {
       try {
-        // Load saved theme and mode
         const savedTheme = localStorage.getItem(this.THEME_KEY) as Theme;
         const savedMode = localStorage.getItem(this.MODE_KEY) as Mode;
 
@@ -187,18 +178,13 @@ export class ThemeService {
         if (savedMode && this.isValidMode(savedMode)) {
           this.currentMode.set(savedMode);
         }
-
-        // Apply theme immediately
         this.applyTheme();
-
-        // Small delay to ensure DOM is ready
         await new Promise(resolve => setTimeout(resolve, 150));
 
       } catch (error) {
         console.warn('Error loading theme from localStorage:', error);
       }
     } else {
-      // SSR - use defaults
       await new Promise(resolve => setTimeout(resolve, 150));
     }
 
@@ -248,14 +234,10 @@ export class ThemeService {
 
     const colors = this.getCurrentColors();
     const root = document.documentElement;
-
-    // Apply CSS custom properties
     Object.entries(colors).forEach(([key, value]) => {
       const cssVarName = `--theme-${key.replace(/([A-Z])/g, '-$1').toLowerCase()}`;
       root.style.setProperty(cssVarName, value);
     });
-
-    // Apply theme and mode classes
     document.body.className = document.body.className.replace(/theme-\w+|mode-\w+/g, '');
     document.body.classList.add(`theme-${this.currentTheme()}`, `mode-${this.currentMode()}`);
   }
