@@ -37,7 +37,7 @@ export class LoaderService {
 
   async simulateLoading(): Promise<void> {
     const steps = ['theme', 'assets', 'components', 'ready'];
-    
+
     for (const stepId of steps) {
       await new Promise(resolve => setTimeout(resolve, stepId === 'theme' ? 300 : 200));
       this.completeStep(stepId);

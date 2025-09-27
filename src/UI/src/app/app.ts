@@ -39,19 +39,19 @@ import { LoaderService } from './services/loader.service';
           <div class="w-24 h-24 mx-auto mb-8 rounded-2xl bg-gradient-to-br from-blue-500 via-cyan-500 to-blue-600 flex items-center justify-center shadow-2xl shadow-blue-500/25 animate-pulse">
             <img src="/logo_adel.png" alt="Logo" class="w-14 h-14 object-contain" />
           </div>
-          
+
           <!-- Loading Spinner and Text -->
           <div class="flex items-center justify-center gap-3 mb-6">
             <lucide-icon [img]="Loader2" class="w-6 h-6 text-blue-400 animate-spin" />
             <span class="text-white text-xl font-semibold">Loading Portfolio</span>
           </div>
-          
+
           <!-- Progress Bar -->
           <div class="w-full h-2 bg-slate-700 rounded-full overflow-hidden mx-auto mb-4">
             <div class="h-full bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full transition-all duration-500 ease-out"
                  [style.width.%]="loaderService.progress()"></div>
           </div>
-          
+
           <!-- Progress Text -->
           <div class="text-center space-y-2">
             <p class="text-slate-300 text-sm font-medium">{{ loaderService.progress() }}% Complete</p>
@@ -61,12 +61,12 @@ import { LoaderService } from './services/loader.service';
               </p>
             }
           </div>
-          
+
           <!-- Loading Steps -->
           <div class="mt-6 space-y-2">
             @for (step of loaderService.loadingSteps(); track step.id) {
               <div class="flex items-center gap-3 text-sm">
-                <div class="w-2 h-2 rounded-full transition-all duration-300" 
+                <div class="w-2 h-2 rounded-full transition-all duration-300"
                      [class]="step.completed ? 'bg-green-400' : 'bg-slate-600'">
                 </div>
                 <span [class]="step.completed ? 'text-green-400' : 'text-slate-400'">
@@ -86,12 +86,12 @@ import { LoaderService } from './services/loader.service';
     @if (!themeService.isLoading() && loaderService.isComplete()) {
       <div class="min-h-screen transition-all duration-500"
            [style.background]="themeService.getCurrentColors().background">
-        
+
         <!-- Background Gradient -->
         <div class="fixed inset-0 opacity-90 transition-all duration-500"
              [style.background]="themeService.getCurrentColors().gradient">
         </div>
-        
+
         <!-- Portfolio Components with fade-in animation -->
         <div class="relative z-10 animate-fade-in">
           <app-navbar></app-navbar>
@@ -122,11 +122,11 @@ import { LoaderService } from './services/loader.service';
         display: block;
         min-height: 100vh;
       }
-      
+
       .animate-fade-in {
         animation: fadeInUp 0.8s ease-out 0.2s both;
       }
-      
+
       @keyframes fadeInUp {
         from {
           opacity: 0;
@@ -137,7 +137,7 @@ import { LoaderService } from './services/loader.service';
           transform: translateY(0);
         }
       }
-      
+
       .theme-transition {
         transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
       }
@@ -147,7 +147,7 @@ import { LoaderService } from './services/loader.service';
 export class App {
   themeService = inject(ThemeService);
   loaderService = inject(LoaderService);
-  
+
   // Lucide icons
   readonly Loader2 = Loader2;
 

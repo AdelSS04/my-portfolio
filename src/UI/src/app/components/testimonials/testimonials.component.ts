@@ -242,7 +242,7 @@ export class TestimonialsComponent {
     // Effect to start auto-play
     effect(() => {
       this.startAutoPlay();
-      
+
       // Cleanup function
       return () => {
         this.stopAutoPlay();

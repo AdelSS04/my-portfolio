@@ -128,14 +128,14 @@ export class NavbarComponent {
     effect(() => {
       if (typeof window !== 'undefined') {
         this.checkActiveSection();
-        
+
         const handleScroll = () => {
           this.isScrolled.set(window.scrollY > 20);
           this.checkActiveSection();
         };
 
         window.addEventListener('scroll', handleScroll);
-        
+
         // Cleanup function
         return () => {
           window.removeEventListener('scroll', handleScroll);

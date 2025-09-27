@@ -166,7 +166,7 @@ export class ThemeService {
     effect(() => {
       this.applyTheme();
     });
-    
+
     this.initializeTheme();
   }
 
