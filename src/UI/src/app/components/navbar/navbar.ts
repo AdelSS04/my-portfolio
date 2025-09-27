@@ -15,8 +15,8 @@ interface NavLink {
   template: `
     <nav class="fixed top-0 w-full bg-[var(--theme-background-secondary)]/95 backdrop-blur-md z-50 border-b border-[var(--theme-border)]/20 transition-all duration-300"
       [class.shadow-lg]="isScrolled()">
-  <div class="container mx-auto px-6 py-4">
-    <div class="flex justify-between items-center">
+  <div class="container mx-auto px-6 py-3 md:py-4">
+    <div class="flex justify-between items-center min-h-[56px]">
       <div class="flex items-center gap-3">
         <div
           class="w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] flex items-center justify-center border border-[var(--theme-border)]/20 shadow-lg"
@@ -51,11 +51,11 @@ interface NavLink {
 
       <!-- Mobile menu button -->
       <button
-        class="md:hidden text-[var(--theme-text)] p-2 rounded-lg hover:bg-[var(--theme-surface)]/20 transition-all duration-300 border border-[var(--theme-border)]/20"
+        class="md:hidden text-[var(--theme-text)] p-2 rounded-lg hover:bg-[var(--theme-surface)]/20 transition-all duration-300 border border-[var(--theme-border)]/20 min-w-[44px] min-h-[44px] flex items-center justify-center"
         (click)="toggleMenu()"
         >
-        <lucide-icon 
-          [img]="mobileMenuOpen() ? X : Menu" 
+        <lucide-icon
+          [img]="mobileMenuOpen() ? X : Menu"
           class="w-6 h-6 transition-transform duration-300"
           [class.rotate-90]="mobileMenuOpen()"
         />
@@ -81,8 +81,10 @@ interface NavLink {
         }
 
         <!-- Mobile Theme Switcher -->
-        <div class="pt-4 border-t border-[var(--theme-border)]/20 px-4">
-          <app-theme-switcher></app-theme-switcher>
+        <div class="pt-4 border-t border-[var(--theme-border)]/20 px-4 pb-4">
+          <div class="flex justify-center min-h-[60px] items-center">
+            <app-theme-switcher></app-theme-switcher>
+          </div>
         </div>
       </div>
     </div>

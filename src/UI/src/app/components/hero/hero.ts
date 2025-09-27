@@ -86,7 +86,7 @@ export class HeroComponent {
   title = input.required<string>();
   subtitle = input.required<string>();
   profileImage = input<string>('');
-  
+
   // Lucide icon components
   readonly User = User;
   readonly GraduationCap = GraduationCap;

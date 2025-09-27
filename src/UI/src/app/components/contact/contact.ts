@@ -158,7 +158,7 @@ interface SocialLink {
 export class ContactComponent {
   contactForm: FormGroup;
   isSubmitting = signal(false);
-  
+
   // Lucide icon components
   readonly Mail = Mail;
   readonly MapPin = MapPin;
@@ -166,7 +166,7 @@ export class ContactComponent {
   readonly Github = Github;
   readonly Linkedin = Linkedin;
   readonly Loader2 = Loader2;
-  
+
   constructor(private http: HttpClient, private fb: FormBuilder) {
     this.contactForm = this.fb.group({
       name: ['', [Validators.required, Validators.minLength(2)]],

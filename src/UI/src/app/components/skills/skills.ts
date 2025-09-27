@@ -1,8 +1,8 @@
 // skills.component.ts
 import { Component } from '@angular/core';
-import { LucideAngularModule, 
-  Code, Globe, Database, Server, Cloud, 
-  Layers, Settings, GitBranch, Shield, 
+import { LucideAngularModule,
+  Code, Globe, Database, Server, Cloud,
+  Layers, Settings, GitBranch, Shield,
   Zap, Monitor, Cpu, Package, FileCode,
   Palette, Wrench, Boxes, Award
 } from 'lucide-angular';

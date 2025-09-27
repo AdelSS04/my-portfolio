@@ -58,7 +58,7 @@ interface Testimonial {
                       <!-- Rating Stars -->
                       <div class="flex justify-center mb-6">
                         @for (star of [1,2,3,4,5]; track star) {
-                          <lucide-icon 
+                          <lucide-icon
                             [img]="Star"
                             [class.text-yellow-400]="star <= testimonial.rating"
                             [class.text-gray-600]="star > testimonial.rating"

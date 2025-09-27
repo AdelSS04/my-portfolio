@@ -115,11 +115,11 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
 })
 export class ProjectCardComponent {
   @Input() project!: Project;
-  
+
   // Lucide icon components
   readonly ExternalLink = ExternalLink;
   readonly Github = Github;
-  
+
   handleImageError(event: any): void {
       event.target.style.display = 'none';
     }

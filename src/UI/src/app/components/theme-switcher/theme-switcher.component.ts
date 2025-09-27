@@ -25,11 +25,10 @@ import { LucideAngularModule, ChevronDown, X, Check, Waves, Trees, Sun, Palette,
 
       <!-- Dropdown Menu -->
       <div
-        class="fixed sm:absolute top-16 sm:top-full left-4 right-4 sm:right-0 sm:left-auto mt-2 w-auto sm:w-80 lg:w-96 max-w-none sm:max-w-[90vw] bg-[var(--theme-surface)] border border-[var(--theme-border)]/20 rounded-xl shadow-2xl backdrop-blur-md transition-all duration-300 z-[60]"
+        class="fixed inset-x-4 top-1/2 -translate-y-1/2 sm:absolute sm:inset-x-auto sm:top-full sm:right-0 sm:left-auto sm:translate-y-0 mt-0 sm:mt-2 w-auto sm:w-80 lg:w-96 max-w-none sm:max-w-[90vw] bg-[var(--theme-surface)] border border-[var(--theme-border)]/20 rounded-xl shadow-2xl backdrop-blur-md transition-all duration-300 z-[100]"
         [class.opacity-0]="!isDropdownOpen()"
         [class.pointer-events-none]="!isDropdownOpen()"
         [class.scale-95]="!isDropdownOpen()"
-        [class.translate-y-[-10px]]="!isDropdownOpen()"
       >
         <div class="p-4 sm:p-5 lg:p-6">
           <!-- Header -->
@@ -140,7 +139,7 @@ import { LucideAngularModule, ChevronDown, X, Check, Waves, Trees, Sun, Palette,
     <!-- Backdrop -->
     @if (isDropdownOpen()) {
       <div
-        class="fixed inset-0 bg-black/20 backdrop-blur-sm z-[50]"
+        class="fixed inset-0 bg-black/20 backdrop-blur-sm z-[90]"
         (click)="closeDropdown()"
       ></div>
     }
@@ -148,7 +147,7 @@ import { LucideAngularModule, ChevronDown, X, Check, Waves, Trees, Sun, Palette,
   styles: [`
     :host {
       position: relative;
-      z-index: 60;
+      z-index: 100;
     }
   `]
 })
