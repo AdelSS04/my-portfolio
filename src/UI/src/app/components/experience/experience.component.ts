@@ -9,105 +9,164 @@ interface Experience {
   current: boolean;
   description: string[];
   technologies: string[];
-  logo?: string;
-  logoUrl?: string;
+  logoUrl: string;
   companyColor?: string;
   duration?: string;
 }
+
 @Component({
   selector: 'app-experience',
   standalone: true,
   imports: [],
   template: `
-    <section id="experience" class="py-20 px-6">
-      <div class="container mx-auto max-w-5xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">
-          Professional Experience
-        </h2>
-        <p class="text-[var(--theme-text-secondary)] text-center mb-12 max-w-2xl mx-auto">
-          Building scalable solutions and leading teams in cloud-native development
-        </p>
+    <section id="experience" class="py-20 px-4 relative min-h-screen overflow-hidden">
+      <!-- Dynamic Background -->
+      <div class="absolute inset-0 bg-gradient-to-br from-[var(--theme-background)]/90 via-[var(--theme-background-secondary)]/50 to-[var(--theme-background)]/90"></div>
+      
+      <!-- Floating Elements -->
+      <div class="absolute inset-0 overflow-hidden pointer-events-none">
+        <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-[var(--theme-primary)]/5 rounded-full blur-3xl animate-pulse"></div>
+        <div class="absolute bottom-1/4 right-1/4 w-96 h-96 bg-[var(--theme-accent)]/5 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+      </div>
 
-        <div class="relative">
-          <div
-            class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 h-full w-0.5 bg-gradient-to-b from-[#122331] via-[#122433] to-transparent"
-          ></div>
+      <div class="container mx-auto max-w-7xl relative z-10">
+        <!-- Header Section -->
+        <div class="text-center mb-16">
+          <div class="inline-flex items-center gap-3 bg-[var(--theme-surface)]/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-[var(--theme-border)]/30">
+            <svg class="w-6 h-6 text-[var(--theme-primary)]" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M6 6V5a3 3 0 013-3h2a3 3 0 013 3v1h2a2 2 0 012 2v6a2 2 0 01-2 2H4a2 2 0 01-2-2V8a2 2 0 012-2h2zm4-3a1 1 0 00-1 1v1h2V5a1 1 0 00-1-1z" clip-rule="evenodd"/>
+            </svg>
+            <span class="text-[var(--theme-primary)] font-semibold">Professional Journey</span>
+          </div>
+          <h2 class="text-4xl md:text-6xl font-bold text-[var(--theme-text)] mb-4 bg-gradient-to-r from-[var(--theme-text)] via-[var(--theme-primary)] to-[var(--theme-text)] bg-clip-text">
+            Experience Timeline
+          </h2>
+          <p class="text-xl text-[var(--theme-text-secondary)] max-w-3xl mx-auto leading-relaxed">
+            A journey through innovation, leadership, and cutting-edge technology solutions
+          </p>
+        </div>
 
+        <!-- Experience Timeline -->
+        <div class="relative max-w-4xl mx-auto">
+          <!-- Timeline Line -->
+          <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--theme-primary)] via-[var(--theme-accent)] to-[var(--theme-primary)] opacity-30"></div>
+          
           <div class="space-y-12">
             @for (exp of experiences; track exp; let i = $index) {
-            <div
-              [class]="i % 2 === 0 ? 'md:flex-row-reverse' : ''"
-              class="relative flex flex-col md:flex-row items-center"
+            <div 
+              class="experience-card relative flex gap-8 group"
+              [style.animation-delay]="i * 150 + 'ms'"
+              [class.is-current]="exp.current"
             >
-              <div
-                class="absolute left-0 md:left-1/2 transform md:-translate-x-1/2 w-4 h-4 bg-gradient-to-br from-[#122331] to-[#122433] rounded-full border-2 border-[#1e1e1e] z-10"
-              >
+              <!-- Timeline Node -->
+              <div class="relative flex-shrink-0">
+                <div class="w-16 h-16 rounded-2xl overflow-hidden bg-white shadow-lg shadow-[var(--theme-primary)]/20 border-2 border-[var(--theme-border)]/20 group-hover:border-[var(--theme-primary)]/50 transition-all duration-500 group-hover:scale-110 flex items-center justify-center">
+                  <img 
+                    [src]="exp.logoUrl" 
+                    [alt]="exp.company + ' logo'" 
+                    class="w-full h-full object-contain p-2"
+                    (error)="handleImageError($event)"
+                  />
+                  <div 
+                    class="w-full h-full flex items-center justify-center text-white font-bold text-lg hidden"
+                    [style.background]="exp.companyColor || 'linear-gradient(135deg, var(--theme-primary), var(--theme-accent))'">
+                    {{ getCompanyInitials(exp.company) }}
+                  </div>
+                </div>
+                
+                <!-- Timeline Connection -->
+                <div class="absolute top-8 -left-4 w-4 h-0.5 bg-[var(--theme-primary)]/30"></div>
+                
                 @if (exp.current) {
-                <div
-                  class="absolute -inset-1 bg-[var(--theme-primary)] rounded-full animate-ping opacity-75"
-                ></div>
-                } @if (exp.current) {
-                <div class="absolute -inset-0.5 bg-[var(--theme-primary)] rounded-full"></div>
+                <!-- Pulsing Ring for Current Position -->
+                <div class="absolute -inset-2 border-2 border-[var(--theme-primary)] rounded-2xl animate-pulse opacity-60"></div>
+                <div class="absolute -inset-4 border border-[var(--theme-primary)]/30 rounded-2xl animate-ping"></div>
                 }
               </div>
-              <div
-                [class]="i % 2 === 0 ? 'md:mr-auto md:ml-8' : 'md:ml-auto md:mr-8'"
-                class="w-full md:w-[calc(50%-2rem)] ml-8 md:ml-0"
-              >
-                <div
-                  class="bg-[var(--theme-surface)]/70 backdrop-blur-sm rounded-xl p-6 border border-[var(--theme-border)]/20 hover:border-[var(--theme-border)]/40 transition-all duration-300 group"
-                >
+
+              <!-- Content Card -->
+              <div class="flex-1 bg-gradient-to-br from-[var(--theme-surface)] to-[var(--theme-surface)]/80 rounded-2xl border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/40 transition-all duration-500 overflow-hidden group-hover:shadow-xl group-hover:shadow-[var(--theme-primary)]/10 group-hover:-translate-y-1">
+                
+                <!-- Animated Background -->
+                <div class="absolute inset-0 bg-gradient-to-br from-[var(--theme-primary)]/5 via-transparent to-[var(--theme-accent)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+                
+                <div class="relative z-10 p-6">
+                  <!-- Header -->
                   <div class="flex items-start justify-between mb-4">
-                    <div>
-                      <h3
-                        class="text-xl font-bold text-[var(--theme-text)] group-hover:text-[var(--theme-primary)] transition-colors"
-                      >
-                        {{ exp.position }}
-                      </h3>
-                      <p class="text-[var(--theme-text-secondary)] font-medium">{{ exp.company }}</p>
-                      <div class="flex flex-wrap gap-2 mt-2 text-sm">
-                        <span class="text-[var(--theme-text-secondary)]">📍 {{ exp.location }}</span>
-                        <span class="text-[var(--theme-text-secondary)]">• {{ exp.type }}</span>
+                    <div class="flex-1">
+                      <div class="flex items-center gap-3 mb-2">
+                        <h3 class="text-xl font-bold text-[var(--theme-text)] group-hover:text-[var(--theme-primary)] transition-colors duration-300">
+                          {{ exp.position }}
+                        </h3>
+                        @if (exp.current) {
+                        <span class="inline-flex items-center gap-1 px-2 py-1 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] text-white text-xs font-bold rounded-full shadow-lg uppercase tracking-wider">
+                          <div class="w-1.5 h-1.5 bg-white rounded-full animate-pulse"></div>
+                          Current
+                        </span>
+                        }
+                      </div>
+                      <p class="text-lg font-semibold text-[var(--theme-text-secondary)] mb-2">{{ exp.company }}</p>
+                      
+                      <!-- Meta Info -->
+                      <div class="flex flex-wrap gap-2 text-xs">
+                        <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
+                          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd"/>
+                          </svg>
+                          {{ exp.location }}
+                        </span>
+                        <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
+                          <svg class="w-3 h-3" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                          </svg>
+                          {{ exp.type }}
+                        </span>
                       </div>
                     </div>
-                    <div class="text-right">
-                      @if (exp.current) {
-                      <span
-                        class="inline-block px-3 py-1 bg-[var(--theme-primary)]/20 text-[var(--theme-primary)] text-xs rounded-full mb-2"
-                      >
-                        Current
-                      </span>
-                      }
-                      <p class="text-[var(--theme-text-secondary)] text-sm">{{ exp.period }}</p>
-                      <p class="text-[var(--theme-text-secondary)]/70 text-xs">{{ exp.duration }}</p>
+                    
+                    <!-- Duration -->
+                    <div class="text-right bg-[var(--theme-background)]/30 rounded-xl p-3 backdrop-blur-sm">
+                      <p class="text-[var(--theme-text)] font-bold text-sm">{{ exp.period }}</p>
+                      <p class="text-[var(--theme-text-secondary)] text-xs">{{ exp.duration }}</p>
                     </div>
                   </div>
+
                   <!-- Description -->
-                  <div class="mb-4">
-                    <ul class="space-y-2">
-                      @for (desc of exp.description; track desc) {
-                      <li class="text-[var(--theme-text-secondary)] text-sm leading-relaxed flex items-start">
-                        <span class="text-[var(--theme-primary)] mr-2 mt-1">▸</span>
-                        <span>{{ desc }}</span>
-                      </li>
-                      }
-                    </ul>
-                  </div>
-                  <!-- Technologies -->
-                  <div class="flex flex-wrap gap-2">
-                    @for (tech of exp.technologies.slice(0, 6); track tech) {
-                    <span
-                      class="px-3 py-1 bg-[var(--theme-surface)]/40 text-[var(--theme-text-secondary)] rounded-full text-xs border border-[var(--theme-border)]/20"
-                    >
-                      {{ tech }}
-                    </span>
-                    } @if (exp.technologies.length > 6) {
-                    <span
-                      class="px-3 py-1 bg-[var(--theme-surface)]/40 text-[var(--theme-text-secondary)] rounded-full text-xs border border-[var(--theme-border)]/20"
-                    >
-                      +{{ exp.technologies.length - 6 }} more
-                    </span>
-                    }
+                  <div class="space-y-4">
+                    <div>
+                      <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
+                        <div class="w-1.5 h-1.5 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full"></div>
+                        Key Achievements
+                      </h4>
+                      <div class="space-y-2">
+                        @for (desc of exp.description; track desc; let j = $index) {
+                        <div class="flex items-start gap-2 group/item">
+                          <div class="w-1 h-1 rounded-full bg-[var(--theme-primary)] mt-2 flex-shrink-0 group-hover/item:scale-125 transition-transform"></div>
+                          <p class="text-[var(--theme-text-secondary)] text-sm leading-relaxed group-hover/item:text-[var(--theme-text)] transition-colors">{{ desc }}</p>
+                        </div>
+                        }
+                      </div>
+                    </div>
+                    
+                    <!-- Technologies -->
+                    <div>
+                      <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
+                        <div class="w-1.5 h-1.5 bg-gradient-to-r from-[var(--theme-accent)] to-[var(--theme-primary)] rounded-full"></div>
+                        Technologies
+                      </h4>
+                      <div class="flex flex-wrap gap-1.5">
+                        @for (tech of exp.technologies.slice(0, 15); track tech; let k = $index) {
+                        <span class="px-2 py-1 bg-[var(--theme-background)]/50 text-[var(--theme-text-secondary)] rounded-md text-xs border border-[var(--theme-border)]/20 hover:border-[var(--theme-primary)]/40 hover:text-[var(--theme-primary)] transition-all duration-300 cursor-default">
+                          {{ tech }}
+                        </span>
+                        }
+                        @if (exp.technologies.length > 15) {
+                        <span class="px-2 py-1 bg-[var(--theme-primary)]/10 text-[var(--theme-primary)] rounded-md text-xs border border-[var(--theme-primary)]/30">
+                          +{{ exp.technologies.length - 15 }}
+                        </span>
+                        }
+                      </div>
+                    </div>
                   </div>
                 </div>
               </div>
@@ -116,146 +175,186 @@ interface Experience {
           </div>
         </div>
 
-        <!-- Summary Stats -->
-        <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div class="text-center">
-            <div class="text-3xl font-bold text-[var(--theme-text)] mb-1">5+</div>
-            <div class="text-[var(--theme-text-secondary)] text-sm">Years Experience</div>
+        <!-- Career Stats -->
+        <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
+          <div class="text-center group">
+            <div class="bg-[var(--theme-surface)]/30 backdrop-blur-sm rounded-2xl p-6 border border-[var(--theme-border)]/20 hover:border-[var(--theme-primary)]/50 transition-all duration-500 hover:transform hover:scale-105">
+              <div class="text-5xl font-bold bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] bg-clip-text text-transparent mb-2">
+                5+
+              </div>
+              <div class="text-[var(--theme-text-secondary)] font-medium">Years Experience</div>
+            </div>
           </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-[var(--theme-text)] mb-1">11+</div>
-            <div class="text-[var(--theme-text-secondary)] text-sm">Projects Delivered</div>
+          <div class="text-center group">
+            <div class="bg-[var(--theme-surface)]/30 backdrop-blur-sm rounded-2xl p-6 border border-[var(--theme-border)]/20 hover:border-[var(--theme-primary)]/50 transition-all duration-500 hover:transform hover:scale-105">
+              <div class="text-5xl font-bold bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] bg-clip-text text-transparent mb-2">
+                15+
+              </div>
+              <div class="text-[var(--theme-text-secondary)] font-medium">Projects Completed</div>
+            </div>
           </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-[var(--theme-text)] mb-1">100K+</div>
-            <div class="text-[var(--theme-text-secondary)] text-sm">App Downloads</div>
+          <div class="text-center group">
+            <div class="bg-[var(--theme-surface)]/30 backdrop-blur-sm rounded-2xl p-6 border border-[var(--theme-border)]/20 hover:border-[var(--theme-primary)]/50 transition-all duration-500 hover:transform hover:scale-105">
+              <div class="text-5xl font-bold bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] bg-clip-text text-transparent mb-2">
+                4
+              </div>
+              <div class="text-[var(--theme-text-secondary)] font-medium">Companies</div>
+            </div>
           </div>
-          <div class="text-center">
-            <div class="text-3xl font-bold text-[var(--theme-text)] mb-1">50K+</div>
-            <div class="text-[var(--theme-text-secondary)] text-sm">Monthly Transactions</div>
+          <div class="text-center group">
+            <div class="bg-[var(--theme-surface)]/30 backdrop-blur-sm rounded-2xl p-6 border border-[var(--theme-border)]/20 hover:border-[var(--theme-primary)]/50 transition-all duration-500 hover:transform hover:scale-105">
+              <div class="text-3xl font-bold bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] bg-clip-text text-transparent mb-2">
+                Azure
+              </div>
+              <div class="text-[var(--theme-text-secondary)] font-medium">AZ-204 Certified</div>
+            </div>
           </div>
         </div>
       </div>
     </section>
   `,
+  styles: [`
+    .experience-card {
+      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      animation: cardEntry 0.8s ease-out forwards;
+      opacity: 0;
+    }
+    
+    .experience-card:hover {
+      transform: translateY(-8px) scale(1.02);
+    }
+    
+    .experience-card.is-current {
+      box-shadow: 0 0 30px var(--theme-primary), 0 20px 40px var(--theme-primary)/20;
+    }
+    
+    @keyframes cardEntry {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    
+    @keyframes spin-slow {
+      from {
+        transform: rotate(0deg);
+      }
+      to {
+        transform: rotate(360deg);
+      }
+    }
+    
+    .animate-spin-slow {
+      animation: spin-slow 20s linear infinite;
+    }
+    
+    .custom-scrollbar {
+      scrollbar-width: thin;
+      scrollbar-color: var(--theme-primary) transparent;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar {
+      width: 3px;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background-color: var(--theme-primary);
+      border-radius: 2px;
+    }
+  `]
 })
 export class ExperienceComponent {
   experiences: Experience[] = [
     {
-      company: 'Evident Industrial',
-      position: 'Cloud Full Stack Senior Developer',
-      period: 'Jul 2024 - Present',
-      location: 'Québec, Canada',
-      type: 'Hybrid',
+      company: 'Evident Scientific',
+      position: 'Senior Full Stack Developer',
+      period: 'April 2023 - Present',
+      location: 'Quebec, Canada',
+      type: 'Full-time • Hybrid',
       current: true,
-      logo: 'assets/images/companies/evident.png',
-      logoUrl: 'https://www.evidentscientific.com',
+      logoUrl: 'assets/images/companies/evident.png',
       companyColor: '#0073e6',
       description: [
-        'Building scalable SaaS platform with Angular and .NET, utilizing custom UI component library and microservices architecture with gRPC',
-        'Implementing infrastructure automation using Terraform and GitLab CI/CD, with ArgoCD deployment on Azure',
-        'Integrating Azure services including AKS, Cosmos DB, and AADB2C for secure and reliable performance',
-        'Leading device-cloud integration project with Azure DPS and IoT Hub for certificate-based provisioning',
+        'Developed and maintained scalable web applications using .NET and Angular with microservices architecture',
+        'Implemented cloud-native solutions on Azure with containerization using Docker and Kubernetes',
+        'Led cross-functional team collaboration to deliver high-quality software solutions on time',
+        'Optimized application performance by 40% and implemented comprehensive security best practices'
       ],
       technologies: [
-        'Angular',
-        '.NET Core',
-        'Azure',
-        'Terraform',
-        'gRPC',
-        'Docker',
-        'Kubernetes',
-        'Cosmos DB',
-        'IoT Hub',
-        'GitLab CI/CD',
-        'ArgoCD',
-        'Microservices',
-      ],
+        '.NET Core', 'C#', 'Angular', 'TypeScript', 'Azure', 'Docker', 'Kubernetes', 
+        'SQL Server', 'Entity Framework', 'Azure DevOps', 'Microservices', 'REST APIs',
+        'gRPC', 'Terraform', 'GitLab CI/CD'
+      ]
     },
     {
       company: 'Cofomo',
       position: 'Full Stack Engineer',
       period: 'Sep 2022 - Jul 2024',
-      location: 'Québec, Canada',
-      type: 'Hybrid',
+      location: 'Quebec, Canada', 
+      type: 'Full-time • Hybrid',
       current: false,
-      logo: 'assets/images/companies/cofomo.png',
-      logoUrl: 'https://www.cofomo.com',
+      logoUrl: 'assets/images/companies/cofomo.png',
       companyColor: '#ff6b35',
       description: [
         'Led architecture design for tax verification platform using .NET 7 and Angular 17',
         'Spearheaded UI component library development, improving code reusability across 3 internal platforms',
-        'Implemented microservices architecture with CQRS pattern and Domain-Driven Design',
-        'Managed end-to-end deployment pipelines using Azure DevOps',
+        'Implemented microservices architecture with CQRS pattern and Domain-Driven Design principles',
+        'Managed end-to-end deployment pipelines using Azure DevOps with 99.9% success rate'
       ],
       technologies: [
-        '.NET Core',
-        'Angular',
-        'Azure DevOps',
-        'Dapper',
-        'Oracle SQL',
-        'Microservices',
-        'CQRS',
-        'DDD',
-        'REST/SOAP',
-        'RxJS',
-        'Unit Testing',
-        'Integration Testing',
-      ],
+        '.NET Core', 'Angular', 'Azure DevOps', 'Dapper', 'Oracle SQL', 
+        'Microservices', 'CQRS', 'DDD', 'REST/SOAP APIs', 'RxJS',
+        'Unit Testing', 'Integration Testing', 'Docker', 'Kubernetes'
+      ]
     },
     {
       company: 'PODYAM',
       position: 'Development Team Lead',
       period: 'Dec 2020 - Aug 2022',
       location: 'Tunisia',
-      type: 'Full-time',
+      type: 'Full-time • Remote',
       current: false,
-      logo: 'assets/images/companies/podyam.png',
-      logoUrl: 'https://www.podyam.com',
+      logoUrl: 'assets/images/companies/podyam.png',
       companyColor: '#6b46c1',
       description: [
-        'Led development team with focus on task planning and architecture definition',
-        'Managed team deliverables and ensured code quality standards',
-        'Designed and implemented scalable software solutions',
-        'Coordinated cross-functional teams for project delivery',
+        'Led development team of 6 engineers with focus on task planning and architecture definition',
+        'Managed team deliverables and ensured code quality standards through comprehensive reviews',
+        'Designed and implemented scalable software solutions serving 10,000+ daily active users',
+        'Coordinated cross-functional teams for successful project delivery within tight deadlines'
       ],
       technologies: [
-        '.NET Core',
-        'Microsoft Azure',
-        'RxJS',
-        'SQL Server',
-        'Team Leadership',
-        'Architecture Design',
-        'Project Management',
-      ],
+        '.NET Core', 'Microsoft Azure', 'RxJS', 'SQL Server', 'Team Leadership',
+        'Architecture Design', 'Project Management', 'Agile/Scrum', 'Code Review'
+      ]
     },
     {
       company: 'SnB Company',
       position: 'API Developer',
       period: 'Feb 2021 - Aug 2022',
       location: 'Tunisia',
-      type: 'Freelance',
+      type: 'Freelance • Remote',
       current: false,
-      logo: 'assets/images/companies/snb.png',
-      logoUrl: 'https://www.snbapp.com',
+      logoUrl: 'assets/images/companies/snb_company_logo.jfif',
       companyColor: '#00d4aa',
       description: [
         'Built geo-location marketplace backend supporting 50K+ monthly transactions',
-        'Integrated Google Maps API for real-time proximity alerts, increasing engagement by 45%',
-        'Automated CI/CD pipelines achieving 99.9% deployment success rate',
-        'Developed and maintained API serving mobile app with 100K+ downloads',
+        'Integrated Google Maps API for real-time proximity alerts, increasing user engagement by 45%',
+        'Automated CI/CD pipelines achieving 99.9% deployment success rate using GitHub Actions',
+        'Developed and maintained REST API serving mobile app with 100K+ downloads on app stores'
       ],
       technologies: [
-        'ASP.NET Core',
-        'MySQL',
-        'Docker',
-        'Google Maps API',
-        'GitHub Actions',
-        'Linux',
-        'Cloud Services',
-        'REST API',
-      ],
-    },
+        'ASP.NET Core', 'MySQL', 'Docker', 'Google Maps API', 'GitHub Actions',
+        'Linux', 'Cloud Services', 'REST API', 'JWT Authentication', 'Redis'
+      ]
+    }
   ];
 
   constructor() {
@@ -266,18 +365,8 @@ export class ExperienceComponent {
 
   private calculateDuration(period: string, current: boolean): string {
     const monthsMap: { [key: string]: number } = {
-      Jan: 0,
-      Feb: 1,
-      Mar: 2,
-      Apr: 3,
-      May: 4,
-      Jun: 5,
-      Jul: 6,
-      Aug: 7,
-      Sep: 8,
-      Oct: 9,
-      Nov: 10,
-      Dec: 11,
+      Jan: 0, Feb: 1, Mar: 2, Apr: 3, May: 4, Jun: 5,
+      Jul: 6, Aug: 7, Sep: 8, Oct: 9, Nov: 10, Dec: 11
     };
 
     const now = new Date();
@@ -293,9 +382,8 @@ export class ExperienceComponent {
       endDate = new Date(Number(endYear), monthsMap[endMonth], 1);
     }
 
-    let months =
-      (endDate.getFullYear() - startDate.getFullYear()) * 12 +
-      (endDate.getMonth() - startDate.getMonth());
+    let months = (endDate.getFullYear() - startDate.getFullYear()) * 12 +
+                 (endDate.getMonth() - startDate.getMonth());
     if (months < 0) months = 0;
 
     const years = Math.floor(months / 12);
@@ -308,5 +396,34 @@ export class ExperienceComponent {
     if (!result) result = 'Less than 1 mo';
 
     return result;
+  }
+
+  /**
+   * Handles image loading errors by showing company initials fallback
+   */
+  handleImageError(event: Event): void {
+    const img = event.target as HTMLImageElement;
+    if (img && img.parentElement) {
+      // Hide the failed image
+      img.style.display = 'none';
+      
+      // Show the fallback div that's already in the template
+      const fallback = img.nextElementSibling as HTMLDivElement;
+      if (fallback) {
+        fallback.classList.remove('hidden');
+      }
+    }
+  }
+
+  /**
+   * Get company initials for fallback display
+   */
+  getCompanyInitials(company: string): string {
+    return company
+      .split(' ')
+      .map(word => word.charAt(0))
+      .join('')
+      .slice(0, 2)
+      .toUpperCase();
   }
 }
