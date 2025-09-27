@@ -19,7 +19,7 @@ interface Testimonial {
   imports: [LucideAngularModule],
   template: `
     <section id="testimonials" class="py-20 px-6 relative overflow-hidden">
-      
+
       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--theme-background-secondary)]/20 to-transparent"></div>
 
       <div class="container mx-auto max-w-6xl relative z-10">
@@ -28,9 +28,9 @@ interface Testimonial {
           What colleagues and clients say about working with me
         </p>
 
-        
+
         <div class="relative">
-          
+
           <div class="overflow-hidden rounded-2xl"
             (touchstart)="onTouchStart($event)"
             (touchmove)="onTouchMove($event)"
@@ -40,20 +40,20 @@ interface Testimonial {
             <div class="flex transition-transform duration-500 ease-in-out"
               [style.transform]="'translateX(-' + (currentIndex() * 100) + '%)'">
 
-              
+
               @for (testimonial of testimonials; track testimonial) {
                 <div
                   class="w-full flex-shrink-0 px-4">
                   <div class="bg-[var(--theme-surface)]/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-[var(--theme-border)]/20 hover:border-[var(--theme-border)]/30 transition-all duration-300">
-                    
+
                     <div class="flex justify-center mb-6">
                       <div class="w-16 h-16 bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full flex items-center justify-center">
                         <lucide-icon [img]="Quote" class="w-8 h-8 text-white/80" />
                       </div>
                     </div>
-                    
+
                     <div class="max-w-3xl mx-auto text-center">
-                      
+
                       <div class="flex justify-center mb-6">
                         @for (star of [1,2,3,4,5]; track star) {
                           <lucide-icon
@@ -65,13 +65,13 @@ interface Testimonial {
                           </lucide-icon>
                         }
                       </div>
-                      
+
                       <p class="text-[var(--theme-text-secondary)] text-lg md:text-xl leading-relaxed mb-8 italic">
                         "{{testimonial.text}}"
                       </p>
-                      
+
                       <div class="flex flex-col items-center">
-                        
+
                         <div class="w-20 h-20 rounded-full bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] flex items-center justify-center mb-4 border-2 border-[var(--theme-border)]/30">
                           @if (!testimonial.image) {
                             <span class="text-2xl text-white font-bold">
@@ -85,13 +85,13 @@ interface Testimonial {
                               class="w-full h-full rounded-full object-cover">
                           }
                         </div>
-                        
+
                         <div>
                           <h4 class="text-[var(--theme-text)] font-semibold text-lg">{{testimonial.name}}</h4>
                           <p class="text-[var(--theme-text-secondary)] text-sm">{{testimonial.position}}</p>
                           <p class="text-[var(--theme-text-secondary)]/70 text-sm">{{testimonial.company}}</p>
                           <p class="text-[var(--theme-text-secondary)]/50 text-xs mt-2">{{testimonial.date}}</p>
-                          
+
                           @if (testimonial.linkedIn) {
                             <a
                               [href]="testimonial.linkedIn"
@@ -113,7 +113,7 @@ interface Testimonial {
             </div>
           </div>
 
-          
+
           <button
             (click)="prevSlide()"
             class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-[var(--theme-surface)]/60 hover:bg-[var(--theme-surface)]/80 rounded-full flex items-center justify-center text-[var(--theme-text)] transition-all duration-300 backdrop-blur-sm border border-[var(--theme-border)]/30 hover:scale-110 active:scale-95 hover:border-[var(--theme-primary)]/50"
@@ -130,7 +130,7 @@ interface Testimonial {
             <lucide-icon [img]="ChevronRight" class="w-6 h-6" />
           </button>
 
-          
+
           <div class="flex justify-center gap-2 mt-8">
             @for (testimonial of testimonials; track testimonial; let i = $index) {
               <button
@@ -146,7 +146,7 @@ interface Testimonial {
           </div>
         </div>
 
-        
+
         <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div class="text-center">
             <div class="text-2xl font-bold text-[var(--theme-text)] mb-1">{{testimonials.length}}+</div>
@@ -217,7 +217,7 @@ export class TestimonialsComponent {
       rating: 5,
       text: 'I have studied with Adel for two years. He\'s a very talented student. He\'s ambitious and diligent. Not only is he always willing to learn a new skill but also dedicated to mastering it. He is also compassionate and very helpful. He always gives of his time whenever in need.',
       date: 'May 2019',
-      linkedIn: 'https:
+      linkedIn: 'https://www.linkedin.com/in/mariemgharsallah/'
     },
     {
       id: 2,
@@ -227,7 +227,7 @@ export class TestimonialsComponent {
       rating: 5,
       text: 'I worked with Adel in several project, and I found him to be a hard worker, passionate and determined software engineer. I recommend him for any software engineering related position.',
       date: 'June 2024',
-      linkedIn: 'https:
+      linkedIn: 'https://www.linkedin.com/in/arsslen-idadi/'
     }
   ];
 

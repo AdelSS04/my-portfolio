@@ -20,17 +20,17 @@ interface Education {
   imports: [LucideAngularModule],
   template: `
     <section id="education" class="py-20 px-4 relative min-h-screen overflow-hidden">
-      
+
       <div class="absolute inset-0 bg-gradient-to-br from-[var(--theme-background)]/90 via-[var(--theme-background-secondary)]/50 to-[var(--theme-background)]/90"></div>
 
-      
+
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <div class="absolute top-1/4 right-1/4 w-64 h-64 bg-[var(--theme-accent)]/5 rounded-full blur-3xl animate-pulse"></div>
         <div class="absolute bottom-1/4 left-1/4 w-96 h-96 bg-[var(--theme-primary)]/5 rounded-full blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
       </div>
 
       <div class="container mx-auto max-w-7xl relative z-10">
-        
+
         <div class="text-center mb-16">
           <div class="inline-flex items-center gap-3 bg-[var(--theme-surface)]/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-[var(--theme-border)]/30">
             <lucide-icon [img]="GraduationCap" class="w-6 h-6 text-[var(--theme-primary)]"></lucide-icon>
@@ -44,9 +44,9 @@ interface Education {
           </p>
         </div>
 
-        
+
         <div class="relative max-w-4xl mx-auto">
-          
+
           <div class="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--theme-accent)] via-[var(--theme-primary)] to-[var(--theme-accent)] opacity-30"></div>
 
           <div class="space-y-8 md:space-y-12">
@@ -55,13 +55,13 @@ interface Education {
               class="education-card relative group"
               [style.animation-delay]="i * 150 + 'ms'"
             >
-              
+
               <div class="md:hidden bg-gradient-to-br from-[var(--theme-surface)] to-[var(--theme-surface)]/80 rounded-2xl border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/40 transition-all duration-500 overflow-hidden group-hover:shadow-xl group-hover:shadow-[var(--theme-primary)]/10 group-hover:-translate-y-1">
-                
+
                 <div class="absolute inset-0 bg-gradient-to-br from-[var(--theme-primary)]/5 via-transparent to-[var(--theme-accent)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                 <div class="relative z-10 p-6">
-                  
+
                   <div class="flex items-start gap-4 mb-4">
                     <div class="w-16 h-16 rounded-2xl overflow-hidden bg-white shadow-lg shadow-[var(--theme-primary)]/20 border-2 border-[var(--theme-border)]/20 group-hover:border-[var(--theme-primary)]/50 transition-all duration-500 group-hover:scale-110 flex items-center justify-center flex-shrink-0">
                       <img
@@ -82,7 +82,7 @@ interface Education {
                         <h3 class="text-lg font-bold text-[var(--theme-text)] group-hover:text-[var(--theme-primary)] transition-colors duration-300">
                           {{ edu.degree }}
                         </h3>
-                        
+
                         <div class="w-6 h-6 rounded-full flex items-center justify-center text-xs"
                              [class]="getTypeClasses(edu.type)">
                           {{ getTypeIcon(edu.type) }}
@@ -93,7 +93,7 @@ interface Education {
                     </div>
                   </div>
 
-                  
+
                   <div class="flex flex-wrap gap-2 text-xs mb-4">
                     <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
                       <lucide-icon [img]="MapPin" class="w-3 h-3"></lucide-icon>
@@ -105,7 +105,7 @@ interface Education {
                     </span>
                   </div>
 
-                  
+
                   <div class="space-y-3">
                     <div>
                       <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
@@ -127,7 +127,7 @@ interface Education {
                       </div>
                     </div>
 
-                    
+
                     @if (edu.achievements && edu.achievements.length > 0) {
                     <div>
                       <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
@@ -147,9 +147,9 @@ interface Education {
                 </div>
               </div>
 
-              
+
               <div class="hidden md:flex gap-8">
-                
+
                 <div class="relative flex-shrink-0">
                   <div class="w-16 h-16 rounded-2xl overflow-hidden bg-white shadow-lg shadow-[var(--theme-primary)]/20 border-2 border-[var(--theme-border)]/20 group-hover:border-[var(--theme-primary)]/50 transition-all duration-500 group-hover:scale-110 flex items-center justify-center">
                     <img
@@ -165,23 +165,23 @@ interface Education {
                     </div>
                   </div>
 
-                  
+
                   <div class="absolute top-8 -left-4 w-4 h-0.5 bg-[var(--theme-primary)]/30"></div>
 
-                  
+
                   <div class="absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center text-xs"
                        [class]="getTypeClasses(edu.type)">
                     {{ getTypeIcon(edu.type) }}
                   </div>
                 </div>
 
-                
+
                 <div class="flex-1 bg-gradient-to-br from-[var(--theme-surface)] to-[var(--theme-surface)]/80 rounded-2xl border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/40 transition-all duration-500 overflow-hidden group-hover:shadow-xl group-hover:shadow-[var(--theme-primary)]/10 group-hover:-translate-y-1">
-                  
+
                   <div class="absolute inset-0 bg-gradient-to-br from-[var(--theme-primary)]/5 via-transparent to-[var(--theme-accent)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
                   <div class="relative z-10 p-6">
-                    
+
                     <div class="flex items-start justify-between mb-4">
                       <div class="flex-1">
                         <div class="flex items-center gap-3 mb-2">
@@ -192,7 +192,7 @@ interface Education {
                         <p class="text-lg font-semibold text-[var(--theme-text-secondary)] mb-2">{{ edu.school }}</p>
                         <p class="text-[var(--theme-primary)] font-medium mb-2">{{ edu.field }}</p>
 
-                        
+
                         <div class="flex flex-wrap gap-2 text-xs">
                           <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
                             <lucide-icon [img]="MapPin" class="w-3 h-3"></lucide-icon>
@@ -206,7 +206,7 @@ interface Education {
                       </div>
                     </div>
 
-                    
+
                     <div class="space-y-4">
                       <div>
                         <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
@@ -228,7 +228,7 @@ interface Education {
                         </div>
                       </div>
 
-                      
+
                       @if (edu.achievements && edu.achievements.length > 0) {
                       <div>
                         <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
@@ -253,7 +253,7 @@ interface Education {
           </div>
         </div>
 
-        
+
         <div class="mt-20">
           <div class="text-center mb-12">
             <h3 class="text-3xl font-bold text-[var(--theme-text)] mb-4">Professional Certifications</h3>
@@ -267,7 +267,7 @@ interface Education {
             <div class="bg-gradient-to-br from-[var(--theme-surface)] to-[var(--theme-surface)]/80 rounded-2xl border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/40 transition-all duration-500 overflow-hidden group hover:shadow-xl hover:shadow-[var(--theme-primary)]/10 hover:-translate-y-1"
                  [style.animation-delay]="i * 100 + 'ms'">
 
-              
+
               <div class="absolute inset-0 bg-gradient-to-br from-[var(--theme-primary)]/5 via-transparent to-[var(--theme-accent)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
 
               <div class="relative z-10 p-6">
@@ -326,7 +326,7 @@ export class EducationComponent {
       period: '2017 - 2020',
       location: 'Carthage, Tunisia',
       type: 'university',
-      logoUrl: 'https:
+      logoUrl: 'https://via.placeholder.com/80x80/1e40af/ffffff?text=ENIC',
       schoolColor: '#1e40af',
       description: [
         'Decision Support & Data Analysis',
@@ -349,7 +349,7 @@ export class EducationComponent {
       period: '2015 - 2017',
       location: 'Gabes, Tunisia',
       type: 'preparatory',
-      logoUrl: 'https:
+      logoUrl: 'https://via.placeholder.com/80x80/059669/ffffff?text=ISSAT',
       schoolColor: '#059669',
       description: [
         'Technology Preparatory Cycle - Foundation in Engineering Sciences',
@@ -366,7 +366,7 @@ export class EducationComponent {
       period: '2011 - 2015',
       location: 'Ben Guerdane, Tunisia',
       type: 'high-school',
-      logoUrl: 'https:
+      logoUrl: 'https://via.placeholder.com/80x80/dc2626/ffffff?text=BGH',
       schoolColor: '#dc2626',
       description: [
         'Technical Baccalaureate with focus on Science and Technology',

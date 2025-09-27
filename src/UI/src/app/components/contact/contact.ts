@@ -177,11 +177,11 @@ export class ContactComponent {
   socialLinks: SocialLink[] = [
     {
       name: 'GitHub',
-      url: 'https:
+      url: 'https://github.com/AdelSS04'
     },
     {
       name: 'LinkedIn',
-      url: 'https:
+      url: 'https://www.linkedin.com/in/adellajil/'
     },
   ];
 
@@ -197,7 +197,7 @@ export class ContactComponent {
     if (this.contactForm.valid) {
       this.isSubmitting.set(true);
       const formData = this.contactForm.value;
-      this.http.post('https:
+      this.http.post('https://formspree.io/f/mrbangek', formData).subscribe({
         next: () => alert('Message sent!'),
         error: () => alert('Error sending message'),
         complete: () => {this.contactForm.reset(); this.isSubmitting.set(false);},

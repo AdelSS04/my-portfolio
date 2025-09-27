@@ -13,7 +13,7 @@ import { ProjectCardComponent, type Project } from '../project-card/project-card
           From enterprise platforms to open-source contributions, showcasing diverse technical expertise
         </p>
 
-        
+
         <div class="flex flex-wrap justify-center gap-3 mb-12">
           <button
             (click)="filterProjects('all')"
@@ -48,7 +48,7 @@ import { ProjectCardComponent, type Project } from '../project-card/project-card
           }
         </div>
 
-        
+
         @if (hasMoreProjects()) {
           <div class="text-center mt-12">
             <button
@@ -84,7 +84,7 @@ export class ProjectsComponent {
       description: 'Enterprise microservices platform with message queuing, distributed caching, and cloud infrastructure',
       category: 'Enterprise',
       technologies: ['.NET 5', 'Angular', 'CosmosDB', 'Redis', 'RabbitMQ', 'Docker'],
-      liveUrl: 'https:
+      liveUrl: 'https://www.podyam.com',
       year: '2020',
       thumbnail: 'assets/images/podium.png'
     },
@@ -93,7 +93,7 @@ export class ProjectsComponent {
       description: 'Geo-location marketplace with 100K+ downloads, processing 50K+ monthly transactions with real-time alerts',
       category: 'Marketplace',
       technologies: ['.NET Core', 'MySQL', 'Docker', 'Firebase', 'Google Maps API'],
-      liveUrl: 'https:
+      liveUrl: 'https://www.snbapp.com',
       featured: true,
       year: '2021',
       thumbnail: 'assets/images/Snb.png'
@@ -103,18 +103,18 @@ export class ProjectsComponent {
       description: 'Open-source implementation of Domain-Driven Design with Repository Pattern and clean architecture principles',
       category: 'Open Source',
       technologies: ['.NET Core', 'EF Core', 'Repository Pattern', 'DDD', 'CQRS'],
-      githubUrl: 'https:
+      githubUrl: 'https://github.com/AdelSS04/CleanDDDArchitecture',
       featured: true,
       year: '2021',
-      thumbnail: 'https:
+      thumbnail: 'https://blob.jacobsdata.com/software-alchemy/entry7/clean-domain-driven-design-jacobs-510.png'
     },
     {
       title: 'Stock Management System',
       description: 'Full-featured inventory management system with real-time tracking and Azure cloud deployment',
       category: 'Education',
       technologies: ['Angular 10', 'ASP.NET Web API', 'MSSQL', 'Azure', 'DevExpress'],
-      liveUrl: 'https:
-      githubUrl: 'https:
+      liveUrl: 'https://www.linkedin.com/posts/adellajil_dotnet-erp-sql-activity-6724679224088662016-Aou2',
+      githubUrl: 'https://github.com/AdelSS04/StockManagement',
       year: '2020',
       thumbnail: 'assets/images/stock.PNG'
     },
@@ -123,8 +123,8 @@ export class ProjectsComponent {
       description: 'Comprehensive desktop application for academic institution management with reporting features',
       category: 'Education',
       technologies: ['C#.NET', 'Windows Forms', 'MS Access', 'Crystal Reports'],
-      liveUrl: 'https:
-      githubUrl: 'https:
+      liveUrl: 'https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:6589859010030129152',
+      githubUrl: 'https://github.com/AdelSS04/SchoolManager',
       year: '2019',
       thumbnail: 'assets/images/cs.PNG'
     },
@@ -133,8 +133,8 @@ export class ProjectsComponent {
       description: 'Fullstack personal portfolio with Angular SSR, .NET backend, Docker, CI/CD, and automated SSL renewal.',
       category: 'Open Source',
       technologies: ['Angular 20', 'Angular SSR', '.NET 9', 'Docker', 'GitHub Actions', 'nginx', "Let's Encrypt"],
-      liveUrl: 'https:
-      githubUrl: 'https:
+      liveUrl: 'https://portfolio.adellajil.com',
+      githubUrl: 'https://github.com/AdelSS04/my-portfolio',
       featured: true,
       year: '2025',
       thumbnail: 'assets/images/my-portfolio.png'
@@ -144,7 +144,7 @@ export class ProjectsComponent {
       description: 'Web-mobile platform for visitor management and access control with real-time notifications',
       category: 'Education',
       technologies: ['ASP.NET', 'Xamarin', 'WCF', 'SQL Server', 'IIS'],
-      liveUrl: 'https:
+      liveUrl: 'https://www.linkedin.com/posts/adellajil_pfa-csharp-wcf-activity-6562611044022263808-f3BP/',
       year: '2019',
       thumbnail: 'assets/images/pfa.png'
     },
@@ -153,7 +153,7 @@ export class ProjectsComponent {
       description: 'Interactive NLog logging framework showcase with 11 hands-on demonstrations. Educational tool for learning modern .NET logging patterns & best practices.',
       category: 'Open Source',
       technologies: ['.NET', 'NLog', 'Console Applications', 'Logging Patterns'],
-      githubUrl: 'https:
+      githubUrl: 'https://github.com/AdelSS04/NlogConsoleLog',
       year: '2025',
       thumbnail: 'assets/images/nlog.png'
     },
@@ -162,8 +162,8 @@ export class ProjectsComponent {
       description: 'Professional Angular 18 reactive forms showcase demonstrating enterprise-level patterns, custom validators, type-safe form groups, and advanced form management techniques with TypeScript.',
       category: 'Open Source',
       technologies: ['Angular 18', 'TypeScript', 'Reactive Forms', 'Custom Validators', 'Type Safety'],
-      githubUrl: 'https:
-      liveUrl: 'https:
+      githubUrl: 'https://github.com/AdelSS04/angular-reactive-forms-showcase',
+      liveUrl: 'https://demo-reactive.vercel.app/',
       featured: true,
       year: '2025',
       thumbnail: 'assets/images/angular-form.png'
