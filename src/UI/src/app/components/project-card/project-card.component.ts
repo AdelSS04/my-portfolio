@@ -1,4 +1,4 @@
-import { Component, input, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
 
 
@@ -9,7 +9,7 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
   template: `
     <div class="bg-[var(--theme-surface)]/80 backdrop-blur-sm rounded-xl overflow-hidden border border-[var(--theme-border)]/20 hover:border-[var(--theme-border)]/40 transition-all duration-300 group hover:transform hover:scale-[1.02] relative">
       <!-- Featured Badge -->
-      @if (project.featured) {
+      @if (project().featured) {
         <div class="absolute top-4 right-4 z-10">
           <span class="px-3 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs rounded-full font-medium">
             ⭐ Featured
@@ -20,20 +20,20 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
       <!-- Thumbnail Image or Gradient -->
       <div class="h-48 relative overflow-hidden bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] group">
         <!-- Project Thumbnail -->
-        @if (project.thumbnail) {
+        @if (project().thumbnail) {
           <img
-            [src]="project.thumbnail"
-            [alt]="project.title"
+            [src]="project().thumbnail"
+            [alt]="project().title"
             class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
             (error)="handleImageError($event)"
             >
         }
 
         <!-- Fallback gradient if no image -->
-        @if (!project.thumbnail) {
+        @if (!project().thumbnail) {
           <div class="w-full h-full flex items-center justify-center">
             <div class="text-6xl text-white/10 font-bold">
-              {{project.title.charAt(0)}}
+              {{project().title.charAt(0)}}
             </div>
           </div>
         }
@@ -44,11 +44,11 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
         <!-- Category badge -->
         <div class="absolute bottom-4 left-4">
           <span class="text-white/90 text-sm font-medium px-3 py-1 bg-white/10 backdrop-blur rounded-full">
-            {{project.category}}
+            {{project().category}}
           </span>
-          @if (project.year) {
+          @if (project().year) {
             <span class="ml-2 text-white/60 text-sm">
-              {{project.year}}
+              {{project().year}}
             </span>
           }
         </div>
@@ -63,29 +63,29 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
 
       <div class="p-6">
         <h3 class="text-xl font-bold text-[var(--theme-text)] mb-2 group-hover:text-[var(--theme-primary)] transition-colors">
-          {{project.title}}
+          {{project().title}}
         </h3>
-        <p class="text-[var(--theme-text-secondary)] mb-4 line-clamp-2">{{project.description}}</p>        <div class="flex gap-2 mb-4 flex-wrap">
-          @for (tech of project.technologies.slice(0, 4); track tech) {
+        <p class="text-[var(--theme-text-secondary)] mb-4 line-clamp-2">{{project().description}}</p>        <div class="flex gap-2 mb-4 flex-wrap">
+          @for (tech of project().technologies.slice(0, 4); track tech) {
             <span
               class="px-3 py-1 bg-[var(--theme-surface)]/40 text-[var(--theme-text-secondary)] rounded-full text-xs border border-[var(--theme-border)]/20"
               >
               {{tech}}
             </span>
           }
-          @if (project.technologies.length > 4) {
+          @if (project().technologies.length > 4) {
             <span
               class="px-3 py-1 bg-[var(--theme-surface)]/40 text-[var(--theme-text-secondary)] rounded-full text-xs border border-[var(--theme-border)]/20"
               >
-              +{{project.technologies.length - 4}} more
+              +{{project().technologies.length - 4}} more
             </span>
           }
         </div>
 
         <div class="flex gap-4">
-          @if (project.liveUrl) {
+          @if (project().liveUrl) {
             <a
-              [href]="project.liveUrl"
+              [href]="project().liveUrl"
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center gap-1 text-[var(--theme-primary)] hover:text-[var(--theme-accent)] transition-colors"
@@ -94,9 +94,9 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
               Live Demo
             </a>
           }
-          @if (project.githubUrl) {
+          @if (project().githubUrl) {
             <a
-              [href]="project.githubUrl"
+              [href]="project().githubUrl"
               target="_blank"
               rel="noopener noreferrer"
               class="flex items-center gap-1 text-[var(--theme-primary)] hover:text-[var(--theme-accent)] transition-colors"
@@ -111,7 +111,7 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
     `
 })
 export class ProjectCardComponent {
-  @Input() project!: Project;
+  project = input.required<Project>();
 
   // Lucide icon components
   readonly ExternalLink = ExternalLink;
