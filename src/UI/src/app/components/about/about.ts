@@ -1,5 +1,5 @@
 // about.component.ts
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { LucideAngularModule, User, BarChart3, Target, Rocket, Lightbulb } from 'lucide-angular';
 
 
@@ -20,10 +20,10 @@ import { LucideAngularModule, User, BarChart3, Target, Rocket, Lightbulb } from 
               Professional Profile
             </h3>
             <p class="text-[var(--theme-text-secondary)] leading-relaxed mb-4">
-              {{aboutText}}
+              {{aboutText()}}
             </p>
             <p class="text-[var(--theme-text-secondary)] leading-relaxed">
-              {{additionalInfo}}
+              {{additionalInfo()}}
             </p>
           </div>
 
@@ -92,9 +92,9 @@ export class AboutComponent {
   readonly Rocket = Rocket;
   readonly Lightbulb = Lightbulb;
 
-  @Input() aboutText: string = `I'm a passionate Senior Full Stack Developer with expertise in .NET and Angular.
-    Azure AZ-204 certified with extensive experience in building scalable cloud applications.`;
+  aboutText = input<string>(`I'm a passionate Senior Full Stack Developer with expertise in .NET and Angular.
+    Azure AZ-204 certified with extensive experience in building scalable cloud applications.`);
 
-  @Input() additionalInfo: string = `Specializing in enterprise-level applications with a focus on clean architecture,
-    microservices, and cloud-native solutions using Azure services.`;
+  additionalInfo = input<string>(`Specializing in enterprise-level applications with a focus on clean architecture,
+    microservices, and cloud-native solutions using Azure services.`);
 }

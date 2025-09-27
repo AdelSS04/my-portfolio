@@ -1,5 +1,5 @@
 // testimonials.component.ts
-import { Component, OnInit, OnDestroy, HostListener } from '@angular/core';
+import { Component, signal, effect } from '@angular/core';
 import { LucideAngularModule, Quote, Star, ChevronLeft, ChevronRight } from 'lucide-angular';
 
 
@@ -40,7 +40,7 @@ interface Testimonial {
             (mouseenter)="stopAutoPlay()"
             (mouseleave)="startAutoPlay()">
             <div class="flex transition-transform duration-500 ease-in-out"
-              [style.transform]="'translateX(-' + (currentIndex * 100) + '%)'">
+              [style.transform]="'translateX(-' + (currentIndex() * 100) + '%)'">
 
               <!-- Testimonial Cards -->
               @for (testimonial of testimonials; track testimonial) {
@@ -119,7 +119,7 @@ interface Testimonial {
           <button
             (click)="prevSlide()"
             class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-[var(--theme-surface)]/60 hover:bg-[var(--theme-surface)]/80 rounded-full flex items-center justify-center text-[var(--theme-text)] transition-all duration-300 backdrop-blur-sm border border-[var(--theme-border)]/30 hover:scale-110 active:scale-95 hover:border-[var(--theme-primary)]/50"
-            [disabled]="isTransitioning"
+            [disabled]="isTransitioning()"
             >
             <lucide-icon [img]="ChevronLeft" class="w-6 h-6" />
           </button>
@@ -127,7 +127,7 @@ interface Testimonial {
           <button
             (click)="nextSlide()"
             class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-[var(--theme-surface)]/60 hover:bg-[var(--theme-surface)]/80 rounded-full flex items-center justify-center text-[var(--theme-text)] transition-all duration-300 backdrop-blur-sm border border-[var(--theme-border)]/30 hover:scale-110 active:scale-95 hover:border-[var(--theme-primary)]/50"
-            [disabled]="isTransitioning"
+            [disabled]="isTransitioning()"
             >
             <lucide-icon [img]="ChevronRight" class="w-6 h-6" />
           </button>
@@ -137,12 +137,12 @@ interface Testimonial {
             @for (testimonial of testimonials; track testimonial; let i = $index) {
               <button
                 (click)="goToSlide(i)"
-                [class.bg-[var(--theme-primary)]]="i === currentIndex"
-                [class.bg-[var(--theme-surface)]/40]="i !== currentIndex"
-                [class.w-12]="i === currentIndex"
-                [class.w-2]="i !== currentIndex"
+                [class.bg-[var(--theme-primary)]]="i === currentIndex()"
+                [class.bg-[var(--theme-surface)]/40]="i !== currentIndex()"
+                [class.w-12]="i === currentIndex()"
+                [class.w-2]="i !== currentIndex()"
                 class="h-2 rounded-full transition-all duration-300 hover:bg-[var(--theme-surface)]/60"
-                [disabled]="isTransitioning"
+                [disabled]="isTransitioning()"
               ></button>
             }
           </div>
@@ -202,9 +202,9 @@ interface Testimonial {
     }
   `]
 })
-export class TestimonialsComponent implements OnInit, OnDestroy {
-  currentIndex = 0;
-  isTransitioning = false;
+export class TestimonialsComponent {
+  currentIndex = signal(0);
+  isTransitioning = signal(false);
   autoPlayInterval: any;
   touchStartX = 0;
   touchEndX = 0;
@@ -238,12 +238,43 @@ export class TestimonialsComponent implements OnInit, OnDestroy {
     }
   ];
 
-  ngOnInit(): void {
-    this.startAutoPlay();
-  }
+  constructor() {
+    // Effect to start auto-play
+    effect(() => {
+      this.startAutoPlay();
+      
+      // Cleanup function
+      return () => {
+        this.stopAutoPlay();
+      };
+    }, { allowSignalWrites: true });
 
-  ngOnDestroy(): void {
-    this.stopAutoPlay();
+    // Effect to handle keyboard events
+    effect(() => {
+      const handleKeyboard = (event: KeyboardEvent) => {
+        const testimonialsSection = document.getElementById('testimonials');
+        if (!testimonialsSection) return;
+
+        const rect = testimonialsSection.getBoundingClientRect();
+        const inView = rect.top <= window.innerHeight && rect.bottom >= 0;
+
+        if (inView) {
+          if (event.key === 'ArrowLeft') {
+            this.prevSlide();
+          } else if (event.key === 'ArrowRight') {
+            this.nextSlide();
+          }
+        }
+      };
+
+      if (typeof window !== 'undefined') {
+        window.addEventListener('keydown', handleKeyboard);
+        return () => {
+          window.removeEventListener('keydown', handleKeyboard);
+        };
+      }
+      return undefined;
+    });
   }
 
   startAutoPlay(): void {
@@ -259,41 +290,41 @@ export class TestimonialsComponent implements OnInit, OnDestroy {
   }
 
   nextSlide(): void {
-    if (this.isTransitioning) return;
+    if (this.isTransitioning()) return;
 
-    this.isTransitioning = true;
-    this.currentIndex = (this.currentIndex + 1) % this.testimonials.length;
+    this.isTransitioning.set(true);
+    this.currentIndex.set((this.currentIndex() + 1) % this.testimonials.length);
 
     setTimeout(() => {
-      this.isTransitioning = false;
+      this.isTransitioning.set(false);
     }, 500);
   }
 
   prevSlide(): void {
-    if (this.isTransitioning) return;
+    if (this.isTransitioning()) return;
 
-    this.isTransitioning = true;
-    this.currentIndex = this.currentIndex === 0
+    this.isTransitioning.set(true);
+    this.currentIndex.set(this.currentIndex() === 0
       ? this.testimonials.length - 1
-      : this.currentIndex - 1;
+      : this.currentIndex() - 1);
 
     setTimeout(() => {
-      this.isTransitioning = false;
+      this.isTransitioning.set(false);
     }, 500);
   }
 
   goToSlide(index: number): void {
-    if (this.isTransitioning || index === this.currentIndex) return;
+    if (this.isTransitioning() || index === this.currentIndex()) return;
 
-    this.isTransitioning = true;
-    this.currentIndex = index;
+    this.isTransitioning.set(true);
+    this.currentIndex.set(index);
 
     // Reset auto-play when user manually navigates
     this.stopAutoPlay();
     this.startAutoPlay();
 
     setTimeout(() => {
-      this.isTransitioning = false;
+      this.isTransitioning.set(false);
     }, 500);
   }
 
@@ -322,29 +353,6 @@ export class TestimonialsComponent implements OnInit, OnDestroy {
       // Reset auto-play after swipe
       this.stopAutoPlay();
       this.startAutoPlay();
-    }
-  }
-
-  // Keyboard navigation
-  @HostListener('window:keydown', ['$event'])
-  handleKeyboardEvent(event: KeyboardEvent): void {
-    // Only handle keyboard events when testimonials section is in view
-    const testimonialsSection = document.getElementById('testimonials');
-    if (!testimonialsSection) return;
-
-    const rect = testimonialsSection.getBoundingClientRect();
-    const inView = rect.top <= window.innerHeight && rect.bottom >= 0;
-
-    if (inView) {
-      if (event.key === 'ArrowLeft') {
-        this.prevSlide();
-        this.stopAutoPlay();
-        this.startAutoPlay();
-      } else if (event.key === 'ArrowRight') {
-        this.nextSlide();
-        this.stopAutoPlay();
-        this.startAutoPlay();
-      }
     }
   }
 }

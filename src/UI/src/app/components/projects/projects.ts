@@ -1,19 +1,5 @@
-import { Component } from '@angular/core';
-
-import { ProjectCardComponent } from '../project-card/project-card';
-
-export interface Project {
-  title: string;
-  description: string;
-  category: string;
-  technologies: string[];
-  liveUrl?: string;
-  githubUrl?: string;
-  featured?: boolean;
-  year?: string;
-  thumbnail?: string;
-  images?: string[];
-}
+import { Component, signal, computed, effect } from '@angular/core';
+import { ProjectCardComponent, type Project } from '../project-card/project-card.component';
 
 @Component({
   selector: 'app-projects',
@@ -31,10 +17,10 @@ export interface Project {
         <div class="flex flex-wrap justify-center gap-3 mb-12">
           <button
             (click)="filterProjects('all')"
-            [class.bg-gradient-to-r]="selectedCategory === 'all'"
-            [class.from-[var(--theme-primary)]]="selectedCategory === 'all'"
-            [class.to-[var(--theme-accent)]]="selectedCategory === 'all'"
-            [class.bg-[var(--theme-surface)]/70]="selectedCategory !== 'all'"
+            [class.bg-gradient-to-r]="selectedCategory() === 'all'"
+            [class.from-[var(--theme-primary)]]="selectedCategory() === 'all'"
+            [class.to-[var(--theme-accent)]]="selectedCategory() === 'all'"
+            [class.bg-[var(--theme-surface)]/70]="selectedCategory() !== 'all'"
             class="px-6 py-2 rounded-full text-[var(--theme-text)] border border-[var(--theme-border)]/30 hover:border-[var(--theme-border)]/50 transition-all"
             >
             All Projects
@@ -42,10 +28,10 @@ export interface Project {
           @for (cat of categories; track cat) {
             <button
               (click)="filterProjects(cat)"
-              [class.bg-gradient-to-r]="selectedCategory === cat"
-              [class.from-[var(--theme-primary)]]="selectedCategory === cat"
-              [class.to-[var(--theme-accent)]]="selectedCategory === cat"
-              [class.bg-[var(--theme-surface)]/70]="selectedCategory !== cat"
+              [class.bg-gradient-to-r]="selectedCategory() === cat"
+              [class.from-[var(--theme-primary)]]="selectedCategory() === cat"
+              [class.to-[var(--theme-accent)]]="selectedCategory() === cat"
+              [class.bg-[var(--theme-surface)]/70]="selectedCategory() !== cat"
               class="px-6 py-2 rounded-full text-[var(--theme-text)] border border-[var(--theme-border)]/30 hover:border-[var(--theme-border)]/50 transition-all"
               >
               {{cat}}
@@ -54,7 +40,7 @@ export interface Project {
         </div>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-          @for (project of filteredProjects; track project) {
+          @for (project of filteredProjects(); track project) {
             <app-project-card
               [project]="project"
               class="animate-fade-in"
@@ -63,7 +49,7 @@ export interface Project {
         </div>
 
         <!-- Show More Button if needed -->
-        @if (hasMoreProjects) {
+        @if (hasMoreProjects()) {
           <div class="text-center mt-12">
             <button
               (click)="showAllProjects()"
@@ -87,8 +73,9 @@ export interface Project {
   `]
 })
 export class ProjectsComponent {
-  selectedCategory = 'all';
-  showAll = false;
+  // Signal-based state
+  selectedCategory = signal('all');
+  showAll = signal(false);
 
   categories = ['Enterprise', 'Open Source', 'Marketplace', 'Education', 'Cloud/DevOps'];
 
@@ -184,10 +171,11 @@ export class ProjectsComponent {
     }
   ];
 
-  get filteredProjects(): Project[] {
-    let filtered = this.selectedCategory === 'all'
+  // Computed signals for derived state
+  filteredProjects = computed(() => {
+    let filtered = this.selectedCategory() === 'all'
       ? this.allProjects
-      : this.allProjects.filter(p => p.category === this.selectedCategory);
+      : this.allProjects.filter(p => p.category === this.selectedCategory());
 
     // Show featured projects first, then sort by year
     filtered = filtered.sort((a, b) => {
@@ -196,22 +184,22 @@ export class ProjectsComponent {
       return (b.year || '').localeCompare(a.year || '');
     });
 
-    return this.showAll ? filtered : filtered.slice(0, 6);
-  }
+    return this.showAll() ? filtered : filtered.slice(0, 6);
+  });
 
-  get hasMoreProjects(): boolean {
-    const totalFiltered = this.selectedCategory === 'all'
+  hasMoreProjects = computed(() => {
+    const totalFiltered = this.selectedCategory() === 'all'
       ? this.allProjects.length
-      : this.allProjects.filter(p => p.category === this.selectedCategory).length;
-    return !this.showAll && totalFiltered > 6;
-  }
+      : this.allProjects.filter(p => p.category === this.selectedCategory()).length;
+    return !this.showAll() && totalFiltered > 6;
+  });
 
   filterProjects(category: string): void {
-    this.selectedCategory = category;
-    this.showAll = false;
+    this.selectedCategory.set(category);
+    this.showAll.set(false);
   }
 
   showAllProjects(): void {
-    this.showAll = true;
+    this.showAll.set(true);
   }
 }

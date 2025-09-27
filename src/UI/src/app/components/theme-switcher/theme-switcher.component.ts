@@ -1,12 +1,11 @@
 import { Component, inject, signal } from '@angular/core';
-import { CommonModule } from '@angular/common';
 import { ThemeService, Theme } from '../../services/theme.service';
 import { LucideAngularModule, ChevronDown, X, Check, Waves, Trees, Sun, Palette, Moon, Coffee } from 'lucide-angular';
 
 @Component({
   selector: 'app-theme-switcher',
   standalone: true,
-  imports: [CommonModule, LucideAngularModule],
+  imports: [LucideAngularModule],
   template: `
     <div class="relative">
       <!-- Theme Switcher Button -->

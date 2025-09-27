@@ -1,7 +1,4 @@
-
-
 import { Component, input, Input } from '@angular/core';
-import { Project } from '../projects/projects';
 import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
 
 
@@ -123,4 +120,17 @@ export class ProjectCardComponent {
   handleImageError(event: any): void {
       event.target.style.display = 'none';
     }
+}
+
+export interface Project {
+  title: string;
+  description: string;
+  category: string;
+  technologies: string[];
+  liveUrl?: string;
+  githubUrl?: string;
+  featured?: boolean;
+  year?: string;
+  thumbnail?: string;
+  images?: string[];
 }

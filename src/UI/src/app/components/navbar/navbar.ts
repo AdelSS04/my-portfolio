@@ -1,4 +1,4 @@
-import { Component, OnInit, HostListener, signal, inject } from '@angular/core';
+import { Component, signal, inject, effect } from '@angular/core';
 import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
 import { ThemeService } from '../../services/theme.service';
 import { LucideAngularModule, Menu, X } from 'lucide-angular';
@@ -102,7 +102,7 @@ interface NavLink {
     `,
   ],
 })
-export class NavbarComponent implements OnInit {
+export class NavbarComponent {
   themeService = inject(ThemeService);
   mobileMenuOpen = signal(false);
   activeLink = '#home';
@@ -123,18 +123,26 @@ export class NavbarComponent implements OnInit {
     { label: 'Contact', href: '#contact' }
   ];
 
-  ngOnInit() {
-    if (typeof window !== 'undefined') {
-      this.checkActiveSection();
-    }
-  }
+  constructor() {
+    // Effect to setup scroll listener and check active section
+    effect(() => {
+      if (typeof window !== 'undefined') {
+        this.checkActiveSection();
+        
+        const handleScroll = () => {
+          this.isScrolled.set(window.scrollY > 20);
+          this.checkActiveSection();
+        };
 
-  @HostListener('window:scroll', [])
-  onWindowScroll() {
-    if (typeof window !== 'undefined') {
-      this.isScrolled.set(window.scrollY > 20);
-      this.checkActiveSection();
-    }
+        window.addEventListener('scroll', handleScroll);
+        
+        // Cleanup function
+        return () => {
+          window.removeEventListener('scroll', handleScroll);
+        };
+      }
+      return undefined;
+    });
   }
 
   checkActiveSection() {

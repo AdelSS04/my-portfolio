@@ -1,4 +1,4 @@
-import { Injectable, signal, effect } from '@angular/core';
+import { Injectable, signal, computed, effect } from '@angular/core';
 
 export type Theme = 'ocean' | 'forest' | 'sunset' | 'warm';
 export type Mode = 'light' | 'dark';
@@ -25,8 +25,17 @@ export class ThemeService {
   private readonly THEME_KEY = 'portfolio-theme';
   private readonly MODE_KEY = 'portfolio-mode';
 
+  // Signal-based state
   currentTheme = signal<Theme>('ocean');
   currentMode = signal<Mode>('dark');
+  isInitialized = signal<boolean>(false);
+  isLoading = signal<boolean>(true);
+
+  // Computed signals
+  currentColors = computed(() => this.getThemeColors(this.currentTheme(), this.currentMode()));
+  themeDisplayName = computed(() => this.getThemeDisplayName(this.currentTheme()));
+  themeIcon = computed(() => this.getThemeIcon(this.currentTheme()));
+  themeEmoji = computed(() => this.getThemeEmoji(this.currentTheme()));
 
   // Theme definitions
   private themes: Record<Theme, Record<Mode, ThemeColors>> = {
@@ -153,31 +162,48 @@ export class ThemeService {
   };
 
   constructor() {
-    // Only access localStorage if we're in the browser
-    if (this.isBrowser()) {
-      // Load saved theme and mode
-      const savedTheme = localStorage.getItem(this.THEME_KEY) as Theme;
-      const savedMode = localStorage.getItem(this.MODE_KEY) as Mode;
-
-      if (savedTheme && this.isValidTheme(savedTheme)) {
-        this.currentTheme.set(savedTheme);
-      }
-
-      if (savedMode && this.isValidMode(savedMode)) {
-        this.currentMode.set(savedMode);
-      }
-    }
-
-    // Apply theme changes to CSS variables
+    // Effect to initialize theme and apply changes
     effect(() => {
       this.applyTheme();
-      if (this.isBrowser()) {
-        this.saveToLocalStorage();
-      }
     });
+    
+    this.initializeTheme();
+  }
 
-    // Initial application
-    this.applyTheme();
+  private async initializeTheme(): Promise<void> {
+    this.isLoading.set(true);
+
+    // Only access localStorage if we're in the browser
+    if (this.isBrowser()) {
+      try {
+        // Load saved theme and mode
+        const savedTheme = localStorage.getItem(this.THEME_KEY) as Theme;
+        const savedMode = localStorage.getItem(this.MODE_KEY) as Mode;
+
+        if (savedTheme && this.isValidTheme(savedTheme)) {
+          this.currentTheme.set(savedTheme);
+        }
+
+        if (savedMode && this.isValidMode(savedMode)) {
+          this.currentMode.set(savedMode);
+        }
+
+        // Apply theme immediately
+        this.applyTheme();
+
+        // Small delay to ensure DOM is ready
+        await new Promise(resolve => setTimeout(resolve, 150));
+
+      } catch (error) {
+        console.warn('Error loading theme from localStorage:', error);
+      }
+    } else {
+      // SSR - use defaults
+      await new Promise(resolve => setTimeout(resolve, 150));
+    }
+
+    this.isInitialized.set(true);
+    this.isLoading.set(false);
   }
 
   private isBrowser(): boolean {
@@ -193,11 +219,19 @@ export class ThemeService {
   }
 
   setTheme(theme: Theme): void {
-    this.currentTheme.set(theme);
+    if (this.isInitialized()) {
+      this.currentTheme.set(theme);
+      this.applyTheme();
+      this.saveToLocalStorage();
+    }
   }
 
   setMode(mode: Mode): void {
-    this.currentMode.set(mode);
+    if (this.isInitialized()) {
+      this.currentMode.set(mode);
+      this.applyTheme();
+      this.saveToLocalStorage();
+    }
   }
 
   toggleMode(): void {
@@ -206,14 +240,11 @@ export class ThemeService {
   }
 
   getCurrentColors(): ThemeColors {
-    return this.themes[this.currentTheme()][this.currentMode()];
+    return this.currentColors();
   }
 
   private applyTheme(): void {
-    // Only apply theme changes if we're in the browser
-    if (!this.isBrowser()) {
-      return;
-    }
+    if (!this.isBrowser()) return;
 
     const colors = this.getCurrentColors();
     const root = document.documentElement;
@@ -224,20 +255,13 @@ export class ThemeService {
       root.style.setProperty(cssVarName, value);
     });
 
-    // Apply theme class to body for additional styling
-    document.body.className = document.body.className.replace(/theme-\w+/g, '');
-    document.body.classList.add(`theme-${this.currentTheme()}`);
-
-    // Apply mode class
-    document.body.className = document.body.className.replace(/mode-\w+/g, '');
-    document.body.classList.add(`mode-${this.currentMode()}`);
+    // Apply theme and mode classes
+    document.body.className = document.body.className.replace(/theme-\w+|mode-\w+/g, '');
+    document.body.classList.add(`theme-${this.currentTheme()}`, `mode-${this.currentMode()}`);
   }
 
   private saveToLocalStorage(): void {
-    // Only save to localStorage if we're in the browser
-    if (!this.isBrowser()) {
-      return;
-    }
+    if (!this.isBrowser()) return;
 
     try {
       localStorage.setItem(this.THEME_KEY, this.currentTheme());
@@ -247,50 +271,46 @@ export class ThemeService {
     }
   }
 
-  // Reset to default theme
   resetToDefault(): void {
     this.setTheme('ocean');
     this.setMode('dark');
   }
 
-  // Get all available themes
   getAllThemes(): Theme[] {
     return Object.keys(this.themes) as Theme[];
   }
 
-  // Get colors for a specific theme and mode (for preview purposes)
   getThemeColors(theme: Theme, mode: Mode): ThemeColors {
     return this.themes[theme][mode];
   }
 
-  // Utility methods for theme names
   getThemeDisplayName(theme: Theme): string {
-    switch (theme) {
-      case 'ocean': return 'Ocean Blue';
-      case 'forest': return 'Forest Green';
-      case 'sunset': return 'Sunset Orange';
-      case 'warm': return 'Warm Earth';
-      default: return 'Ocean Blue';
-    }
+    const names = {
+      ocean: 'Ocean Blue',
+      forest: 'Forest Green',
+      sunset: 'Sunset Orange',
+      warm: 'Warm Earth'
+    };
+    return names[theme];
   }
 
   getThemeEmoji(theme: Theme): string {
-    switch (theme) {
-      case 'ocean': return '🌊';
-      case 'forest': return '🌲';
-      case 'sunset': return '🌅';
-      case 'warm': return '🍯';
-      default: return '🌊';
-    }
+    const emojis = {
+      ocean: '🌊',
+      forest: '🌲',
+      sunset: '🌅',
+      warm: '🍯'
+    };
+    return emojis[theme];
   }
 
   getThemeIcon(theme: Theme): string {
-    switch (theme) {
-      case 'ocean': return 'waves';
-      case 'forest': return 'trees';
-      case 'sunset': return 'sun';
-      case 'warm': return 'coffee';
-      default: return 'waves';
-    }
+    const icons = {
+      ocean: 'waves',
+      forest: 'trees',
+      sunset: 'sun',
+      warm: 'coffee'
+    };
+    return icons[theme];
   }
 }
