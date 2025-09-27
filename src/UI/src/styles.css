@@ -4,8 +4,23 @@
 @tailwind utilities;
 @import "tailwindcss";
 
-/* CSS Variables */
+/* Theme System CSS Variables */
 :root {
+  /* Default Ocean Dark Theme (Original Portfolio Colors) */
+  --theme-primary: #3b82f6;
+  --theme-primary-light: #60a5fa;
+  --theme-primary-dark: #2563eb;
+  --theme-secondary: #1e40af;
+  --theme-accent: #06b6d4;
+  --theme-background: #1e1e1e;
+  --theme-background-secondary: #112230;
+  --theme-surface: #112331;
+  --theme-text: #ffffff;
+  --theme-text-secondary: #cbd5e1;
+  --theme-border: #475569;
+  --theme-gradient: linear-gradient(135deg, #112230 0%, #1e1e1e 50%, #122433 100%);
+
+  /* Legacy CSS Variables */
   --dark-gray: #1e1e1e;
   --deep-navy: #112230;
   --midnight-blue: #112331;
@@ -20,34 +35,47 @@ html {
 }
 
 body {
-  background-color: var(--dark-gray);
-  color: white;
+  background: var(--theme-background);
+  color: var(--theme-text);
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Custom scrollbar */
+/* Theme transition animation */
+* {
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
+  transition-duration: 0.3s;
+  transition-timing-function: ease;
+}
+
+/* Custom scrollbar with theme support */
 ::-webkit-scrollbar {
   width: 8px;
   height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--dark-gray);
+  background: var(--theme-background);
 }
 
 ::-webkit-scrollbar-thumb {
-  background: var(--steel-blue);
+  background: var(--theme-border);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--charcoal-blue);
+  background: var(--theme-primary);
 }
 
-/* Selection color */
+/* Selection color with theme support */
 ::selection {
-  background-color: rgba(17, 34, 48, 0.5);
-  color: white;
+  background-color: var(--theme-primary);
+  color: var(--theme-background);
+}
+
+::-moz-selection {
+  background-color: var(--theme-primary);
+  color: var(--theme-background);
 }
 
 /* Line clamp utilities */
@@ -65,15 +93,27 @@ body {
   overflow: hidden;
 }
 
-/* Glass morphism effect */
+/* Glass morphism effect with theme support */
 .glass {
   background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--theme-border);
 }
 
-/* Animations */
+.theme-ocean .glass {
+  background: rgba(14, 165, 233, 0.02);
+}
+
+.theme-forest .glass {
+  background: rgba(34, 197, 94, 0.02);
+}
+
+.theme-sunset .glass {
+  background: rgba(249, 115, 22, 0.02);
+}
+
+/* Theme-aware animations */
 @keyframes gradientShift {
   0% {
     background-position: 0% 50%;
@@ -87,45 +127,45 @@ body {
 }
 
 .gradient-animated {
-  background: linear-gradient(-45deg, #112230, #1e1e1e, #122433, #112331);
+  background: var(--theme-gradient);
   background-size: 400% 400%;
   animation: gradientShift 15s ease infinite;
 }
 
-/* Hover effects */
+/* Hover effects with theme support */
 .hover-lift {
   transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .hover-lift:hover {
   transform: translateY(-5px);
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 10px 30px var(--theme-primary);
 }
 
-/* Focus styles */
+/* Focus styles with theme support */
 *:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.5);
+  box-shadow: 0 0 0 2px var(--theme-primary);
 }
 
 /* Button focus styles */
 button:focus {
   outline: none;
-  box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+  box-shadow: 0 0 0 2px var(--theme-primary);
 }
 
 /* Input focus styles */
 input:focus,
 textarea:focus {
   outline: none;
-  border-color: rgba(59, 130, 246, 0.5);
-  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+  border-color: var(--theme-primary);
+  box-shadow: 0 0 0 3px var(--theme-primary);
 }
 
-/* Loading animation */
+/* Loading animation with theme support */
 .loader {
-  border: 3px solid var(--dark-gray);
-  border-top: 3px solid #3b82f6;
+  border: 3px solid var(--theme-background);
+  border-top: 3px solid var(--theme-primary);
   border-radius: 50%;
   width: 40px;
   height: 40px;
@@ -135,6 +175,28 @@ textarea:focus {
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+/* Theme-specific styles */
+.theme-ocean {
+  --glow-color: rgba(14, 165, 233, 0.3);
+}
+
+.theme-forest {
+  --glow-color: rgba(34, 197, 94, 0.3);
+}
+
+.theme-sunset {
+  --glow-color: rgba(249, 115, 22, 0.3);
+}
+
+/* Enhanced glow effects */
+.theme-glow {
+  box-shadow: 0 0 20px var(--glow-color, rgba(14, 165, 233, 0.3));
+}
+
+.theme-glow-lg {
+  box-shadow: 0 0 40px var(--glow-color, rgba(14, 165, 233, 0.3));
 }
 
 /* Responsive text */
@@ -149,5 +211,26 @@ textarea:focus {
   body {
     background: white;
     color: black;
+  }
+  
+  * {
+    transition: none !important;
+  }
+}
+
+/* Smooth theme transitions */
+.theme-transition {
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Accessibility improvements */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

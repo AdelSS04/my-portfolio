@@ -21,10 +21,10 @@ interface Experience {
   template: `
     <section id="experience" class="py-20 px-6">
       <div class="container mx-auto max-w-5xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-4">
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">
           Professional Experience
         </h2>
-        <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+        <p class="text-[var(--theme-text-secondary)] text-center mb-12 max-w-2xl mx-auto">
           Building scalable solutions and leading teams in cloud-native development
         </p>
 
@@ -44,10 +44,10 @@ interface Experience {
               >
                 @if (exp.current) {
                 <div
-                  class="absolute -inset-1 bg-green-500 rounded-full animate-ping opacity-75"
+                  class="absolute -inset-1 bg-[var(--theme-primary)] rounded-full animate-ping opacity-75"
                 ></div>
                 } @if (exp.current) {
-                <div class="absolute -inset-0.5 bg-green-500 rounded-full"></div>
+                <div class="absolute -inset-0.5 bg-[var(--theme-primary)] rounded-full"></div>
                 }
               </div>
               <div
@@ -55,39 +55,39 @@ interface Experience {
                 class="w-full md:w-[calc(50%-2rem)] ml-8 md:ml-0"
               >
                 <div
-                  class="bg-[#112231]/50 backdrop-blur-sm rounded-xl p-6 border border-white/5 hover:border-white/20 transition-all duration-300 group"
+                  class="bg-[var(--theme-surface)]/70 backdrop-blur-sm rounded-xl p-6 border border-[var(--theme-border)]/20 hover:border-[var(--theme-border)]/40 transition-all duration-300 group"
                 >
                   <div class="flex items-start justify-between mb-4">
                     <div>
                       <h3
-                        class="text-xl font-bold text-white group-hover:text-blue-400 transition-colors"
+                        class="text-xl font-bold text-[var(--theme-text)] group-hover:text-[var(--theme-primary)] transition-colors"
                       >
                         {{ exp.position }}
                       </h3>
-                      <p class="text-gray-300 font-medium">{{ exp.company }}</p>
+                      <p class="text-[var(--theme-text-secondary)] font-medium">{{ exp.company }}</p>
                       <div class="flex flex-wrap gap-2 mt-2 text-sm">
-                        <span class="text-gray-500">📍 {{ exp.location }}</span>
-                        <span class="text-gray-500">• {{ exp.type }}</span>
+                        <span class="text-[var(--theme-text-secondary)]">📍 {{ exp.location }}</span>
+                        <span class="text-[var(--theme-text-secondary)]">• {{ exp.type }}</span>
                       </div>
                     </div>
                     <div class="text-right">
                       @if (exp.current) {
                       <span
-                        class="inline-block px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full mb-2"
+                        class="inline-block px-3 py-1 bg-[var(--theme-primary)]/20 text-[var(--theme-primary)] text-xs rounded-full mb-2"
                       >
                         Current
                       </span>
                       }
-                      <p class="text-gray-400 text-sm">{{ exp.period }}</p>
-                      <p class="text-gray-500 text-xs">{{ exp.duration }}</p>
+                      <p class="text-[var(--theme-text-secondary)] text-sm">{{ exp.period }}</p>
+                      <p class="text-[var(--theme-text-secondary)]/70 text-xs">{{ exp.duration }}</p>
                     </div>
                   </div>
                   <!-- Description -->
                   <div class="mb-4">
                     <ul class="space-y-2">
                       @for (desc of exp.description; track desc) {
-                      <li class="text-gray-300 text-sm leading-relaxed flex items-start">
-                        <span class="text-blue-400 mr-2 mt-1">▸</span>
+                      <li class="text-[var(--theme-text-secondary)] text-sm leading-relaxed flex items-start">
+                        <span class="text-[var(--theme-primary)] mr-2 mt-1">▸</span>
                         <span>{{ desc }}</span>
                       </li>
                       }
@@ -97,13 +97,13 @@ interface Experience {
                   <div class="flex flex-wrap gap-2">
                     @for (tech of exp.technologies.slice(0, 6); track tech) {
                     <span
-                      class="px-3 py-1 bg-[#122433]/30 text-gray-400 rounded-full text-xs border border-white/5"
+                      class="px-3 py-1 bg-[var(--theme-surface)]/40 text-[var(--theme-text-secondary)] rounded-full text-xs border border-[var(--theme-border)]/20"
                     >
                       {{ tech }}
                     </span>
                     } @if (exp.technologies.length > 6) {
                     <span
-                      class="px-3 py-1 bg-[#122433]/30 text-gray-400 rounded-full text-xs border border-white/5"
+                      class="px-3 py-1 bg-[var(--theme-surface)]/40 text-[var(--theme-text-secondary)] rounded-full text-xs border border-[var(--theme-border)]/20"
                     >
                       +{{ exp.technologies.length - 6 }} more
                     </span>
@@ -119,20 +119,20 @@ interface Experience {
         <!-- Summary Stats -->
         <div class="mt-16 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div class="text-center">
-            <div class="text-3xl font-bold text-white mb-1">5+</div>
-            <div class="text-gray-500 text-sm">Years Experience</div>
+            <div class="text-3xl font-bold text-[var(--theme-text)] mb-1">5+</div>
+            <div class="text-[var(--theme-text-secondary)] text-sm">Years Experience</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl font-bold text-white mb-1">11+</div>
-            <div class="text-gray-500 text-sm">Projects Delivered</div>
+            <div class="text-3xl font-bold text-[var(--theme-text)] mb-1">11+</div>
+            <div class="text-[var(--theme-text-secondary)] text-sm">Projects Delivered</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl font-bold text-white mb-1">100K+</div>
-            <div class="text-gray-500 text-sm">App Downloads</div>
+            <div class="text-3xl font-bold text-[var(--theme-text)] mb-1">100K+</div>
+            <div class="text-[var(--theme-text-secondary)] text-sm">App Downloads</div>
           </div>
           <div class="text-center">
-            <div class="text-3xl font-bold text-white mb-1">50K+</div>
-            <div class="text-gray-500 text-sm">Monthly Transactions</div>
+            <div class="text-3xl font-bold text-[var(--theme-text)] mb-1">50K+</div>
+            <div class="text-[var(--theme-text-secondary)] text-sm">Monthly Transactions</div>
           </div>
         </div>
       </div>

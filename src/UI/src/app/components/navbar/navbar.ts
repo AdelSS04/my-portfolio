@@ -1,4 +1,6 @@
-import { Component, OnInit, HostListener, signal } from '@angular/core';
+import { Component, OnInit, HostListener, signal, inject } from '@angular/core';
+import { ThemeSwitcherComponent } from '../theme-switcher/theme-switcher.component';
+import { ThemeService } from '../../services/theme.service';
 
 interface NavLink {
   label: string;
@@ -8,86 +10,97 @@ interface NavLink {
 @Component({
   selector: 'app-navbar',
   standalone: true,
-  imports: [],
+  imports: [ThemeSwitcherComponent],
   template: `
-    <nav class="fixed top-0 w-full bg-[#112230]/95 backdrop-blur-md z-50 border-b border-white/5 transition-all duration-300"
+    <nav class="fixed top-0 w-full bg-[var(--theme-background-secondary)]/95 backdrop-blur-md z-50 border-b border-[var(--theme-border)]/20 transition-all duration-300"
       [class.shadow-lg]="isScrolled()">
   <div class="container mx-auto px-6 py-4">
     <div class="flex justify-between items-center">
       <div class="flex items-center gap-3">
         <div
-          class="w-10 h-10 rounded-lg bg-gradient-to-br from-[#122331] to-[#122433] flex items-center justify-center border border-white/10"
+          class="w-10 h-10 rounded-lg bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] flex items-center justify-center border border-[var(--theme-border)]/20 shadow-lg"
         >
           <img src="/logo_adel.png" alt="Logo" class="w-8 h-8 object-contain" />
         </div>
-        <span class="text-white font-semibold text-lg">Adel LAJIL</span>
+        <span class="text-[var(--theme-text)] font-semibold text-lg">Adel LAJIL</span>
       </div>
 
-          <div class="hidden md:flex space-x-6 lg:space-x-8">
-            @for (link of navLinks; track link) {
-              <a
-                [href]="link.href"
-                (click)="setActiveLink(link.href, $event)"
-                [class.text-blue-400]="activeLink === link.href"
-                [class.border-b-2]="activeLink === link.href"
-                [class.border-blue-400]="activeLink === link.href"
-                [class.pb-1]="activeLink === link.href"
-                class="text-gray-300 hover:text-white transition-all duration-300 relative group"
-                >
-                {{link.label}}
-                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-blue-400 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-              </a>
-            }
-          </div>
+      <!-- Desktop Navigation & Theme Switcher -->
+      <div class="hidden md:flex items-center gap-6 lg:gap-8">
+        <div class="flex space-x-6 lg:space-x-8">
+          @for (link of navLinks; track link) {
+            <a
+              [href]="link.href"
+              (click)="setActiveLink(link.href, $event)"
+              [class.text-[var(--theme-primary)]]="activeLink === link.href"
+              [class.border-b-2]="activeLink === link.href"
+              [class.border-[var(--theme-primary)]]="activeLink === link.href"
+              [class.pb-1]="activeLink === link.href"
+              class="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text)] transition-all duration-300 relative group"
+              >
+              {{link.label}}
+              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--theme-primary)] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+            </a>
+          }
+        </div>
+        
+        <!-- Theme Switcher -->
+        <app-theme-switcher></app-theme-switcher>
+      </div>
 
-          <!-- Mobile menu button -->
-          <button
-            class="md:hidden text-white p-2 rounded-lg hover:bg-white/10 transition-all duration-300"
-            (click)="toggleMenu()"
+      <!-- Mobile menu button -->
+      <button
+        class="md:hidden text-[var(--theme-text)] p-2 rounded-lg hover:bg-[var(--theme-surface)]/20 transition-all duration-300 border border-[var(--theme-border)]/20"
+        (click)="toggleMenu()"
+        >
+        <svg class="w-6 h-6 transition-transform duration-300"
+          [class.rotate-90]="mobileMenuOpen()"
+          fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          @if (!mobileMenuOpen()) {
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M4 6h16M4 12h16M4 18h16"
+            ></path>
+          }
+          @else {
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M6 18L18 6M6 6l12 12"
+            ></path>
+          }
+        </svg>
+      </button>
+    </div>
+
+    <!-- Mobile menu -->
+    <div class="md:hidden overflow-hidden transition-all duration-300"
+      [style.max-height]="mobileMenuOpen() ? '500px' : '0px'">
+      <div class="pt-4 pb-2 space-y-2">
+        @for (link of navLinks; track link) {
+          <a
+            [href]="link.href"
+            (click)="setActiveLink(link.href, $event); closeMobileMenu()"
+            [class.bg-[var(--theme-primary)]/10]="activeLink === link.href"
+            [class.border-l-4]="activeLink === link.href"
+            [class.border-[var(--theme-primary)]]="activeLink === link.href"
+            [class.text-[var(--theme-text)]]="activeLink === link.href"
+            class="block text-[var(--theme-text-secondary)] hover:text-[var(--theme-text)] hover:bg-[var(--theme-surface)]/10 py-3 px-4 rounded transition-all duration-300"
             >
-            <svg class="w-6 h-6 transition-transform duration-300"
-              [class.rotate-90]="mobileMenuOpen()"
-              fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              @if (!mobileMenuOpen()) {
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M4 6h16M4 12h16M4 18h16"
-                ></path>
-              }
-              @else {
-                <path
-                  stroke-linecap="round"
-                  stroke-linejoin="round"
-                  stroke-width="2"
-                  d="M6 18L18 6M6 6l12 12"
-                ></path>
-              }
-            </svg>
-          </button>
-        </div>
-
-        <!-- Mobile menu -->
-        <div class="md:hidden overflow-hidden transition-all duration-300"
-          [style.max-height]="mobileMenuOpen() ? '400px' : '0px'">
-          <div class="pt-4 pb-2 space-y-2">
-            @for (link of navLinks; track link) {
-              <a
-                [href]="link.href"
-                (click)="setActiveLink(link.href, $event); closeMobileMenu()"
-                [class.bg-white/10]="activeLink === link.href"
-                [class.border-l-4]="activeLink === link.href"
-                [class.border-blue-400]="activeLink === link.href"
-                [class.text-white]="activeLink === link.href"
-                class="block text-gray-300 hover:text-white hover:bg-white/5 py-3 px-4 rounded transition-all duration-300"
-                >
-                {{link.label}}
-              </a>
-            }
-          </div>
+            {{link.label}}
+          </a>
+        }
+        
+        <!-- Mobile Theme Switcher -->
+        <div class="pt-4 border-t border-[var(--theme-border)]/20 px-4">
+          <app-theme-switcher></app-theme-switcher>
         </div>
       </div>
+    </div>
+  </div>
     </nav>
     `,
   styles: [
@@ -102,6 +115,7 @@ interface NavLink {
   ],
 })
 export class NavbarComponent implements OnInit {
+  themeService = inject(ThemeService);
   mobileMenuOpen = signal(false);
   activeLink = '#home';
   isScrolled = signal(false);

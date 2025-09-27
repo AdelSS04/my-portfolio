@@ -15,25 +15,25 @@ interface Skill {
   template: `
     <section id="skills" class="py-20 px-6">
       <div class="container mx-auto max-w-6xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-4">Technical Skills</h2>
-        <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">Technical Skills</h2>
+        <p class="text-[var(--theme-text-secondary)] text-center mb-12 max-w-2xl mx-auto">
           Leveraging modern technologies to build robust, scalable applications
         </p>
 
         <div class="space-y-8">
           <!-- Frontend Skills -->
           <div>
-            <h3 class="text-xl font-semibold text-white mb-4">Frontend Development</h3>
+            <h3 class="text-xl font-semibold text-[var(--theme-text)] mb-4">Frontend Development</h3>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               @for (skill of frontendSkills; track skill) {
                 <div
-                  class="bg-[#112231]/50 backdrop-blur-sm rounded-xl p-4 border border-white/5 hover:border-white/20 hover:bg-[#122331]/50 transition-all duration-300 group"
+                  class="bg-[var(--theme-surface)]/70 backdrop-blur-sm rounded-xl p-4 border border-[var(--theme-border)]/20 hover:border-[var(--theme-primary)]/30 hover:bg-[var(--theme-surface)]/90 transition-all duration-300 group"
                   >
                   <div class="flex items-center gap-3">
                     <div class="text-2xl group-hover:scale-110 transition-transform">{{skill.icon}}</div>
                     <div>
-                      <p class="text-white font-medium">{{skill.name}}</p>
-                      <p class="text-xs text-gray-500">{{skill.level}}</p>
+                      <p class="text-[var(--theme-text)] font-medium">{{skill.name}}</p>
+                      <p class="text-xs text-[var(--theme-text-secondary)]">{{skill.level}}</p>
                     </div>
                   </div>
                 </div>
@@ -43,17 +43,17 @@ interface Skill {
 
           <!-- Backend Skills -->
           <div>
-            <h3 class="text-xl font-semibold text-white mb-4">Backend Development</h3>
+            <h3 class="text-xl font-semibold text-[var(--theme-text)] mb-4">Backend Development</h3>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               @for (skill of backendSkills; track skill) {
                 <div
-                  class="bg-[#112231]/50 backdrop-blur-sm rounded-xl p-4 border border-white/5 hover:border-white/20 hover:bg-[#122331]/50 transition-all duration-300 group"
+                  class="bg-[var(--theme-surface)]/70 backdrop-blur-sm rounded-xl p-4 border border-[var(--theme-border)]/20 hover:border-[var(--theme-primary)]/30 hover:bg-[var(--theme-surface)]/90 transition-all duration-300 group"
                   >
                   <div class="flex items-center gap-3">
                     <div class="text-2xl group-hover:scale-110 transition-transform">{{skill.icon}}</div>
                     <div>
-                      <p class="text-white font-medium">{{skill.name}}</p>
-                      <p class="text-xs text-gray-500">{{skill.level}}</p>
+                      <p class="text-[var(--theme-text)] font-medium">{{skill.name}}</p>
+                      <p class="text-xs text-[var(--theme-text-secondary)]">{{skill.level}}</p>
                     </div>
                   </div>
                 </div>
@@ -63,17 +63,17 @@ interface Skill {
 
           <!-- Cloud & DevOps -->
           <div>
-            <h3 class="text-xl font-semibold text-white mb-4">Cloud & DevOps</h3>
+            <h3 class="text-xl font-semibold text-[var(--theme-text)] mb-4">Cloud & DevOps</h3>
             <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4">
               @for (skill of cloudSkills; track skill) {
                 <div
-                  class="bg-[#112231]/50 backdrop-blur-sm rounded-xl p-4 border border-white/5 hover:border-white/20 hover:bg-[#122331]/50 transition-all duration-300 group"
+                  class="bg-[var(--theme-surface)]/70 backdrop-blur-sm rounded-xl p-4 border border-[var(--theme-border)]/20 hover:border-[var(--theme-primary)]/30 hover:bg-[var(--theme-surface)]/90 transition-all duration-300 group"
                   >
                   <div class="flex items-center gap-3">
                     <div class="text-2xl group-hover:scale-110 transition-transform">{{skill.icon}}</div>
                     <div>
-                      <p class="text-white font-medium">{{skill.name}}</p>
-                      <p class="text-xs text-gray-500">{{skill.level}}</p>
+                      <p class="text-[var(--theme-text)] font-medium">{{skill.name}}</p>
+                      <p class="text-xs text-[var(--theme-text-secondary)]">{{skill.level}}</p>
                     </div>
                   </div>
                 </div>
@@ -84,15 +84,15 @@ interface Skill {
 
         <!-- Certifications -->
         <div class="mt-12 text-center">
-          <h3 class="text-xl font-semibold text-white mb-6">Certifications</h3>
+          <h3 class="text-xl font-semibold text-[var(--theme-text)] mb-6">Certifications</h3>
           <div class="flex flex-wrap gap-4 justify-center">
-            <div class="bg-gradient-to-r from-[#122331] to-[#122433] text-white px-6 py-3 rounded-full font-medium border border-white/10">
+            <div class="bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] text-white px-6 py-3 rounded-full font-medium border border-[var(--theme-border)]/20 shadow-lg">
               🏅 Azure AZ-204 Certified
             </div>
-            <div class="bg-[#112231]/50 backdrop-blur text-white px-6 py-3 rounded-full border border-white/10">
+            <div class="bg-[var(--theme-surface)]/80 backdrop-blur text-[var(--theme-text)] px-6 py-3 rounded-full border border-[var(--theme-border)]/20">
               📜 .NET Expert
             </div>
-            <div class="bg-[#112231]/50 backdrop-blur text-white px-6 py-3 rounded-full border border-white/10">
+            <div class="bg-[var(--theme-surface)]/80 backdrop-blur text-[var(--theme-text)] px-6 py-3 rounded-full border border-[var(--theme-border)]/20">
               🎯 Angular Advanced
             </div>
           </div>

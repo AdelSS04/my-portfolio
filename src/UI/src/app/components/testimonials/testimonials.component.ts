@@ -21,11 +21,11 @@ interface Testimonial {
   template: `
     <section id="testimonials" class="py-20 px-6 relative overflow-hidden">
       <!-- Background decoration -->
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[#112230]/20 to-transparent"></div>
+      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--theme-background-secondary)]/20 to-transparent"></div>
 
       <div class="container mx-auto max-w-6xl relative z-10">
-        <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-4">Testimonials</h2>
-        <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">Testimonials</h2>
+        <p class="text-[var(--theme-text-secondary)] text-center mb-12 max-w-2xl mx-auto">
           What colleagues and clients say about working with me
         </p>
 
@@ -45,10 +45,10 @@ interface Testimonial {
               @for (testimonial of testimonials; track testimonial) {
                 <div
                   class="w-full flex-shrink-0 px-4">
-                  <div class="bg-[#112231]/50 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-white/5 hover:border-white/10 transition-all duration-300">
+                  <div class="bg-[var(--theme-surface)]/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-[var(--theme-border)]/20 hover:border-[var(--theme-border)]/30 transition-all duration-300">
                     <!-- Quote Icon -->
                     <div class="flex justify-center mb-6">
-                      <div class="w-16 h-16 bg-gradient-to-br from-[#122331] to-[#122433] rounded-full flex items-center justify-center">
+                      <div class="w-16 h-16 bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full flex items-center justify-center">
                         <svg class="w-8 h-8 text-white/50" fill="currentColor" viewBox="0 0 24 24">
                           <path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/>
                         </svg>
@@ -68,13 +68,13 @@ interface Testimonial {
                         }
                       </div>
                       <!-- Testimonial Text -->
-                      <p class="text-gray-300 text-lg md:text-xl leading-relaxed mb-8 italic">
+                      <p class="text-[var(--theme-text-secondary)] text-lg md:text-xl leading-relaxed mb-8 italic">
                         "{{testimonial.text}}"
                       </p>
                       <!-- Author Info -->
                       <div class="flex flex-col items-center">
                         <!-- Author Image -->
-                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-[#122331] to-[#122433] flex items-center justify-center mb-4 border-2 border-white/10">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] flex items-center justify-center mb-4 border-2 border-[var(--theme-border)]/30">
                           @if (!testimonial.image) {
                             <span class="text-2xl text-white font-bold">
                               {{testimonial.name.charAt(0)}}
@@ -89,17 +89,17 @@ interface Testimonial {
                         </div>
                         <!-- Author Details -->
                         <div>
-                          <h4 class="text-white font-semibold text-lg">{{testimonial.name}}</h4>
-                          <p class="text-gray-400 text-sm">{{testimonial.position}}</p>
-                          <p class="text-gray-500 text-sm">{{testimonial.company}}</p>
-                          <p class="text-gray-600 text-xs mt-2">{{testimonial.date}}</p>
+                          <h4 class="text-[var(--theme-text)] font-semibold text-lg">{{testimonial.name}}</h4>
+                          <p class="text-[var(--theme-text-secondary)] text-sm">{{testimonial.position}}</p>
+                          <p class="text-[var(--theme-text-secondary)]/70 text-sm">{{testimonial.company}}</p>
+                          <p class="text-[var(--theme-text-secondary)]/50 text-xs mt-2">{{testimonial.date}}</p>
                           <!-- LinkedIn Link -->
                           @if (testimonial.linkedIn) {
                             <a
                               [href]="testimonial.linkedIn"
                               target="_blank"
                               rel="noopener noreferrer"
-                              class="inline-flex items-center gap-1 text-blue-400 hover:text-blue-300 transition-colors mt-3 text-sm">
+                              class="inline-flex items-center gap-1 text-[var(--theme-primary)] hover:text-[var(--theme-accent)] transition-colors mt-3 text-sm">
                               <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
                               </svg>
@@ -118,7 +118,7 @@ interface Testimonial {
           <!-- Navigation Arrows -->
           <button
             (click)="prevSlide()"
-            class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 backdrop-blur-sm border border-white/10 hover:scale-110 active:scale-95"
+            class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-[var(--theme-surface)]/60 hover:bg-[var(--theme-surface)]/80 rounded-full flex items-center justify-center text-[var(--theme-text)] transition-all duration-300 backdrop-blur-sm border border-[var(--theme-border)]/30 hover:scale-110 active:scale-95 hover:border-[var(--theme-primary)]/50"
             [disabled]="isTransitioning"
             >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -128,7 +128,7 @@ interface Testimonial {
 
           <button
             (click)="nextSlide()"
-            class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-white/10 hover:bg-white/20 rounded-full flex items-center justify-center text-white transition-all duration-300 backdrop-blur-sm border border-white/10 hover:scale-110 active:scale-95"
+            class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-[var(--theme-surface)]/60 hover:bg-[var(--theme-surface)]/80 rounded-full flex items-center justify-center text-[var(--theme-text)] transition-all duration-300 backdrop-blur-sm border border-[var(--theme-border)]/30 hover:scale-110 active:scale-95 hover:border-[var(--theme-primary)]/50"
             [disabled]="isTransitioning"
             >
             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -141,11 +141,11 @@ interface Testimonial {
             @for (testimonial of testimonials; track testimonial; let i = $index) {
               <button
                 (click)="goToSlide(i)"
-                [class.bg-blue-400]="i === currentIndex"
-                [class.bg-white/30]="i !== currentIndex"
+                [class.bg-[var(--theme-primary)]]="i === currentIndex"
+                [class.bg-[var(--theme-surface)]/40]="i !== currentIndex"
                 [class.w-12]="i === currentIndex"
                 [class.w-2]="i !== currentIndex"
-                class="h-2 rounded-full transition-all duration-300 hover:bg-white/50"
+                class="h-2 rounded-full transition-all duration-300 hover:bg-[var(--theme-surface)]/60"
                 [disabled]="isTransitioning"
               ></button>
             }
@@ -155,20 +155,20 @@ interface Testimonial {
         <!-- Additional Info -->
         <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div class="text-center">
-            <div class="text-2xl font-bold text-white mb-1">{{testimonials.length}}+</div>
-            <div class="text-gray-500 text-sm">Happy Clients</div>
+            <div class="text-2xl font-bold text-[var(--theme-text)] mb-1">{{testimonials.length}}+</div>
+            <div class="text-[var(--theme-text-secondary)] text-sm">Happy Clients</div>
           </div>
           <div class="text-center">
-            <div class="text-2xl font-bold text-white mb-1">5/5</div>
-            <div class="text-gray-500 text-sm">Average Rating</div>
+            <div class="text-2xl font-bold text-[var(--theme-text)] mb-1">5/5</div>
+            <div class="text-[var(--theme-text-secondary)] text-sm">Average Rating</div>
           </div>
           <div class="text-center">
-            <div class="text-2xl font-bold text-white mb-1">100%</div>
-            <div class="text-gray-500 text-sm">Recommendation</div>
+            <div class="text-2xl font-bold text-[var(--theme-text)] mb-1">100%</div>
+            <div class="text-[var(--theme-text-secondary)] text-sm">Recommendation</div>
           </div>
           <div class="text-center">
-            <div class="text-2xl font-bold text-white mb-1">5+</div>
-            <div class="text-gray-500 text-sm">Years of Trust</div>
+            <div class="text-2xl font-bold text-[var(--theme-text)] mb-1">5+</div>
+            <div class="text-[var(--theme-text-secondary)] text-sm">Years of Trust</div>
           </div>
         </div>
       </div>

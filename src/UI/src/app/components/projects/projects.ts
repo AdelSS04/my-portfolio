@@ -22,8 +22,8 @@ export interface Project {
   template: `
     <section id="projects" class="py-20 px-6">
       <div class="container mx-auto max-w-6xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-4">Featured Projects</h2>
-        <p class="text-gray-400 text-center mb-8 max-w-2xl mx-auto">
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">Featured Projects</h2>
+        <p class="text-[var(--theme-text-secondary)] text-center mb-8 max-w-2xl mx-auto">
           From enterprise platforms to open-source contributions, showcasing diverse technical expertise
         </p>
 
@@ -32,10 +32,10 @@ export interface Project {
           <button
             (click)="filterProjects('all')"
             [class.bg-gradient-to-r]="selectedCategory === 'all'"
-            [class.from-[#122331]]="selectedCategory === 'all'"
-            [class.to-[#122433]]="selectedCategory === 'all'"
-            [class.bg-[#112231]/50]="selectedCategory !== 'all'"
-            class="px-6 py-2 rounded-full text-white border border-white/10 hover:border-white/30 transition-all"
+            [class.from-[var(--theme-primary)]]="selectedCategory === 'all'"
+            [class.to-[var(--theme-accent)]]="selectedCategory === 'all'"
+            [class.bg-[var(--theme-surface)]/70]="selectedCategory !== 'all'"
+            class="px-6 py-2 rounded-full text-[var(--theme-text)] border border-[var(--theme-border)]/30 hover:border-[var(--theme-border)]/50 transition-all"
             >
             All Projects
           </button>
@@ -43,10 +43,10 @@ export interface Project {
             <button
               (click)="filterProjects(cat)"
               [class.bg-gradient-to-r]="selectedCategory === cat"
-              [class.from-[#122331]]="selectedCategory === cat"
-              [class.to-[#122433]]="selectedCategory === cat"
-              [class.bg-[#112231]/50]="selectedCategory !== cat"
-              class="px-6 py-2 rounded-full text-white border border-white/10 hover:border-white/30 transition-all"
+              [class.from-[var(--theme-primary)]]="selectedCategory === cat"
+              [class.to-[var(--theme-accent)]]="selectedCategory === cat"
+              [class.bg-[var(--theme-surface)]/70]="selectedCategory !== cat"
+              class="px-6 py-2 rounded-full text-[var(--theme-text)] border border-[var(--theme-border)]/30 hover:border-[var(--theme-border)]/50 transition-all"
               >
               {{cat}}
             </button>
@@ -67,7 +67,7 @@ export interface Project {
           <div class="text-center mt-12">
             <button
               (click)="showAllProjects()"
-              class="px-8 py-3 bg-[#112231]/50 text-white rounded-full border border-white/10 hover:border-white/30 hover:bg-[#122331]/50 transition-all"
+              class="px-8 py-3 bg-[var(--theme-surface)]/70 text-[var(--theme-text)] rounded-full border border-[var(--theme-border)]/30 hover:border-[var(--theme-border)]/50 hover:bg-[var(--theme-surface)]/80 transition-all"
               >
               Show More Projects
             </button>

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 
 import { ExperienceComponent } from './components/experience/experience.component';
 import { AboutComponent } from './components/about/about';
@@ -10,6 +10,7 @@ import { ProjectsComponent } from './components/projects/projects';
 import { SkillsComponent } from './components/skills/skills';
 import { EducationComponent } from './components/education/education.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
+import { ThemeService } from './services/theme.service';
 
 @Component({
   selector: 'app-root',
@@ -27,9 +28,9 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
     TestimonialsComponent
   ],
   template: `
-    <div class="min-h-screen bg-[#1e1e1e]">
+    <div class="min-h-screen bg-[var(--theme-background)] transition-all duration-300 theme-transition">
       <div
-        class="fixed inset-0 bg-gradient-to-br from-[#112230] via-[#1e1e1e] to-[#122433] opacity-90"
+        class="fixed inset-0 bg-theme-gradient opacity-90 transition-all duration-300"
       ></div>
       <div class="relative z-10">
         <app-navbar></app-navbar>
@@ -63,6 +64,8 @@ import { TestimonialsComponent } from './components/testimonials/testimonials.co
   ],
 })
 export class App {
+  themeService = inject(ThemeService);
+  
   userData = {
     name: 'Adel Lajil',
     title: 'Cloud Full Stack Senior Developer',
