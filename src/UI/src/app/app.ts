@@ -65,7 +65,7 @@ import { ThemeService } from './services/theme.service';
 })
 export class App {
   themeService = inject(ThemeService);
-  
+
   userData = {
     name: 'Adel Lajil',
     title: 'Cloud Full Stack Senior Developer',

@@ -9,17 +9,17 @@ import { ThemeService, Theme } from '../../services/theme.service';
   template: `
     <div class="relative">
       <!-- Theme Switcher Button -->
-      <button 
+      <button
         (click)="toggleDropdown()"
         class="flex items-center gap-2 px-3 py-2 rounded-lg transition-all duration-300 hover:bg-[var(--theme-surface)]/20 border border-[var(--theme-border)]/20"
         [class.bg-[var(--theme-surface)]/10]="isDropdownOpen()"
       >
         <span class="text-lg">{{ themeService.getThemeEmoji(themeService.currentTheme()) }}</span>
-        <svg 
+        <svg
           class="w-4 h-4 transition-transform duration-200"
           [class.rotate-180]="isDropdownOpen()"
-          fill="none" 
-          stroke="currentColor" 
+          fill="none"
+          stroke="currentColor"
           viewBox="0 0 24 24"
         >
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path>
@@ -27,7 +27,7 @@ import { ThemeService, Theme } from '../../services/theme.service';
       </button>
 
       <!-- Dropdown Menu -->
-      <div 
+      <div
         class="absolute top-full right-0 mt-2 w-64 bg-[var(--theme-surface)] border border-[var(--theme-border)]/20 rounded-xl shadow-2xl backdrop-blur-md transition-all duration-300 z-50"
         [class.opacity-0]="!isDropdownOpen()"
         [class.pointer-events-none]="!isDropdownOpen()"
@@ -38,7 +38,7 @@ import { ThemeService, Theme } from '../../services/theme.service';
           <!-- Header -->
           <div class="flex items-center justify-between mb-4">
             <h3 class="text-sm font-semibold text-[var(--theme-text)]">Customize Theme</h3>
-            <button 
+            <button
               (click)="closeDropdown()"
               class="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text)] transition-colors p-1"
             >
@@ -65,7 +65,7 @@ import { ThemeService, Theme } from '../../services/theme.service';
                   <div class="flex-shrink-0">
                     <div class="flex gap-1">
                       @for (color of getThemePreview(theme); track color) {
-                        <div 
+                        <div
                           class="w-3 h-3 rounded-full border border-white/20"
                           [style.background-color]="color"
                         ></div>
@@ -142,7 +142,7 @@ import { ThemeService, Theme } from '../../services/theme.service';
 
     <!-- Backdrop -->
     @if (isDropdownOpen()) {
-      <div 
+      <div
         class="fixed inset-0 bg-black/20 backdrop-blur-sm z-40"
         (click)="closeDropdown()"
       ></div>
@@ -158,7 +158,7 @@ import { ThemeService, Theme } from '../../services/theme.service';
 export class ThemeSwitcherComponent {
   themeService = inject(ThemeService);
   isDropdownOpen = signal(false);
-  
+
   themes: Theme[] = ['ocean', 'forest', 'sunset'];  toggleDropdown() {
     this.isDropdownOpen.set(!this.isDropdownOpen());
   }
@@ -183,7 +183,7 @@ export class ThemeSwitcherComponent {
 
   getThemePreview(theme: Theme): string[] {
     const themeColors = this.themeService.getThemeColors(theme, this.themeService.currentMode());
-    
+
     return [
       themeColors.primary,
       themeColors.secondary,

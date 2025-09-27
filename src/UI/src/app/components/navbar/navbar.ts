@@ -43,7 +43,7 @@ interface NavLink {
             </a>
           }
         </div>
-        
+
         <!-- Theme Switcher -->
         <app-theme-switcher></app-theme-switcher>
       </div>
@@ -93,7 +93,7 @@ interface NavLink {
             {{link.label}}
           </a>
         }
-        
+
         <!-- Mobile Theme Switcher -->
         <div class="pt-4 border-t border-[var(--theme-border)]/20 px-4">
           <app-theme-switcher></app-theme-switcher>

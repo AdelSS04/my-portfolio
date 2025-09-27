@@ -18,7 +18,7 @@ import { Project } from '../projects/projects';
           </span>
         </div>
       }
-    
+
       <!-- Thumbnail Image or Gradient -->
       <div class="h-48 relative overflow-hidden bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] group">
         <!-- Project Thumbnail -->
@@ -30,7 +30,7 @@ import { Project } from '../projects/projects';
             (error)="handleImageError($event)"
             >
         }
-    
+
         <!-- Fallback gradient if no image -->
         @if (!project.thumbnail) {
           <div class="w-full h-full flex items-center justify-center">
@@ -39,7 +39,7 @@ import { Project } from '../projects/projects';
             </div>
           </div>
         }
-    
+
         <!-- Overlay gradient -->
         <div class="absolute inset-0 bg-gradient-to-t from-[var(--theme-background)] via-transparent to-transparent opacity-60"></div>
 
@@ -54,7 +54,7 @@ import { Project } from '../projects/projects';
             </span>
           }
         </div>
-    
+
         <!-- View Project overlay on hover -->
         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <div class="text-white text-lg font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
@@ -62,7 +62,7 @@ import { Project } from '../projects/projects';
           </div>
         </div>
       </div>
-    
+
       <div class="p-6">
         <h3 class="text-xl font-bold text-[var(--theme-text)] mb-2 group-hover:text-[var(--theme-primary)] transition-colors">
           {{project.title}}
@@ -83,7 +83,7 @@ import { Project } from '../projects/projects';
             </span>
           }
         </div>
-    
+
         <div class="flex gap-4">
           @if (project.liveUrl) {
             <a
