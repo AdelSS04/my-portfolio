@@ -22,7 +22,7 @@ interface Experience {
     <section id="experience" class="py-20 px-4 relative min-h-screen overflow-hidden">
       <!-- Dynamic Background -->
       <div class="absolute inset-0 bg-gradient-to-br from-[var(--theme-background)]/90 via-[var(--theme-background-secondary)]/50 to-[var(--theme-background)]/90"></div>
-      
+
       <!-- Floating Elements -->
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <div class="absolute top-1/4 left-1/4 w-64 h-64 bg-[var(--theme-primary)]/5 rounded-full blur-3xl animate-pulse"></div>
@@ -50,10 +50,10 @@ interface Experience {
         <div class="relative max-w-4xl mx-auto">
           <!-- Timeline Line -->
           <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--theme-primary)] via-[var(--theme-accent)] to-[var(--theme-primary)] opacity-30"></div>
-          
+
           <div class="space-y-12">
             @for (exp of experiences; track exp; let i = $index) {
-            <div 
+            <div
               class="experience-card relative flex gap-8 group"
               [style.animation-delay]="i * 150 + 'ms'"
               [class.is-current]="exp.current"
@@ -61,22 +61,22 @@ interface Experience {
               <!-- Timeline Node -->
               <div class="relative flex-shrink-0">
                 <div class="w-16 h-16 rounded-2xl overflow-hidden bg-white shadow-lg shadow-[var(--theme-primary)]/20 border-2 border-[var(--theme-border)]/20 group-hover:border-[var(--theme-primary)]/50 transition-all duration-500 group-hover:scale-110 flex items-center justify-center">
-                  <img 
-                    [src]="exp.logoUrl" 
-                    [alt]="exp.company + ' logo'" 
+                  <img
+                    [src]="exp.logoUrl"
+                    [alt]="exp.company + ' logo'"
                     class="w-full h-full object-contain p-2"
                     (error)="handleImageError($event)"
                   />
-                  <div 
+                  <div
                     class="w-full h-full flex items-center justify-center text-white font-bold text-lg hidden"
                     [style.background]="exp.companyColor || 'linear-gradient(135deg, var(--theme-primary), var(--theme-accent))'">
                     {{ getCompanyInitials(exp.company) }}
                   </div>
                 </div>
-                
+
                 <!-- Timeline Connection -->
                 <div class="absolute top-8 -left-4 w-4 h-0.5 bg-[var(--theme-primary)]/30"></div>
-                
+
                 @if (exp.current) {
                 <!-- Pulsing Ring for Current Position -->
                 <div class="absolute -inset-2 border-2 border-[var(--theme-primary)] rounded-2xl animate-pulse opacity-60"></div>
@@ -86,10 +86,10 @@ interface Experience {
 
               <!-- Content Card -->
               <div class="flex-1 bg-gradient-to-br from-[var(--theme-surface)] to-[var(--theme-surface)]/80 rounded-2xl border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/40 transition-all duration-500 overflow-hidden group-hover:shadow-xl group-hover:shadow-[var(--theme-primary)]/10 group-hover:-translate-y-1">
-                
+
                 <!-- Animated Background -->
                 <div class="absolute inset-0 bg-gradient-to-br from-[var(--theme-primary)]/5 via-transparent to-[var(--theme-accent)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
+
                 <div class="relative z-10 p-6">
                   <!-- Header -->
                   <div class="flex items-start justify-between mb-4">
@@ -106,7 +106,7 @@ interface Experience {
                         }
                       </div>
                       <p class="text-lg font-semibold text-[var(--theme-text-secondary)] mb-2">{{ exp.company }}</p>
-                      
+
                       <!-- Meta Info -->
                       <div class="flex flex-wrap gap-2 text-xs">
                         <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
@@ -123,7 +123,7 @@ interface Experience {
                         </span>
                       </div>
                     </div>
-                    
+
                     <!-- Duration -->
                     <div class="text-right bg-[var(--theme-background)]/30 rounded-xl p-3 backdrop-blur-sm">
                       <p class="text-[var(--theme-text)] font-bold text-sm">{{ exp.period }}</p>
@@ -147,7 +147,7 @@ interface Experience {
                         }
                       </div>
                     </div>
-                    
+
                     <!-- Technologies -->
                     <div>
                       <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
@@ -219,15 +219,15 @@ interface Experience {
       animation: cardEntry 0.8s ease-out forwards;
       opacity: 0;
     }
-    
+
     .experience-card:hover {
       transform: translateY(-8px) scale(1.02);
     }
-    
+
     .experience-card.is-current {
       box-shadow: 0 0 30px var(--theme-primary), 0 20px 40px var(--theme-primary)/20;
     }
-    
+
     @keyframes cardEntry {
       from {
         opacity: 0;
@@ -238,7 +238,7 @@ interface Experience {
         transform: translateY(0);
       }
     }
-    
+
     @keyframes spin-slow {
       from {
         transform: rotate(0deg);
@@ -247,24 +247,24 @@ interface Experience {
         transform: rotate(360deg);
       }
     }
-    
+
     .animate-spin-slow {
       animation: spin-slow 20s linear infinite;
     }
-    
+
     .custom-scrollbar {
       scrollbar-width: thin;
       scrollbar-color: var(--theme-primary) transparent;
     }
-    
+
     .custom-scrollbar::-webkit-scrollbar {
       width: 3px;
     }
-    
+
     .custom-scrollbar::-webkit-scrollbar-track {
       background: transparent;
     }
-    
+
     .custom-scrollbar::-webkit-scrollbar-thumb {
       background-color: var(--theme-primary);
       border-radius: 2px;
@@ -289,7 +289,7 @@ export class ExperienceComponent {
         'Optimized application performance by 40% and implemented comprehensive security best practices'
       ],
       technologies: [
-        '.NET Core', 'C#', 'Angular', 'TypeScript', 'Azure', 'Docker', 'Kubernetes', 
+        '.NET Core', 'C#', 'Angular', 'TypeScript', 'Azure', 'Docker', 'Kubernetes',
         'SQL Server', 'Entity Framework', 'Azure DevOps', 'Microservices', 'REST APIs',
         'gRPC', 'Terraform', 'GitLab CI/CD'
       ]
@@ -298,7 +298,7 @@ export class ExperienceComponent {
       company: 'Cofomo',
       position: 'Full Stack Engineer',
       period: 'Sep 2022 - Jul 2024',
-      location: 'Quebec, Canada', 
+      location: 'Quebec, Canada',
       type: 'Full-time • Hybrid',
       current: false,
       logoUrl: 'assets/images/companies/cofomo.png',
@@ -310,7 +310,7 @@ export class ExperienceComponent {
         'Managed end-to-end deployment pipelines using Azure DevOps with 99.9% success rate'
       ],
       technologies: [
-        '.NET Core', 'Angular', 'Azure DevOps', 'Dapper', 'Oracle SQL', 
+        '.NET Core', 'Angular', 'Azure DevOps', 'Dapper', 'Oracle SQL',
         'Microservices', 'CQRS', 'DDD', 'REST/SOAP APIs', 'RxJS',
         'Unit Testing', 'Integration Testing', 'Docker', 'Kubernetes'
       ]
@@ -406,7 +406,7 @@ export class ExperienceComponent {
     if (img && img.parentElement) {
       // Hide the failed image
       img.style.display = 'none';
-      
+
       // Show the fallback div that's already in the template
       const fallback = img.nextElementSibling as HTMLDivElement;
       if (fallback) {

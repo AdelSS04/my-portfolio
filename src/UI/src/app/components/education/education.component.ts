@@ -23,7 +23,7 @@ interface Education {
     <section id="education" class="py-20 px-4 relative min-h-screen overflow-hidden">
       <!-- Dynamic Background -->
       <div class="absolute inset-0 bg-gradient-to-br from-[var(--theme-background)]/90 via-[var(--theme-background-secondary)]/50 to-[var(--theme-background)]/90"></div>
-      
+
       <!-- Floating Elements -->
       <div class="absolute inset-0 overflow-hidden pointer-events-none">
         <div class="absolute top-1/4 right-1/4 w-64 h-64 bg-[var(--theme-accent)]/5 rounded-full blur-3xl animate-pulse"></div>
@@ -51,32 +51,32 @@ interface Education {
         <div class="relative max-w-4xl mx-auto">
           <!-- Timeline Line -->
           <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--theme-accent)] via-[var(--theme-primary)] to-[var(--theme-accent)] opacity-30"></div>
-          
+
           <div class="space-y-12">
             @for (edu of education; track edu; let i = $index) {
-            <div 
+            <div
               class="education-card relative flex gap-8 group"
               [style.animation-delay]="i * 150 + 'ms'"
             >
               <!-- Timeline Node -->
               <div class="relative flex-shrink-0">
                 <div class="w-16 h-16 rounded-2xl overflow-hidden bg-white shadow-lg shadow-[var(--theme-primary)]/20 border-2 border-[var(--theme-border)]/20 group-hover:border-[var(--theme-primary)]/50 transition-all duration-500 group-hover:scale-110 flex items-center justify-center">
-                  <img 
-                    [src]="edu.logoUrl" 
-                    [alt]="edu.school + ' logo'" 
+                  <img
+                    [src]="edu.logoUrl"
+                    [alt]="edu.school + ' logo'"
                     class="w-full h-full object-contain p-2"
                     (error)="handleImageError($event)"
                   />
-                  <div 
+                  <div
                     class="w-full h-full flex items-center justify-center text-white font-bold text-lg hidden"
                     [style.background]="edu.schoolColor || 'linear-gradient(135deg, var(--theme-primary), var(--theme-accent))'">
                     {{ getSchoolInitials(edu.school) }}
                   </div>
                 </div>
-                
+
                 <!-- Timeline Connection -->
                 <div class="absolute top-8 -left-4 w-4 h-0.5 bg-[var(--theme-primary)]/30"></div>
-                
+
                 <!-- Education Type Badge -->
                 <div class="absolute -top-2 -right-2 w-6 h-6 rounded-full flex items-center justify-center text-xs"
                      [class]="getTypeClasses(edu.type)">
@@ -86,10 +86,10 @@ interface Education {
 
               <!-- Content Card -->
               <div class="flex-1 bg-gradient-to-br from-[var(--theme-surface)] to-[var(--theme-surface)]/80 rounded-2xl border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/40 transition-all duration-500 overflow-hidden group-hover:shadow-xl group-hover:shadow-[var(--theme-primary)]/10 group-hover:-translate-y-1">
-                
+
                 <!-- Animated Background -->
                 <div class="absolute inset-0 bg-gradient-to-br from-[var(--theme-primary)]/5 via-transparent to-[var(--theme-accent)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-                
+
                 <div class="relative z-10 p-6">
                   <!-- Header -->
                   <div class="flex items-start justify-between mb-4">
@@ -101,7 +101,7 @@ interface Education {
                       </div>
                       <p class="text-lg font-semibold text-[var(--theme-text-secondary)] mb-2">{{ edu.school }}</p>
                       <p class="text-[var(--theme-primary)] font-medium mb-2">{{ edu.field }}</p>
-                      
+
                       <!-- Meta Info -->
                       <div class="flex flex-wrap gap-2 text-xs">
                         <span class="inline-flex items-center gap-1 text-[var(--theme-text-secondary)] bg-[var(--theme-background)]/40 px-2 py-1 rounded-full">
@@ -141,7 +141,7 @@ interface Education {
                         }
                       </div>
                     </div>
-                    
+
                     <!-- Achievements -->
                     @if (edu.achievements && edu.achievements.length > 0) {
                     <div>
@@ -174,15 +174,15 @@ interface Education {
               Continuous learning and professional development through industry certifications
             </p>
           </div>
-          
+
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             @for (cert of certifications; track cert; let i = $index) {
             <div class="bg-gradient-to-br from-[var(--theme-surface)] to-[var(--theme-surface)]/80 rounded-2xl border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/40 transition-all duration-500 overflow-hidden group hover:shadow-xl hover:shadow-[var(--theme-primary)]/10 hover:-translate-y-1"
                  [style.animation-delay]="i * 100 + 'ms'">
-              
+
               <!-- Animated Background -->
               <div class="absolute inset-0 bg-gradient-to-br from-[var(--theme-primary)]/5 via-transparent to-[var(--theme-accent)]/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
-              
+
               <div class="relative z-10 p-6">
                 <div class="flex items-start gap-4">
                   <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] flex items-center justify-center flex-shrink-0 text-white group-hover:scale-110 transition-transform duration-300">
@@ -196,7 +196,7 @@ interface Education {
                     </h4>
                     <p class="text-[var(--theme-text-secondary)] text-sm mb-1">{{ cert.issuer }}</p>
                     <p class="text-[var(--theme-text-secondary)]/70 text-xs mb-3">{{ cert.date }}</p>
-                    
+
                     @if (cert.skills) {
                     <div class="flex flex-wrap gap-1">
                       @for (skill of cert.skills; track skill) {
