@@ -167,6 +167,16 @@ export class ProjectsComponent {
       featured: true,
       year: '2025',
       thumbnail: 'assets/images/angular-form.png'
+    },
+    {
+      title: 'Terraform Azure Fullstack Starter',
+      description: 'Production-ready Terraform infrastructure for Azure with multi-environment support, Auth0 authentication, GitLab CI/CD, and cost optimization. Deploy a complete fullstack application in minutes.',
+      category: 'Cloud/DevOps',
+      technologies: ['Terraform', 'Azure', 'Auth0', 'GitLab CI/CD'],
+      githubUrl: 'https://github.com/AdelSS04/terraform-azure-fullstack-starter',
+      liveUrl: 'https://blog.adellajil.com/blog/azure-terraform-infrastructure-guide',
+      year: '2025',
+      thumbnail: 'assets/images/terraform-azure-starter.png'
     }
   ];
   filteredProjects = computed(() => {
