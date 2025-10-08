@@ -30,12 +30,12 @@ export default {
 							headers: {
 								...asset.headers,
 								'Cache-Control': 'public, max-age=31536000', // 1 year cache
-							}
+							} 
 						});
 						return response;
 					}
 				} catch (error) {
-					console.error('Error serving static asset:', error);
+					 console.error('Error serving static asset:', error);
 				}
 			}
 		}
