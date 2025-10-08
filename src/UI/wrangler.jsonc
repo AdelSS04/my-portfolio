@@ -4,7 +4,7 @@
  */
 {
 	"$schema": "node_modules/wrangler/config-schema.json",
-	"name": "ui1",
+	"name": "my-portfolio",
 	"main": "./dist/server/server.mjs",
 	"compatibility_date": "2025-10-08",
 	"assets": {

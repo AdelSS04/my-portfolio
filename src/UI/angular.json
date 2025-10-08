@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "ui1": {
+    "my-portfolio": {
       "projectType": "application",
       "schematics": {},
       "root": "",
@@ -63,10 +63,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "ui1:build:production"
+              "buildTarget": "my-portfolio:build:production"
             },
             "development": {
-              "buildTarget": "ui1:build:development"
+              "buildTarget": "my-portfolio:build:development"
             }
           },
           "defaultConfiguration": "development"
