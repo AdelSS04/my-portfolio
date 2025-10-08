@@ -8,6 +8,6 @@ RUN npm run build --prod
 
 FROM node:20-alpine
 WORKDIR /app
-COPY --from=build /app/dist/my-portfolio/ ./
+COPY --from=build /app/dist/ ./
 CMD node server/server.mjs
 EXPOSE 4200
