@@ -87,7 +87,7 @@ export class ProjectsComponent {
       githubUrl: 'https://github.com/AdelSS04/Cosmigrator',
       liveUrl: 'https://blog.adellajil.com/blog/cosmigrator-cosmos-db-migrations',
       year: '2026',
-      thumbnail: 'assets/images/cosmigrator.png'
+      thumbnail: 'assets/images/Cosmigrator.png'
     }
     , {
       title: 'Podium360',
