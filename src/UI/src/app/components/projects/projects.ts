@@ -80,6 +80,16 @@ export class ProjectsComponent {
 
   allProjects: Project[] = [
     {
+      title: 'Cosmigrator',
+      description: 'Azure Cosmos DB migration framework with bulk operations, retry logic, and CLI. Production-ready .NET library.',
+      category: 'Open Source',
+      technologies: ['.NET Core', 'Cosmos DB', '.NET', 'C#'],
+      githubUrl: 'https://github.com/AdelSS04/Cosmigrator',
+      liveUrl: 'https://blog.adellajil.com/blog/cosmigrator-cosmos-db-migrations',
+      year: '2026',
+      thumbnail: 'assets/images/cosmigrator.png'
+    }
+    , {
       title: 'Podium360',
       description: 'Enterprise microservices platform with message queuing, distributed caching, and cloud infrastructure',
       category: 'Enterprise',
