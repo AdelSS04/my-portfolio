@@ -79,6 +79,16 @@ export class ProjectsComponent {
   categories = ['Enterprise', 'Open Source', 'Marketplace', 'Education', 'Cloud/DevOps'];
 
   allProjects: Project[] = [
+        {
+      title: 'Spur',
+      description: 'Result-oriented error handling for .NET — a lightweight Result<T> type with fluent pipelines, HTTP-aware errors, and zero allocations. Integrates with ASP.NET Core, EF Core, FluentValidation, and MediatR. Native AOT ready.',
+      category: 'Open Source',
+      technologies: ['.NET Core', '.NET', 'C#'],
+      githubUrl: 'https://github.com/AdelSS04/Spur',
+      liveUrl: 'https://spur.adellajil.com/',
+      year: '2026',
+      thumbnail: 'assets/images/spur.png'
+    },
     {
       title: 'Cosmigrator',
       description: 'Azure Cosmos DB migration framework with bulk operations, retry logic, and CLI. Production-ready .NET library.',
