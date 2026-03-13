@@ -38,4 +38,9 @@ export class ThemeService {
   getCurrentColors(): ThemeColors {
     return this.colors;
   }
+
+  // Compatibility method - always returns false since we're not loading themes anymore
+  isLoading(): boolean {
+    return false;
+  }
 }
