@@ -4,25 +4,19 @@
 @import "tailwindcss";
 
 :root {
+  /* Professional Dark Theme - Clean & Minimalist */
   --theme-primary: #3b82f6;
   --theme-primary-light: #60a5fa;
   --theme-primary-dark: #2563eb;
   --theme-secondary: #1e40af;
   --theme-accent: #06b6d4;
-  --theme-background: #1e1e1e;
-  --theme-background-secondary: #112230;
-  --theme-surface: #112331;
+  --theme-background: #0a0f1e;
+  --theme-background-secondary: #111827;
+  --theme-surface: #1a1f2e;
   --theme-text: #ffffff;
-  --theme-text-secondary: #cbd5e1;
-  --theme-border: #475569;
-  --theme-gradient: linear-gradient(135deg, #112230 0%, #1e1e1e 50%, #122433 100%);
-
-  --dark-gray: #1e1e1e;
-  --deep-navy: #112230;
-  --midnight-blue: #112331;
-  --slate-blue: #112231;
-  --steel-blue: #122331;
-  --charcoal-blue: #122433;
+  --theme-text-secondary: #94a3b8;
+  --theme-border: #334155;
+  --theme-gradient: linear-gradient(135deg, #0a0f1e 0%, #111827 50%, #1a1f2e 100%);
 }
 
 html {

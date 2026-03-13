@@ -42,29 +42,34 @@ interface Service {
 export class ServicesComponent {
   services: Service[] = [
     {
-      title: 'Build Your SaaS Product',
-      description: 'Full product builds from architecture to deployment. Multi-tenant isolation, billing, user management, real-time features.',
-      forWho: 'For founders launching a SaaS product.'
+      title: 'SaaS Product Development',
+      description: 'End-to-end SaaS builds. Multi-tenant architecture, authentication, billing integration (Stripe/Paddle), admin panels, real-time features, usage tracking. I ship complete products, not half-built MVPs.',
+      forWho: 'For founders launching a SaaS or technical product.'
     },
     {
-      title: 'Custom Dashboards & Backoffices',
-      description: 'Internal tools your team actually uses daily. Role-based access, data management, reporting interfaces.',
-      forWho: 'For companies outgrowing spreadsheets or no-code tools.'
+      title: 'Internal Tools & Dashboards',
+      description: 'Custom backoffices your team will actually use. Data management interfaces, reporting dashboards, role-based access, bulk operations, API integrations. Replace fragile spreadsheet workflows with real software.',
+      forWho: 'For companies outgrowing manual processes and no-code limitations.'
     },
     {
-      title: 'Connect Your Systems',
-      description: 'REST and real-time APIs. Third-party integrations. Backend systems that handle load and stay reliable.',
-      forWho: 'For teams that need their systems talking to each other.'
+      title: 'API Development & System Integration',
+      description: 'Backend APIs that scale. REST, GraphQL, real-time WebSockets. Third-party integrations, webhook systems, data sync pipelines. I build APIs that handle load and stay reliable under pressure.',
+      forWho: 'For teams connecting systems or building platform integrations.'
     },
     {
-      title: 'Automate Your Deployment',
-      description: 'Azure, Docker, Kubernetes, CI/CD pipelines. Go from manual deploys to automated, repeatable infrastructure.',
-      forWho: 'For teams shipping manually or migrating to the cloud.'
+      title: 'Cloud Infrastructure & CI/CD',
+      description: 'Production-ready Azure infrastructure. Docker containers, Kubernetes orchestration, CI/CD pipelines, monitoring, automated deployments. Go from manual deploys to repeatable, reliable infrastructure.',
+      forWho: 'For teams shipping manually or migrating legacy systems to the cloud.'
     },
     {
-      title: 'Fix & Scale Your Codebase',
-      description: 'Audit, refactor, and restructure. Clean Architecture, DDD, microservices extraction. Make your system maintainable again.',
-      forWho: 'For codebases that have grown faster than their architecture.'
+      title: 'Architecture & Modernization',
+      description: 'Rescue legacy codebases. Architecture audits, refactoring, Clean Architecture migration, microservices extraction, performance optimization. Make your system maintainable and scalable again.',
+      forWho: 'For codebases that have grown faster than their architecture can support.'
+    },
+    {
+      title: 'AI-Enabled Workflows & Automation',
+      description: 'Practical AI integration for real business use cases. LLM-powered features, document processing, intelligent automation, agent-based workflows. No hype — only AI that solves actual problems.',
+      forWho: 'For teams wanting to add AI capabilities without the buzzword noise.'
     }
   ];
 }

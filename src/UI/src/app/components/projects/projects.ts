@@ -8,9 +8,9 @@ import { ProjectCardComponent, type Project } from '../project-card/project-card
   template: `
     <section id="work" class="py-24 px-6">
       <div class="container mx-auto max-w-6xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-3">Selected Work</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-3">Case Studies</h2>
         <p class="text-[var(--theme-text-secondary)] text-center mb-14 max-w-2xl mx-auto">
-          Real products. Real users. Real systems.
+          Production systems I've architected, built, and shipped.
         </p>
 
         <div class="grid md:grid-cols-2 gap-8">
@@ -34,12 +34,13 @@ import { ProjectCardComponent, type Project } from '../project-card/project-card
         }
 
         <div class="text-center mt-16 py-10 border-t border-[var(--theme-border)]/10">
-          <p class="text-[var(--theme-text-secondary)] mb-4">Need something similar built?</p>
+          <p class="text-[var(--theme-text)] text-lg font-medium mb-2">Need a similar system built?</p>
+          <p class="text-[var(--theme-text-secondary)] mb-6 max-w-xl mx-auto">I help founders and teams build production-grade SaaS platforms, internal tools, and backend-heavy systems from architecture to deployment.</p>
           <a
             href="#contact"
             class="inline-block px-8 py-3 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] text-white rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm font-medium"
           >
-            Start a project
+            Start a conversation
           </a>
         </div>
       </div>
@@ -61,10 +62,10 @@ export class ProjectsComponent {
   featuredProjects: Project[] = [
     {
       title: 'Slotafy',
-      description: 'Built a complete multi-tenant restaurant ordering platform — from QR menus to kitchen displays to Stripe billing.',
+      description: 'Complete multi-tenant SaaS platform for restaurant ordering — QR code menus, kitchen display system, real-time order tracking, Stripe billing integration.',
       category: 'SaaS Platform',
       technologies: ['.NET 10', 'Angular 21', 'PostgreSQL', 'SignalR', 'Stripe', 'Docker', 'Kubernetes'],
-      impact: 'Live SaaS product in production',
+      impact: '🚀 Live production SaaS · Multi-tenant architecture · Real-time order flow',
       liveUrl: 'https://slotafy.com/',
       featured: true,
       year: '2026',
@@ -72,10 +73,10 @@ export class ProjectsComponent {
     },
     {
       title: 'SnB: Sell & Buy',
-      description: 'Built the API layer for a geo-location marketplace with real-time proximity alerts, Google Maps integration, and push notifications.',
-      category: 'Marketplace',
+      description: 'Built the complete API backend for a geo-proximity marketplace. Real-time location tracking, push notifications, Google Maps integration, Redis caching layer.',
+      category: 'Marketplace API',
       technologies: ['.NET Core', 'MySQL', 'Docker', 'Firebase', 'Google Maps API', 'Redis'],
-      impact: '100K+ downloads · 50K+ monthly transactions',
+      impact: '📊 100K+ downloads · 50K+ monthly transactions · 3-year production uptime',
       liveUrl: 'https://www.snbapp.com',
       featured: true,
       year: '2021',
@@ -83,10 +84,10 @@ export class ProjectsComponent {
     },
     {
       title: 'Podium360',
-      description: 'Microservices backend for an enterprise platform. CosmosDB, Redis caching, RabbitMQ message queuing, containerized deployment.',
+      description: 'Enterprise platform backend. Microservices architecture with CosmosDB, RabbitMQ message queuing, Redis caching, containerized deployment on Azure.',
       category: 'Enterprise',
       technologies: ['.NET 5', 'Angular', 'CosmosDB', 'Redis', 'RabbitMQ', 'Docker'],
-      impact: '10,000+ daily active users',
+      impact: '🏢 10,000+ daily active users · Enterprise-grade reliability',
       liveUrl: 'https://www.podyam.com',
       featured: true,
       year: '2020',
@@ -94,10 +95,10 @@ export class ProjectsComponent {
     },
     {
       title: 'Spur',
-      description: 'Open-source .NET library for result-oriented error handling. Fluent pipelines, zero allocations, integrations for ASP.NET Core, EF Core, MediatR. Published on NuGet.',
+      description: 'Open-source .NET library for result-oriented error handling. Fluent pipelines, zero allocations, ASP.NET Core + EF Core + MediatR integrations. Published on NuGet.',
       category: 'Open Source',
       technologies: ['.NET Core', 'C#', 'NuGet'],
-      impact: 'Published NuGet package used by .NET developers',
+      impact: '📦 Published NuGet package · Used by .NET community',
       githubUrl: 'https://github.com/AdelSS04/Spur',
       liveUrl: 'https://spur.adellajil.com/',
       featured: true,

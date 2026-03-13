@@ -1,4 +1,4 @@
-import { Component, inject } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { AboutComponent } from '../components/about/about';
 import { ContactComponent } from '../components/contact/contact';
@@ -9,7 +9,8 @@ import { ProjectsComponent } from '../components/projects/projects';
 import { ServicesComponent } from '../components/services/services.component';
 import { ProofBarComponent } from '../components/proof-bar/proof-bar.component';
 import { TestimonialsComponent } from '../components/testimonials/testimonials.component';
-import { ThemeService } from '../services/theme.service';
+import { BlogInsightsComponent } from '../components/blog-insights/blog-insights.component';
+import { HowIWorkComponent } from '../components/how-i-work/how-i-work.component';
 
 @Component({
   selector: 'app-home-page',
@@ -23,14 +24,15 @@ import { ThemeService } from '../services/theme.service';
     ProjectsComponent,
     ContactComponent,
     FooterComponent,
-    TestimonialsComponent
+    TestimonialsComponent,
+    BlogInsightsComponent,
+    HowIWorkComponent
   ],
   template: `
-    <div class="min-h-screen transition-all duration-500"
-         [style.background]="themeService.getCurrentColors().background">
+    <div class="min-h-screen transition-all duration-500 bg-[var(--theme-background)]">
 
       <div class="fixed inset-0 opacity-90 transition-all duration-500"
-           [style.background]="themeService.getCurrentColors().gradient">
+           style="background: var(--theme-gradient)">
       </div>
 
       <div class="relative z-10 animate-fade-in">
@@ -42,12 +44,14 @@ import { ThemeService } from '../services/theme.service';
           [profileImage]="userData.profileImage"
         ></app-hero>
         <app-proof-bar></app-proof-bar>
-        <app-services></app-services>
         <app-projects></app-projects>
+        <app-services></app-services>
         <app-about
           [aboutText]="userData.aboutText"
           [additionalInfo]="userData.additionalInfo"
         ></app-about>
+        <app-how-i-work></app-how-i-work>
+        <app-blog-insights></app-blog-insights>
         <app-testimonials></app-testimonials>
         <app-contact></app-contact>
         <app-footer [name]="userData.name"></app-footer>
@@ -77,16 +81,16 @@ import { ThemeService } from '../services/theme.service';
   `]
 })
 export class HomePageComponent {
-  themeService = inject(ThemeService);
-
   userData = {
     name: 'Adel Lajil',
-    headline: 'I build SaaS platforms, internal tools, and cloud-native systems.',
-    subheadline: 'I partner with founders and teams to architect, build, and ship backend-heavy products — from first commit to production.',
+    headline: 'Backend-Heavy Product Engineer & SaaS Builder',
+    subheadline: 'I help founders and technical teams architect, build, and ship production-grade systems — SaaS platforms, internal tools, API integrations, and AI-enabled workflows. From system design to deployment.',
     profileImage: 'me.png',
-    aboutText: `I'm a full-stack engineer based in Quebec, Canada. I build backend-heavy systems — SaaS platforms, internal tools, admin panels, API integrations — and I care about architecture, reliability, and shipping things that actually work in production.
+    aboutText: `I'm a full-stack engineer with a backend and systems focus, based in Quebec, Canada. I specialize in building production-grade software that scales — multi-tenant SaaS platforms, internal tools, API-heavy integrations, and cloud-native architectures.
 
-I've built a multi-tenant restaurant ordering platform, a marketplace app with 100K+ downloads, enterprise software for companies like Evident Scientific and Cofomo, and open-source tools used by .NET developers.`,
-    additionalInfo: `I work with founders and teams who need a technical partner to own delivery — from system design to deployment.`,
+I've shipped a live restaurant ordering SaaS, a marketplace with 100K+ downloads processing 50K+ monthly transactions, enterprise systems for Evident Scientific and Cofomo, and open-source tools used by .NET developers. I also maintain a technical blog where I write about architecture, Azure infrastructure, Cosmos DB, microservices, and production deployment patterns.`,
+    additionalInfo: `Beyond pure engineering, I work with AI-assisted workflows, automation tooling, and self-hosted developer infrastructure. I'm not chasing AI hype — I use it where it genuinely improves productivity and systems.
+
+I work with founders and teams who need a technical partner to own the full delivery lifecycle — from architecture decisions to CI/CD to production monitoring.`,
   };
 }

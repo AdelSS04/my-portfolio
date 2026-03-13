@@ -17,9 +17,9 @@ interface SocialLink {
   template: `
     <section id="contact" class="py-20 px-6">
       <div class="container mx-auto max-w-4xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">Have a project in mind?</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">Let's Build Something</h2>
         <p class="text-[var(--theme-text-secondary)] text-center mb-12 max-w-2xl mx-auto">
-          Tell me what you're building. I respond within 24 hours.
+          Tell me about your project. What are you building? What problems are you solving? What's your timeline? I respond within 24 hours.
         </p>
         <div class="bg-[var(--theme-surface)]/80 backdrop-blur-sm rounded-2xl p-8 border border-[var(--theme-border)]/20">
           <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6" novalidate>
@@ -58,24 +58,27 @@ interface SocialLink {
               </div>
             </div>
             <div>
-              <label class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">Subject</label>
+              <label class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">What kind of project?</label>
               <input
                 type="text"
                 formControlName="subject"
                 name="subject"
                 class="w-full px-4 py-3 bg-[var(--theme-background-secondary)]/80 border border-[var(--theme-border)]/30 rounded-lg text-[var(--theme-text)] placeholder-[var(--theme-text-secondary)]/70 focus:outline-none focus:border-[var(--theme-primary)]/50 focus:bg-[var(--theme-background-secondary)] transition-all"
-                placeholder="Project Discussion"
+                placeholder="e.g., SaaS MVP, Internal Dashboard, API Integration, Cloud Migration"
                 />
             </div>
             <div>
-              <label class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">Message</label>
+              <label class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">
+                Tell me about your project
+                <span class="text-[var(--theme-text-secondary)]/60 font-normal ml-2">(What problem does it solve? What's your timeline? What's your tech stack or constraints?)</span>
+              </label>
               <textarea
-                rows="5"
+                rows="6"
                 formControlName="message"
                 name="message"
                 required
                 class="w-full px-4 py-3 bg-[var(--theme-background-secondary)]/80 border border-[var(--theme-border)]/30 rounded-lg text-[var(--theme-text)] placeholder-[var(--theme-text-secondary)]/70 focus:outline-none focus:border-[var(--theme-primary)]/50 focus:bg-[var(--theme-background-secondary)] transition-all resize-none"
-                placeholder="Describe your project, timeline, and any technical requirements..."
+                placeholder="Example: We're building a B2B SaaS for project management. Need a senior engineer to build the backend API, multi-tenant database architecture, and Stripe billing integration. Tech stack: .NET/PostgreSQL/Azure. Timeline: Start in 2 weeks, MVP in 3 months. Budget: $XX,XXX."
               ></textarea>
               @if (contactForm.get('message')?.touched && contactForm.get('message')?.invalid) {
                 <div class="text-red-400 text-xs mt-1 animate-slideDown">

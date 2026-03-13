@@ -41,13 +41,13 @@ import { Component, input } from '@angular/core';
                 href="#contact"
                 class="px-8 py-3 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] text-white rounded-full hover:scale-105 transition-all duration-300 border border-[var(--theme-border)]/20 shadow-lg hover:shadow-xl theme-glow text-center"
               >
-                Let's discuss your project
+                Start a project conversation
               </a>
               <a
                 href="#work"
                 class="px-8 py-3 border border-[var(--theme-border)]/30 text-[var(--theme-text)] rounded-full hover:bg-[var(--theme-surface)]/20 transition-all duration-300 text-center"
               >
-                View case studies
+                See what I've built
               </a>
             </div>
 
