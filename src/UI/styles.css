@@ -4,19 +4,19 @@
 @import "tailwindcss";
 
 :root {
-  /* Minimalist Professional Dark Theme */
-  --theme-primary: #a78bfa;
-  --theme-primary-light: #c4b5fd;
-  --theme-primary-dark: #7c3aed;
-  --theme-secondary: #818cf8;
-  --theme-accent: #67e8f9;
-  --theme-background: #0c0c0c;
-  --theme-background-secondary: #141414;
-  --theme-surface: #1a1a1a;
-  --theme-text: #ebebeb;
-  --theme-text-secondary: #a3a3a3;
-  --theme-border: #262626;
-  --theme-gradient: linear-gradient(160deg, #0c0c0c 0%, #141414 100%);
+  /* Minimalist Professional Light Theme */
+  --theme-primary: #6366f1;
+  --theme-primary-light: #818cf8;
+  --theme-primary-dark: #4f46e5;
+  --theme-secondary: #8b5cf6;
+  --theme-accent: #0ea5e9;
+  --theme-background: #ffffff;
+  --theme-background-secondary: #f8fafc;
+  --theme-surface: #f1f5f9;
+  --theme-text: #0f172a;
+  --theme-text-secondary: #64748b;
+  --theme-border: #e2e8f0;
+  --theme-gradient: linear-gradient(160deg, #ffffff 0%, #f8fafc 100%);
 }
 
 html {
@@ -55,7 +55,7 @@ body {
 
 ::selection {
   background-color: var(--theme-primary);
-  color: var(--theme-background);
+  color: white;
 }
 
 .line-clamp-2 {
@@ -86,11 +86,11 @@ input:focus,
 textarea:focus {
   outline: none;
   border-color: var(--theme-primary);
-  box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.3);
+  box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.15);
 }
 
 .theme-glow {
-  box-shadow: 0 0 20px rgba(167, 139, 250, 0.15);
+  box-shadow: 0 0 20px rgba(99, 102, 241, 0.1);
 }
 
 @media (max-width: 640px) {

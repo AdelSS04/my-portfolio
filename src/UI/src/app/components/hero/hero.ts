@@ -20,7 +20,7 @@ import { Component, input } from '@angular/core';
                   >
                 }
               </div>
-              <div class="absolute -bottom-2 -right-2 w-5 h-5 bg-green-400 rounded-full border-4 border-[var(--theme-background)]"></div>
+              <div class="absolute -bottom-2 -right-2 w-5 h-5 bg-green-400 rounded-full border-4 border-white"></div>
             </div>
           </div>
 
@@ -36,7 +36,7 @@ import { Component, input } from '@angular/core';
             <div class="flex flex-col sm:flex-row gap-3 justify-center lg:justify-start mb-10">
               <a
                 href="#contact"
-                class="px-7 py-3 bg-[var(--theme-primary)] text-[var(--theme-background)] rounded-lg font-medium hover:bg-[var(--theme-primary-light)] transition-colors text-center text-sm"
+                class="px-7 py-3 bg-[var(--theme-primary)] text-white rounded-lg font-medium hover:bg-[var(--theme-primary-dark)] transition-colors text-center text-sm"
               >
                 Start a project conversation
               </a>

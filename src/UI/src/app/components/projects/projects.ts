@@ -38,7 +38,7 @@ import { ProjectCardComponent, type Project } from '../project-card/project-card
           <p class="text-[var(--theme-text-secondary)] mb-6 max-w-xl mx-auto text-sm">I help founders and teams build production-grade SaaS platforms, internal tools, and backend-heavy systems from architecture to deployment.</p>
           <a
             href="#contact"
-            class="inline-block px-7 py-3 bg-[var(--theme-primary)] text-[var(--theme-background)] rounded-lg hover:bg-[var(--theme-primary-light)] transition-colors text-sm font-medium"
+            class="inline-block px-7 py-3 bg-[var(--theme-primary)] text-white rounded-lg hover:bg-[var(--theme-primary-dark)] transition-colors text-sm font-medium"
           >
             Start a conversation
           </a>

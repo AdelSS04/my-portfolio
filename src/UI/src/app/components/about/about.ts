@@ -68,7 +68,7 @@ interface StackCategory {
                   </div>
                 }
                 <div class="pt-2">
-                  <span class="inline-flex items-center gap-2 bg-[var(--theme-primary)] text-[var(--theme-background)] px-4 py-1.5 rounded-lg text-xs font-medium">
+                  <span class="inline-flex items-center gap-2 bg-[var(--theme-primary)] text-white px-4 py-1.5 rounded-lg text-xs font-medium">
                     Azure AZ-204 Certified
                   </span>
                 </div>

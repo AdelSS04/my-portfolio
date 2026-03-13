@@ -17,8 +17,8 @@ interface NavLink {
       class="fixed top-0 w-full z-50"
       [class]="
         isScrolled()
-          ? 'bg-[var(--theme-background)]/95 border-b border-[var(--theme-border)]/40 shadow-lg shadow-black/20 backdrop-blur-xl py-2'
-          : 'bg-transparent py-4'
+          ? 'border-b border-[var(--theme-border)] shadow-sm backdrop-blur-xl py-2'
+          : 'py-4'
       "
       style="transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);"
     >
@@ -47,7 +47,7 @@ interface NavLink {
                 <a
                   [href]="link.href"
                   (click)="navigateToSection(link.href, $event)"
-                  class="ml-3 px-5 py-2 bg-[var(--theme-primary)] text-[var(--theme-background)] rounded-lg text-sm font-medium hover:bg-[var(--theme-primary-light)] transition-colors"
+                  class="ml-3 px-5 py-2 bg-[var(--theme-primary)] text-white rounded-lg text-sm font-medium hover:bg-[var(--theme-primary-dark)] transition-colors"
                 >
                   {{ link.label }}
                 </a>

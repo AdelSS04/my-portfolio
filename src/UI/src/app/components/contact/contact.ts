@@ -91,7 +91,7 @@ interface SocialLink {
               [disabled]="isSubmitting() || !isFormValid()"
               [class.opacity-50]="isSubmitting() || !isFormValid()"
               [class.cursor-not-allowed]="isSubmitting() || !isFormValid()"
-              class="w-full px-8 py-4 bg-[var(--theme-primary)] text-[var(--theme-background)] rounded-lg font-medium transition-colors hover:bg-[var(--theme-primary-light)] relative overflow-hidden"
+              class="w-full px-8 py-4 bg-[var(--theme-primary)] text-white rounded-lg font-medium transition-colors hover:bg-[var(--theme-primary-dark)] relative overflow-hidden"
               >
               <span class="relative z-10">
                 @if (!isSubmitting()) {
