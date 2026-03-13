@@ -9,11 +9,11 @@ import { ProjectCardComponent, type Project } from '../project-card/project-card
     <section id="work" class="py-24 px-6">
       <div class="container mx-auto max-w-6xl">
         <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-3">Case Studies</h2>
-        <p class="text-[var(--theme-text-secondary)] text-center mb-14 max-w-2xl mx-auto">
+        <p class="text-[var(--theme-text-secondary)] text-center mb-14 max-w-lg mx-auto">
           Production systems I've architected, built, and shipped.
         </p>
 
-        <div class="grid md:grid-cols-2 gap-8">
+        <div class="grid md:grid-cols-2 gap-6">
           @for (project of displayedProjects(); track project.title) {
             <app-project-card
               [project]="project"
@@ -26,19 +26,19 @@ import { ProjectCardComponent, type Project } from '../project-card/project-card
           <div class="text-center mt-12">
             <button
               (click)="showAll.set(true)"
-              class="px-8 py-3 bg-[var(--theme-surface)]/60 text-[var(--theme-text)] rounded-full border border-[var(--theme-border)]/30 hover:border-[var(--theme-border)]/50 hover:bg-[var(--theme-surface)]/80 transition-all text-sm"
+              class="px-7 py-3 border border-[var(--theme-border)] text-[var(--theme-text)] rounded-lg hover:border-[var(--theme-text-secondary)] hover:bg-[var(--theme-surface)] transition-colors text-sm"
             >
               Show all projects
             </button>
           </div>
         }
 
-        <div class="text-center mt-16 py-10 border-t border-[var(--theme-border)]/10">
+        <div class="text-center mt-14 py-10 border-t border-[var(--theme-border)]/20">
           <p class="text-[var(--theme-text)] text-lg font-medium mb-2">Need a similar system built?</p>
-          <p class="text-[var(--theme-text-secondary)] mb-6 max-w-xl mx-auto">I help founders and teams build production-grade SaaS platforms, internal tools, and backend-heavy systems from architecture to deployment.</p>
+          <p class="text-[var(--theme-text-secondary)] mb-6 max-w-xl mx-auto text-sm">I help founders and teams build production-grade SaaS platforms, internal tools, and backend-heavy systems from architecture to deployment.</p>
           <a
             href="#contact"
-            class="inline-block px-8 py-3 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] text-white rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm font-medium"
+            class="inline-block px-7 py-3 bg-[var(--theme-primary)] text-[var(--theme-background)] rounded-lg hover:bg-[var(--theme-primary-light)] transition-colors text-sm font-medium"
           >
             Start a conversation
           </a>

@@ -6,18 +6,18 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
   standalone: true,
   imports: [LucideAngularModule],
   template: `
-    <div class="bg-[var(--theme-surface)]/80 backdrop-blur-sm rounded-xl overflow-hidden border border-[var(--theme-border)]/20 hover:border-[var(--theme-border)]/40 transition-all duration-300 group hover:transform hover:scale-[1.02] relative">
+    <div class="bg-[var(--theme-surface)] rounded-xl overflow-hidden border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/30 transition-colors group relative">
 
       @if (project().featured) {
         <div class="absolute top-4 right-4 z-10">
-          <span class="px-3 py-1 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] text-white text-xs rounded-full font-medium">
+          <span class="px-3 py-1 bg-[var(--theme-primary)] text-[var(--theme-background)] text-xs rounded-lg font-medium">
             Featured
           </span>
         </div>
       }
 
 
-      <div class="h-48 relative overflow-hidden bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] group">
+      <div class="h-48 relative overflow-hidden bg-[var(--theme-surface)] group">
 
         @if (project().thumbnail) {
           <img
@@ -42,7 +42,7 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
 
 
         <div class="absolute bottom-4 left-4">
-          <span class="text-white/90 text-sm font-medium px-3 py-1 bg-white/10 backdrop-blur rounded-full">
+          <span class="text-white/90 text-xs font-medium px-2.5 py-1 bg-black/40 backdrop-blur rounded-lg">
             {{project().category}}
           </span>
           @if (project().year) {
@@ -53,8 +53,8 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
         </div>
 
 
-        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
-          <div class="text-white text-lg font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+        <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
+          <div class="text-white text-sm font-medium">
             View Project →
           </div>
         </div>
@@ -71,14 +71,14 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
         <div class="flex gap-2 mb-4 flex-wrap">
           @for (tech of project().technologies.slice(0, 3); track tech) {
             <span
-              class="px-3 py-1 bg-[var(--theme-surface)]/40 text-[var(--theme-text-secondary)] rounded-full text-xs border border-[var(--theme-border)]/20"
+              class="px-2.5 py-1 bg-[var(--theme-background)] text-[var(--theme-text-secondary)] rounded-lg text-xs border border-[var(--theme-border)]/30"
               >
               {{tech}}
             </span>
           }
           @if (project().technologies.length > 3) {
             <span
-              class="px-3 py-1 bg-[var(--theme-surface)]/40 text-[var(--theme-text-secondary)] rounded-full text-xs border border-[var(--theme-border)]/20"
+              class="px-2.5 py-1 bg-[var(--theme-background)] text-[var(--theme-text-secondary)] rounded-lg text-xs border border-[var(--theme-border)]/30"
               >
               +{{project().technologies.length - 3}} more
             </span>

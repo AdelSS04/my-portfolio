@@ -6,8 +6,8 @@ import { computed } from '@angular/core';
   standalone: true,
   imports: [],
   template: `
-    <footer class="py-8 px-6 border-t border-[var(--theme-border)]/20 bg-[var(--theme-background-secondary)]/70 backdrop-blur-sm">
-      <div class="container mx-auto">
+    <footer class="py-8 px-6 border-t border-[var(--theme-border)]/20">
+      <div class="container mx-auto max-w-6xl">
         <div class="flex flex-col md:flex-row justify-between items-center gap-4">
           <div class="text-center md:text-left">
             <p class="text-[var(--theme-text-secondary)] text-sm">{{currentYear()}} {{name()}}. All rights reserved.</p>

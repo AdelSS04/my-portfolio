@@ -25,7 +25,7 @@ interface StackCategory {
           </div>
 
           <div class="md:col-span-2">
-            <div class="bg-[var(--theme-surface)]/60 backdrop-blur-sm rounded-2xl p-6 border border-[var(--theme-border)]/20">
+            <div class="bg-[var(--theme-surface)] rounded-xl p-6 border border-[var(--theme-border)]/30">
               <h3 class="text-sm font-semibold text-[var(--theme-text-secondary)] uppercase tracking-wider mb-4">Work History</h3>
               <div class="space-y-3">
                 @for (job of workHistory; track job.company) {
@@ -54,7 +54,7 @@ interface StackCategory {
             </div>
 
             @if (showFullStack()) {
-              <div class="mt-4 space-y-4 bg-[var(--theme-surface)]/40 rounded-xl p-5 border border-[var(--theme-border)]/10 animate-slide-down">
+              <div class="mt-4 space-y-4 bg-[var(--theme-surface)] rounded-xl p-5 border border-[var(--theme-border)]/20 animate-slide-down">
                 @for (category of stack; track category.label) {
                   <div>
                     <span class="text-[var(--theme-text)] font-medium text-xs">{{ category.label }}</span>
@@ -68,7 +68,7 @@ interface StackCategory {
                   </div>
                 }
                 <div class="pt-2">
-                  <span class="inline-flex items-center gap-2 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] text-white px-4 py-1.5 rounded-full text-xs font-medium">
+                  <span class="inline-flex items-center gap-2 bg-[var(--theme-primary)] text-[var(--theme-background)] px-4 py-1.5 rounded-lg text-xs font-medium">
                     Azure AZ-204 Certified
                   </span>
                 </div>

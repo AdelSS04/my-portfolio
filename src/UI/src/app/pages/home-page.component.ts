@@ -29,13 +29,9 @@ import { HowIWorkComponent } from '../components/how-i-work/how-i-work.component
     HowIWorkComponent
   ],
   template: `
-    <div class="min-h-screen transition-all duration-500 bg-[var(--theme-background)]">
+    <div class="min-h-screen bg-[var(--theme-background)]">
 
-      <div class="fixed inset-0 opacity-90 transition-all duration-500"
-           style="background: var(--theme-gradient)">
-      </div>
-
-      <div class="relative z-10 animate-fade-in">
+      <div class="relative z-10">
         <app-navbar></app-navbar>
         <app-hero
           [name]="userData.name"
@@ -62,21 +58,6 @@ import { HowIWorkComponent } from '../components/how-i-work/how-i-work.component
     :host {
       display: block;
       min-height: 100vh;
-    }
-
-    .animate-fade-in {
-      animation: fadeInUp 0.8s ease-out 0.2s both;
-    }
-
-    @keyframes fadeInUp {
-      from {
-        opacity: 0;
-        transform: translateY(30px);
-      }
-      to {
-        opacity: 1;
-        transform: translateY(0);
-      }
     }
   `]
 })

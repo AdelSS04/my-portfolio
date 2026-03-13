@@ -19,21 +19,21 @@ interface WorkStep {
           Clear process. Reliable delivery. No surprises.
         </p>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
           @for (step of workSteps; track step.title; let i = $index) {
             <div class="relative">
-              <div class="bg-[var(--theme-surface)]/60 backdrop-blur-sm rounded-2xl p-6 border border-[var(--theme-border)]/20 hover:border-[var(--theme-primary)]/30 transition-all duration-300 h-full">
-                <div class="w-12 h-12 bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-xl flex items-center justify-center mb-4">
-                  <lucide-icon [img]="step.icon" class="w-6 h-6 text-white" />
+              <div class="bg-[var(--theme-surface)] rounded-xl p-6 border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/30 transition-colors h-full">
+                <div class="w-10 h-10 bg-[var(--theme-primary)]/10 rounded-lg flex items-center justify-center mb-4">
+                  <lucide-icon [img]="step.icon" class="w-5 h-5 text-[var(--theme-primary)]" />
                 </div>
-                <div class="absolute top-4 right-4 text-[var(--theme-text)]/10 text-3xl font-bold">
+                <div class="absolute top-4 right-4 text-[var(--theme-text)]/8 text-2xl font-bold">
                   {{i + 1}}
                 </div>
-                <h3 class="text-lg font-semibold text-[var(--theme-text)] mb-2">{{step.title}}</h3>
+                <h3 class="text-base font-semibold text-[var(--theme-text)] mb-2">{{step.title}}</h3>
                 <p class="text-[var(--theme-text-secondary)] text-sm leading-relaxed">{{step.description}}</p>
               </div>
               @if (i < workSteps.length - 1) {
-                <div class="hidden lg:block absolute top-1/2 -right-3 w-6 h-[2px] bg-gradient-to-r from-[var(--theme-primary)]/30 to-transparent"></div>
+                <div class="hidden lg:block absolute top-1/2 -right-3 w-6 h-[1px] bg-[var(--theme-border)]"></div>
               }
             </div>
           }

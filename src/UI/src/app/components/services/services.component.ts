@@ -13,24 +13,24 @@ interface Service {
     <section id="services" class="py-24 px-6">
       <div class="container mx-auto max-w-6xl">
         <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-3">What I Build</h2>
-        <p class="text-[var(--theme-text-secondary)] text-center mb-14 max-w-2xl mx-auto">
+        <p class="text-[var(--theme-text-secondary)] text-center mb-14 max-w-lg mx-auto">
           I help startups and businesses ship reliable, scalable software.
         </p>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
           @for (service of services; track service.title) {
-            <div class="bg-[var(--theme-surface)]/60 backdrop-blur-sm rounded-2xl p-7 border border-[var(--theme-border)]/20 hover:border-[var(--theme-primary)]/30 transition-all duration-300">
-              <h3 class="text-lg font-semibold text-[var(--theme-text)] mb-3">{{ service.title }}</h3>
-              <p class="text-[var(--theme-text-secondary)] text-sm leading-relaxed mb-4">{{ service.description }}</p>
-              <p class="text-[var(--theme-primary)] text-xs font-medium">{{ service.forWho }}</p>
+            <div class="bg-[var(--theme-surface)] rounded-xl p-6 border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/30 transition-colors">
+              <h3 class="text-base font-semibold text-[var(--theme-text)] mb-2">{{ service.title }}</h3>
+              <p class="text-[var(--theme-text-secondary)] text-sm leading-relaxed mb-3">{{ service.description }}</p>
+              <p class="text-[var(--theme-primary)] text-xs">{{ service.forWho }}</p>
             </div>
           }
         </div>
 
-        <div class="text-center mt-12">
+        <div class="text-center mt-10">
           <a
             href="#contact"
-            class="inline-block px-8 py-3 bg-[var(--theme-surface)]/60 text-[var(--theme-text)] rounded-full border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/50 hover:bg-[var(--theme-surface)]/80 transition-all duration-300 text-sm"
+            class="inline-block px-7 py-3 border border-[var(--theme-border)] text-[var(--theme-text)] rounded-lg hover:border-[var(--theme-text-secondary)] hover:bg-[var(--theme-surface)] transition-colors text-sm"
           >
             Tell me what you need built
           </a>

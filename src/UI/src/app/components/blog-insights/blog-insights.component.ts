@@ -14,23 +14,23 @@ interface BlogPost {
   standalone: true,
   imports: [LucideAngularModule],
   template: `
-    <section id="blog" class="py-24 px-6 bg-[var(--theme-background-secondary)]/30">
+    <section id="blog" class="py-24 px-6">
       <div class="container mx-auto max-w-6xl">
         <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-3">Engineering Insights</h2>
-        <p class="text-[var(--theme-text-secondary)] text-center mb-14 max-w-2xl mx-auto">
-          I write about architecture, cloud infrastructure, and production engineering. Real systems, real patterns, no fluff.
+        <p class="text-[var(--theme-text-secondary)] text-center mb-14 max-w-lg mx-auto">
+          I write about architecture, cloud infrastructure, and production engineering.
         </p>
 
-        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6 mb-12">
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
           @for (post of featuredPosts; track post.url) {
             <a
               [href]="post.url"
               target="_blank"
               rel="noopener noreferrer"
-              class="bg-[var(--theme-surface)]/60 backdrop-blur-sm rounded-2xl p-6 border border-[var(--theme-border)]/20 hover:border-[var(--theme-primary)]/40 transition-all duration-300 group hover:transform hover:scale-[1.02] block"
+              class="bg-[var(--theme-surface)] rounded-xl p-6 border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/30 transition-colors group block"
             >
               <div class="flex items-start justify-between mb-3">
-                <span class="text-[var(--theme-primary)] text-xs font-medium px-3 py-1 bg-[var(--theme-primary)]/10 rounded-full">
+                <span class="text-[var(--theme-primary)] text-xs font-medium px-2.5 py-1 bg-[var(--theme-primary)]/5 rounded-lg border border-[var(--theme-primary)]/10">
                   {{post.category}}
                 </span>
                 @if (post.readTime) {
@@ -48,9 +48,9 @@ interface BlogPost {
                 {{post.description}}
               </p>
 
-              <div class="flex items-center gap-2 text-[var(--theme-primary)] text-sm font-medium">
+              <div class="flex items-center gap-2 text-[var(--theme-primary)] text-sm">
                 <span>Read article</span>
-                <lucide-icon [img]="ExternalLink" class="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <lucide-icon [img]="ExternalLink" class="w-3.5 h-3.5" />
               </div>
             </a>
           }
@@ -61,7 +61,7 @@ interface BlogPost {
             href="https://blog.adellajil.com"
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--theme-surface)]/60 text-[var(--theme-text)] rounded-full border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/50 hover:bg-[var(--theme-surface)]/80 transition-all duration-300 text-sm font-medium"
+            class="inline-flex items-center gap-2 px-6 py-3 border border-[var(--theme-border)] text-[var(--theme-text)] rounded-lg hover:border-[var(--theme-text-secondary)] hover:bg-[var(--theme-surface)] transition-colors text-sm"
           >
             <lucide-icon [img]="FileText" class="w-4 h-4" />
             View all articles

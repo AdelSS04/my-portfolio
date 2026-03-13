@@ -18,18 +18,16 @@ interface Testimonial {
   template: `
     <section id="testimonials" class="py-20 px-6 relative overflow-hidden">
 
-      <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--theme-background-secondary)]/20 to-transparent"></div>
-
       <div class="container mx-auto max-w-6xl relative z-10">
         <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">What People Say</h2>
-        <p class="text-[var(--theme-text-secondary)] text-center mb-12 max-w-2xl mx-auto">
+        <p class="text-[var(--theme-text-secondary)] text-center mb-12 max-w-lg mx-auto">
           From engineers and collaborators I've worked with.
         </p>
 
 
         <div class="relative">
 
-          <div class="overflow-hidden rounded-2xl"
+          <div class="overflow-hidden rounded-xl"
             (touchstart)="onTouchStart($event)"
             (touchmove)="onTouchMove($event)"
             (touchend)="onTouchEnd()"
@@ -42,11 +40,11 @@ interface Testimonial {
               @for (testimonial of testimonials; track testimonial) {
                 <div
                   class="w-full flex-shrink-0 px-4">
-                  <div class="bg-[var(--theme-surface)]/80 backdrop-blur-sm rounded-2xl p-8 md:p-12 border border-[var(--theme-border)]/20 hover:border-[var(--theme-border)]/30 transition-all duration-300">
+                  <div class="bg-[var(--theme-surface)] rounded-xl p-8 md:p-12 border border-[var(--theme-border)]/30">
 
                     <div class="flex justify-center mb-6">
-                      <div class="w-16 h-16 bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full flex items-center justify-center">
-                        <lucide-icon [img]="Quote" class="w-8 h-8 text-white/80" />
+                      <div class="w-12 h-12 bg-[var(--theme-primary)]/10 rounded-lg flex items-center justify-center">
+                        <lucide-icon [img]="Quote" class="w-6 h-6 text-[var(--theme-primary)]" />
                       </div>
                     </div>
 
@@ -58,9 +56,9 @@ interface Testimonial {
 
                       <div class="flex flex-col items-center">
 
-                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] flex items-center justify-center mb-4 border-2 border-[var(--theme-border)]/30">
+                        <div class="w-16 h-16 rounded-xl bg-[var(--theme-primary)]/10 flex items-center justify-center mb-4 border border-[var(--theme-border)]/20">
                           @if (!testimonial.image) {
-                            <span class="text-2xl text-white font-bold">
+                            <span class="text-xl text-[var(--theme-primary)] font-bold">
                               {{testimonial.name.charAt(0)}}
                             </span>
                           }
@@ -68,7 +66,7 @@ interface Testimonial {
                             <img
                               [src]="testimonial.image"
                               [alt]="testimonial.name"
-                              class="w-full h-full rounded-full object-cover">
+                              class="w-full h-full rounded-xl object-cover">
                           }
                         </div>
 
@@ -101,7 +99,7 @@ interface Testimonial {
 
           <button
             (click)="prevSlide()"
-            class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-[var(--theme-surface)]/60 hover:bg-[var(--theme-surface)]/80 rounded-full flex items-center justify-center text-[var(--theme-text)] transition-all duration-300 backdrop-blur-sm border border-[var(--theme-border)]/30 hover:scale-110 active:scale-95 hover:border-[var(--theme-primary)]/50"
+            class="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-[var(--theme-surface)] rounded-lg flex items-center justify-center text-[var(--theme-text)] border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/30 transition-colors"
             [disabled]="isTransitioning()"
             >
             <lucide-icon [img]="ChevronLeft" class="w-6 h-6" />
@@ -109,7 +107,7 @@ interface Testimonial {
 
           <button
             (click)="nextSlide()"
-            class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-12 h-12 bg-[var(--theme-surface)]/60 hover:bg-[var(--theme-surface)]/80 rounded-full flex items-center justify-center text-[var(--theme-text)] transition-all duration-300 backdrop-blur-sm border border-[var(--theme-border)]/30 hover:scale-110 active:scale-95 hover:border-[var(--theme-primary)]/50"
+            class="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 w-10 h-10 bg-[var(--theme-surface)] rounded-lg flex items-center justify-center text-[var(--theme-text)] border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/30 transition-colors"
             [disabled]="isTransitioning()"
             >
             <lucide-icon [img]="ChevronRight" class="w-6 h-6" />

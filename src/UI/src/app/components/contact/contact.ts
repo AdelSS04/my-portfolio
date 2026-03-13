@@ -21,7 +21,7 @@ interface SocialLink {
         <p class="text-[var(--theme-text-secondary)] text-center mb-12 max-w-2xl mx-auto">
           Tell me about your project. What are you building? What problems are you solving? What's your timeline? I respond within 24 hours.
         </p>
-        <div class="bg-[var(--theme-surface)]/80 backdrop-blur-sm rounded-2xl p-8 border border-[var(--theme-border)]/20">
+        <div class="bg-[var(--theme-surface)] rounded-xl p-8 border border-[var(--theme-border)]/30">
           <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6" novalidate>
             <div class="grid md:grid-cols-2 gap-6">
                             <div>
@@ -91,7 +91,7 @@ interface SocialLink {
               [disabled]="isSubmitting() || !isFormValid()"
               [class.opacity-50]="isSubmitting() || !isFormValid()"
               [class.cursor-not-allowed]="isSubmitting() || !isFormValid()"
-              class="w-full px-8 py-4 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] text-white rounded-lg font-medium border border-[var(--theme-border)]/20 transition-all duration-300 transform hover:scale-[1.02] hover:shadow-lg hover:shadow-[var(--theme-primary)]/30 active:scale-[0.98] relative overflow-hidden group theme-glow"
+              class="w-full px-8 py-4 bg-[var(--theme-primary)] text-[var(--theme-background)] rounded-lg font-medium transition-colors hover:bg-[var(--theme-primary-light)] relative overflow-hidden"
               >
               <span class="relative z-10">
                 @if (!isSubmitting()) {
