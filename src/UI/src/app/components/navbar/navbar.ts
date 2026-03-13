@@ -26,7 +26,7 @@ interface NavLink {
         <span class="text-[var(--theme-text)] font-semibold text-lg">Adel LAJIL</span>
       </div>
 
-      
+
       <div class="hidden md:flex items-center gap-6 lg:gap-8">
         <div class="flex space-x-6 lg:space-x-8">
           @for (link of navLinks; track link) {
@@ -64,11 +64,11 @@ interface NavLink {
           </a>
         </div>
 
-        
+
         <app-theme-switcher></app-theme-switcher>
       </div>
 
-      
+
       <button
         class="md:hidden text-[var(--theme-text)] p-2 rounded-lg hover:bg-[var(--theme-surface)]/20 transition-all duration-300 border border-[var(--theme-border)]/20 min-w-[44px] min-h-[44px] flex items-center justify-center"
         (click)="toggleMenu()"
@@ -81,7 +81,7 @@ interface NavLink {
       </button>
     </div>
 
-    
+
     <div class="md:hidden overflow-hidden transition-all duration-300"
       [style.max-height]="mobileMenuOpen() ? '500px' : '0px'">
       <div class="pt-4 pb-2 space-y-2">
@@ -99,7 +99,7 @@ interface NavLink {
           </a>
         }
 
-        
+
         <div class="pt-4 border-t border-[var(--theme-border)]/20 px-4 pb-4">
           <div class="flex justify-center min-h-[60px] items-center">
             <app-theme-switcher></app-theme-switcher>

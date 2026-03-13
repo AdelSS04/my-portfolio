@@ -7,7 +7,7 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
   imports: [LucideAngularModule],
   template: `
     <div class="bg-[var(--theme-surface)]/80 backdrop-blur-sm rounded-xl overflow-hidden border border-[var(--theme-border)]/20 hover:border-[var(--theme-border)]/40 transition-all duration-300 group hover:transform hover:scale-[1.02] relative">
-      
+
       @if (project().featured) {
         <div class="absolute top-4 right-4 z-10">
           <span class="px-3 py-1 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] text-white text-xs rounded-full font-medium">
@@ -16,9 +16,9 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
         </div>
       }
 
-      
+
       <div class="h-48 relative overflow-hidden bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] group">
-        
+
         @if (project().thumbnail) {
           <img
             [src]="project().thumbnail"
@@ -28,7 +28,7 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
             >
         }
 
-        
+
         @if (!project().thumbnail) {
           <div class="w-full h-full flex items-center justify-center">
             <div class="text-6xl text-white/10 font-bold">
@@ -37,10 +37,10 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
           </div>
         }
 
-        
+
         <div class="absolute inset-0 bg-gradient-to-t from-[var(--theme-background)] via-transparent to-transparent opacity-60"></div>
 
-        
+
         <div class="absolute bottom-4 left-4">
           <span class="text-white/90 text-sm font-medium px-3 py-1 bg-white/10 backdrop-blur rounded-full">
             {{project().category}}
@@ -52,7 +52,7 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
           }
         </div>
 
-        
+
         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
           <div class="text-white text-lg font-medium transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
             View Project →
