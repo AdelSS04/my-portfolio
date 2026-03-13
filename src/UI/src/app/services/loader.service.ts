@@ -1,4 +1,5 @@
-import { Injectable, signal, computed } from '@angular/core';
+import { Injectable, signal, computed, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 export interface LoadingStep {
   id: string;
@@ -10,6 +11,8 @@ export interface LoadingStep {
   providedIn: 'root'
 })
 export class LoaderService {
+  private readonly platformId = inject(PLATFORM_ID);
+
   loadingSteps = signal<LoadingStep[]>([
     { id: 'theme', name: 'Loading theme configuration', completed: false },
     { id: 'assets', name: 'Preparing assets', completed: false },
@@ -34,6 +37,14 @@ export class LoaderService {
   }
 
   async simulateLoading(): Promise<void> {
+    // On server (SSR): instantly complete all steps so pre-rendered HTML shows actual content
+    if (!isPlatformBrowser(this.platformId)) {
+      this.loadingSteps.update(steps =>
+        steps.map(step => ({ ...step, completed: true }))
+      );
+      return;
+    }
+
     const steps = ['theme', 'assets', 'components', 'ready'];
 
     for (const stepId of steps) {

@@ -1,4 +1,5 @@
-import { Injectable, signal, computed, effect } from '@angular/core';
+import { Injectable, signal, computed, effect, PLATFORM_ID, inject } from '@angular/core';
+import { isPlatformBrowser } from '@angular/common';
 
 export type Theme = 'ocean' | 'forest' | 'sunset' | 'warm';
 export type Mode = 'light' | 'dark';
@@ -24,6 +25,7 @@ export interface ThemeColors {
 export class ThemeService {
   private readonly THEME_KEY = 'portfolio-theme';
   private readonly MODE_KEY = 'portfolio-mode';
+  private readonly platformId = inject(PLATFORM_ID);
 
   currentTheme = signal<Theme>('ocean');
   currentMode = signal<Mode>('dark');
@@ -165,27 +167,30 @@ export class ThemeService {
   }
 
   private async initializeTheme(): Promise<void> {
+    // On server (SSR): skip loading delay so pre-rendered HTML contains actual content
+    if (!isPlatformBrowser(this.platformId)) {
+      this.isInitialized.set(true);
+      this.isLoading.set(false);
+      return;
+    }
+
     this.isLoading.set(true);
-    if (this.isBrowser()) {
-      try {
-        const savedTheme = localStorage.getItem(this.THEME_KEY) as Theme;
-        const savedMode = localStorage.getItem(this.MODE_KEY) as Mode;
+    try {
+      const savedTheme = localStorage.getItem(this.THEME_KEY) as Theme;
+      const savedMode = localStorage.getItem(this.MODE_KEY) as Mode;
 
-        if (savedTheme && this.isValidTheme(savedTheme)) {
-          this.currentTheme.set(savedTheme);
-        }
-
-        if (savedMode && this.isValidMode(savedMode)) {
-          this.currentMode.set(savedMode);
-        }
-        this.applyTheme();
-        await new Promise(resolve => setTimeout(resolve, 150));
-
-      } catch (error) {
-        console.warn('Error loading theme from localStorage:', error);
+      if (savedTheme && this.isValidTheme(savedTheme)) {
+        this.currentTheme.set(savedTheme);
       }
-    } else {
+
+      if (savedMode && this.isValidMode(savedMode)) {
+        this.currentMode.set(savedMode);
+      }
+      this.applyTheme();
       await new Promise(resolve => setTimeout(resolve, 150));
+
+    } catch (error) {
+      console.warn('Error loading theme from localStorage:', error);
     }
 
     this.isInitialized.set(true);

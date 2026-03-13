@@ -1,0 +1,5 @@
+# Welcome all crawlers - this portfolio is machine-readable
+User-agent: *
+Allow: /
+
+Sitemap: https://portfolio.adellajil.com/sitemap.xml
