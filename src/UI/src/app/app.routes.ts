@@ -1,14 +1,9 @@
 import { Routes } from '@angular/router';
-import { Component } from '@angular/core';
-
-// Empty placeholder — actual home content is rendered inline by App component
-@Component({ template: '', standalone: true })
-class HomeRouteStub {}
 
 export const routes: Routes = [
   {
     path: '',
-    component: HomeRouteStub,
+    loadComponent: () => import('./pages/home-page.component').then(m => m.HomePageComponent),
     pathMatch: 'full'
   },
   {
