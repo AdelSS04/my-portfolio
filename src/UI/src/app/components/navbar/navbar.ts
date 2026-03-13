@@ -30,19 +30,38 @@ interface NavLink {
       <div class="hidden md:flex items-center gap-6 lg:gap-8">
         <div class="flex space-x-6 lg:space-x-8">
           @for (link of navLinks; track link) {
-            <a
-              [href]="link.href"
-              (click)="setActiveLink(link.href, $event)"
-              [class.text-[var(--theme-primary)]]="activeLink === link.href"
-              [class.border-b-2]="activeLink === link.href"
-              [class.border-[var(--theme-primary)]]="activeLink === link.href"
-              [class.pb-1]="activeLink === link.href"
-              class="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text)] transition-all duration-300 relative group"
+            @if (link.label === 'Contact') {
+              <a
+                [href]="link.href"
+                (click)="setActiveLink(link.href, $event)"
+                class="px-5 py-1.5 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] text-white rounded-full text-sm font-medium hover:scale-105 transition-all duration-300"
               >
-              {{link.label}}
-              <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--theme-primary)] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
-            </a>
+                {{ link.label }}
+              </a>
+            } @else {
+              <a
+                [href]="link.href"
+                (click)="setActiveLink(link.href, $event)"
+                [class.text-[var(--theme-primary)]]="activeLink === link.href"
+                [class.border-b-2]="activeLink === link.href"
+                [class.border-[var(--theme-primary)]]="activeLink === link.href"
+                [class.pb-1]="activeLink === link.href"
+                class="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text)] transition-all duration-300 relative group"
+              >
+                {{ link.label }}
+                <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--theme-primary)] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+              </a>
+            }
           }
+          <a
+            [href]="blogUrl"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="text-[var(--theme-text-secondary)] hover:text-[var(--theme-text)] transition-all duration-300 relative group"
+          >
+            Blog
+            <span class="absolute bottom-0 left-0 w-full h-0.5 bg-[var(--theme-primary)] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300"></span>
+          </a>
         </div>
 
         
@@ -112,14 +131,13 @@ export class NavbarComponent {
 
   navLinks: NavLink[] = [
     { label: 'Home', href: '#home' },
+    { label: 'Services', href: '#services' },
+    { label: 'Work', href: '#work' },
     { label: 'About', href: '#about' },
-    { label: 'Experience', href: '#experience' },
-    { label: 'Education', href: '#education' },
-    { label: 'Skills', href: '#skills' },
-    { label: 'Projects', href: '#projects' },
-    { label: 'Testimonials', href: '#testimonials' },
     { label: 'Contact', href: '#contact' }
   ];
+
+  blogUrl = 'https://blog.adellajil.com/';
 
   constructor() {
     effect(() => {

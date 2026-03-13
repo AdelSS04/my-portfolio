@@ -17,9 +17,9 @@ interface SocialLink {
   template: `
     <section id="contact" class="py-20 px-6">
       <div class="container mx-auto max-w-4xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">Get In Touch</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">Have a project in mind?</h2>
         <p class="text-[var(--theme-text-secondary)] text-center mb-12 max-w-2xl mx-auto">
-          Let's discuss how we can work together on your next project
+          Tell me what you're building. I respond within 24 hours.
         </p>
         <div class="bg-[var(--theme-surface)]/80 backdrop-blur-sm rounded-2xl p-8 border border-[var(--theme-border)]/20">
           <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6" novalidate>
@@ -75,7 +75,7 @@ interface SocialLink {
                 name="message"
                 required
                 class="w-full px-4 py-3 bg-[var(--theme-background-secondary)]/80 border border-[var(--theme-border)]/30 rounded-lg text-[var(--theme-text)] placeholder-[var(--theme-text-secondary)]/70 focus:outline-none focus:border-[var(--theme-primary)]/50 focus:bg-[var(--theme-background-secondary)] transition-all resize-none"
-                placeholder="Tell me about your project..."
+                placeholder="Describe your project, timeline, and any technical requirements..."
               ></textarea>
               @if (contactForm.get('message')?.touched && contactForm.get('message')?.invalid) {
                 <div class="text-red-400 text-xs mt-1 animate-slideDown">
@@ -92,7 +92,7 @@ interface SocialLink {
               >
               <span class="relative z-10">
                 @if (!isSubmitting()) {
-                  <span>Send Message</span>
+                  <span>Send Project Inquiry</span>
                 }
                 @if (isSubmitting() ) {
                   <span class="flex items-center justify-center">

@@ -1,6 +1,6 @@
-import { Component, inject, effect } from '@angular/core';
+import { Component, inject } from '@angular/core';
+import { RouterOutlet, Router } from '@angular/router';
 
-import { ExperienceComponent } from './components/experience/experience.component';
 import { AboutComponent } from './components/about/about';
 import { ContactComponent } from './components/contact/contact';
 import { FooterComponent } from './components/footer/footer';
@@ -8,7 +8,8 @@ import { HeroComponent } from './components/hero/hero';
 import { NavbarComponent } from './components/navbar/navbar';
 import { ProjectsComponent } from './components/projects/projects';
 import { SkillsComponent } from './components/skills/skills';
-import { EducationComponent } from './components/education/education.component';
+import { ServicesComponent } from './components/services/services.component';
+import { ProofBarComponent } from './components/proof-bar/proof-bar.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { ThemeService } from './services/theme.service';
 
@@ -16,11 +17,12 @@ import { ThemeService } from './services/theme.service';
   selector: 'app-root',
   standalone: true,
   imports: [
+    RouterOutlet,
     NavbarComponent,
     HeroComponent,
+    ProofBarComponent,
+    ServicesComponent,
     AboutComponent,
-    ExperienceComponent,
-    EducationComponent,
     SkillsComponent,
     ProjectsComponent,
     ContactComponent,
@@ -28,36 +30,38 @@ import { ThemeService } from './services/theme.service';
     TestimonialsComponent
   ],
   template: `
+    @if (isHomePage()) {
       <div class="min-h-screen transition-all duration-500"
            [style.background]="themeService.getCurrentColors().background">
-
 
         <div class="fixed inset-0 opacity-90 transition-all duration-500"
              [style.background]="themeService.getCurrentColors().gradient">
         </div>
 
-
         <div class="relative z-10 animate-fade-in">
           <app-navbar></app-navbar>
           <app-hero
             [name]="userData.name"
-            [title]="userData.title"
-            [subtitle]="userData.subtitle"
+            [headline]="userData.headline"
+            [subheadline]="userData.subheadline"
             [profileImage]="userData.profileImage"
           ></app-hero>
+          <app-proof-bar></app-proof-bar>
+          <app-services></app-services>
+          <app-projects></app-projects>
           <app-about
             [aboutText]="userData.aboutText"
             [additionalInfo]="userData.additionalInfo"
           ></app-about>
-          <app-experience></app-experience>
-          <app-education></app-education>
           <app-skills></app-skills>
-          <app-projects></app-projects>
           <app-testimonials></app-testimonials>
           <app-contact></app-contact>
           <app-footer [name]="userData.name"></app-footer>
         </div>
       </div>
+    } @else {
+      <router-outlet></router-outlet>
+    }
   `,
   styles: [
     `
@@ -80,24 +84,25 @@ import { ThemeService } from './services/theme.service';
           transform: translateY(0);
         }
       }
-
-      .theme-transition {
-        transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-      }
     `,
   ],
 })
 export class App {
   themeService = inject(ThemeService);
+  private router = inject(Router);
+
+  isHomePage(): boolean {
+    return this.router.url === '/' || this.router.url === '';
+  }
 
   userData = {
     name: 'Adel Lajil',
-    title: 'Cloud Full Stack Senior Developer',
-    subtitle: 'AZ-204 Certified | .NET & Angular Expert | Azure Cloud Architect',
+    headline: 'I build SaaS platforms, internal tools, and cloud-native systems.',
+    subheadline: 'Full-stack engineer with 5+ years shipping production software for enterprises, startups, and open-source. .NET, Angular, Azure.',
     profileImage: 'me.png',
-    aboutText: `I'm a passionate Cloud Full Stack Senior Developer with 5+ years of experience building scalable SaaS platforms and cloud-native solutions.
-                Currently at Evident Industrial, I specialize in Angular, .NET Core, and Azure cloud services, with expertise in microservices architecture, IoT integration, and DevOps automation.`,
-    additionalInfo: `From leading development teams to architecting enterprise-level applications, I focus on delivering high-performance, secure solutions.
-                     My journey includes building platforms like Podium360, SnB marketplace (100K+ downloads), and implementing clean DDD architecture patterns.`,
+    aboutText: `I'm a full-stack engineer based in Quebec, Canada. I build backend-heavy systems — SaaS platforms, internal tools, admin panels, API integrations — and I care about architecture, reliability, and shipping things that actually work in production.
+
+I've built a multi-tenant restaurant ordering platform, a marketplace app with 100K+ downloads, enterprise software for companies like Evident Scientific and Cofomo, and open-source tools used by .NET developers.`,
+    additionalInfo: `I'm not looking for a job. I work with founders and teams who need a technical partner to own delivery — from system design to deployment.`,
   };
 }

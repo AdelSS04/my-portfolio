@@ -10,8 +10,8 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
       
       @if (project().featured) {
         <div class="absolute top-4 right-4 z-10">
-          <span class="px-3 py-1 bg-gradient-to-r from-yellow-500 to-orange-500 text-white text-xs rounded-full font-medium">
-            ⭐ Featured
+          <span class="px-3 py-1 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] text-white text-xs rounded-full font-medium">
+            Featured
           </span>
         </div>
       }

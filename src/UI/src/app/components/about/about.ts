@@ -1,81 +1,43 @@
 import { Component, input } from '@angular/core';
-import { LucideAngularModule, User, BarChart3, Target, Rocket, Lightbulb } from 'lucide-angular';
 
 @Component({
   selector: 'app-about',
   standalone: true,
-  imports: [LucideAngularModule],
+  imports: [],
   template: `
-    <section id="about" class="py-20 px-6">
-      <div class="container mx-auto max-w-4xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">About Me</h2>
-        <p class="text-[var(--theme-text-secondary)] text-center mb-12">Passionate about creating impactful solutions</p>
+    <section id="about" class="py-24 px-6">
+      <div class="container mx-auto max-w-5xl">
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-14">About</h2>
 
-        <div class="grid md:grid-cols-2 gap-8">
-          <div class="bg-[var(--theme-surface)]/80 backdrop-blur-sm rounded-2xl p-8 border border-[var(--theme-border)]/20">
-            <h3 class="text-xl font-semibold text-[var(--theme-text)] mb-4 flex items-center gap-2">
-              <lucide-icon [img]="User" class="w-6 h-6 text-[var(--theme-primary)]" />
-              Professional Profile
-            </h3>
+        <div class="grid md:grid-cols-5 gap-10">
+          <div class="md:col-span-3">
             <p class="text-[var(--theme-text-secondary)] leading-relaxed mb-4">
-              {{aboutText()}}
+              {{ aboutText() }}
             </p>
             <p class="text-[var(--theme-text-secondary)] leading-relaxed">
-              {{additionalInfo()}}
+              {{ additionalInfo() }}
             </p>
           </div>
 
-          <div class="bg-[var(--theme-surface)]/80 backdrop-blur-sm rounded-2xl p-8 border border-[var(--theme-border)]/20">
-            <h3 class="text-xl font-semibold text-[var(--theme-text)] mb-4 flex items-center gap-2">
-              <lucide-icon [img]="BarChart3" class="w-6 h-6 text-[var(--theme-primary)]" />
-              Quick Facts
-            </h3>
-            <div class="space-y-4">
-              <div class="flex items-center justify-between py-3 border-b border-[var(--theme-border)]/20">
-                <span class="text-[var(--theme-text-secondary)]">Experience</span>
-                <span class="text-[var(--theme-text)] font-semibold">5+ Years</span>
-              </div>
-              <div class="flex items-center justify-between py-3 border-b border-[var(--theme-border)]/20">
-                <span class="text-[var(--theme-text-secondary)]">Projects Completed</span>
-                <span class="text-[var(--theme-text)] font-semibold">8+</span>
-              </div>
-              <div class="flex items-center justify-between py-3 border-b border-[var(--theme-border)]/20">
-                <span class="text-[var(--theme-text-secondary)]">Technologies</span>
-                <span class="text-[var(--theme-text)] font-semibold">20+</span>
-              </div>
-              <div class="flex items-center justify-between py-3 border-b border-[var(--theme-border)]/20">
-                <span class="text-[var(--theme-text-secondary)]">Certifications</span>
-                <span class="text-[var(--theme-text)] font-semibold">Azure AZ-204</span>
-              </div>
-              <div class="flex items-center justify-between py-3">
-                <span class="text-[var(--theme-text-secondary)]">Specialization</span>
-                <span class="text-[var(--theme-text)] font-semibold">.NET & Angular</span>
+          <div class="md:col-span-2">
+            <div class="bg-[var(--theme-surface)]/60 backdrop-blur-sm rounded-2xl p-6 border border-[var(--theme-border)]/20">
+              <h3 class="text-sm font-semibold text-[var(--theme-text-secondary)] uppercase tracking-wider mb-4">Work History</h3>
+              <div class="space-y-3">
+                @for (job of workHistory; track job.company) {
+                  <div class="flex justify-between items-start">
+                    <div>
+                      <p class="text-[var(--theme-text)] font-medium text-sm">{{ job.company }}</p>
+                      <p class="text-[var(--theme-text-secondary)] text-xs">{{ job.role }}</p>
+                    </div>
+                  </div>
+                }
               </div>
             </div>
-          </div>
-        </div>
 
-        <div class="mt-8 grid md:grid-cols-3 gap-6">
-          <div class="bg-[var(--theme-surface)]/50 backdrop-blur-sm rounded-xl p-6 border border-[var(--theme-border)]/20 text-center">
-            <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full flex items-center justify-center">
-              <lucide-icon [img]="Target" class="w-8 h-8 text-white" />
+            <div class="mt-6 text-[var(--theme-text-secondary)] text-sm leading-relaxed">
+              <span class="font-medium text-[var(--theme-text)]">Core stack:</span>
+              .NET / C# &middot; Angular / TypeScript &middot; Azure &middot; PostgreSQL / SQL Server &middot; Docker / Kubernetes
             </div>
-            <h4 class="text-[var(--theme-text)] font-semibold mb-2">Quality First</h4>
-            <p class="text-[var(--theme-text-secondary)] text-sm">Writing clean, maintainable code that stands the test of time</p>
-          </div>
-          <div class="bg-[var(--theme-surface)]/50 backdrop-blur-sm rounded-xl p-6 border border-[var(--theme-border)]/20 text-center">
-            <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full flex items-center justify-center">
-              <lucide-icon [img]="Rocket" class="w-8 h-8 text-white" />
-            </div>
-            <h4 class="text-[var(--theme-text)] font-semibold mb-2">Performance</h4>
-            <p class="text-[var(--theme-text-secondary)] text-sm">Optimizing for speed and scalability in every project</p>
-          </div>
-          <div class="bg-[var(--theme-surface)]/50 backdrop-blur-sm rounded-xl p-6 border border-[var(--theme-border)]/20 text-center">
-            <div class="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full flex items-center justify-center">
-              <lucide-icon [img]="Lightbulb" class="w-8 h-8 text-white" />
-            </div>
-            <h4 class="text-[var(--theme-text)] font-semibold mb-2">Innovation</h4>
-            <p class="text-[var(--theme-text-secondary)] text-sm">Always learning and adopting new technologies</p>
           </div>
         </div>
       </div>
@@ -83,15 +45,13 @@ import { LucideAngularModule, User, BarChart3, Target, Rocket, Lightbulb } from 
   `
 })
 export class AboutComponent {
-  readonly User = User;
-  readonly BarChart3 = BarChart3;
-  readonly Target = Target;
-  readonly Rocket = Rocket;
-  readonly Lightbulb = Lightbulb;
+  aboutText = input<string>('');
+  additionalInfo = input<string>('');
 
-  aboutText = input<string>(`I'm a passionate Senior Full Stack Developer with expertise in .NET and Angular.
-    Azure AZ-204 certified with extensive experience in building scalable cloud applications.`);
-
-  additionalInfo = input<string>(`Specializing in enterprise-level applications with a focus on clean architecture,
-    microservices, and cloud-native solutions using Azure services.`);
+  workHistory = [
+    { company: 'Evident Scientific', role: 'Senior Full Stack Developer' },
+    { company: 'Cofomo', role: 'Full Stack Engineer' },
+    { company: 'PODYAM', role: 'Development Team Lead' },
+    { company: 'SnB Company', role: 'API Developer' }
+  ];
 }

@@ -23,9 +23,9 @@ interface Testimonial {
       <div class="absolute inset-0 bg-gradient-to-b from-transparent via-[var(--theme-background-secondary)]/20 to-transparent"></div>
 
       <div class="container mx-auto max-w-6xl relative z-10">
-        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">Testimonials</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">What People Say</h2>
         <p class="text-[var(--theme-text-secondary)] text-center mb-12 max-w-2xl mx-auto">
-          What colleagues and clients say about working with me
+          From engineers and collaborators I've worked with.
         </p>
 
 
@@ -147,24 +147,6 @@ interface Testimonial {
         </div>
 
 
-        <div class="mt-12 grid grid-cols-2 md:grid-cols-4 gap-6">
-          <div class="text-center">
-            <div class="text-2xl font-bold text-[var(--theme-text)] mb-1">{{testimonials.length}}+</div>
-            <div class="text-[var(--theme-text-secondary)] text-sm">Happy Clients</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-[var(--theme-text)] mb-1">5/5</div>
-            <div class="text-[var(--theme-text-secondary)] text-sm">Average Rating</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-[var(--theme-text)] mb-1">100%</div>
-            <div class="text-[var(--theme-text-secondary)] text-sm">Recommendation</div>
-          </div>
-          <div class="text-center">
-            <div class="text-2xl font-bold text-[var(--theme-text)] mb-1">5+</div>
-            <div class="text-[var(--theme-text-secondary)] text-sm">Years of Trust</div>
-          </div>
-        </div>
       </div>
     </section>
     `,
