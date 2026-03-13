@@ -15,7 +15,7 @@ import { Component } from '@angular/core';
           <span class="hidden sm:inline text-[var(--theme-border)]/40">·</span>
           <span class="font-medium">Azure AZ-204 Certified</span>
           <span class="hidden sm:inline text-[var(--theme-border)]/40">·</span>
-          <span class="font-medium">4 Companies</span>
+          <span class="font-medium">Shipped for Evident Scientific, Cofomo, SnB</span>
         </div>
       </div>
     </section>

@@ -32,7 +32,7 @@ interface Service {
             href="#contact"
             class="inline-block px-8 py-3 bg-[var(--theme-surface)]/60 text-[var(--theme-text)] rounded-full border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/50 hover:bg-[var(--theme-surface)]/80 transition-all duration-300 text-sm"
           >
-            Have a project like this? Let's talk.
+            Tell me what you need built
           </a>
         </div>
       </div>
@@ -42,29 +42,29 @@ interface Service {
 export class ServicesComponent {
   services: Service[] = [
     {
-      title: 'SaaS & Multi-Tenant Platforms',
-      description: 'Full product builds from architecture to deployment. Multi-tenant data isolation, billing integration, user management, real-time features.',
-      forWho: 'For: Founders building a SaaS product.'
+      title: 'Build Your SaaS Product',
+      description: 'Full product builds from architecture to deployment. Multi-tenant isolation, billing, user management, real-time features.',
+      forWho: 'For founders launching a SaaS product.'
     },
     {
-      title: 'Admin Panels & Backoffices',
-      description: 'Custom dashboards, role-based access, data management interfaces. Designed for actual daily use, not just demos.',
-      forWho: 'For: Companies outgrowing spreadsheets or no-code tools.'
+      title: 'Custom Dashboards & Backoffices',
+      description: 'Internal tools your team actually uses daily. Role-based access, data management, reporting interfaces.',
+      forWho: 'For companies outgrowing spreadsheets or no-code tools.'
     },
     {
-      title: 'API Development & System Integration',
-      description: 'REST and real-time APIs. Third-party connectors. Backend systems that handle load and stay reliable.',
-      forWho: 'For: Teams that need backend reliability.'
+      title: 'Connect Your Systems',
+      description: 'REST and real-time APIs. Third-party integrations. Backend systems that handle load and stay reliable.',
+      forWho: 'For teams that need their systems talking to each other.'
     },
     {
-      title: 'Cloud Infrastructure & DevOps',
-      description: 'Azure, Docker, Kubernetes, CI/CD pipelines. From manual deployment to automated, repeatable infrastructure.',
-      forWho: 'For: Teams shipping manually or migrating to the cloud.'
+      title: 'Automate Your Deployment',
+      description: 'Azure, Docker, Kubernetes, CI/CD pipelines. Go from manual deploys to automated, repeatable infrastructure.',
+      forWho: 'For teams shipping manually or migrating to the cloud.'
     },
     {
-      title: 'Architecture & Codebase Modernization',
-      description: 'Audit, refactor, and restructure. Clean Architecture, DDD, CQRS, microservices extraction. Make your system maintainable again.',
-      forWho: 'For: Codebases that have grown faster than their architecture.'
+      title: 'Fix & Scale Your Codebase',
+      description: 'Audit, refactor, and restructure. Clean Architecture, DDD, microservices extraction. Make your system maintainable again.',
+      forWho: 'For codebases that have grown faster than their architecture.'
     }
   ];
 }

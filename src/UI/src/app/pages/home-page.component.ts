@@ -6,7 +6,6 @@ import { FooterComponent } from '../components/footer/footer';
 import { HeroComponent } from '../components/hero/hero';
 import { NavbarComponent } from '../components/navbar/navbar';
 import { ProjectsComponent } from '../components/projects/projects';
-import { SkillsComponent } from '../components/skills/skills';
 import { ServicesComponent } from '../components/services/services.component';
 import { ProofBarComponent } from '../components/proof-bar/proof-bar.component';
 import { TestimonialsComponent } from '../components/testimonials/testimonials.component';
@@ -21,7 +20,6 @@ import { ThemeService } from '../services/theme.service';
     ProofBarComponent,
     ServicesComponent,
     AboutComponent,
-    SkillsComponent,
     ProjectsComponent,
     ContactComponent,
     FooterComponent,
@@ -50,7 +48,6 @@ import { ThemeService } from '../services/theme.service';
           [aboutText]="userData.aboutText"
           [additionalInfo]="userData.additionalInfo"
         ></app-about>
-        <app-skills></app-skills>
         <app-testimonials></app-testimonials>
         <app-contact></app-contact>
         <app-footer [name]="userData.name"></app-footer>
@@ -85,11 +82,11 @@ export class HomePageComponent {
   userData = {
     name: 'Adel Lajil',
     headline: 'I build SaaS platforms, internal tools, and cloud-native systems.',
-    subheadline: 'Full-stack engineer with 5+ years shipping production software for enterprises, startups, and open-source. .NET, Angular, Azure.',
+    subheadline: 'I partner with founders and teams to architect, build, and ship backend-heavy products — from first commit to production.',
     profileImage: 'me.png',
     aboutText: `I'm a full-stack engineer based in Quebec, Canada. I build backend-heavy systems — SaaS platforms, internal tools, admin panels, API integrations — and I care about architecture, reliability, and shipping things that actually work in production.
 
 I've built a multi-tenant restaurant ordering platform, a marketplace app with 100K+ downloads, enterprise software for companies like Evident Scientific and Cofomo, and open-source tools used by .NET developers.`,
-    additionalInfo: `I'm not looking for a job. I work with founders and teams who need a technical partner to own delivery — from system design to deployment.`,
+    additionalInfo: `I work with founders and teams who need a technical partner to own delivery — from system design to deployment.`,
   };
 }

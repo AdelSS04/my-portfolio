@@ -47,7 +47,7 @@ import { Component, input } from '@angular/core';
                 href="#work"
                 class="px-8 py-3 border border-[var(--theme-border)]/30 text-[var(--theme-text)] rounded-full hover:bg-[var(--theme-surface)]/20 transition-all duration-300 text-center"
               >
-                See my work
+                View case studies
               </a>
             </div>
 

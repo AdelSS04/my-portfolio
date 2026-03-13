@@ -32,6 +32,16 @@ import { ProjectCardComponent, type Project } from '../project-card/project-card
             </button>
           </div>
         }
+
+        <div class="text-center mt-16 py-10 border-t border-[var(--theme-border)]/10">
+          <p class="text-[var(--theme-text-secondary)] mb-4">Need something similar built?</p>
+          <a
+            href="#contact"
+            class="inline-block px-8 py-3 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] text-white rounded-full hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl text-sm font-medium"
+          >
+            Start a project
+          </a>
+        </div>
       </div>
     </section>
   `,
@@ -51,9 +61,10 @@ export class ProjectsComponent {
   featuredProjects: Project[] = [
     {
       title: 'Slotafy',
-      description: 'Multi-tenant restaurant SaaS platform. QR-code ordering, mobile-responsive Diner PWA, Kitchen Display System, and Admin Back-Office. Real-time order flow with SignalR, Stripe payments, multi-tenant data isolation.',
+      description: 'Built a complete multi-tenant restaurant ordering platform — from QR menus to kitchen displays to Stripe billing.',
       category: 'SaaS Platform',
       technologies: ['.NET 10', 'Angular 21', 'PostgreSQL', 'SignalR', 'Stripe', 'Docker', 'Kubernetes'],
+      impact: 'Live SaaS product in production',
       liveUrl: 'https://slotafy.com/',
       featured: true,
       year: '2026',
@@ -61,9 +72,10 @@ export class ProjectsComponent {
     },
     {
       title: 'SnB: Sell & Buy',
-      description: 'Geo-location marketplace serving 100K+ downloads and 50K+ monthly transactions. Real-time proximity alerts, Google Maps integration, push notifications. Full backend API development.',
+      description: 'Built the API layer for a geo-location marketplace with real-time proximity alerts, Google Maps integration, and push notifications.',
       category: 'Marketplace',
       technologies: ['.NET Core', 'MySQL', 'Docker', 'Firebase', 'Google Maps API', 'Redis'],
+      impact: '100K+ downloads · 50K+ monthly transactions',
       liveUrl: 'https://www.snbapp.com',
       featured: true,
       year: '2021',
@@ -71,9 +83,10 @@ export class ProjectsComponent {
     },
     {
       title: 'Podium360',
-      description: 'Enterprise microservices platform serving 10,000+ daily users. CosmosDB, Redis caching, RabbitMQ message queuing, containerized deployment.',
+      description: 'Microservices backend for an enterprise platform. CosmosDB, Redis caching, RabbitMQ message queuing, containerized deployment.',
       category: 'Enterprise',
       technologies: ['.NET 5', 'Angular', 'CosmosDB', 'Redis', 'RabbitMQ', 'Docker'],
+      impact: '10,000+ daily active users',
       liveUrl: 'https://www.podyam.com',
       featured: true,
       year: '2020',
@@ -81,9 +94,10 @@ export class ProjectsComponent {
     },
     {
       title: 'Spur',
-      description: 'Open-source .NET library. Result-oriented error handling with fluent pipelines, zero allocations, and integrations for ASP.NET Core, EF Core, FluentValidation, MediatR. Published on NuGet.',
+      description: 'Open-source .NET library for result-oriented error handling. Fluent pipelines, zero allocations, integrations for ASP.NET Core, EF Core, MediatR. Published on NuGet.',
       category: 'Open Source',
       technologies: ['.NET Core', 'C#', 'NuGet'],
+      impact: 'Published NuGet package used by .NET developers',
       githubUrl: 'https://github.com/AdelSS04/Spur',
       liveUrl: 'https://spur.adellajil.com/',
       featured: true,

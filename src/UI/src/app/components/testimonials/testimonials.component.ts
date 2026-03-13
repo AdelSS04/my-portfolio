@@ -1,5 +1,5 @@
 import { Component, signal, effect } from '@angular/core';
-import { LucideAngularModule, Quote, Star, ChevronLeft, ChevronRight } from 'lucide-angular';
+import { LucideAngularModule, Quote, ChevronLeft, ChevronRight } from 'lucide-angular';
 
 interface Testimonial {
   id: number;
@@ -7,9 +7,7 @@ interface Testimonial {
   position: string;
   company: string;
   image?: string;
-  rating: number;
   text: string;
-  date: string;
   linkedIn?: string;
 }
 
@@ -54,18 +52,6 @@ interface Testimonial {
 
                     <div class="max-w-3xl mx-auto text-center">
 
-                      <div class="flex justify-center mb-6">
-                        @for (star of [1,2,3,4,5]; track star) {
-                          <lucide-icon
-                            [img]="Star"
-                            [class.text-yellow-400]="star <= testimonial.rating"
-                            [class.text-gray-600]="star > testimonial.rating"
-                            [class.fill-current]="star <= testimonial.rating"
-                            class="w-5 h-5">
-                          </lucide-icon>
-                        }
-                      </div>
-
                       <p class="text-[var(--theme-text-secondary)] text-lg md:text-xl leading-relaxed mb-8 italic">
                         "{{testimonial.text}}"
                       </p>
@@ -90,7 +76,6 @@ interface Testimonial {
                           <h4 class="text-[var(--theme-text)] font-semibold text-lg">{{testimonial.name}}</h4>
                           <p class="text-[var(--theme-text-secondary)] text-sm">{{testimonial.position}}</p>
                           <p class="text-[var(--theme-text-secondary)]/70 text-sm">{{testimonial.company}}</p>
-                          <p class="text-[var(--theme-text-secondary)]/50 text-xs mt-2">{{testimonial.date}}</p>
 
                           @if (testimonial.linkedIn) {
                             <a
@@ -186,7 +171,6 @@ export class TestimonialsComponent {
   touchStartX = 0;
   touchEndX = 0;
   readonly Quote = Quote;
-  readonly Star = Star;
   readonly ChevronLeft = ChevronLeft;
   readonly ChevronRight = ChevronRight;
 
@@ -194,21 +178,17 @@ export class TestimonialsComponent {
     {
       id: 1,
       name: 'Mariem Gharsallah',
-      position: 'Technology Consultant | SAP S/4HANA | Data-Driven Decision-Making',
+      position: 'Technology Consultant | SAP S/4HANA',
       company: 'Accenture',
-      rating: 5,
-      text: 'I have studied with Adel for two years. He\'s a very talented student. He\'s ambitious and diligent. Not only is he always willing to learn a new skill but also dedicated to mastering it. He is also compassionate and very helpful. He always gives of his time whenever in need.',
-      date: 'May 2019',
+      text: 'Not only is he always willing to learn a new skill but also dedicated to mastering it. He is also very helpful and always gives of his time whenever in need.',
       linkedIn: 'https://www.linkedin.com/in/mariemgharsallah/'
     },
     {
       id: 2,
-      name: 'Arsslen Idadi ',
-      position: 'Senior .NET Developer - Software Architect | M.S.Eng',
-      company: 'Nmédia',
-      rating: 5,
-      text: 'I worked with Adel in several project, and I found him to be a hard worker, passionate and determined software engineer. I recommend him for any software engineering related position.',
-      date: 'June 2024',
+      name: 'Arsslen Idadi',
+      position: 'Senior .NET Developer - Software Architect',
+      company: 'Nm\u00e9dia',
+      text: 'I worked with Adel on several projects. A hard worker, passionate and determined software engineer. I recommend him for any software engineering related work.',
       linkedIn: 'https://www.linkedin.com/in/arsslen-idadi/'
     }
   ];

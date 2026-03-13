@@ -23,8 +23,6 @@ interface NavLink {
     </div>
 
     <nav class="fixed top-0 w-full z-50 transition-all duration-300"
-         [class.translate-y-0]="navVisible()"
-         [class.-translate-y-full]="!navVisible()"
          [class.shadow-lg]="isScrolled()"
          [class.shadow-[var(--theme-primary)]/5]="isScrolled()"
          [style.background]="isScrolled()
@@ -202,21 +200,6 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
     // Scrolled state (background change)
     this.isScrolled.set(scrollY > 20);
-
-    // Hide/show navbar on scroll direction
-    if (scrollY > this.scrollThreshold) {
-      if (scrollY > this.lastScrollY + 5) {
-        // Scrolling down — hide (unless mobile menu is open)
-        if (!this.mobileMenuOpen()) {
-          this.navVisible.set(false);
-        }
-      } else if (scrollY < this.lastScrollY - 5) {
-        // Scrolling up — show
-        this.navVisible.set(true);
-      }
-    } else {
-      this.navVisible.set(true);
-    }
 
     this.lastScrollY = scrollY;
 

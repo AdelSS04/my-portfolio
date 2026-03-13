@@ -64,19 +64,23 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
         <h3 class="text-xl font-bold text-[var(--theme-text)] mb-2 group-hover:text-[var(--theme-primary)] transition-colors">
           {{project().title}}
         </h3>
-        <p class="text-[var(--theme-text-secondary)] mb-4 line-clamp-2">{{project().description}}</p>        <div class="flex gap-2 mb-4 flex-wrap">
-          @for (tech of project().technologies.slice(0, 4); track tech) {
+        <p class="text-[var(--theme-text-secondary)] mb-3 line-clamp-2">{{project().description}}</p>
+        @if (project().impact) {
+          <p class="text-[var(--theme-primary)] text-sm font-medium mb-3">{{project().impact}}</p>
+        }
+        <div class="flex gap-2 mb-4 flex-wrap">
+          @for (tech of project().technologies.slice(0, 3); track tech) {
             <span
               class="px-3 py-1 bg-[var(--theme-surface)]/40 text-[var(--theme-text-secondary)] rounded-full text-xs border border-[var(--theme-border)]/20"
               >
               {{tech}}
             </span>
           }
-          @if (project().technologies.length > 4) {
+          @if (project().technologies.length > 3) {
             <span
               class="px-3 py-1 bg-[var(--theme-surface)]/40 text-[var(--theme-text-secondary)] rounded-full text-xs border border-[var(--theme-border)]/20"
               >
-              +{{project().technologies.length - 4}} more
+              +{{project().technologies.length - 3}} more
             </span>
           }
         </div>
@@ -90,7 +94,7 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
               class="flex items-center gap-1 text-[var(--theme-primary)] hover:text-[var(--theme-accent)] transition-colors"
               >
               <lucide-icon [img]="ExternalLink" class="w-4 h-4" />
-              Live Demo
+              View Project
             </a>
           }
           @if (project().githubUrl) {
@@ -124,6 +128,7 @@ export interface Project {
   description: string;
   category: string;
   technologies: string[];
+  impact?: string;
   liveUrl?: string;
   githubUrl?: string;
   featured?: boolean;
