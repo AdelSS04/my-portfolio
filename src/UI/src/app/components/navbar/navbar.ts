@@ -14,19 +14,24 @@ interface NavLink {
   imports: [LucideAngularModule],
   template: `
     <!-- Scroll progress bar -->
-    <div class="fixed top-0 left-0 w-full h-[3px] z-[60]">
-      <div class="h-full bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] transition-[width] duration-150 ease-out"
+    <div class="fixed top-0 left-0 w-full h-[3px] z-[60] transition-opacity duration-300"
+         [class.opacity-100]="isScrolled()"
+         [class.opacity-0]="!isScrolled()">
+      <div class="h-full bg-gradient-to-r from-[var(--theme-primary)] via-[var(--theme-secondary)] to-[var(--theme-accent)] transition-[width] duration-150 ease-out shadow-lg shadow-[var(--theme-primary)]/50"
            [style.width.%]="scrollProgress()">
       </div>
     </div>
 
-    <nav class="fixed top-0 w-full z-50 transition-all duration-300"
-         [class.shadow-lg]="isScrolled()"
-         [class.shadow-[var(--theme-primary)]/5]="isScrolled()"
+    <nav class="fixed top-0 w-full z-50 transition-all duration-500 ease-out animate-slide-down"
+         [class.shadow-2xl]="isScrolled()"
+         [class.shadow-[var(--theme-primary)]/10]="isScrolled()"
+         [class.border-b]="isScrolled()"
+         [class.border-[var(--theme-border)]/20]="isScrolled()"
          [style.background]="isScrolled()
-           ? 'color-mix(in srgb, var(--theme-background-secondary) 92%, transparent)'
-           : 'color-mix(in srgb, var(--theme-background-secondary) 80%, transparent)'"
-         style="backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);"
+           ? 'color-mix(in srgb, var(--theme-background-secondary) 95%, transparent)'
+           : 'color-mix(in srgb, var(--theme-background-secondary) 85%, transparent)'"
+         [style.transform]="isScrolled() ? 'translateY(0)' : 'translateY(0)'"
+         style="backdrop-filter: blur(16px); -webkit-backdrop-filter: blur(16px);"
     >
       <div class="container mx-auto px-6 py-3 md:py-4">
         <div class="flex justify-between items-center min-h-[56px]">
@@ -131,7 +136,24 @@ interface NavLink {
   `,
   styles: [`
     :host { display: block; }
-    nav { will-change: transform; }
+    nav {
+      will-change: transform, background;
+    }
+
+    @keyframes slideDown {
+      from {
+        transform: translateY(-100%);
+        opacity: 0;
+      }
+      to {
+        transform: translateY(0);
+        opacity: 1;
+      }
+    }
+
+    .animate-slide-down {
+      animation: slideDown 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
   `],
 })
 export class NavbarComponent implements OnInit, OnDestroy {

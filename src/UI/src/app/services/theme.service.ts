@@ -21,18 +21,18 @@ export interface ThemeColors {
 export class ThemeService {
   // Single professional dark theme
   private colors: ThemeColors = {
-    primary: '#3b82f6',
-    primaryLight: '#60a5fa',
-    primaryDark: '#2563eb',
-    secondary: '#1e40af',
-    accent: '#06b6d4',
-    background: '#0a0f1e',
-    backgroundSecondary: '#111827',
-    surface: '#1a1f2e',
-    text: '#ffffff',
-    textSecondary: '#94a3b8',
+    primary: '#6366f1',
+    primaryLight: '#818cf8',
+    primaryDark: '#4f46e5',
+    secondary: '#8b5cf6',
+    accent: '#ec4899',
+    background: '#0f172a',
+    backgroundSecondary: '#1e293b',
+    surface: '#1e293b',
+    text: '#f1f5f9',
+    textSecondary: '#cbd5e1',
     border: '#334155',
-    gradient: 'linear-gradient(135deg, #0a0f1e 0%, #111827 50%, #1a1f2e 100%)'
+    gradient: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)'
   };
 
   getCurrentColors(): ThemeColors {
