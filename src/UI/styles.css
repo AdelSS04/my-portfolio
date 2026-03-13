@@ -4,19 +4,19 @@
 @import "tailwindcss";
 
 :root {
-  /* Modern Professional Theme */
-  --theme-primary: #6366f1;
-  --theme-primary-light: #818cf8;
-  --theme-primary-dark: #4f46e5;
-  --theme-secondary: #8b5cf6;
-  --theme-accent: #ec4899;
-  --theme-background: #0f172a;
-  --theme-background-secondary: #1e293b;
-  --theme-surface: #1e293b;
-  --theme-text: #f1f5f9;
-  --theme-text-secondary: #cbd5e1;
-  --theme-border: #334155;
-  --theme-gradient: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+  /* Minimalist Professional Dark Theme */
+  --theme-primary: #a78bfa;
+  --theme-primary-light: #c4b5fd;
+  --theme-primary-dark: #7c3aed;
+  --theme-secondary: #818cf8;
+  --theme-accent: #67e8f9;
+  --theme-background: #0c0c0c;
+  --theme-background-secondary: #141414;
+  --theme-surface: #1a1a1a;
+  --theme-text: #ebebeb;
+  --theme-text-secondary: #a3a3a3;
+  --theme-border: #262626;
+  --theme-gradient: linear-gradient(160deg, #0c0c0c 0%, #141414 100%);
 }
 
 html {
@@ -26,28 +26,27 @@ html {
 body {
   background: var(--theme-background);
   color: var(--theme-text);
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
-  transition: background-color 0.3s ease, color 0.3s ease;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
 }
 
 * {
-  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow, transform, filter, backdrop-filter;
-  transition-duration: 0.3s;
+  transition-property: background-color, border-color, color, opacity, box-shadow, transform;
+  transition-duration: 0.2s;
   transition-timing-function: ease;
 }
 
 ::-webkit-scrollbar {
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
 }
 
 ::-webkit-scrollbar-track {
-  background: var(--theme-background);
+  background: transparent;
 }
 
 ::-webkit-scrollbar-thumb {
   background: var(--theme-border);
-  border-radius: 4px;
+  border-radius: 3px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
@@ -55,11 +54,6 @@ body {
 }
 
 ::selection {
-  background-color: var(--theme-primary);
-  color: var(--theme-background);
-}
-
-::-moz-selection {
   background-color: var(--theme-primary);
   color: var(--theme-background);
 }
@@ -78,52 +72,6 @@ body {
   overflow: hidden;
 }
 
-.glass {
-  background: rgba(255, 255, 255, 0.02);
-  backdrop-filter: blur(12px);
-  -webkit-backdrop-filter: blur(12px);
-  border: 1px solid var(--theme-border);
-}
-
-.theme-ocean .glass {
-  background: rgba(14, 165, 233, 0.02);
-}
-
-.theme-forest .glass {
-  background: rgba(34, 197, 94, 0.02);
-}
-
-.theme-sunset .glass {
-  background: rgba(249, 115, 22, 0.02);
-}
-
-@keyframes gradientShift {
-  0% {
-    background-position: 0% 50%;
-  }
-  50% {
-    background-position: 100% 50%;
-  }
-  100% {
-    background-position: 0% 50%;
-  }
-}
-
-.gradient-animated {
-  background: var(--theme-gradient);
-  background-size: 400% 400%;
-  animation: gradientShift 15s ease infinite;
-}
-
-.hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-}
-
-.hover-lift:hover {
-  transform: translateY(-5px);
-  box-shadow: 0 10px 30px var(--theme-primary);
-}
-
 *:focus {
   outline: none;
   box-shadow: 0 0 0 2px var(--theme-primary);
@@ -138,41 +86,11 @@ input:focus,
 textarea:focus {
   outline: none;
   border-color: var(--theme-primary);
-  box-shadow: 0 0 0 3px var(--theme-primary);
-}
-
-.loader {
-  border: 3px solid var(--theme-background);
-  border-top: 3px solid var(--theme-primary);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-.theme-ocean {
-  --glow-color: rgba(14, 165, 233, 0.3);
-}
-
-.theme-forest {
-  --glow-color: rgba(34, 197, 94, 0.3);
-}
-
-.theme-sunset {
-  --glow-color: rgba(249, 115, 22, 0.3);
+  box-shadow: 0 0 0 2px rgba(167, 139, 250, 0.3);
 }
 
 .theme-glow {
-  box-shadow: 0 0 20px var(--glow-color, rgba(14, 165, 233, 0.3));
-}
-
-.theme-glow-lg {
-  box-shadow: 0 0 40px var(--glow-color, rgba(14, 165, 233, 0.3));
+  box-shadow: 0 0 20px rgba(167, 139, 250, 0.15);
 }
 
 @media (max-width: 640px) {
@@ -186,14 +104,9 @@ textarea:focus {
     background: white;
     color: black;
   }
-
   * {
     transition: none !important;
   }
-}
-
-.theme-transition {
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 @media (prefers-reduced-motion: reduce) {
