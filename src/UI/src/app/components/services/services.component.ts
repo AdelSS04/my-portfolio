@@ -12,9 +12,9 @@ interface Service {
   template: `
     <section id="services" class="py-24 px-6">
       <div class="container mx-auto max-w-6xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-3">What I Build</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-3">Where I Can Help</h2>
         <p class="text-[var(--theme-text-secondary)] text-center mb-14 max-w-lg mx-auto">
-          I help startups and businesses ship reliable, scalable software.
+          Backend development, cloud delivery, and application work grounded in the systems I build and maintain.
         </p>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5">
@@ -42,34 +42,34 @@ interface Service {
 export class ServicesComponent {
   services: Service[] = [
     {
-      title: 'SaaS Product Development',
-      description: 'End-to-end SaaS builds. Multi-tenant architecture, authentication, billing integration (Stripe/Paddle), admin panels, real-time features, usage tracking. I ship complete products, not half-built MVPs.',
-      forWho: 'For founders launching a SaaS or technical product.'
+      title: 'SaaS Applications',
+      description: 'Build tenant-aware APIs and Angular interfaces for scheduling, ordering, and billing. My own products include restaurant software and cleaning operations tools.',
+      forWho: 'For teams building or extending a SaaS product.'
     },
     {
-      title: 'Internal Tools & Dashboards',
-      description: 'Custom backoffices your team will actually use. Data management interfaces, reporting dashboards, role-based access, bulk operations, API integrations. Replace fragile spreadsheet workflows with real software.',
-      forWho: 'For companies outgrowing manual processes and no-code limitations.'
+      title: 'Internal Tools & Reporting',
+      description: 'Build admin interfaces, reports, and approval workflows with role-based access. Connect operational data so people can review it and act on it.',
+      forWho: 'For teams managing work across several systems.'
     },
     {
-      title: 'API Development & System Integration',
-      description: 'Backend APIs that scale. REST, GraphQL, real-time WebSockets. Third-party integrations, webhook systems, data sync pipelines. I build APIs that handle load and stay reliable under pressure.',
-      forWho: 'For teams connecting systems or building platform integrations.'
+      title: 'APIs & Integration',
+      description: 'Develop .NET REST APIs, gRPC services, and SignalR features. Connect applications through messaging, background jobs, and data integration.',
+      forWho: 'For teams connecting services and external platforms.'
     },
     {
-      title: 'Cloud Infrastructure & CI/CD',
-      description: 'Production-ready Azure infrastructure. Docker containers, Kubernetes orchestration, CI/CD pipelines, monitoring, automated deployments. Go from manual deploys to repeatable, reliable infrastructure.',
-      forWho: 'For teams shipping manually or migrating legacy systems to the cloud.'
+      title: 'Azure Infrastructure & Delivery',
+      description: 'Define Azure resources with Terraform, maintain Kubernetes and Helm deployments, and update CI/CD pipelines. Diagnose deployment and routing issues in production.',
+      forWho: 'For teams maintaining applications on Azure.'
     },
     {
-      title: 'Architecture & Modernization',
-      description: 'Rescue legacy codebases. Architecture audits, refactoring, Clean Architecture migration, microservices extraction, performance optimization. Make your system maintainable and scalable again.',
-      forWho: 'For codebases that have grown faster than their architecture can support.'
+      title: 'Architecture & Code Quality',
+      description: 'Review technical options, document decisions, and refactor complex code. Bring experience with multi-tenant systems, code reviews, and incremental releases.',
+      forWho: 'For teams planning a change to an existing system.'
     },
     {
-      title: 'AI-Enabled Workflows & Automation',
-      description: 'Practical AI integration for real business use cases. LLM-powered features, document processing, intelligent automation, agent-based workflows. No hype — only AI that solves actual problems.',
-      forWho: 'For teams wanting to add AI capabilities without the buzzword noise.'
+      title: 'Industrial Device Integration',
+      description: 'Connect devices to Azure IoT Hub and build onboarding flows with DPS, X.509 certificates, and Azure Functions. Extend provisioning for new device types.',
+      forWho: 'For teams building services around connected devices.'
     }
   ];
 }

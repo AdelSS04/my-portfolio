@@ -19,9 +19,9 @@ interface Testimonial {
     <section id="testimonials" class="py-20 px-6 relative overflow-hidden">
 
       <div class="container mx-auto max-w-6xl relative z-10">
-        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">What People Say</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">Colleagues & Collaborators</h2>
         <p class="text-[var(--theme-text-secondary)] text-center mb-12 max-w-lg mx-auto">
-          From engineers and collaborators I've worked with.
+          Recommendations from people who have worked with me.
         </p>
 
 

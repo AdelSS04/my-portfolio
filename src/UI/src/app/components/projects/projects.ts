@@ -8,9 +8,9 @@ import { ProjectCardComponent, type Project } from '../project-card/project-card
   template: `
     <section id="work" class="py-24 px-6">
       <div class="container mx-auto max-w-6xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-3">Case Studies</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-3">Selected Projects</h2>
         <p class="text-[var(--theme-text-secondary)] text-center mb-14 max-w-lg mx-auto">
-          Production systems I've architected, built, and shipped.
+          Independent products, professional work, and open-source tools. Each entry describes what I built or contributed.
         </p>
 
         <div class="grid md:grid-cols-2 gap-6">
@@ -34,8 +34,8 @@ import { ProjectCardComponent, type Project } from '../project-card/project-card
         }
 
         <div class="text-center mt-14 py-10 border-t border-[var(--theme-border)]/20">
-          <p class="text-[var(--theme-text)] text-lg font-medium mb-2">Need a similar system built?</p>
-          <p class="text-[var(--theme-text-secondary)] mb-6 max-w-xl mx-auto text-sm">I help founders and teams build production-grade SaaS platforms, internal tools, and backend-heavy systems from architecture to deployment.</p>
+          <p class="text-[var(--theme-text)] text-lg font-medium mb-2">Working on a similar problem?</p>
+          <p class="text-[var(--theme-text-secondary)] mb-6 max-w-xl mx-auto text-sm">Tell me about the product, the existing system, and the part your team needs help with.</p>
           <a
             href="#contact"
             class="inline-block px-7 py-3 bg-[var(--theme-primary)] text-white rounded-lg hover:bg-[var(--theme-primary-dark)] transition-colors text-sm font-medium"
@@ -62,10 +62,10 @@ export class ProjectsComponent {
   featuredProjects: Project[] = [
     {
       title: 'CleanTrack',
-      description: 'A B2B SaaS platform for cleaning companies, with separate admin, worker, and client portals. It handles scheduling, mobile checklists, proof-of-work photos, approvals, reports, and billing status.',
+      description: 'I built separate portals for cleaning managers, workers, and clients, with scheduling, mobile checklists, proof-of-work photos, and service approvals.',
       category: 'B2B SaaS',
       technologies: ['.NET 10', 'Angular 19', 'PostgreSQL', 'Keycloak', 'SignalR', 'Hangfire', 'Docker'],
-      impact: 'Three role-based portals · Live session tracking · Photo-backed quality checks',
+      impact: 'Independent product · Three role-based portals',
       liveUrl: 'https://cleantrack.adellajil.com',
       featured: true,
       year: '2026',
@@ -73,20 +73,20 @@ export class ProjectsComponent {
     },
     {
       title: 'Homelab Infrastructure & Applications',
-      description: 'A two-host Proxmox lab managed with Pulumi and Ansible. Komodo deploys separate Docker Compose stacks for private cloud apps, developer tools, home automation, and monitoring.',
+      description: 'I manage Proxmox infrastructure with Pulumi and Ansible, and deploy application and monitoring stacks with Komodo. Services include Nextcloud, n8n, and Grafana.',
       category: 'Platform Engineering',
       technologies: ['Proxmox', 'Pulumi', 'Ansible', '.NET 10', 'Docker Compose', 'Komodo', 'Prometheus', 'Grafana'],
-      impact: '2 Proxmox hosts · Declarative VM/LXC provisioning · Dedicated app and observability stacks',
+      impact: 'Personal infrastructure · Two Proxmox hosts',
       featured: true,
       year: '2026',
       thumbnail: 'assets/images/homelab.png'
     },
     {
       title: 'Slotafy',
-      description: 'Complete multi-tenant SaaS platform for restaurant ordering — QR code menus, kitchen display system, real-time order tracking, Stripe billing integration.',
+      description: 'I designed, built, and operate a restaurant SaaS with QR ordering, kitchen displays, live order updates, and Stripe billing. Deployments run through Argo CD.',
       category: 'SaaS Platform',
       technologies: ['.NET 10', 'Angular 21', 'PostgreSQL', 'SignalR', 'Stripe', 'Docker', 'Kubernetes'],
-      impact: '🚀 Live production SaaS · Multi-tenant architecture · Real-time order flow',
+      impact: 'Independent product · Live restaurant platform',
       liveUrl: 'https://slotafy.com/',
       featured: true,
       year: '2026',
@@ -94,10 +94,10 @@ export class ProjectsComponent {
     },
     {
       title: 'SnB: Sell & Buy',
-      description: 'Built the complete API backend for a geo-proximity marketplace. Real-time location tracking, push notifications, Google Maps integration, Redis caching layer.',
+      description: 'I built the backend for a location-based marketplace, including Google Maps integration, push notifications, Redis caching, and container deployments.',
       category: 'Marketplace API',
       technologies: ['.NET Core', 'MySQL', 'Docker', 'Firebase', 'Google Maps API', 'Redis'],
-      impact: '📊 100K+ downloads · 50K+ monthly transactions · 3-year production uptime',
+      impact: 'Freelance backend work · App: 100K+ downloads, 50K+ monthly transactions',
       liveUrl: 'https://www.snbapp.com',
       featured: true,
       year: '2021',
@@ -105,10 +105,10 @@ export class ProjectsComponent {
     },
     {
       title: 'Podium360',
-      description: 'Enterprise platform backend. Microservices architecture with CosmosDB, RabbitMQ message queuing, Redis caching, containerized deployment on Azure.',
+      description: 'I led seven developers building a sustainable-finance platform. My work included reporting, document workflows, a portfolio optimization API, and Azure cost reduction.',
       category: 'Enterprise',
       technologies: ['.NET 5', 'Angular', 'CosmosDB', 'Redis', 'RabbitMQ', 'Docker'],
-      impact: '🏢 10,000+ daily active users · Enterprise-grade reliability',
+      impact: 'Team lead at Podyam · Reduced Azure costs by 30%+',
       liveUrl: 'https://www.podyam.com',
       featured: true,
       year: '2020',
@@ -116,10 +116,10 @@ export class ProjectsComponent {
     },
     {
       title: 'Spur',
-      description: 'Open-source .NET library for result-oriented error handling. Fluent pipelines, zero allocations, ASP.NET Core + EF Core + MediatR integrations. Published on NuGet.',
+      description: 'I created a .NET Result<T> library for explicit error handling, fluent pipelines, and integration with ASP.NET Core and common application libraries.',
       category: 'Open Source',
       technologies: ['.NET Core', 'C#', 'NuGet'],
-      impact: '📦 Published NuGet package · Used by .NET community',
+      impact: 'Open source · Explicit error handling for .NET',
       githubUrl: 'https://github.com/AdelSS04/Spur',
       liveUrl: 'https://spur.adellajil.com/',
       featured: true,
@@ -131,7 +131,7 @@ export class ProjectsComponent {
   otherProjects: Project[] = [
     {
       title: 'Cosmigrator',
-      description: 'Azure Cosmos DB migration framework with bulk operations, retry logic, and CLI. Production-ready .NET library.',
+      description: 'I created a framework for versioned Cosmos DB migrations, with bulk operations, retries, and a CLI for use in deployment pipelines.',
       category: 'Open Source',
       technologies: ['.NET Core', 'Cosmos DB', 'C#'],
       githubUrl: 'https://github.com/AdelSS04/Cosmigrator',
@@ -141,7 +141,7 @@ export class ProjectsComponent {
     },
     {
       title: 'Clean DDD Architecture',
-      description: 'Open-source implementation of Domain-Driven Design with Repository Pattern and clean architecture principles.',
+      description: 'A .NET reference project demonstrating Domain-Driven Design, repositories, and separation between application logic and infrastructure.',
       category: 'Open Source',
       technologies: ['.NET Core', 'EF Core', 'DDD', 'CQRS'],
       githubUrl: 'https://github.com/AdelSS04/CleanDDDArchitecture',
@@ -150,7 +150,7 @@ export class ProjectsComponent {
     },
     {
       title: 'Terraform Azure Fullstack Starter',
-      description: 'Production-ready Terraform infrastructure for Azure with multi-environment support, Auth0 authentication, GitLab CI/CD, and cost optimization.',
+      description: 'A Terraform starter for Azure applications with separate environments, Auth0 authentication, and GitLab CI/CD configuration.',
       category: 'Cloud/DevOps',
       technologies: ['Terraform', 'Azure', 'Auth0', 'GitLab CI/CD'],
       githubUrl: 'https://github.com/AdelSS04/terraform-azure-fullstack-starter',
@@ -160,7 +160,7 @@ export class ProjectsComponent {
     },
     {
       title: 'My Portfolio',
-      description: 'This site. Angular SSR, .NET backend, Docker, CI/CD, automated SSL renewal.',
+      description: 'I built this portfolio with Angular server-side rendering, reusable components, and a theme system. The repository includes deployment configuration.',
       category: 'Open Source',
       technologies: ['Angular 20', 'Angular SSR', '.NET 9', 'Docker', 'GitHub Actions'],
       liveUrl: 'https://portfolio.adellajil.com',
@@ -170,7 +170,7 @@ export class ProjectsComponent {
     },
     {
       title: 'Angular Reactive Forms Showcase',
-      description: 'Enterprise-level reactive forms patterns: custom validators, type-safe form groups, advanced form management.',
+      description: 'An Angular reference project covering custom validators, typed form groups, and reusable patterns for reactive forms.',
       category: 'Open Source',
       technologies: ['Angular 18', 'TypeScript', 'Reactive Forms'],
       githubUrl: 'https://github.com/AdelSS04/angular-reactive-forms-showcase',

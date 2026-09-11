@@ -7,15 +7,15 @@ import { Component } from '@angular/core';
     <section class="py-10 px-6">
       <div class="container mx-auto max-w-5xl">
         <div class="flex flex-wrap justify-center items-center gap-x-8 gap-y-3 text-sm text-[var(--theme-text-secondary)]">
-          <span>Live SaaS in Production</span>
+          <span>Slotafy: live restaurant SaaS</span>
           <span class="opacity-30">·</span>
-          <span>100K+ App Downloads</span>
+          <span>EvidentConnect: 100+ organizations</span>
           <span class="opacity-30">·</span>
-          <span>50K+ Monthly Transactions</span>
+          <span>Device provisioning: 5,000+ devices</span>
           <span class="opacity-30">·</span>
-          <span>5+ Years Production Systems</span>
+          <span>Podyam: 7 developers led</span>
           <span class="opacity-30">·</span>
-          <span>Azure Certified (AZ-204)</span>
+          <span>AZ-204 earned in 2023</span>
         </div>
       </div>
     </section>

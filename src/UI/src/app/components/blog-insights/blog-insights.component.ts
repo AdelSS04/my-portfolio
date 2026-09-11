@@ -16,9 +16,9 @@ interface BlogPost {
   template: `
     <section id="blog" class="py-24 px-6">
       <div class="container mx-auto max-w-6xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-3">Engineering Insights</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-3">Engineering Notes</h2>
         <p class="text-[var(--theme-text-secondary)] text-center mb-14 max-w-lg mx-auto">
-          I write about architecture, cloud infrastructure, and production engineering.
+          Notes on .NET architecture, Azure infrastructure, and the decisions behind deployment and data tooling.
         </p>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-5 mb-12">
@@ -79,42 +79,42 @@ export class BlogInsightsComponent {
   featuredPosts: BlogPost[] = [
     {
       title: 'Fullstack Deployment: .NET, Angular, Docker, Nginx, SSL & GitHub Actions',
-      description: 'Complete production deployment guide from containerization to automated SSL renewal. Real infrastructure for real applications.',
+      description: 'A walkthrough of .NET and Angular deployment with Docker, Nginx, SSL renewal, and GitHub Actions.',
       url: 'https://blog.adellajil.com/blog/fullstack-deployment-net-angular-docker-nginx-ssl-github-actions',
       category: 'DevOps',
       readTime: '12 min'
     },
     {
       title: 'Cosmigrator: Azure Cosmos DB Migrations Done Right',
-      description: 'How I built a production-ready migration framework for Cosmos DB with bulk operations, retry logic, and CLI support.',
+      description: 'How I built Cosmigrator for versioned Cosmos DB migrations, bulk operations, retries, and command-line execution.',
       url: 'https://blog.adellajil.com/blog/cosmigrator-cosmos-db-migrations',
       category: 'Cloud',
       readTime: '10 min'
     },
     {
       title: 'Azure Infrastructure with Terraform: Production-Ready IaC',
-      description: 'Multi-environment Terraform setup for Azure. App Services, databases, Auth0 integration, CI/CD pipelines, and cost optimization.',
+      description: 'A Terraform setup for separate Azure environments, including App Services, databases, Auth0, and CI/CD pipelines.',
       url: 'https://blog.adellajil.com/blog/azure-terraform-infrastructure-guide',
       category: 'Infrastructure',
       readTime: '15 min'
     },
     {
       title: 'Microservices Design Patterns in .NET',
-      description: 'Practical patterns for building distributed systems. API Gateway, Service Discovery, Circuit Breaker, and real-world implementations.',
+      description: 'Examples of API gateways, service discovery, and circuit breakers in .NET microservices.',
       url: 'https://blog.adellajil.com/blog/microservices-design-patterns-dotnet',
       category: 'Architecture',
       readTime: '18 min'
     },
     {
       title: 'Building Event-Driven Systems with RabbitMQ & .NET',
-      description: 'Message queuing patterns for reliable distributed systems. Publisher/subscriber, work queues, and production considerations.',
+      description: 'RabbitMQ patterns for publish/subscribe messaging and work queues, with considerations for production use.',
       url: 'https://blog.adellajil.com/blog/event-driven-rabbitmq-dotnet',
       category: 'Backend',
       readTime: '14 min'
     },
     {
       title: 'Clean Architecture in .NET: Beyond the Buzzword',
-      description: 'Implementing maintainable architecture patterns without over-engineering. DDD, CQRS, and practical separation of concerns.',
+      description: 'How DDD, CQRS, and separation of concerns apply to a .NET application.',
       url: 'https://blog.adellajil.com/blog/clean-architecture-dotnet-practical',
       category: 'Architecture',
       readTime: '16 min'

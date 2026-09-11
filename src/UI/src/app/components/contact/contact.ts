@@ -17,9 +17,9 @@ interface SocialLink {
   template: `
     <section id="contact" class="py-20 px-6">
       <div class="container mx-auto max-w-4xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">Let's Build Something</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">Let’s Talk</h2>
         <p class="text-[var(--theme-text-secondary)] text-center mb-12 max-w-2xl mx-auto">
-          Tell me about your project. What are you building? What problems are you solving? What's your timeline? I respond within 24 hours.
+          Have a project or an engineering role in mind? Tell me about the team, the problem, and where you need help.
         </p>
         <div class="bg-[var(--theme-surface)] rounded-xl p-8 border border-[var(--theme-border)]/30">
           <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6" novalidate>
@@ -32,11 +32,11 @@ interface SocialLink {
                   name="name"
                   required
                   class="w-full px-4 py-3 bg-[var(--theme-background-secondary)]/80 border border-[var(--theme-border)]/30 rounded-lg text-[var(--theme-text)] placeholder-[var(--theme-text-secondary)]/70 focus:outline-none focus:border-[var(--theme-primary)]/50 focus:bg-[var(--theme-background-secondary)] transition-all"
-                  placeholder="Your Name"
+                  placeholder="Your name"
                   />
                 @if (contactForm.get('name')?.touched && contactForm.get('name')?.invalid) {
                   <div class="text-red-400 text-xs mt-1 animate-slideDown">
-                    Name is required (min 2 characters)
+                    Enter your name using at least 2 characters.
                   </div>
                 }
               </div>
@@ -52,25 +52,25 @@ interface SocialLink {
                   />
                 @if (contactForm.get('email')?.touched && contactForm.get('email')?.invalid) {
                   <div class="text-red-400 text-xs mt-1 animate-slideDown">
-                    Valid email is required
+                    Enter a valid email address.
                   </div>
                 }
               </div>
             </div>
             <div>
-              <label class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">What kind of project?</label>
+              <label class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">Subject (optional)</label>
               <input
                 type="text"
                 formControlName="subject"
                 name="subject"
                 class="w-full px-4 py-3 bg-[var(--theme-background-secondary)]/80 border border-[var(--theme-border)]/30 rounded-lg text-[var(--theme-text)] placeholder-[var(--theme-text-secondary)]/70 focus:outline-none focus:border-[var(--theme-primary)]/50 focus:bg-[var(--theme-background-secondary)] transition-all"
-                placeholder="e.g., SaaS MVP, Internal Dashboard, API Integration, Cloud Migration"
+                placeholder="For example: .NET role, SaaS project, or Azure integration"
                 />
             </div>
             <div>
               <label class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">
-                Tell me about your project
-                <span class="text-[var(--theme-text-secondary)]/60 font-normal ml-2">(What problem does it solve? What's your timeline? What's your tech stack or constraints?)</span>
+                Message
+                <span class="text-[var(--theme-text-secondary)]/60 font-normal ml-2">(Include the context, timeline, and technical constraints.)</span>
               </label>
               <textarea
                 rows="6"
@@ -78,11 +78,11 @@ interface SocialLink {
                 name="message"
                 required
                 class="w-full px-4 py-3 bg-[var(--theme-background-secondary)]/80 border border-[var(--theme-border)]/30 rounded-lg text-[var(--theme-text)] placeholder-[var(--theme-text-secondary)]/70 focus:outline-none focus:border-[var(--theme-primary)]/50 focus:bg-[var(--theme-background-secondary)] transition-all resize-none"
-                placeholder="Example: We're building a B2B SaaS for project management. Need a senior engineer to build the backend API, multi-tenant database architecture, and Stripe billing integration. Tech stack: .NET/PostgreSQL/Azure. Timeline: Start in 2 weeks, MVP in 3 months. Budget: $XX,XXX."
+                placeholder="Describe what you are building or the role you are hiring for. Include your current stack and where you need support."
               ></textarea>
               @if (contactForm.get('message')?.touched && contactForm.get('message')?.invalid) {
                 <div class="text-red-400 text-xs mt-1 animate-slideDown">
-                  Message is required (min 10 characters)
+                  Enter a message using at least 10 characters.
                 </div>
               }
             </div>
@@ -95,7 +95,7 @@ interface SocialLink {
               >
               <span class="relative z-10">
                 @if (!isSubmitting()) {
-                  <span>Send Project Inquiry</span>
+                  <span>Send message</span>
                 }
                 @if (isSubmitting() ) {
                   <span class="flex items-center justify-center">
@@ -126,7 +126,7 @@ interface SocialLink {
                   <lucide-icon [img]="MapPin" class="w-5 h-5 text-[var(--theme-text-secondary)]" />
                 </div>
                 <p class="text-[var(--theme-text-secondary)] text-sm">Location</p>
-                <p class="text-[var(--theme-text)]">Quebec, Canada</p>
+                <p class="text-[var(--theme-text)]">Québec, Canada</p>
               </div>
               <div>
                 <div
@@ -134,8 +134,8 @@ interface SocialLink {
                   >
                   <lucide-icon [img]="Clock" class="w-5 h-5 text-[var(--theme-text-secondary)]" />
                 </div>
-                <p class="text-[var(--theme-text-secondary)] text-sm">Response Time</p>
-                <p class="text-[var(--theme-text)]">Within 24 hours</p>
+                <p class="text-[var(--theme-text-secondary)] text-sm">Time zone</p>
+                <p class="text-[var(--theme-text)]">Eastern Time</p>
               </div>
             </div>
 
@@ -201,8 +201,8 @@ export class ContactComponent {
       this.isSubmitting.set(true);
       const formData = this.contactForm.value;
       this.http.post('https://formspree.io/f/mrbangek', formData).subscribe({
-        next: () => alert('Message sent!'),
-        error: () => alert('Error sending message'),
+        next: () => alert('Thanks. Your message has been sent.'),
+        error: () => alert('Your message could not be sent. Please email contact@adellajil.com.'),
         complete: () => {this.contactForm.reset(); this.isSubmitting.set(false);},
       });
     } else {

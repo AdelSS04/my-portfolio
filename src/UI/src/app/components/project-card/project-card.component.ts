@@ -55,7 +55,7 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
 
         <div class="absolute inset-0 bg-black/50 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
           <div class="text-white text-sm font-medium">
-            View Project →
+            {{ project().category }}
           </div>
         </div>
       </div>
@@ -64,7 +64,7 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
         <h3 class="text-xl font-bold text-[var(--theme-text)] mb-2 group-hover:text-[var(--theme-primary)] transition-colors">
           {{project().title}}
         </h3>
-        <p class="text-[var(--theme-text-secondary)] mb-3 line-clamp-2">{{project().description}}</p>
+        <p class="text-[var(--theme-text-secondary)] mb-3">{{project().description}}</p>
         @if (project().impact) {
           <p class="text-[var(--theme-primary)] text-sm font-medium mb-3">{{project().impact}}</p>
         }
@@ -94,7 +94,7 @@ import { LucideAngularModule, ExternalLink, Github } from 'lucide-angular';
               class="flex items-center gap-1 text-[var(--theme-primary)] hover:text-[var(--theme-accent)] transition-colors"
               >
               <lucide-icon [img]="ExternalLink" class="w-4 h-4" />
-              View Project
+              Visit site
             </a>
           }
           @if (project().githubUrl) {

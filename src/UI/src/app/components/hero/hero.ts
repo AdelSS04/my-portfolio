@@ -38,7 +38,7 @@ import { Component, input } from '@angular/core';
                 href="#contact"
                 class="px-7 py-3 bg-[var(--theme-primary)] text-white rounded-lg font-medium hover:bg-[var(--theme-primary-dark)] transition-colors text-center text-sm"
               >
-                Start a project conversation
+                Get in touch
               </a>
               <a
                 href="#work"
@@ -51,12 +51,12 @@ import { Component, input } from '@angular/core';
             <div class="flex flex-wrap gap-x-6 gap-y-2 justify-center lg:justify-start text-sm text-[var(--theme-text-secondary)]">
               <div class="flex items-center gap-2">
                 <div class="w-2 h-2 bg-green-400 rounded-full"></div>
-                <span>Available for new projects</span>
+                <span>SaaS & industrial IoT</span>
               </div>
               <span class="opacity-40">·</span>
-              <span>Quebec, Canada</span>
+              <span>Québec, Canada</span>
               <span class="opacity-40">·</span>
-              <span>Responds within 24h</span>
+              <span>French & English</span>
             </div>
           </div>
         </div>

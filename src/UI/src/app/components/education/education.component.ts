@@ -34,13 +34,13 @@ interface Education {
         <div class="text-center mb-16">
           <div class="inline-flex items-center gap-3 bg-[var(--theme-surface)]/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-[var(--theme-border)]/30">
             <lucide-icon [img]="GraduationCap" class="w-6 h-6 text-[var(--theme-primary)]"></lucide-icon>
-            <span class="text-[var(--theme-primary)] font-semibold">Academic Journey</span>
+            <span class="text-[var(--theme-primary)] font-semibold">Education</span>
           </div>
           <h2 class="text-4xl md:text-6xl font-bold text-[var(--theme-text)] mb-4 bg-gradient-to-r from-[var(--theme-text)] via-[var(--theme-primary)] to-[var(--theme-text)] bg-clip-text">
-            Education & Learning
+            Education & Certification
           </h2>
           <p class="text-xl text-[var(--theme-text-secondary)] max-w-3xl mx-auto leading-relaxed">
-            Building expertise through continuous learning and academic excellence
+            My engineering education and Microsoft Azure qualification.
           </p>
         </div>
 
@@ -110,7 +110,7 @@ interface Education {
                     <div>
                       <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
                         <div class="w-1.5 h-1.5 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full"></div>
-                        Curriculum & Focus Areas
+                        Studies
                       </h4>
                       <div class="space-y-1.5">
                         @for (desc of edu.description.slice(0, 4); track desc; let j = $index) {
@@ -211,7 +211,7 @@ interface Education {
                       <div>
                         <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
                           <div class="w-1.5 h-1.5 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full"></div>
-                          Curriculum & Focus Areas
+                          Studies
                         </h4>
                         <div class="space-y-2">
                           @for (desc of edu.description.slice(0, 6); track desc; let j = $index) {
@@ -256,9 +256,9 @@ interface Education {
 
         <div class="mt-20">
           <div class="text-center mb-12">
-            <h3 class="text-3xl font-bold text-[var(--theme-text)] mb-4">Professional Certifications</h3>
+            <h3 class="text-3xl font-bold text-[var(--theme-text)] mb-4">Microsoft Certification</h3>
             <p class="text-[var(--theme-text-secondary)] max-w-2xl mx-auto">
-              Continuous learning and professional development through industry certifications
+              Azure Developer Associate, earned in 2023.
             </p>
           </div>
 
@@ -321,104 +321,26 @@ export class EducationComponent {
   education: Education[] = [
     {
       school: 'National Engineering School of Carthage (ENICarthage)',
-      degree: 'Engineering Degree',
+      degree: 'National Engineering Degree',
       field: 'Industrial Systems and Logistics Engineering',
-      period: '2017 - 2020',
+      period: 'Graduated 2020',
       location: 'Carthage, Tunisia',
       type: 'university',
       logoUrl: 'https://via.placeholder.com/80x80/1e40af/ffffff?text=ENIC',
       schoolColor: '#1e40af',
       description: [
-        'Decision Support & Data Analysis',
-        'Industrial Automation & Quality Fundamentals',
-        'Mechanical Design & Manufacturing / Business Economics',
-        'Production Management / Organizational Management',
-        'Innovation & Creativity / Introduction to Industrial Management',
-        'Enterprise Logistics / Thermal Machines',
-        'Industrial Maintenance / Energy Management in Industry',
-        'Project Management / Strategic Management',
-        'Materials & Manufacturing Processes / Flow Modeling & Simulation',
-        'Metrology & Instrumentation / Production Systems Scheduling'
-      ],
-      achievements: ['Best Final Year Project', 'Top 10% of Class']
-    },
-    {
-      school: 'Higher Institute of Applied Sciences and Technology of Gabes (ISSAT Gabes)',
-      degree: 'Preparatory Studies',
-      field: 'Technology Preparatory Cycle',
-      period: '2015 - 2017',
-      location: 'Gabes, Tunisia',
-      type: 'preparatory',
-      logoUrl: 'https://via.placeholder.com/80x80/059669/ffffff?text=ISSAT',
-      schoolColor: '#059669',
-      description: [
-        'Technology Preparatory Cycle - Foundation in Engineering Sciences',
-        'Ranking: 161 out of cohort',
-        'Strong foundation in Mathematics, Physics, and Computer Science',
-        'Preparation for competitive entrance to engineering schools'
-      ],
-      achievements: ['Qualified for Engineering School', 'Strong Academic Performance']
-    },
-    {
-      school: 'Ben Guerdane High School',
-      degree: 'Baccalaureate',
-      field: 'Technical Baccalaureate',
-      period: '2011 - 2015',
-      location: 'Ben Guerdane, Tunisia',
-      type: 'high-school',
-      logoUrl: 'https://via.placeholder.com/80x80/dc2626/ffffff?text=BGH',
-      schoolColor: '#dc2626',
-      description: [
-        'Technical Baccalaureate with focus on Science and Technology',
-        'Specialized in Mathematics, Physics, and Technical Sciences',
-        'Strong foundation in analytical and problem-solving skills'
-      ],
-      achievements: ['Top 10% of Class', 'Excellence in Technical Sciences']
+        'Engineering studies in industrial systems and logistics.'
+      ]
     }
   ];
 
   certifications = [
     {
-      title: 'Azure Developer Associate',
+      title: 'Azure Developer Associate (AZ-204)',
       issuer: 'Microsoft',
-      date: '2023',
+      date: 'Earned 2023',
       icon: 'cloud',
-      skills: ['Azure', 'Cloud Services', 'Microservices']
-    },
-    {
-      title: 'AZ-204 Certification',
-      issuer: 'Microsoft',
-      date: '2023',
-      icon: 'award',
-      skills: ['Azure Development', 'Cloud Architecture']
-    },
-    {
-      title: 'Advanced Angular Development',
-      issuer: 'Online Certification',
-      date: '2022',
-      icon: 'code',
-      skills: ['Angular', 'RxJS', 'TypeScript']
-    },
-    {
-      title: '.NET Microservices Architecture',
-      issuer: 'Udemy',
-      date: '2021',
-      icon: 'box',
-      skills: ['Microservices', 'Docker', 'Kubernetes']
-    },
-    {
-      title: 'Clean Architecture & DDD',
-      issuer: 'Pluralsight',
-      date: '2021',
-      icon: 'layers',
-      skills: ['DDD', 'Clean Architecture', 'CQRS']
-    },
-    {
-      title: 'DevOps Fundamentals',
-      issuer: 'Coursera',
-      date: '2020',
-      icon: 'settings',
-      skills: ['CI/CD', 'Docker', 'Git']
+      skills: ['Azure', 'Application Development']
     }
   ];
 

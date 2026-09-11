@@ -64,14 +64,10 @@ import { HowIWorkComponent } from '../components/how-i-work/how-i-work.component
 export class HomePageComponent {
   userData = {
     name: 'Adel Lajil',
-    headline: 'Backend-Heavy Product Engineer & SaaS Builder',
-    subheadline: 'I help founders and technical teams architect, build, and ship production-grade systems — SaaS platforms, internal tools, API integrations, and AI-enabled workflows. From system design to deployment.',
+    headline: 'Senior Software Engineer | .NET & Azure',
+    subheadline: 'I build SaaS platforms and services that connect industrial devices to the cloud. My work spans .NET APIs, Angular applications, and Azure infrastructure, from technical design to production support.',
     profileImage: 'me.png',
-    aboutText: `I'm a full-stack engineer with a backend and systems focus, based in Quebec, Canada. I specialize in building production-grade software that scales — multi-tenant SaaS platforms, internal tools, API-heavy integrations, and cloud-native architectures.
-
-I've shipped a live restaurant ordering SaaS, a marketplace with 100K+ downloads processing 50K+ monthly transactions, enterprise systems for Evident Scientific and Cofomo, and open-source tools used by .NET developers. I also maintain a technical blog where I write about architecture, Azure infrastructure, Cosmos DB, microservices, and production deployment patterns.`,
-    additionalInfo: `Beyond pure engineering, I work with AI-assisted workflows, automation tooling, and self-hosted developer infrastructure. I'm not chasing AI hype — I use it where it genuinely improves productivity and systems.
-
-I work with founders and teams who need a technical partner to own the full delivery lifecycle — from architecture decisions to CI/CD to production monitoring.`,
+    aboutText: `I'm a software engineer based in Québec, Canada, with a focus on .NET and Azure. At Evident Industrial, I contribute to EvidentConnect, a SaaS platform serving 100+ organizations and about 1,000 users. I own several device services and maintain provisioning for 5,000+ devices using Azure IoT Hub, DPS, and X.509 certificates. I also write architecture decision records, review code, and mentor an intern.`,
+    additionalInfo: `Previously, I delivered features for Revenu Québec through Cofomo and led seven developers at Podyam. At Podyam, I reduced Azure infrastructure costs by more than 30% through resource sizing and Cosmos DB configuration changes. Outside work, I build Slotafy and CleanTrack, publish .NET libraries, and maintain a Proxmox homelab. I work professionally in French and English, and Arabic is my native language.`,
   };
 }

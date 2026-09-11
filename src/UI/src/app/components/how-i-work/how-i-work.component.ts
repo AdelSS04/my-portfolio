@@ -16,7 +16,7 @@ interface WorkStep {
       <div class="container mx-auto max-w-6xl">
         <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-3">How I Work</h2>
         <p class="text-[var(--theme-text-secondary)] text-center mb-14 max-w-2xl mx-auto">
-          Clear process. Reliable delivery. No surprises.
+          I make technical decisions explicit and stay involved through implementation, review, and production support.
         </p>
 
         <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-5 mb-12">
@@ -41,16 +41,16 @@ interface WorkStep {
 
         <div class="grid md:grid-cols-3 gap-6 max-w-4xl mx-auto">
           <div class="text-center p-6">
-            <div class="text-2xl font-bold text-[var(--theme-text)] mb-1">24h</div>
-            <div class="text-[var(--theme-text-secondary)] text-sm">Response time</div>
+            <div class="text-2xl font-bold text-[var(--theme-text)] mb-1">ADRs</div>
+            <div class="text-[var(--theme-text-secondary)] text-sm">Documented decisions</div>
           </div>
           <div class="text-center p-6">
-            <div class="text-2xl font-bold text-[var(--theme-text)] mb-1">5+ years</div>
-            <div class="text-[var(--theme-text-secondary)] text-sm">Production experience</div>
+            <div class="text-2xl font-bold text-[var(--theme-text)] mb-1">Code reviews</div>
+            <div class="text-[var(--theme-text-secondary)] text-sm">Shared technical ownership</div>
           </div>
           <div class="text-center p-6">
-            <div class="text-2xl font-bold text-[var(--theme-text)] mb-1">100%</div>
-            <div class="text-[var(--theme-text-secondary)] text-sm">Remote collaboration</div>
+            <div class="text-2xl font-bold text-[var(--theme-text)] mb-1">Production</div>
+            <div class="text-[var(--theme-text-secondary)] text-sm">Debugging & support</div>
           </div>
         </div>
       </div>
@@ -67,22 +67,22 @@ export class HowIWorkComponent {
     {
       icon: FileSearch,
       title: 'Discovery',
-      description: 'Understand your problem, business goals, technical constraints, and success metrics. Define scope and architecture approach.'
+      description: 'Start with the workflow, existing system, and constraints. Compare technical options and agree on what success means.'
     },
     {
       icon: Code2,
       title: 'Build',
-      description: 'Iterative development with regular check-ins. Clean, maintainable code. Architecture decisions documented and explained.'
+      description: 'Break the work into reviewable changes. Explain architecture decisions and keep the team involved as the implementation develops.'
     },
     {
       icon: TestTube2,
       title: 'Test & Review',
-      description: 'Thorough testing, code review, performance validation. Fix issues before they reach production.'
+      description: 'Review code and test integrations alongside the feature. Check behavior against the requirements and investigate failures before release.'
     },
     {
       icon: Rocket,
       title: 'Ship & Support',
-      description: 'Deployment to production with CI/CD, monitoring setup, documentation, and post-launch support.'
+      description: 'Use deployment pipelines and monitor the release. Investigate production issues and update documentation with what the team learns.'
     }
   ];
 }

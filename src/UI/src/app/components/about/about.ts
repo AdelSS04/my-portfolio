@@ -69,7 +69,7 @@ interface StackCategory {
                 }
                 <div class="pt-2">
                   <span class="inline-flex items-center gap-2 bg-[var(--theme-primary)] text-white px-4 py-1.5 rounded-lg text-xs font-medium">
-                    Azure AZ-204 Certified
+                    Azure Developer Associate · Earned 2023
                   </span>
                 </div>
               </div>
@@ -95,24 +95,24 @@ export class AboutComponent {
   showFullStack = signal(false);
 
   workHistory = [
-    { company: 'Evident Scientific', role: 'Senior Full Stack Developer' },
-    { company: 'Cofomo', role: 'Full Stack Engineer' },
-    { company: 'PODYAM', role: 'Development Team Lead' },
-    { company: 'SnB Company', role: 'API Developer' }
+    { company: 'Evident Industrial', role: 'Senior Cloud Full-Stack Developer · Jul 2024–Present' },
+    { company: 'Cofomo / Revenu Québec', role: '.NET Developer / Analyst Programmer · Nov 2022–Jun 2024' },
+    { company: 'Podyam', role: 'R&D Development Team Lead · Dec 2020–Aug 2022' },
+    { company: 'SnB', role: 'Freelance Backend Developer' }
   ];
 
   stack: StackCategory[] = [
     {
       label: 'Backend',
-      items: ['.NET Core', 'C#', 'ASP.NET', 'Entity Framework', 'PostgreSQL', 'SQL Server', 'Redis', 'SignalR', 'gRPC']
+      items: ['C#', '.NET', 'ASP.NET Core', 'Entity Framework Core', 'Dapper', 'Cosmos DB', 'PostgreSQL', 'SQL Server', 'Redis', 'RabbitMQ', 'SignalR', 'gRPC']
     },
     {
       label: 'Frontend',
-      items: ['Angular', 'TypeScript', 'Tailwind CSS', 'RxJS', 'Nx']
+      items: ['Angular', 'TypeScript', 'RxJS', 'Signals', 'Tailwind CSS']
     },
     {
       label: 'Cloud & DevOps',
-      items: ['Azure', 'Docker', 'Kubernetes', 'Terraform', 'GitHub Actions', 'GitLab CI/CD']
+      items: ['Azure', 'AKS', 'IoT Hub', 'DPS', 'Azure Functions', 'Docker', 'Helm', 'Terraform', 'Argo CD', 'GitHub Actions', 'GitLab CI/CD']
     }
   ];
 }
