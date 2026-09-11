@@ -61,6 +61,27 @@ export class ProjectsComponent {
 
   featuredProjects: Project[] = [
     {
+      title: 'CleanTrack',
+      description: 'A B2B SaaS platform for cleaning companies, with separate admin, worker, and client portals. It handles scheduling, mobile checklists, proof-of-work photos, approvals, reports, and billing status.',
+      category: 'B2B SaaS',
+      technologies: ['.NET 10', 'Angular 19', 'PostgreSQL', 'Keycloak', 'SignalR', 'Hangfire', 'Docker'],
+      impact: 'Three role-based portals · Live session tracking · Photo-backed quality checks',
+      liveUrl: 'https://cleantrack.adellajil.com',
+      featured: true,
+      year: '2026',
+      thumbnail: 'assets/images/cleantrack.png'
+    },
+    {
+      title: 'Homelab Infrastructure & Applications',
+      description: 'A two-host Proxmox lab managed with Pulumi and Ansible. Komodo deploys separate Docker Compose stacks for private cloud apps, developer tools, home automation, and monitoring.',
+      category: 'Platform Engineering',
+      technologies: ['Proxmox', 'Pulumi', 'Ansible', '.NET 10', 'Docker Compose', 'Komodo', 'Prometheus', 'Grafana'],
+      impact: '2 Proxmox hosts · Declarative VM/LXC provisioning · Dedicated app and observability stacks',
+      featured: true,
+      year: '2026',
+      thumbnail: 'assets/images/homelab.png'
+    },
+    {
       title: 'Slotafy',
       description: 'Complete multi-tenant SaaS platform for restaurant ordering — QR code menus, kitchen display system, real-time order tracking, Stripe billing integration.',
       category: 'SaaS Platform',
