@@ -6,7 +6,10 @@
     "start": "npm run build && wrangler dev",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
+    "preview:prod": "ng serve --configuration production",
     "test": "ng test",
+    "typecheck": "ngc -p tsconfig.app.json",
+    "lint": "npm run typecheck",
     "serve:ssr:my-portfolio": "node dist/server/server.mjs",
     "deploy": "npm run build && wrangler deploy",
     "cf-typegen": "wrangler types"

@@ -274,7 +274,7 @@ interface Experience {
         
         <div class="mt-20 grid grid-cols-2 md:grid-cols-4 gap-6">
           <div class="text-center group">
-            <div class="bg-[var(--theme-surface)]/30 backdrop-blur-sm rounded-2xl p-6 border border-[var(--theme-border)]/20 hover:border-[var(--theme-primary)]/50 transition-all duration-500 hover:transform hover:scale-105">
+            <div class="bg-[var(--theme-surface)]/30 backdrop-blur-sm rounded-2xl p-6 border border-[var(--theme-border)]/20 hover:border-[var(--theme-primary)]/50 transition-[transform,border-color] duration-500 hover:scale-105">
               <div class="text-5xl font-bold bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] bg-clip-text text-transparent mb-2">
                 5+
               </div>
@@ -311,7 +311,10 @@ interface Experience {
   `,
   styles: [`
     .experience-card {
-      transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
+      transition:
+        transform 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+        box-shadow 0.6s cubic-bezier(0.23, 1, 0.32, 1),
+        border-color 0.6s cubic-bezier(0.23, 1, 0.32, 1);
       animation: cardEntry 0.8s ease-out forwards;
       opacity: 0;
     }

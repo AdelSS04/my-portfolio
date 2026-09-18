@@ -1,4 +1,4 @@
-import { HttpClient, HttpHeaders } from '@angular/common/http';
+import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
@@ -13,7 +13,6 @@ interface SocialLink {
   selector: 'app-contact',
   standalone: true,
   imports: [ReactiveFormsModule, LucideAngularModule],
-  providers: [HttpClient],
   template: `
     <section id="contact" class="py-20 px-6">
       <div class="container mx-auto max-w-4xl">
@@ -22,12 +21,13 @@ interface SocialLink {
           Have a project or an engineering role in mind? Tell me about the team, the problem, and where you need help.
         </p>
         <div class="bg-[var(--theme-surface)] rounded-xl p-8 border border-[var(--theme-border)]/30">
+          <p class="sr-only" aria-live="polite">{{ statusMessage() }}</p>
           <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6" novalidate>
             <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                <label class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">Name</label>
+                <label for="contact-name" class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">Name</label>
                 <input
-                  type="text"
+                  id="contact-name" type="text"
                   formControlName="name"
                   name="name"
                   required
@@ -41,9 +41,9 @@ interface SocialLink {
                 }
               </div>
               <div>
-                <label class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">Email</label>
+                <label for="contact-email" class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">Email</label>
                 <input
-                  type="email"
+                  id="contact-email" type="email"
                   formControlName="email"
                   name="email"
                   required
@@ -58,9 +58,9 @@ interface SocialLink {
               </div>
             </div>
             <div>
-              <label class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">Subject (optional)</label>
+              <label for="contact-subject" class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">Subject (optional)</label>
               <input
-                type="text"
+                id="contact-subject" type="text"
                 formControlName="subject"
                 name="subject"
                 class="w-full px-4 py-3 bg-[var(--theme-background-secondary)]/80 border border-[var(--theme-border)]/30 rounded-lg text-[var(--theme-text)] placeholder-[var(--theme-text-secondary)]/70 focus:outline-none focus:border-[var(--theme-primary)]/50 focus:bg-[var(--theme-background-secondary)] transition-all"
@@ -68,12 +68,12 @@ interface SocialLink {
                 />
             </div>
             <div>
-              <label class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">
+              <label for="contact-message" class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">
                 Message
                 <span class="text-[var(--theme-text-secondary)]/60 font-normal ml-2">(Include the context, timeline, and technical constraints.)</span>
               </label>
               <textarea
-                rows="6"
+                id="contact-message" rows="6"
                 formControlName="message"
                 name="message"
                 required
@@ -98,8 +98,8 @@ interface SocialLink {
                   <span>Send message</span>
                 }
                 @if (isSubmitting() ) {
-                  <span class="flex items-center justify-center">
-                    <lucide-icon [img]="Loader2" class="w-5 h-5 mr-3 animate-spin" />
+                  <span class="flex items-center justify-center gap-2">
+                    <lucide-icon [img]="Loader2" class="w-5 h-5 animate-spin" />
                     Sending...
                   </span>
                 }
@@ -161,6 +161,7 @@ interface SocialLink {
 export class ContactComponent {
   contactForm: FormGroup;
   isSubmitting = signal(false);
+  statusMessage = signal('');
   readonly Mail = Mail;
   readonly MapPin = MapPin;
   readonly Clock = Clock;
@@ -201,9 +202,8 @@ export class ContactComponent {
       this.isSubmitting.set(true);
       const formData = this.contactForm.value;
       this.http.post('https://formspree.io/f/mrbangek', formData).subscribe({
-        next: () => alert('Thanks. Your message has been sent.'),
-        error: () => alert('Your message could not be sent. Please email contact@adellajil.com.'),
-        complete: () => {this.contactForm.reset(); this.isSubmitting.set(false);},
+        next: () => { this.statusMessage.set('Thanks. Your message has been sent.'); this.contactForm.reset(); this.isSubmitting.set(false); },
+        error: () => { this.statusMessage.set('Your message could not be sent. Please email contact@adellajil.com.'); this.isSubmitting.set(false); },
       });
     } else {
       this.contactForm.markAllAsTouched();

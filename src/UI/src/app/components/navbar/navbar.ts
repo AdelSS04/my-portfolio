@@ -14,13 +14,12 @@ interface NavLink {
   imports: [LucideAngularModule],
   template: `
     <nav
-      class="fixed top-0 w-full z-50"
+      class="fixed top-0 w-full z-50 transition-[padding,background-color,border-color,box-shadow,backdrop-filter] duration-[400ms] ease-[cubic-bezier(0.16,1,0.3,1)]"
       [class]="
         isScrolled()
           ? 'border-b border-[var(--theme-border)] shadow-sm backdrop-blur-xl py-2'
           : 'py-4'
       "
-      style="transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);"
     >
       <div class="container mx-auto px-6 max-w-6xl">
         <div class="flex justify-between items-center">
