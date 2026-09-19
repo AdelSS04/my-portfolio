@@ -179,13 +179,38 @@ export class HomePageComponent implements OnInit, AfterViewInit, OnDestroy {
       sections.forEach(section => section.classList.add('is-visible'));
       return;
     }
-    const revealInViewport = (section: HTMLElement) => {
-      const rect = section.getBoundingClientRect();
-      if (rect.top < window.innerHeight * .92 && rect.bottom > 0) section.classList.add('is-visible');
+    const itemSelector = [
+      '.section-kicker', '.section-heading > div', '.section-heading > p',
+      '.intro-profile > *', '.intro-statement > *', '.intro-stage dl > div',
+      '.about-story > *', '.about-scope', '.about-stats > div',
+      '.stack-row', '.stack-cert',
+      '.experience-card', '.experience-lab > *', '.credential-card',
+      '.process-path article', '.github-profile',
+      '.featured-article', '.quote-stack blockquote',
+      '.faq-item', '.contact-copy > *', '.contact-form > *'
+    ].join(',');
+    const items: HTMLElement[] = [];
+    sections.forEach(section => {
+      section.querySelectorAll<HTMLElement>(itemSelector).forEach((item, index) => {
+        item.classList.add('motion-piece', 'motion-ready');
+        item.style.setProperty('--reveal-order', String(index % 7));
+        items.push(item);
+      });
+      section.classList.add('is-visible');
+    });
+    const revealInViewport = (item: HTMLElement) => {
+      const rect = item.getBoundingClientRect();
+      const visible = rect.top < window.innerHeight * .8 && rect.bottom > window.innerHeight * .08;
+      item.classList.toggle('is-in-view', visible);
+      item.classList.toggle('exited-above', !visible && rect.top < 0);
     };
-    sections.forEach(revealInViewport);
-    this.observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add('is-visible'); this.observer?.unobserve(entry.target); } }), { rootMargin: '0px 0px -8% 0px', threshold: .05 });
-    sections.forEach(section => { if (!section.classList.contains('is-visible')) this.observer?.observe(section); });
+    items.forEach(revealInViewport);
+    this.observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      const item = entry.target as HTMLElement;
+      item.classList.toggle('is-in-view', entry.isIntersecting);
+      item.classList.toggle('exited-above', !entry.isIntersecting && entry.boundingClientRect.top < 0);
+    }), { rootMargin: '-6% 0px -22% 0px', threshold: .15 });
+    items.forEach(item => this.observer?.observe(item));
   }
   private loadGithubData(): void {
     const cachedStats = sessionStorage.getItem('adel-github-stats');
