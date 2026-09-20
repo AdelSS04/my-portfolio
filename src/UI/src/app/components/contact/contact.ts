@@ -1,8 +1,9 @@
 import { HttpClient } from '@angular/common/http';
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { signal } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { LucideAngularModule, Mail, MapPin, Clock, Github, Linkedin, Loader2 } from 'lucide-angular';
+import { LanguageService } from '../../i18n/language.service';
 
 interface SocialLink {
   name: string;
@@ -16,61 +17,61 @@ interface SocialLink {
   template: `
     <section id="contact" class="py-20 px-6">
       <div class="container mx-auto max-w-4xl">
-        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">Let’s Talk</h2>
+        <h2 class="text-3xl md:text-4xl font-bold text-[var(--theme-text)] text-center mb-4">{{ i18n.t('contact.title') }}</h2>
         <p class="text-[var(--theme-text-secondary)] text-center mb-12 max-w-2xl mx-auto">
-          Have a project or an engineering role in mind? Tell me about the team, the problem, and where you need help.
+          {{ i18n.t('contact.subtitle') }}
         </p>
         <div class="bg-[var(--theme-surface)] rounded-xl p-8 border border-[var(--theme-border)]/30">
           <p class="sr-only" aria-live="polite">{{ statusMessage() }}</p>
           <form [formGroup]="contactForm" (ngSubmit)="onSubmit()" class="space-y-6" novalidate>
             <div class="grid md:grid-cols-2 gap-6">
                             <div>
-                <label for="contact-name" class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">Name</label>
+                <label for="contact-name" class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">{{ i18n.t('contact.nameLabel') }}</label>
                 <input
                   id="contact-name" type="text"
                   formControlName="name"
                   name="name"
                   required
                   class="w-full px-4 py-3 bg-[var(--theme-background-secondary)]/80 border border-[var(--theme-border)]/30 rounded-lg text-[var(--theme-text)] placeholder-[var(--theme-text-secondary)]/70 focus:outline-none focus:border-[var(--theme-primary)]/50 focus:bg-[var(--theme-background-secondary)] transition-all"
-                  placeholder="Your name"
+                  [placeholder]="i18n.t('contact.namePlaceholder')"
                   />
                 @if (contactForm.get('name')?.touched && contactForm.get('name')?.invalid) {
                   <div class="text-red-400 text-xs mt-1 animate-slideDown">
-                    Enter your name using at least 2 characters.
+                    {{ i18n.t('contact.nameError') }}
                   </div>
                 }
               </div>
               <div>
-                <label for="contact-email" class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">Email</label>
+                <label for="contact-email" class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">{{ i18n.t('contact.emailLabel') }}</label>
                 <input
                   id="contact-email" type="email"
                   formControlName="email"
                   name="email"
                   required
                   class="w-full px-4 py-3 bg-[var(--theme-background-secondary)]/80 border border-[var(--theme-border)]/30 rounded-lg text-[var(--theme-text)] placeholder-[var(--theme-text-secondary)]/70 focus:outline-none focus:border-[var(--theme-primary)]/50 focus:bg-[var(--theme-background-secondary)] transition-all"
-                  placeholder="your@email.com"
+                  [placeholder]="i18n.t('contact.emailPlaceholder')"
                   />
                 @if (contactForm.get('email')?.touched && contactForm.get('email')?.invalid) {
                   <div class="text-red-400 text-xs mt-1 animate-slideDown">
-                    Enter a valid email address.
+                    {{ i18n.t('contact.emailError') }}
                   </div>
                 }
               </div>
             </div>
             <div>
-              <label for="contact-subject" class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">Subject (optional)</label>
+              <label for="contact-subject" class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">{{ i18n.t('contact.subjectLabel') }}</label>
               <input
                 id="contact-subject" type="text"
                 formControlName="subject"
                 name="subject"
                 class="w-full px-4 py-3 bg-[var(--theme-background-secondary)]/80 border border-[var(--theme-border)]/30 rounded-lg text-[var(--theme-text)] placeholder-[var(--theme-text-secondary)]/70 focus:outline-none focus:border-[var(--theme-primary)]/50 focus:bg-[var(--theme-background-secondary)] transition-all"
-                placeholder="For example: .NET role, SaaS project, or Azure integration"
+                [placeholder]="i18n.t('contact.subjectPlaceholder')"
                 />
             </div>
             <div>
               <label for="contact-message" class="block text-[var(--theme-text-secondary)] mb-2 text-sm font-medium">
-                Message
-                <span class="text-[var(--theme-text-secondary)]/60 font-normal ml-2">(Include the context, timeline, and technical constraints.)</span>
+                {{ i18n.t('contact.msgLabel') }}
+                <span class="text-[var(--theme-text-secondary)]/60 font-normal ml-2">{{ i18n.t('contact.msgHint') }}</span>
               </label>
               <textarea
                 id="contact-message" rows="6"
@@ -78,11 +79,11 @@ interface SocialLink {
                 name="message"
                 required
                 class="w-full px-4 py-3 bg-[var(--theme-background-secondary)]/80 border border-[var(--theme-border)]/30 rounded-lg text-[var(--theme-text)] placeholder-[var(--theme-text-secondary)]/70 focus:outline-none focus:border-[var(--theme-primary)]/50 focus:bg-[var(--theme-background-secondary)] transition-all resize-none"
-                placeholder="Describe what you are building or the role you are hiring for. Include your current stack and where you need support."
+                [placeholder]="i18n.t('contact.msgPlaceholder')"
               ></textarea>
               @if (contactForm.get('message')?.touched && contactForm.get('message')?.invalid) {
                 <div class="text-red-400 text-xs mt-1 animate-slideDown">
-                  Enter a message using at least 10 characters.
+                  {{ i18n.t('contact.msgError') }}
                 </div>
               }
             </div>
@@ -95,12 +96,12 @@ interface SocialLink {
               >
               <span class="relative z-10">
                 @if (!isSubmitting()) {
-                  <span>Send message</span>
+                  <span>{{ i18n.t('contact.send') }}</span>
                 }
                 @if (isSubmitting() ) {
                   <span class="flex items-center justify-center gap-2">
                     <lucide-icon [img]="Loader2" class="w-5 h-5 animate-spin" />
-                    Sending...
+                    {{ i18n.t('contact.sending') }}
                   </span>
                 }
               </span>
@@ -116,7 +117,7 @@ interface SocialLink {
                   >
                   <lucide-icon [img]="Mail" class="w-5 h-5 text-[var(--theme-text-secondary)]" />
                 </div>
-                <p class="text-[var(--theme-text-secondary)] text-sm">Email</p>
+                <p class="text-[var(--theme-text-secondary)] text-sm">{{ i18n.t('contact.emailTitle') }}</p>
                 <p class="text-[var(--theme-text)]">contact@adellajil.com</p>
               </div>
               <div>
@@ -125,8 +126,8 @@ interface SocialLink {
                   >
                   <lucide-icon [img]="MapPin" class="w-5 h-5 text-[var(--theme-text-secondary)]" />
                 </div>
-                <p class="text-[var(--theme-text-secondary)] text-sm">Location</p>
-                <p class="text-[var(--theme-text)]">Québec, Canada</p>
+                <p class="text-[var(--theme-text-secondary)] text-sm">{{ i18n.t('contact.locationTitle') }}</p>
+                <p class="text-[var(--theme-text)]">{{ i18n.t('contact.locationValue') }}</p>
               </div>
               <div>
                 <div
@@ -134,8 +135,8 @@ interface SocialLink {
                   >
                   <lucide-icon [img]="Clock" class="w-5 h-5 text-[var(--theme-text-secondary)]" />
                 </div>
-                <p class="text-[var(--theme-text-secondary)] text-sm">Time zone</p>
-                <p class="text-[var(--theme-text)]">Eastern Time</p>
+                <p class="text-[var(--theme-text-secondary)] text-sm">{{ i18n.t('contact.tzTitle') }}</p>
+                <p class="text-[var(--theme-text)]">{{ i18n.t('contact.tzValue') }}</p>
               </div>
             </div>
 
@@ -159,6 +160,7 @@ interface SocialLink {
     `,
 })
 export class ContactComponent {
+  readonly i18n = inject(LanguageService);
   contactForm: FormGroup;
   isSubmitting = signal(false);
   statusMessage = signal('');
@@ -202,8 +204,8 @@ export class ContactComponent {
       this.isSubmitting.set(true);
       const formData = this.contactForm.value;
       this.http.post('https://formspree.io/f/mrbangek', formData).subscribe({
-        next: () => { this.statusMessage.set('Thanks. Your message has been sent.'); this.contactForm.reset(); this.isSubmitting.set(false); },
-        error: () => { this.statusMessage.set('Your message could not be sent. Please email contact@adellajil.com.'); this.isSubmitting.set(false); },
+        next: () => { this.statusMessage.set(this.i18n.t('contact.ok')); this.contactForm.reset(); this.isSubmitting.set(false); },
+        error: () => { this.statusMessage.set(this.i18n.t('contact.fail')); this.isSubmitting.set(false); },
       });
     } else {
       this.contactForm.markAllAsTouched();

@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, inject, computed } from '@angular/core';
 import { LucideAngularModule, Cloud, Award, Code, Package, Layers3, Settings, GraduationCap, BookOpen, School, MapPin, Calendar } from 'lucide-angular';
+import { LanguageService } from '../../i18n/language.service';
 
 interface Education {
   school: string;
@@ -34,13 +35,13 @@ interface Education {
         <div class="text-center mb-16">
           <div class="inline-flex items-center gap-3 bg-[var(--theme-surface)]/20 backdrop-blur-sm rounded-full px-6 py-3 mb-6 border border-[var(--theme-border)]/30">
             <lucide-icon [img]="GraduationCap" class="w-6 h-6 text-[var(--theme-primary)]"></lucide-icon>
-            <span class="text-[var(--theme-primary)] font-semibold">Education</span>
+            <span class="text-[var(--theme-primary)] font-semibold">{{ i18n.t('education.page.kicker') }}</span>
           </div>
           <h2 class="text-4xl md:text-6xl font-bold text-[var(--theme-text)] mb-4 bg-gradient-to-r from-[var(--theme-text)] via-[var(--theme-primary)] to-[var(--theme-text)] bg-clip-text">
-            Education & Certification
+            {{ i18n.t('education.page.title') }}
           </h2>
           <p class="text-xl text-[var(--theme-text-secondary)] max-w-3xl mx-auto leading-relaxed">
-            My engineering education and Microsoft Azure qualification.
+            {{ i18n.t('education.page.subtitle') }}
           </p>
         </div>
 
@@ -50,7 +51,7 @@ interface Education {
           <div class="hidden md:block absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[var(--theme-accent)] via-[var(--theme-primary)] to-[var(--theme-accent)] opacity-30"></div>
 
           <div class="space-y-8 md:space-y-12">
-            @for (edu of education; track edu; let i = $index) {
+            @for (edu of education(); track edu; let i = $index) {
             <div
               class="education-card relative group"
               [style.animation-delay]="i * 150 + 'ms'"
@@ -110,7 +111,7 @@ interface Education {
                     <div>
                       <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
                         <div class="w-1.5 h-1.5 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full"></div>
-                        Studies
+                        {{ i18n.t('education.page.studiesLabel') }}
                       </h4>
                       <div class="space-y-1.5">
                         @for (desc of edu.description.slice(0, 4); track desc; let j = $index) {
@@ -121,7 +122,7 @@ interface Education {
                         }
                         @if (edu.description.length > 4) {
                         <div class="text-[var(--theme-text-secondary)] text-sm italic pl-3">
-                          + {{ edu.description.length - 4 }} more areas of study
+                          + {{ edu.description.length - 4 }} {{ i18n.t('education.page.moreAreas') }}
                         </div>
                         }
                       </div>
@@ -132,7 +133,7 @@ interface Education {
                     <div>
                       <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
                         <div class="w-1.5 h-1.5 bg-gradient-to-r from-[var(--theme-accent)] to-[var(--theme-primary)] rounded-full"></div>
-                        Achievements
+                        {{ i18n.t('education.page.achievementsLabel') }}
                       </h4>
                       <div class="flex flex-wrap gap-1.5">
                         @for (achievement of edu.achievements; track achievement) {
@@ -211,7 +212,7 @@ interface Education {
                       <div>
                         <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
                           <div class="w-1.5 h-1.5 bg-gradient-to-r from-[var(--theme-primary)] to-[var(--theme-accent)] rounded-full"></div>
-                          Studies
+                          {{ i18n.t('education.page.studiesLabel') }}
                         </h4>
                         <div class="space-y-2">
                           @for (desc of edu.description.slice(0, 6); track desc; let j = $index) {
@@ -222,7 +223,7 @@ interface Education {
                           }
                           @if (edu.description.length > 6) {
                           <div class="text-[var(--theme-text-secondary)] text-sm italic">
-                            + {{ edu.description.length - 6 }} more areas of study
+                            + {{ edu.description.length - 6 }} {{ i18n.t('education.page.moreAreas') }}
                           </div>
                           }
                         </div>
@@ -233,7 +234,7 @@ interface Education {
                       <div>
                         <h4 class="text-[var(--theme-text)] font-semibold text-sm mb-2 flex items-center gap-2">
                           <div class="w-1.5 h-1.5 bg-gradient-to-r from-[var(--theme-accent)] to-[var(--theme-primary)] rounded-full"></div>
-                          Key Achievements
+                          {{ i18n.t('education.page.keyAchievementsLabel') }}
                         </h4>
                         <div class="flex flex-wrap gap-1.5">
                           @for (achievement of edu.achievements; track achievement) {
@@ -256,14 +257,14 @@ interface Education {
 
         <div class="mt-20">
           <div class="text-center mb-12">
-            <h3 class="text-3xl font-bold text-[var(--theme-text)] mb-4">Microsoft Certification</h3>
+            <h3 class="text-3xl font-bold text-[var(--theme-text)] mb-4">{{ i18n.t('education.page.certSectionTitle') }}</h3>
             <p class="text-[var(--theme-text-secondary)] max-w-2xl mx-auto">
-              Azure Developer Associate, earned in 2023.
+              {{ i18n.t('education.page.certSectionSub') }}
             </p>
           </div>
 
           <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            @for (cert of certifications; track cert; let i = $index) {
+            @for (cert of certifications(); track cert; let i = $index) {
             <div class="bg-gradient-to-br from-[var(--theme-surface)] to-[var(--theme-surface)]/80 rounded-2xl border border-[var(--theme-border)]/30 hover:border-[var(--theme-primary)]/40 transition-all duration-500 overflow-hidden group hover:shadow-xl hover:shadow-[var(--theme-primary)]/10 hover:-translate-y-1"
                  [style.animation-delay]="i * 100 + 'ms'">
 
@@ -306,6 +307,7 @@ interface Education {
   `,
 })
 export class EducationComponent {
+  readonly i18n = inject(LanguageService);
   readonly Cloud = Cloud;
   readonly Award = Award;
   readonly Code = Code;
@@ -318,31 +320,21 @@ export class EducationComponent {
   readonly MapPin = MapPin;
   readonly Calendar = Calendar;
 
-  education: Education[] = [
-    {
-      school: 'National Engineering School of Carthage (ENICarthage)',
-      degree: 'National Engineering Degree',
-      field: 'Industrial Systems and Logistics Engineering',
-      period: 'Graduated 2020',
-      location: 'Carthage, Tunisia',
-      type: 'university',
-      logoUrl: 'https://via.placeholder.com/80x80/1e40af/ffffff?text=ENIC',
-      schoolColor: '#1e40af',
-      description: [
-        'Engineering studies in industrial systems and logistics.'
-      ]
-    }
-  ];
+  private readonly educationBase = {
+    type: 'university' as const,
+    logoUrl: 'https://via.placeholder.com/80x80/1e40af/ffffff?text=ENIC',
+    schoolColor: '#1e40af'
+  };
 
-  certifications = [
-    {
-      title: 'Azure Developer Associate (AZ-204)',
-      issuer: 'Microsoft',
-      date: 'Earned 2023',
-      icon: 'cloud',
-      skills: ['Azure', 'Application Development']
-    }
-  ];
+  readonly education = computed(() =>
+    (this.i18n.t('education.page.items') as Omit<Education, 'logoUrl' | 'type' | 'schoolColor'>[])
+      .map(item => ({ ...this.educationBase, ...item }))
+  );
+
+  readonly certifications = computed(() =>
+    (this.i18n.t('education.page.certs') as { title: string; issuer: string; date: string; skills: string[] }[])
+      .map(cert => ({ ...cert, icon: 'cloud' }))
+  );
 
   handleImageError(event: Event): void {
     const img = event.target as HTMLImageElement;
