@@ -551,3 +551,12 @@
 .capability-panel .capability-copy>*{animation:none!important}.capability-panel .capability-copy{animation:capabilityCopyClean .42s .03s var(--ease-scene) both}.capability-panel .capability-proof{animation:capabilityCopyClean .42s .09s var(--ease-scene) both}
 @keyframes capabilityPanelClean{from{opacity:.4;transform:translate3d(0,10px,0)}to{opacity:1;transform:none}}
 @keyframes capabilityCopyClean{from{opacity:0;transform:translate3d(0,8px,0)}to{opacity:1;transform:none}}
+
+.freelance-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:54px}
+.freelance-card{border:1px solid var(--line);border-radius:14px;padding:30px;background:rgba(11,26,37,.6)}
+.freelance-card h3{margin:0 0 10px;font:500 22px/1.25 'Roboto Slab',serif;color:#fff;letter-spacing:-.02em}
+.freelance-card p{margin:0 0 16px;color:#9db1bf;font-size:13px;line-height:1.7}
+.freelance-steps{margin-top:64px}
+.freelance-cta{margin-top:60px;text-align:center}
+.freelance-cta p{color:#829aa9;font-size:12px;margin:16px 0 0}
+@media(max-width:700px){.freelance-grid{grid-template-columns:1fr;gap:14px;margin-top:40px}.freelance-card{padding:24px}.freelance-steps{margin-top:48px}.freelance-cta{margin-top:44px}}
