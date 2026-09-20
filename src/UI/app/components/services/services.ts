@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { LucideAngularModule, Globe, Wrench, Layers, Cloud } from 'lucide-angular';
 
 interface Service {
-  icon: unknown;
+  icon: any;
   title: string;
   description: string;
   points: string[];
