@@ -9,6 +9,7 @@ import { HeroComponent } from './components/hero/hero';
 import { NavbarComponent } from './components/navbar/navbar';
 import { ProjectsComponent } from './components/projects/projects';
 import { SkillsComponent } from './components/skills/skills';
+import { ServicesComponent } from './components/services/services';
 import { EducationComponent } from './components/education/education.component';
 import { TestimonialsComponent } from './components/testimonials/testimonials.component';
 import { ThemeService } from './services/theme.service';
@@ -25,6 +26,7 @@ import { LoaderService } from './services/loader.service';
     ExperienceComponent,
     EducationComponent,
     SkillsComponent,
+    ServicesComponent,
     ProjectsComponent,
     ContactComponent,
     FooterComponent,
@@ -109,6 +111,7 @@ import { LoaderService } from './services/loader.service';
           <app-education></app-education>
           <app-skills></app-skills>
           <app-projects></app-projects>
+          <app-services></app-services>
           <app-testimonials></app-testimonials>
           <app-contact></app-contact>
           <app-footer [name]="userData.name"></app-footer>
@@ -172,3 +175,4 @@ export class App {
                      My journey includes building platforms like Podium360, SnB marketplace (100K+ downloads), and implementing clean DDD architecture patterns.`,
   };
 }
+
