@@ -1,7 +1,8 @@
-import { Component, signal, inject, OnInit, OnDestroy, PLATFORM_ID } from '@angular/core';
+import { Component, signal, inject, computed, OnInit, OnDestroy, PLATFORM_ID } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 import { Router } from '@angular/router';
 import { LucideAngularModule, Menu, X } from 'lucide-angular';
+import { LanguageService } from '../../i18n/language.service';
 
 interface NavLink {
   label: string;
@@ -41,8 +42,8 @@ interface NavLink {
 
           <!-- Desktop nav -->
           <div class="hidden md:flex items-center gap-1">
-            @for (link of navLinks; track link.href) {
-              @if (link.label === 'Contact') {
+            @for (link of navLinks(); track link.href) {
+              @if (link.href === '#contact') {
                 <a
                   [href]="link.href"
                   (click)="navigateToSection(link.href, $event)"
@@ -76,7 +77,7 @@ interface NavLink {
               rel="noopener noreferrer"
               class="px-3 py-2 rounded-lg text-sm text-[var(--theme-text-secondary)] hover:text-[var(--theme-text)] transition-colors flex items-center gap-1.5"
             >
-              Blog
+              {{ i18n.t('education.nav.blog') }}
               <svg
                 class="w-3 h-3 opacity-40"
                 fill="none"
@@ -91,6 +92,11 @@ interface NavLink {
                 />
               </svg>
             </a>
+            <span class="flex items-center gap-1.5 px-2 text-xs text-[var(--theme-text-secondary)]">
+              <button type="button" (click)="i18n.setLang('en')" [class.text-white]="i18n.lang() === 'en'" class="hover:text-[var(--theme-text)] transition-colors">EN</button>
+              <span class="opacity-40">/</span>
+              <button type="button" (click)="i18n.setLang('fr')" [class.text-white]="i18n.lang() === 'fr'" class="hover:text-[var(--theme-text)] transition-colors">FR</button>
+            </span>
           </div>
 
           <!-- Mobile menu button -->
@@ -108,7 +114,7 @@ interface NavLink {
         <!-- Mobile menu -->
         @if (mobileMenuOpen()) {
           <div class="md:hidden mt-4 pb-4 border-t border-[var(--theme-border)]/30 pt-4 space-y-1">
-            @for (link of navLinks; track link.href) {
+            @for (link of navLinks(); track link.href) {
               <a
                 [href]="link.href"
                 (click)="navigateToSection(link.href, $event); closeMobileMenu()"
@@ -128,8 +134,13 @@ interface NavLink {
               rel="noopener noreferrer"
               class="block py-2.5 px-3 rounded-lg text-sm text-[var(--theme-text-secondary)] hover:text-[var(--theme-text)] transition-colors"
             >
-              Blog ↗
+              {{ i18n.t('education.nav.blog') }} ↗
             </a>
+            <div class="flex items-center gap-3 px-3 py-2.5 text-sm">
+              <button type="button" (click)="i18n.setLang('en'); closeMobileMenu()" [class]="i18n.lang() === 'en' ? 'text-[var(--theme-text)] font-medium' : 'text-[var(--theme-text-secondary)]'">EN</button>
+              <span class="text-[var(--theme-text-secondary)] opacity-40">/</span>
+              <button type="button" (click)="i18n.setLang('fr'); closeMobileMenu()" [class]="i18n.lang() === 'fr' ? 'text-[var(--theme-text)] font-medium' : 'text-[var(--theme-text-secondary)]'">FR</button>
+            </div>
           </div>
         }
       </div>
@@ -153,14 +164,9 @@ export class NavbarComponent implements OnInit, OnDestroy {
 
   readonly Menu = Menu;
   readonly X = X;
+  readonly i18n = inject(LanguageService);
 
-  navLinks: NavLink[] = [
-    { label: 'Home', href: '#home' },
-    { label: 'Work', href: '#work' },
-    { label: 'Services', href: '#services' },
-    { label: 'About', href: '#about' },
-    { label: 'Contact', href: '#contact' },
-  ];
+  readonly navLinks = computed(() => this.i18n.t('education.nav.items') as NavLink[]);
 
   blogUrl = 'https://blog.adellajil.com/';
 
@@ -197,7 +203,7 @@ export class NavbarComponent implements OnInit, OnDestroy {
   }
 
   private detectActiveSection(): void {
-    const sections = this.navLinks.map((link) => link.href.substring(1));
+    const sections = this.navLinks().map((link) => link.href.substring(1));
     const scrollPosition = window.scrollY + 150;
 
     for (const section of [...sections].reverse()) {

@@ -30,7 +30,7 @@
 .nav-more[open] summary,.nav-more summary.active,.nav-more summary:hover{color:#fff;background:rgba(96,165,250,.13)}
 .nav-more[open] summary:after{content:'−'}
 .nav-more>div{position:absolute;z-index:20;top:calc(100% + 12px);right:0;width:190px;padding:8px;display:grid;border:1px solid var(--line);border-radius:12px;background:rgba(6,16,24,.98);box-shadow:0 20px 60px rgba(0,0,0,.42)}
-.nav-more a{padding:10px 11px;border-radius:7px;color:#9fb0bc;text-decoration:none}.nav-more a:hover,.nav-more a.active{color:#fff;background:rgba(96,165,250,.12)}
+.nav-more a,.nav-more button{padding:10px 11px;border-radius:7px;color:#9fb0bc;text-decoration:none}.nav-more a:hover,.nav-more a.active,.nav-more button:hover,.nav-more button.active{color:#fff;background:rgba(96,165,250,.12)}.nav-more button{font:inherit;background:none;border:0;cursor:pointer}
 .button,.nav-contact,.intro-statement>a,.capability-copy>a,.github-follow,.footer-cta{align-items:center;gap:8px;line-height:1.2}
 .button lucide-icon,.nav-contact lucide-icon,.intro-statement>a lucide-icon,.capability-copy>a lucide-icon,.carousel-buttons lucide-icon,.github-follow lucide-icon{display:inline-grid;place-items:center;flex:0 0 auto;line-height:0;vertical-align:middle}
 .button lucide-icon svg,.nav-contact lucide-icon svg,.carousel-buttons lucide-icon svg,.github-follow lucide-icon svg{display:block}
