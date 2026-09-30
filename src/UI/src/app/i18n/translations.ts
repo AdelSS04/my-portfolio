@@ -231,7 +231,14 @@ export const translations: Record<Lang, TranslationDict> = {
       headingA: 'A few useful',
       headingB: 'answers.',
       items: [
+        { q: 'Who is Adel Lajil?', a: 'A senior software engineer based in Québec, Canada, who builds SaaS platforms and industrial IoT cloud systems with .NET, Angular, and Azure.' },
+        { q: 'What does Adel Lajil do?', a: 'He designs multi-tenant .NET services and Angular applications, provisions industrial IoT devices through Azure IoT Hub and DPS, and defines cloud infrastructure with Terraform and Kubernetes.' },
         { q: 'What kind of work do you take on?', a: 'Senior software engineering roles and product work involving .NET, Angular, Azure, SaaS systems, or connected devices.' },
+        { q: 'Does Adel Lajil work with Azure IoT Hub?', a: 'Yes. At Evident Industrial he maintains provisioning for 5,000+ connected devices through IoT Hub, Device Provisioning Service (DPS), and X.509 certificates.' },
+        { q: 'Is Adel Lajil available for freelance work in Québec?', a: 'Yes. He builds websites, internal tools, and web applications for small Québec businesses, in French or English.' },
+        { q: 'What is Spur for .NET?', a: 'Spur is an open-source Result<T> library for explicit error handling and fluent pipelines in .NET and ASP.NET Core.' },
+        { q: 'What is Cosmigrator?', a: 'Cosmigrator is an open-source framework for versioned Cosmos DB migrations, with bulk operations, retries, and a CLI for deployment pipelines.' },
+        { q: 'What certifications does Adel Lajil have?', a: 'Microsoft Azure Developer Associate (AZ-204), earned in 2023.' },
         { q: 'Do you work in English or French?', a: 'Both. I work professionally in French and English; Arabic is my native language.' },
         { q: 'Are you open to conversations about a project?', a: 'Yes. Share your current system, the technical constraints, and the outcome you need.' }
       ]
@@ -558,7 +565,14 @@ export const translations: Record<Lang, TranslationDict> = {
       headingA: 'Quelques réponses',
       headingB: 'utiles.',
       items: [
+        { q: 'Qui est Adel Lajil ?', a: 'Un ingénieur logiciel senior basé au Québec, Canada, qui conçoit des plateformes SaaS et des systèmes cloud IoT industriels avec .NET, Angular et Azure.' },
+        { q: 'Que fait Adel Lajil ?', a: 'Il conçoit des services .NET multi-tenants et des applications Angular, provisionne des appareils IoT industriels via Azure IoT Hub et DPS, et définit l’infrastructure cloud avec Terraform et Kubernetes.' },
         { q: 'Quel type de travail acceptez-vous ?', a: 'Des rôles d’ingénierie logicielle senior et des projets produits impliquant .NET, Angular, Azure, des systèmes SaaS ou des appareils connectés.' },
+        { q: 'Adel Lajil travaille-t-il avec Azure IoT Hub ?', a: 'Oui. Chez Evident Industrial, il maintient le provisionnement de plus de 5 000 appareils connectés via IoT Hub, Device Provisioning Service (DPS) et des certificats X.509.' },
+        { q: 'Adel Lajil est-il disponible pour du travail autonome au Québec ?', a: 'Oui. Il conçoit des sites web, des outils internes et des applications web pour de petites entreprises québécoises, en français ou en anglais.' },
+        { q: 'Qu’est-ce que Spur pour .NET ?', a: 'Spur est une bibliothèque open source Result<T> pour la gestion explicite des erreurs et des pipelines fluides en .NET et ASP.NET Core.' },
+        { q: 'Qu’est-ce que Cosmigrator ?', a: 'Cosmigrator est un framework open source pour des migrations Cosmos DB versionnées, avec opérations en masse, reprises et une CLI pour les pipelines de déploiement.' },
+        { q: 'Quelles certifications Adel Lajil possède-t-il ?', a: 'Microsoft Azure Developer Associate (AZ-204), obtenue en 2023.' },
         { q: 'Travaillez-vous en anglais ou en français ?', a: 'Les deux. Je travaille professionnellement en français et en anglais ; l’arabe est ma langue maternelle.' },
         { q: 'Êtes-vous ouvert à discuter d’un projet ?', a: 'Oui. Partagez votre système actuel, les contraintes techniques et le résultat attendu.' }
       ]

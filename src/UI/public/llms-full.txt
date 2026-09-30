@@ -1,0 +1,92 @@
+# Adel Lajil — Senior Software Engineer (.NET, Angular, Azure)
+
+Location: Québec, Canada · Eastern Time
+Languages: French, English (professional), Arabic (native)
+Contact: contact@adellajil.com
+Portfolio: https://portfolio.adellajil.com/
+Blog: https://blog.adellajil.com
+GitHub: https://github.com/AdelSS04
+LinkedIn: https://www.linkedin.com/in/adellajil/
+
+## Summary
+
+Adel Lajil is a senior software engineer in Québec who builds SaaS platforms and industrial IoT cloud systems with .NET, Angular, and Azure. He is a backend-first full-stack engineer with 6+ years of experience building SaaS products, public-sector applications, and device-cloud systems. He likes owning the full path: understand the workflow, write the architecture decision record, build the change, review it with the team, and stay close when it reaches production.
+
+Proof points: 6+ years building software, 5,000+ devices provisioned, 7 developers led, 30%+ Azure cost reduction, 100+ organizations served.
+
+## Current role
+
+**Senior Cloud Full-Stack Developer at Evident Industrial** (Jul 2024 – Present), Québec, Canada, Hybrid.
+
+He builds and supports cloud software that connects industrial devices to EvidentConnect, a multi-tenant SaaS platform used by more than 100 organizations.
+
+- Works across three AKS microservices and owns several device services, Azure Functions, and operational workflows.
+- Maintains provisioning for 5,000+ devices through IoT Hub, Device Provisioning Service (DPS), X.509 certificates, and custom allocation policies.
+- Writes architecture decision records (ADRs), reviews pull requests, presents technical options, debugs production issues, and mentors an intern.
+
+Stack: .NET 8-10, Angular 18-21, AKS, Azure IoT, gRPC, Terraform.
+
+## Career history
+
+**Full-Stack .NET Developer / Analyst Programmer — Cofomo / Revenu Québec** (Nov 2022 – Jun 2024), Québec, Canada.
+Delivered application and infrastructure changes for large public-sector systems using ASP.NET Core, Angular, Dapper, and Azure DevOps. Reviewed changes, joined story analysis and estimation, and supported system, integration, and user-acceptance testing.
+
+**R&D Development Team Lead — Podyam** (Dec 2020 – Aug 2022), Tunisia.
+Led a seven-developer team working on Podium360, a multi-tenant sustainable-finance platform. Built reporting, scheduled jobs, document workflows, and a Python portfolio-optimization API. Cut Azure infrastructure costs by more than 30% through right-sizing and Cosmos DB changes.
+
+**Freelance Backend Developer — SnB: Sell & Buy** (earlier, remote).
+Built backend services for a geo-proximity marketplace with 100K+ downloads and 50K+ monthly transactions: location-based search, push notifications, Google Maps integration, Redis caching, and container deployment.
+
+## Education and credentials
+
+- National Engineering Degree, Industrial Systems and Logistics Engineering — ENICarthage, graduated 2020.
+- Microsoft Azure Developer Associate (AZ-204), earned 2023.
+
+## Selected projects
+
+**CleanTrack** (independent product, 2026) — Separate portals for cleaning managers, workers, and clients: scheduling, mobile checklists, proof-of-work photos, and service approvals. Stack: .NET 10, Angular 19, PostgreSQL, SignalR, Docker. Live: https://cleantrack.adellajil.com/
+
+**Slotafy** (independent product, 2026) — A restaurant SaaS with QR ordering, kitchen displays, live order updates, Stripe billing, and GitOps deployments. Stack: .NET 10, Angular 21, PostgreSQL, Stripe, Kubernetes. Live: https://slotafy.com/
+
+**Homelab Infrastructure** (personal infrastructure) — Proxmox infrastructure across two hosts, managed with Pulumi and Ansible, with application and monitoring stacks deployed through Komodo (Grafana, Loki).
+
+**SnB: Sell & Buy** (freelance backend work, 2021) — A location-based marketplace backend with Google Maps integration, push notifications, Redis caching, and container deployment. 100K+ downloads and 50K+ monthly transactions. Live: https://www.snbapp.com/
+
+**Spur** (open source) — A .NET `Result<T>` library for explicit error handling, fluent pipelines, and ASP.NET Core integration. Source: https://github.com/AdelSS04/Spur · Docs: https://spur.adellajil.com/
+
+**Podium360** (enterprise, team lead role at Podyam, 2020) — Sustainable-finance product: reporting, document workflows, portfolio optimization, and Azure cost reduction of more than 30%. Stack: .NET 5, Angular, Cosmos DB, RabbitMQ. Live: https://www.podyam.com/
+
+**Cosmigrator** (open source) — A framework for versioned Cosmos DB migrations, with bulk operations, retries, and a CLI for deployment pipelines. Source: https://github.com/AdelSS04/Cosmigrator
+
+**Clean DDD Architecture** (open source, 2021) — A .NET reference project demonstrating Domain-Driven Design, repositories, and separation between application logic and infrastructure. Source: https://github.com/AdelSS04/CleanDDDArchitecture
+
+**Terraform Azure Fullstack Starter** (open source, 2025) — A Terraform starter for Azure applications with separate environments, Auth0 authentication, and GitLab CI/CD configuration. Source: https://github.com/AdelSS04/terraform-azure-fullstack-starter
+
+## Freelance services (Québec small businesses)
+
+Adel Lajil builds custom websites and tools for small businesses in Québec, in French or English, with a single point of contact:
+
+- Professional websites: creation or redesign, mobile-first, SEO-friendly.
+- Custom internal tools: dashboards, automation, role-based access.
+- Web applications: client portals, online booking, ordering, or inventory management, built in .NET and Angular.
+- Cloud & infrastructure: hosting, security, and backups on Azure.
+
+Process: discovery call, clear written proposal (scope, timeline, price), delivery in visible steps, and follow-up support after go-live.
+
+## Frequently asked questions
+
+**Who is Adel Lajil?** A senior software engineer based in Québec, Canada, who builds SaaS platforms and industrial IoT cloud systems with .NET, Angular, and Azure.
+
+**What does Adel Lajil do?** He designs and builds multi-tenant .NET services and Angular applications, provisions industrial IoT devices through Azure IoT Hub and DPS, and defines cloud infrastructure with Terraform and Kubernetes.
+
+**Does Adel Lajil work with Azure IoT Hub?** Yes. At Evident Industrial he maintains provisioning for 5,000+ connected devices through IoT Hub, Device Provisioning Service (DPS), and X.509 certificates.
+
+**Is Adel Lajil available for freelance work in Québec?** Yes. He builds websites, internal tools, and web applications for small Québec businesses, in French or English.
+
+**What is Spur for .NET?** Spur is an open-source `Result<T>` library for explicit error handling and fluent pipelines in .NET and ASP.NET Core.
+
+**What is Cosmigrator?** Cosmigrator is an open-source framework for versioned Cosmos DB migrations, with bulk operations, retries, and a CLI for deployment pipelines.
+
+**What certifications does Adel Lajil have?** Microsoft Azure Developer Associate (AZ-204), earned in 2023.
+
+**Where is Adel Lajil based?** Québec, Canada, working in Eastern Time.

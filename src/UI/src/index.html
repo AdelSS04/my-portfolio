@@ -38,17 +38,47 @@
   "@graph": [
     {
       "@type": "WebSite",
+      "@id": "https://portfolio.adellajil.com/#website",
       "name": "Adel Lajil",
       "url": "https://portfolio.adellajil.com",
-      "description": "Senior software engineer in Québec building .NET APIs, Angular applications, and Azure services for SaaS platforms and connected industrial devices."
+      "description": "Senior software engineer in Québec building .NET APIs, Angular applications, and Azure services for SaaS platforms and connected industrial devices.",
+      "inLanguage": "en",
+      "publisher": { "@id": "https://portfolio.adellajil.com/#person" }
+    },
+    {
+      "@type": "ProfilePage",
+      "@id": "https://portfolio.adellajil.com/#profilepage",
+      "url": "https://portfolio.adellajil.com/",
+      "name": "Adel Lajil | Senior Software Engineer | .NET & Azure",
+      "isPartOf": { "@id": "https://portfolio.adellajil.com/#website" },
+      "mainEntity": { "@id": "https://portfolio.adellajil.com/#person" }
     },
     {
       "@type": "Person",
+      "@id": "https://portfolio.adellajil.com/#person",
       "name": "Adel Lajil",
+      "alternateName": "Adel Lajil",
       "url": "https://portfolio.adellajil.com",
+      "mainEntityOfPage": "https://portfolio.adellajil.com/",
       "image": "https://portfolio.adellajil.com/me.png",
       "jobTitle": "Senior Software Engineer",
       "description": "Senior software engineer in Québec building .NET APIs, Angular applications, and Azure services for SaaS platforms and connected industrial devices.",
+      "email": "mailto:contact@adellajil.com",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "Québec",
+        "addressRegion": "QC",
+        "addressCountry": "CA"
+      },
+      "knowsLanguage": [
+        { "@type": "Language", "name": "French", "alternateName": "fr" },
+        { "@type": "Language", "name": "English", "alternateName": "en" },
+        { "@type": "Language", "name": "Arabic", "alternateName": "ar" }
+      ],
+      "alumniOf": {
+        "@type": "CollegeOrUniversity",
+        "name": "ENICarthage"
+      },
       "knowsAbout": [
         ".NET Core",
         "C#",
@@ -67,7 +97,10 @@
         "Entity Framework",
         "CQRS",
         "Domain-Driven Design",
-        "Redis"
+        "Redis",
+        "Azure IoT Hub",
+        "Device Provisioning Service",
+        "SaaS architecture"
       ],
       "hasCredential": {
         "@type": "EducationalOccupationalCredential",
@@ -165,6 +198,62 @@
           }
         }
       ]
+    },
+    {
+      "@type": "FAQPage",
+      "@id": "https://portfolio.adellajil.com/#faq",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Who is Adel Lajil?",
+          "acceptedAnswer": { "@type": "Answer", "text": "A senior software engineer based in Québec, Canada, who builds SaaS platforms and industrial IoT cloud systems with .NET, Angular, and Azure." }
+        },
+        {
+          "@type": "Question",
+          "name": "What does Adel Lajil do?",
+          "acceptedAnswer": { "@type": "Answer", "text": "He designs multi-tenant .NET services and Angular applications, provisions industrial IoT devices through Azure IoT Hub and DPS, and defines cloud infrastructure with Terraform and Kubernetes." }
+        },
+        {
+          "@type": "Question",
+          "name": "What kind of work do you take on?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Senior software engineering roles and product work involving .NET, Angular, Azure, SaaS systems, or connected devices." }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Adel Lajil work with Azure IoT Hub?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. At Evident Industrial he maintains provisioning for 5,000+ connected devices through IoT Hub, Device Provisioning Service (DPS), and X.509 certificates." }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Adel Lajil available for freelance work in Québec?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. He builds websites, internal tools, and web applications for small Québec businesses, in French or English." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Spur for .NET?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Spur is an open-source Result<T> library for explicit error handling and fluent pipelines in .NET and ASP.NET Core." }
+        },
+        {
+          "@type": "Question",
+          "name": "What is Cosmigrator?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Cosmigrator is an open-source framework for versioned Cosmos DB migrations, with bulk operations, retries, and a CLI for deployment pipelines." }
+        },
+        {
+          "@type": "Question",
+          "name": "What certifications does Adel Lajil have?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Microsoft Azure Developer Associate (AZ-204), earned in 2023." }
+        },
+        {
+          "@type": "Question",
+          "name": "Do you work in English or French?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Both. I work professionally in French and English; Arabic is my native language." }
+        },
+        {
+          "@type": "Question",
+          "name": "Are you open to conversations about a project?",
+          "acceptedAnswer": { "@type": "Answer", "text": "Yes. Share your current system, the technical constraints, and the outcome you need." }
+        }
+      ]
     }
   ]
 }
@@ -176,6 +265,10 @@
     <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
     <link rel="manifest" href="/site.webmanifest" />
     <link rel="canonical" href="https://portfolio.adellajil.com/" />
+    <link rel="me" href="https://github.com/AdelSS04" />
+    <link rel="me" href="https://www.linkedin.com/in/adellajil/" />
+    <link rel="me" href="https://blog.adellajil.com" />
+    <link rel="author" href="mailto:contact@adellajil.com" />
   </head>
   <body>
     <app-root></app-root>
