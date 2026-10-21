@@ -2,14 +2,6 @@ name: Build and Push Docker Images
 
 on:
   workflow_dispatch:
-  push:
-    paths:
-      - "src/BE/**"
-      - "src/UI/**"
-  pull_request:
-    paths:
-      - "src/BE/**"
-      - "src/UI/**"
 
 jobs:
   changes:
